@@ -1,56 +1,53 @@
-using Microsoft.ML;
-using Microsoft.ML.Data;
-using Microsoft.ML.Transforms;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 
 namespace FaqBot.SentenceEncoding
 {
-    public class USEInput
+    public class UniversalSentenceEncoder : IDisposable
     {
-        [ColumnName("serving_default_inputs")]
-        [VectorType(1)]
-        public string[] Input { get; set; } = Array.Empty<string>();
-    }
+        public readonly string ModelPath;
+        public readonly int OutputDimension;
 
-    public class USEOutput
-    {
-        [ColumnName("StatefulPartitionedCall")]
-        [VectorType(512)]
-        public float[] Vector { get; set; } = Array.Empty<float>();
-    }
+        private readonly SessionOptions SessionOptions = new();
+        private readonly InferenceSession Session;
 
-    public class UniversalSentenceEncoder
-    {
-        public readonly string ModelDirectory;
+        private readonly DenseTensor<string> InputTensor = new(1);
+        private readonly NamedOnnxValue[] Inputs;
 
-        public readonly MLContext MLContext;
-        public readonly TensorFlowModel Model;
-        public readonly TensorFlowEstimator Estimator;
+        private readonly float[] OutputVector;
 
-        public UniversalSentenceEncoder(string modelDirectory)
+        public UniversalSentenceEncoder(string modelPath, int outputDimension = 512)
         {
-            ModelDirectory = Path.GetFullPath(modelDirectory);
+            ModelPath = Path.GetFullPath(modelPath);
+            OutputDimension = outputDimension;
 
-            MLContext = new MLContext();
-            Model = MLContext.Model.LoadTensorFlowModel(ModelDirectory);
-            Estimator = Model.ScoreTensorFlowModel("StatefulPartitionedCall", "serving_default_inputs");
+            SessionOptions.RegisterCustomOpLibraryV2("libs/ortcustomops.dll", out var libraryHandle);
+            Session = new(ModelPath, SessionOptions);
+
+            Inputs = new[] { NamedOnnxValue.CreateFromTensor("inputs", InputTensor) };
+            OutputVector = new float[OutputDimension];
         }
 
         public float[] ComputeEmbedding(string input)
         {
-            var modelInput = new USEInput
+            InputTensor.SetValue(0, input);
+
+            using var outputs = Session.Run(Inputs);
+            var outputTensor = (DenseTensor<float>)outputs.Single().Value;
+
+            for (var i = 0; i < OutputDimension; i++)
             {
-                Input = new string[] { input }
-            };
+                OutputVector[i] = outputTensor.GetValue(i);
+            }
 
-            var dataView = MLContext.Data.LoadFromEnumerable(new List<USEInput>() {
-                modelInput
-            });
-            var transformer = Estimator.Fit(dataView);
-
-            var engine = MLContext.Model.CreatePredictionEngine<USEInput, USEOutput>(transformer);
-
-            return engine.Predict(modelInput).Vector;
+            return OutputVector;
         }
 
+        public void Dispose()
+        {
+            SessionOptions.Dispose();
+            Session.Dispose();
+            GC.SuppressFinalize(this);
+        }
     }
 }

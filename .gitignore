@@ -454,4 +454,4 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 
 # FAQ Bot GitIgnore Entries
-FaqBot/universal-sentence-encoder-multilingual-large_3/
+FaqBot/models/
