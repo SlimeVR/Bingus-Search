@@ -48,22 +48,53 @@ logger.LogInformation($"Distance: {Distance.Cosine(vector1.AsArray(), vector2.As
 
 var questions = new string[]
 {
-    ""
+    "Please specify upload_port while updating firmware",
+    "Trying to upload firmware fails",
+    "The SlimeVR Server won’t start",
+    "The WiFi Settings window outputs ERROR",
+    "The WiFi Settings window outputs symbols and nothing else",
+    "My tracker keeps flashing",
+    "My tracker never connects to Wi-Fi",
+    "My tracker is not appearing on the SlimeVR Server",
+    "My tracker doesn't show up",
+    "My aux tracker isn’t working",
+    "My extension isn’t working",
+    "Sensor was reset error",
+    "The trackers are connected to my wifi but don’t turn up on SlimeVR",
+    "The trackers are connected to the SlimeVR server but aren’t turning up on Steam",
+    "My trackers are bound to the wrong controllers in SteamVR",
+    "My trackers are drifting a lot",
+    "My feet sink into the floor",
+    "My feet slide a lot",
+    "Trackers are moving in the wrong direction when I move",
+    "Does setup take a long time and/or do you need to do it every time you play?",
+    "When are they shipping?",
+    "When does it ship?",
+    "When are the trackers coming?",
+    "can I use 3 trackers for full body tracking",
 };
 
-vectors.Add(vector1.AsArray());
-vectors.Add(vector2.AsArray());
+foreach (var question in questions)
+{
+    vectors.Add(encoder.ComputeEmbedding(question));
+}
 
 var parameters = new SmallWorld<ILazyItem<float[]>, float>.Parameters();
-var distance = new WrappedDistance<ILazyItem<float[]>, float[], float>(i => i.Value, CosineDistance.NonOptimized);
+var distance = new WrappedDistance<ILazyItem<float[]>, float[], float>(i => i.Value, CosineDistance.SIMD);
 
 var graph = new SmallWorld<ILazyItem<float[]>, float>(distance.WrappedDistanceFunc, DefaultRandomGenerator.Instance, parameters);
 
-graph.AddItems(new LazyKeyItem<int, float[]>[] {
-    new(0, i => vectors[i]),
-    new(1, i => vectors[i]),
-});
+IEnumerable<LazyKeyItem<int, float[]>> ConvertToLazyKeyItems(List<float[]> input)
+{
+    for (var i = 0; i < input.Count; i++)
+    {
+        yield return new(i, key => input[key]);
+    }
+}
 
-var results = graph.KNNSearch(new LazyItemValue<float[]>(() => encoder.ComputeEmbedding("My trackers don't show up")), 2);
+graph.AddItems(ConvertToLazyKeyItems(vectors).ToArray());
 
-logger.LogInformation(string.Join(Environment.NewLine, results.Select(i => $"{(i.Item as LazyKeyItem<int, float[]>)?.Key}: {i.Distance}")));
+var results = graph.KNNSearch(new LazyItemValue<float[]>(() => encoder.ComputeEmbedding("Trackers")), 15);
+var sortedResults = results.OrderBy(i => i.Distance);
+
+logger.LogInformation(string.Join(Environment.NewLine, sortedResults.Select(i => $"\"{questions[((LazyKeyItem<int, float[]>)i.Item).Key]}\": {i.Distance}")));
