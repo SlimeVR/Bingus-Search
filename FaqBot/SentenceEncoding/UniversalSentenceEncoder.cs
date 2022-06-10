@@ -14,8 +14,6 @@ namespace FaqBot.SentenceEncoding
         private readonly DenseTensor<string> InputTensor = new(1);
         private readonly NamedOnnxValue[] Inputs;
 
-        private readonly float[] OutputVector;
-
         public UniversalSentenceEncoder(string modelPath, int outputDimension = 512)
         {
             ModelPath = Path.GetFullPath(modelPath);
@@ -25,10 +23,9 @@ namespace FaqBot.SentenceEncoding
             Session = new(ModelPath, SessionOptions);
 
             Inputs = new[] { NamedOnnxValue.CreateFromTensor("inputs", InputTensor) };
-            OutputVector = new float[OutputDimension];
         }
 
-        public float[] ComputeEmbedding(string input)
+        public float[] ComputeEmbedding(string input, float[] vectorBuffer)
         {
             InputTensor.SetValue(0, input);
 
@@ -37,10 +34,15 @@ namespace FaqBot.SentenceEncoding
 
             for (var i = 0; i < OutputDimension; i++)
             {
-                OutputVector[i] = outputTensor.GetValue(i);
+                vectorBuffer[i] = outputTensor.GetValue(i);
             }
 
-            return OutputVector;
+            return vectorBuffer;
+        }
+
+        public float[] ComputeEmbedding(string input)
+        {
+            return ComputeEmbedding(input, new float[OutputDimension]);
         }
 
         public void Dispose()
