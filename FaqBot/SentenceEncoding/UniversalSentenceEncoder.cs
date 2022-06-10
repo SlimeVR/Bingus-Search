@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using MathNet.Numerics.LinearAlgebra;
 using Microsoft.Extensions.Logging;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
@@ -10,7 +11,7 @@ namespace FaqBot.SentenceEncoding
         private readonly ILogger<UniversalSentenceEncoder> Logger;
 
         public readonly string ModelPath;
-        public readonly int OutputDimension;
+        public readonly int OutputDimension = 512;
 
         private readonly SessionOptions SessionOptions = new();
         private readonly IntPtr LibraryHandle;
@@ -19,12 +20,11 @@ namespace FaqBot.SentenceEncoding
         private readonly DenseTensor<string> InputTensor = new(1);
         private readonly NamedOnnxValue[] Inputs;
 
-        public UniversalSentenceEncoder(ILogger<UniversalSentenceEncoder> logger, string modelPath, int outputDimension = 512)
+        public UniversalSentenceEncoder(ILogger<UniversalSentenceEncoder> logger, string modelPath)
         {
             Logger = logger;
 
             ModelPath = Path.GetFullPath(modelPath);
-            OutputDimension = outputDimension;
 
             SessionOptions.RegisterCustomOpLibraryV2("libs/ortcustomops.dll", out LibraryHandle);
 
@@ -48,6 +48,16 @@ namespace FaqBot.SentenceEncoding
 
             Session = new(ModelPath, SessionOptions);
 
+            try
+            {
+                OutputDimension = Session.OutputMetadata.Single().Value.Dimensions[1];
+                logger.LogInformation($"Output dimension detected as {OutputDimension}");
+            }
+            catch (Exception e)
+            {
+                Logger.LogWarning(e, "Output dimension could not be detected, defaulting to 512");
+            }
+
             Inputs = new[] { NamedOnnxValue.CreateFromTensor("inputs", InputTensor) };
         }
 
@@ -66,9 +76,29 @@ namespace FaqBot.SentenceEncoding
             return vectorBuffer;
         }
 
+        public Vector<float> ComputeEmbeddingVector(string input, Vector<float> vectorBuffer)
+        {
+            var internalArray = vectorBuffer.AsArray();
+            if (internalArray != null)
+            {
+                ComputeEmbedding(input, internalArray);
+                return vectorBuffer;
+            }
+            else
+            {
+                vectorBuffer.SetValues(ComputeEmbedding(input, vectorBuffer.ToArray()));
+                return vectorBuffer;
+            }
+        }
+
         public float[] ComputeEmbedding(string input)
         {
             return ComputeEmbedding(input, new float[OutputDimension]);
+        }
+
+        public Vector<float> ComputeEmbeddingVector(string input)
+        {
+            return Vector<float>.Build.Dense(ComputeEmbedding(input));
         }
 
         public void Dispose()
