@@ -94,7 +94,7 @@ IEnumerable<LazyKeyItem<int, float[]>> ConvertToLazyKeyItems(List<float[]> input
 
 graph.AddItems(ConvertToLazyKeyItems(vectors).ToArray());
 
-var results = graph.KNNSearch(new LazyItemValue<float[]>(() => encoder.ComputeEmbedding("Trackers")), 15);
+var results = graph.KNNSearch(new LazyItemValue<float[]>(encoder.ComputeEmbedding("Trackers")), 15);
 var sortedResults = results.OrderBy(i => i.Distance);
 
 logger.LogInformation(string.Join(Environment.NewLine, sortedResults.Select(i => $"\"{questions[((LazyKeyItem<int, float[]>)i.Item).Key]}\": {i.Distance}")));
