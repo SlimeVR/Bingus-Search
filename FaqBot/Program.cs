@@ -1,7 +1,11 @@
 using FaqBot.SentenceEncoding;
+using Microsoft.Extensions.Logging;
+
+var loggerFactory = LoggerFactory.Create(builder => { builder.AddSimpleConsole(options => { options.TimestampFormat = "[hh:mm:ss] "; }); });
+var logger = loggerFactory.CreateLogger<Program>();
 
 var modelPath = Path.Join(Environment.CurrentDirectory, "models/onnx/use-m_l_v3.onnx");
-var encoder = new UniversalSentenceEncoder(modelPath);
+var encoder = new UniversalSentenceEncoder(loggerFactory.CreateLogger<UniversalSentenceEncoder>(), modelPath);
 
 var vectorBuffer = new float[encoder.OutputDimension];
 
@@ -11,5 +15,5 @@ PrintEmbedding("I enjoy taking long walks along the beach with my dog.");
 
 void PrintEmbedding(string input)
 {
-    Console.WriteLine($"{input}: [{string.Join(", ", encoder.ComputeEmbedding(input, vectorBuffer))}]");
+    logger.LogInformation($"{input}: [{string.Join(", ", encoder.ComputeEmbedding(input, vectorBuffer))}]");
 }

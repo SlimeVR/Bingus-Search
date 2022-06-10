@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 
@@ -5,6 +6,8 @@ namespace FaqBot.SentenceEncoding
 {
     public class UniversalSentenceEncoder : IDisposable
     {
+        private readonly ILogger<UniversalSentenceEncoder> Logger;
+
         public readonly string ModelPath;
         public readonly int OutputDimension;
 
@@ -14,12 +17,33 @@ namespace FaqBot.SentenceEncoding
         private readonly DenseTensor<string> InputTensor = new(1);
         private readonly NamedOnnxValue[] Inputs;
 
-        public UniversalSentenceEncoder(string modelPath, int outputDimension = 512)
+        public UniversalSentenceEncoder(ILogger<UniversalSentenceEncoder> logger, string modelPath, int outputDimension = 512)
         {
+            Logger = logger;
+
             ModelPath = Path.GetFullPath(modelPath);
             OutputDimension = outputDimension;
 
             SessionOptions.RegisterCustomOpLibraryV2("libs/ortcustomops.dll", out var libraryHandle);
+
+            try
+            {
+                SessionOptions.AppendExecutionProvider_CPU();
+            }
+            catch (Exception e)
+            {
+                Logger.LogWarning(e, "CPU is not available");
+            }
+
+            try
+            {
+                SessionOptions.AppendExecutionProvider_CUDA();
+            }
+            catch (Exception e)
+            {
+                Logger.LogWarning(e, "CUDA is not available");
+            }
+
             Session = new(ModelPath, SessionOptions);
 
             Inputs = new[] { NamedOnnxValue.CreateFromTensor("inputs", InputTensor) };
