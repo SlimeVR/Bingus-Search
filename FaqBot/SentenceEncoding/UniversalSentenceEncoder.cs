@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
@@ -12,6 +13,7 @@ namespace FaqBot.SentenceEncoding
         public readonly int OutputDimension;
 
         private readonly SessionOptions SessionOptions = new();
+        private readonly IntPtr LibraryHandle;
         private readonly InferenceSession Session;
 
         private readonly DenseTensor<string> InputTensor = new(1);
@@ -24,7 +26,7 @@ namespace FaqBot.SentenceEncoding
             ModelPath = Path.GetFullPath(modelPath);
             OutputDimension = outputDimension;
 
-            SessionOptions.RegisterCustomOpLibraryV2("libs/ortcustomops.dll", out var libraryHandle);
+            SessionOptions.RegisterCustomOpLibraryV2("libs/ortcustomops.dll", out LibraryHandle);
 
             try
             {
@@ -71,8 +73,9 @@ namespace FaqBot.SentenceEncoding
 
         public void Dispose()
         {
-            SessionOptions.Dispose();
             Session.Dispose();
+            SessionOptions.Dispose();
+            NativeLibrary.Free(LibraryHandle);
             GC.SuppressFinalize(this);
         }
     }
