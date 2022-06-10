@@ -16,7 +16,7 @@ StaticCompositeResolver.Instance.Register(MessagePackSerializer.DefaultOptions.R
 StaticCompositeResolver.Instance.Register(new LazyKeyItemFormatter<int, float[]>(i => vectors[i]));
 MessagePackSerializer.DefaultOptions.WithResolver(StaticCompositeResolver.Instance);
 
-var modelPath = Path.Join(Environment.CurrentDirectory, "models/onnx/use-m_l_v3.onnx");
+var modelPath = Path.Join(Environment.CurrentDirectory, "models/onnx/use_l_v5.onnx");
 using var encoder = new UniversalSentenceEncoder(loggerFactory.CreateLogger<UniversalSentenceEncoder>(), modelPath);
 
 var vectorBuffer = Vector<float>.Build.Dense(encoder.OutputDimension);
