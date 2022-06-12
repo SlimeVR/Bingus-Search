@@ -53,7 +53,7 @@ var questions = new string[]
     "The server won’t start",
     "The SlimeVR server won’t start",
     "The WiFi Settings window outputs ERROR",
-    " WiFi Settings window outputs symbols and nothing else",
+    "WiFi Settings window outputs symbols and nothing else",
     "tracker keeps flashing",
     "tracker never connects to Wi-Fi",
     "tracker is not appearing on the Server",
@@ -76,6 +76,8 @@ var questions = new string[]
     "When does it ship?",
     "When are the trackers coming?",
     "can I use 3 trackers for full body tracking",
+    "how many trackers do I need",
+    "how do I set up my body proportions?",
 };
 
 foreach (var question in questions)
@@ -98,7 +100,7 @@ IEnumerable<LazyKeyItem<int, float[]>> ConvertToLazyKeyItems(List<float[]> input
 
 graph.AddItems(ConvertToLazyKeyItems(vectors).ToArray());
 
-var results = graph.KNNSearch(new LazyItemValue<float[]>(encoder.ComputeEmbedding("Trackers")), 15);
+var results = graph.KNNSearch(new LazyItemValue<float[]>(encoder.ComputeEmbedding("when do my trackers arrive")), 15);
 var sortedResults = results.OrderBy(i => i.Distance);
 
 logger.LogInformation(string.Join(Environment.NewLine, sortedResults.Select(i => $"\"{questions[((LazyKeyItem<int, float[]>)i.Item).Key]}\": {i.Distance}")));
