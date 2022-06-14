@@ -1,50 +1,11 @@
+using FaqBot;
 using FaqBot.HNSW;
-using FaqBot.SentenceEncoding;
-using HNSW.Net;
-using MathNet.Numerics;
-using MathNet.Numerics.LinearAlgebra;
 using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.Extensions.Logging;
 
 using var loggerFactory = LoggerFactory.Create(builder => { builder.AddSimpleConsole(options => { options.TimestampFormat = "[hh:mm:ss] "; }); });
 var logger = loggerFactory.CreateLogger<Program>();
-
-var vectors = new List<float[]>(2);
-
-StaticCompositeResolver.Instance.Register(MessagePackSerializer.DefaultOptions.Resolver);
-StaticCompositeResolver.Instance.Register(new LazyKeyItemFormatter<int, float[]>(i => vectors[i]));
-MessagePackSerializer.DefaultOptions.WithResolver(StaticCompositeResolver.Instance);
-
-var modelPath = Path.Join(Environment.CurrentDirectory, "models/onnx/use_l_v5.onnx");
-using var encoder = new UniversalSentenceEncoder(loggerFactory.CreateLogger<UniversalSentenceEncoder>(), modelPath);
-
-var vectorBuffer = Vector<float>.Build.Dense(encoder.OutputDimension);
-
-Vector<float> PrintVectorEmbedding(string input, Vector<float> vector)
-{
-    logger.LogInformation("\"{Input}\":\n[{Vector}]", input, vector.ToVectorString());
-    return vector;
-}
-
-Vector<float> PrintEmbedding(string input)
-{
-    return PrintVectorEmbedding(input, encoder.ComputeEmbeddingVector(input, vectorBuffer));
-}
-
-Vector<float> PrintEmbeddingNewVector(string input)
-{
-    return PrintVectorEmbedding(input, encoder.ComputeEmbeddingVector(input));
-}
-
-PrintEmbedding("dog");
-PrintEmbedding("Puppies are nice.");
-PrintEmbedding("I enjoy taking long walks along the beach with my dog.");
-
-var vector1 = PrintEmbeddingNewVector("The WiFi Settings window outputs symbols and nothing else");
-var vector2 = PrintEmbeddingNewVector("My tracker is not appearing on the Server");
-
-logger.LogInformation("Distance: {Distance}", Distance.Cosine(vector1.AsArray(), vector2.AsArray()));
 
 var questions = new string[]
 {
@@ -80,28 +41,25 @@ var questions = new string[]
     "how do I set up my body proportions?",
 };
 
-foreach (var question in questions)
+var modelPath = Path.Join(Environment.CurrentDirectory, "models/onnx/use_l_v5.onnx");
+var faqHandler = new FaqHandler(loggerFactory, modelPath);
+
+IEnumerable<ValueTuple<string, string>> QuestionEnumerable()
 {
-    vectors.Add(encoder.ComputeEmbedding(question));
-}
-
-var parameters = new SmallWorld<ILazyItem<float[]>, float>.Parameters();
-var distance = new WrappedDistance<ILazyItem<float[]>, float[], float>(i => i.Value, CosineDistance.SIMD);
-
-var graph = new SmallWorld<ILazyItem<float[]>, float>(distance.WrappedDistanceFunc, DefaultRandomGenerator.Instance, parameters);
-
-IEnumerable<LazyKeyItem<int, float[]>> ConvertToLazyKeyItems(List<float[]> input)
-{
-    for (var i = 0; i < input.Count; i++)
+    foreach (var question in questions)
     {
-        yield return new(i, key => input[key]);
+        yield return new(question, "");
     }
 }
 
-graph.AddItems(ConvertToLazyKeyItems(vectors).ToArray());
+faqHandler.AddItems(QuestionEnumerable());
+
+StaticCompositeResolver.Instance.Register(MessagePackSerializer.DefaultOptions.Resolver);
+StaticCompositeResolver.Instance.Register(new LazyKeyItemFormatter<int, float[]>(i => faqHandler.GetEntry(i).Vector!.AsArray()));
+MessagePackSerializer.DefaultOptions.WithResolver(StaticCompositeResolver.Instance);
 
 var knnQuery = "when do my trackers arrive";
-var results = graph.KNNSearch(new LazyItemValue<float[]>(encoder.ComputeEmbedding(knnQuery)), 15);
+var results = faqHandler.Search(knnQuery, 15);
 var sortedResults = results.OrderBy(i => i.Distance);
 
 logger.LogInformation("Query \"{KnnQuery}\" results:\n{KnnResults}", knnQuery, string.Join(Environment.NewLine, sortedResults.Select(i => $"\"{questions[((LazyKeyItem<int, float[]>)i.Item).Key]}\": {i.Distance}")));
