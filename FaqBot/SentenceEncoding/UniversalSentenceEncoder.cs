@@ -51,7 +51,7 @@ namespace FaqBot.SentenceEncoding
             try
             {
                 OutputDimension = Session.OutputMetadata.Single().Value.Dimensions[1];
-                logger.LogInformation($"Output dimension detected as {OutputDimension}");
+                logger.LogInformation("Output dimension detected as {OutputDimension}", OutputDimension);
             }
             catch (Exception e)
             {
