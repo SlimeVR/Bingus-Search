@@ -1,8 +1,12 @@
+using Discord;
+using Discord.Commands;
+using Discord.WebSocket;
 using FaqBot;
 using FaqBot.HNSW;
 using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.Extensions.Logging;
+using static FaqBot.FaqHandler;
 
 // Setup logging
 using var loggerFactory = LoggerFactory.Create(builder => { builder.AddSimpleConsole(options => { options.TimestampFormat = "[hh:mm:ss] "; }); });
@@ -38,8 +42,59 @@ var knnQuery = "when do my trackers arrive";
 var results = faqHandler.Search(knnQuery, 15);
 var sortedResults = results.OrderBy(i => i.Distance);
 
+FaqEntry GetEntry(ILazyItem<float[]> item)
+{
+    return faqHandler.GetEntry(((LazyKeyItem<int, float[]>)item).Key);
+}
+
 logger.LogInformation("Query \"{KnnQuery}\" results:\n{KnnResults}", knnQuery, string.Join(Environment.NewLine, sortedResults.Select(i =>
 {
-    var entry = faqHandler.GetEntry(((LazyKeyItem<int, float[]>)i.Item).Key);
+    var entry = GetEntry(i.Item);
     return $"Answer ({i.Distance}): \"{entry.Answer}\"";
 })));
+
+using var discordClient = new DiscordSocketClient();
+
+async Task HandleCommandAsync(SocketMessage messageParam)
+{
+    // Don't process the command if it was a system message
+    if (messageParam is not SocketUserMessage message) return;
+
+    // Create a number to track where the prefix ends and the command begins
+    int argPos = 0;
+
+    // Determine if the message is a command based on the prefix and make sure no bots trigger commands
+    if (!(message.HasCharPrefix('!', ref argPos) ||
+        message.HasMentionPrefix(discordClient.CurrentUser, ref argPos)) ||
+        message.Author.IsBot)
+        return;
+
+    var args = message.Content.Substring(argPos).Trim();
+    logger.LogInformation(args);
+
+    var searchResults = faqHandler.Search(args, 1);
+    try
+    {
+        await message.ReplyAsync(GetEntry(searchResults.First().Item).Answer);
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "Unable to reply");
+    }
+}
+
+async Task Log(LogMessage message)
+{
+    logger.LogInformation(message.ToString());
+}
+
+async Task MainAsync()
+{
+    discordClient.MessageReceived += HandleCommandAsync;
+    discordClient.Log += Log;
+    await discordClient.LoginAsync(TokenType.Bot, File.ReadAllText("token.txt"));
+    await discordClient.StartAsync();
+    await Task.Delay(-1);
+}
+
+MainAsync().Wait();

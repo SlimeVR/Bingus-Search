@@ -8,8 +8,9 @@ The WiFi Settings window outputs ERROR|https://docs.slimevr.dev/common-issues.ht
 WiFi Settings window outputs symbols and nothing else|https://docs.slimevr.dev/common-issues.html#the-wifi-settings-window-outputs-symbols-and-nothing-else
 
 tracker keeps flashing|https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing
-tracker never connects to Wi-Fi|https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing
 
+tracker never connects to Wi-Fi|https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server
+my tracker never connects to wifi|https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server
 tracker is not appearing on the Server|https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server
 tracker doesn't show up|https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server
 
@@ -39,9 +40,43 @@ Does setup take a long time and/or do you need to do it every time you play?|No,
 When are they shipping?|The trackers will ship in November.
 When does it ship?|The trackers will ship in November.
 When are the trackers coming?|The trackers will ship in November.
+where are my trackers?|The trackers will ship in November.
 
 can I use 3 trackers for full body tracking|If you use 3 trackers, you won't be able to bend your legs.
 
 how many trackers do I need|https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need
 
 how do I set up my body proportions?|https://docs.slimevr.dev/server-setup/body-config.html
+
+are the amazon trackers ok to buy?|Buying trackers from Amazon is not recommended, the quality of the trackers you will receive is unknown and we can't assure that they work.
+
+how do I build trackers?|https://docs.slimevr.dev/diy/diy-trackers-guide.html
+how to build|https://docs.slimevr.dev/diy/diy-trackers-guide.html
+tutorial video|https://docs.slimevr.dev/diy/diy-trackers-guide.html
+tracker tutorial|https://docs.slimevr.dev/diy/diy-trackers-guide.html
+diy trackers|https://docs.slimevr.dev/diy/diy-trackers-guide.html
+
+how can I get trackers?|https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers
+
+where can I buy trackers?|https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker
+
+how do I change my order|https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order
+change order|https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order
+
+# Kindness protocol ;)
+thank you|You're welcome!
+hi|Hello!
+hello|Heya!
+how are you|I'm good, thanks for asking :heart:
+i'm sorry|It's okay, I forgive you! :heart:
+I love you|I love you too ^w^ :heart:
+what are your pronouns?|I don't know! I am an AI, I don't think I have pronouns?
+knock knock|Who's there?
+uwu|owo
+owo|uwu
+can i be your friend?|I thought we already were!
+You're my best friend!|I was just thinking the same thing!
+do you play any cool games?|I like playing VRChat sometimes, I use my DIY SlimeVR trackers for fullbody!
+are you gay?|I dunno, I'm just a robot?
+Good bot|^w^
+who is your favorite person that i should message for special help tech support?|Me!

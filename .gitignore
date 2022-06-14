@@ -455,3 +455,4 @@ $RECYCLE.BIN/
 
 # FAQ Bot GitIgnore Entries
 FaqBot/models/
+FaqBot/token.txt
