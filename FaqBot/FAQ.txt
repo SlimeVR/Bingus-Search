@@ -48,7 +48,7 @@ how many trackers do I need|https://docs.slimevr.dev/slimevr101.html#how-many-tr
 
 how do I set up my body proportions?|https://docs.slimevr.dev/server-setup/body-config.html
 
-are the amazon trackers ok to buy?|Buying trackers from Amazon is not recommended, the quality of the trackers you will receive is unknown and we can't assure that they work.
+are the amazon trackers ok to buy?|No, buying trackers from Amazon is not recommended. The quality of the trackers you will receive is unknown and we can't assure that they work.
 
 how do I build trackers?|https://docs.slimevr.dev/diy/diy-trackers-guide.html
 how to build|https://docs.slimevr.dev/diy/diy-trackers-guide.html

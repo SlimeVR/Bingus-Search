@@ -38,20 +38,22 @@ StaticCompositeResolver.Instance.Register(new LazyKeyItemFormatter<int, float[]>
 MessagePackSerializer.DefaultOptions.WithResolver(StaticCompositeResolver.Instance);
 
 // Test query
+/*
 var knnQuery = "when do my trackers arrive";
 var results = faqHandler.Search(knnQuery, 15);
 var sortedResults = results.OrderBy(i => i.Distance);
-
-FaqEntry GetEntry(ILazyItem<float[]> item)
-{
-    return faqHandler.GetEntry(((LazyKeyItem<int, float[]>)item).Key);
-}
 
 logger.LogInformation("Query \"{KnnQuery}\" results:\n{KnnResults}", knnQuery, string.Join(Environment.NewLine, sortedResults.Select(i =>
 {
     var entry = GetEntry(i.Item);
     return $"Answer ({i.Distance}): \"{entry.Answer}\"";
 })));
+*/
+
+FaqEntry GetEntry(ILazyItem<float[]> item)
+{
+    return faqHandler.GetEntry(((LazyKeyItem<int, float[]>)item).Key);
+}
 
 using var discordClient = new DiscordSocketClient();
 
