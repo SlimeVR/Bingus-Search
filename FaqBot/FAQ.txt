@@ -1,0 +1,47 @@
+Please specify upload_port while updating firmware|https://docs.slimevr.dev/common-issues.html#please-specify-upload_port-while-updating-firmware--trying-to-upload-firmware-fails
+Trying to upload firmware fails|https://docs.slimevr.dev/common-issues.html#please-specify-upload_port-while-updating-firmware--trying-to-upload-firmware-fails
+
+The server won’t start|https://docs.slimevr.dev/common-issues.html#the-slimevr-server-wont-start
+The SlimeVR server won’t start|https://docs.slimevr.dev/common-issues.html#the-slimevr-server-wont-start
+
+The WiFi Settings window outputs ERROR|https://docs.slimevr.dev/common-issues.html#the-wifi-settings-window-outputs-symbols-and-nothing-else
+WiFi Settings window outputs symbols and nothing else|https://docs.slimevr.dev/common-issues.html#the-wifi-settings-window-outputs-symbols-and-nothing-else
+
+tracker keeps flashing|https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing
+tracker never connects to Wi-Fi|https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing
+
+tracker is not appearing on the Server|https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server
+tracker doesn't show up|https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server
+
+aux tracker isn’t working|https://docs.slimevr.dev/common-issues.html#my-aux-tracker-isnt-working
+extension isn’t working|https://docs.slimevr.dev/common-issues.html#my-aux-tracker-isnt-working
+
+Sensor was reset error|https://docs.slimevr.dev/common-issues.html#sensor-was-reset-error
+
+trackers are connected to my wifi but don’t turn up on the server|https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wifi-but-dont-turn-up-on-slimevr
+
+trackers are connected to the server but aren’t turning up on Steam|https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam
+trackers aren't showing up in SteamVR|https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam
+Tracker doesn't show up on SteamVR but it does on the server|https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam
+
+trackers are bound to the wrong controllers in SteamVR|https://docs.slimevr.dev/common-issues.html#my-trackers-are-bound-to-the-wrong-controllers-in-steamvr
+
+trackers are drifting a lot|https://docs.slimevr.dev/common-issues.html#your-trackers-are-drifting-more-than-expected
+
+feet sink into the floor|https://docs.slimevr.dev/common-issues.html#my-feet-sink-into-the-floor--im-sliding-a-lot
+feet slide a lot|https://docs.slimevr.dev/common-issues.html#my-feet-sink-into-the-floor--im-sliding-a-lot
+
+Trackers are moving in the wrong direction when I move|https://docs.slimevr.dev/common-issues.html#trackers-are-moving-in-the-wrong-direction-when-i-move
+Trackers are rotating on SteamVR in the wrong direction when I move|https://docs.slimevr.dev/common-issues.html#trackers-are-moving-in-the-wrong-direction-when-i-move
+
+Does setup take a long time and/or do you need to do it every time you play?|No, all you need to do is run the installer, put your trackers on, and set the body configuration.
+
+When are they shipping?|The trackers will ship in November.
+When does it ship?|The trackers will ship in November.
+When are the trackers coming?|The trackers will ship in November.
+
+can I use 3 trackers for full body tracking|If you use 3 trackers, you won't be able to bend your legs.
+
+how many trackers do I need|https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need
+
+how do I set up my body proportions?|https://docs.slimevr.dev/server-setup/body-config.html

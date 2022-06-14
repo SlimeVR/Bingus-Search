@@ -18,6 +18,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Update="FAQ.txt">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
         <None Update="libs\ortcustomops.dll">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
