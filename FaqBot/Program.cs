@@ -23,7 +23,7 @@ var vectorBuffer = Vector<float>.Build.Dense(encoder.OutputDimension);
 
 Vector<float> PrintVectorEmbedding(string input, Vector<float> vector)
 {
-    logger.LogInformation($"\"{input}\":\n[{vector.ToVectorString()}]");
+    logger.LogInformation("\"{Input}\":\n[{Vector}]", input, vector.ToVectorString());
     return vector;
 }
 
@@ -44,7 +44,7 @@ PrintEmbedding("I enjoy taking long walks along the beach with my dog.");
 var vector1 = PrintEmbeddingNewVector("The WiFi Settings window outputs symbols and nothing else");
 var vector2 = PrintEmbeddingNewVector("My tracker is not appearing on the Server");
 
-logger.LogInformation($"Distance: {Distance.Cosine(vector1.AsArray(), vector2.AsArray())}");
+logger.LogInformation("Distance: {Distance}", Distance.Cosine(vector1.AsArray(), vector2.AsArray()));
 
 var questions = new string[]
 {
@@ -100,7 +100,8 @@ IEnumerable<LazyKeyItem<int, float[]>> ConvertToLazyKeyItems(List<float[]> input
 
 graph.AddItems(ConvertToLazyKeyItems(vectors).ToArray());
 
-var results = graph.KNNSearch(new LazyItemValue<float[]>(encoder.ComputeEmbedding("when do my trackers arrive")), 15);
+var knnQuery = "when do my trackers arrive";
+var results = graph.KNNSearch(new LazyItemValue<float[]>(encoder.ComputeEmbedding(knnQuery)), 15);
 var sortedResults = results.OrderBy(i => i.Distance);
 
-logger.LogInformation(string.Join(Environment.NewLine, sortedResults.Select(i => $"\"{questions[((LazyKeyItem<int, float[]>)i.Item).Key]}\": {i.Distance}")));
+logger.LogInformation("Query \"{KnnQuery}\" results:\n{KnnResults}", knnQuery, string.Join(Environment.NewLine, sortedResults.Select(i => $"\"{questions[((LazyKeyItem<int, float[]>)i.Item).Key]}\": {i.Distance}")));
