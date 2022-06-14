@@ -66,10 +66,7 @@ async Task HandleCommandAsync(SocketMessage messageParam)
     int argPos = 0;
 
     // Determine if the message is a command based on the prefix and make sure no bots trigger commands
-    if (!(message.HasCharPrefix('!', ref argPos) ||
-        message.HasMentionPrefix(discordClient.CurrentUser, ref argPos)) ||
-        message.Author.IsBot)
-        return;
+    if (!message.HasMentionPrefix(discordClient.CurrentUser, ref argPos) || message.Author.IsBot) return;
 
     var args = message.Content.Substring(argPos).Trim();
     logger.LogInformation(args);

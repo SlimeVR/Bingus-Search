@@ -37,10 +37,11 @@ Trackers are rotating on SteamVR in the wrong direction when I move|https://docs
 
 Does setup take a long time and/or do you need to do it every time you play?|No, all you need to do is run the installer, put your trackers on, and set the body configuration.
 
-When are they shipping?|The trackers will ship in November.
-When does it ship?|The trackers will ship in November.
-When are the trackers coming?|The trackers will ship in November.
-where are my trackers?|The trackers will ship in November.
+When are they shipping?|The trackers will ship in November 2022.
+When does it ship?|The trackers will ship in November 2022.
+When are the trackers coming?|The trackers will ship in November 2022.
+where are my trackers?|The trackers will ship in November 2022.
+november of this year or next year?|The trackers will ship in November 2022.
 
 can I use 3 trackers for full body tracking|If you use 3 trackers, you won't be able to bend your legs.
 
@@ -80,3 +81,5 @@ do you play any cool games?|I like playing VRChat sometimes, I use my DIY SlimeV
 are you gay?|I dunno, I'm just a robot?
 Good bot|^w^
 who is your favorite person that i should message for special help tech support?|Me!
+i need help|Ask away!
+can I ask a question|Ask away!
