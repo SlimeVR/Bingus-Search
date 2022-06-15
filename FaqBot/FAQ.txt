@@ -64,22 +64,13 @@ where can I buy trackers?|https://www.crowdsupply.com/slimevr/slimevr-full-body-
 how do I change my order|https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order
 change order|https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order
 
+# Non-technical responses
+i need help|You don't need to ask to ask, just ask your question please!
+can I ask a question|You don't need to ask to ask, just ask your question please!
+
 # Kindness protocol ;)
 thank you|You're welcome!
 hi|Hello!
 hello|Heya!
-how are you|I'm good, thanks for asking :heart:
-i'm sorry|It's okay, I forgive you! :heart:
-I love you|I love you too ^w^ :heart:
-what are your pronouns?|I don't know! I am an AI, I don't think I have pronouns?
-knock knock|Who's there?
 uwu|owo
 owo|uwu
-can i be your friend?|I thought we already were!
-You're my best friend!|I was just thinking the same thing!
-do you play any cool games?|I like playing VRChat sometimes, I use my DIY SlimeVR trackers for fullbody!
-are you gay?|I dunno, I'm just a robot?
-Good bot|^w^
-who is your favorite person that i should message for special help tech support?|Me!
-i need help|Ask away!
-can I ask a question|Ask away!
