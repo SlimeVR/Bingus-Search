@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="FAQ.txt">
+        <None Update="faq_config.json">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Update="libs\ortcustomops.dll">

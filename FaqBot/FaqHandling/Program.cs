@@ -1,36 +1,26 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using FaqBot;
+using FaqBot.FaqHandling;
 using FaqBot.HNSW;
 using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.Extensions.Logging;
-using static FaqBot.FaqHandler;
+using static FaqBot.FaqHandling.FaqHandler;
 
 // Setup logging
 using var loggerFactory = LoggerFactory.Create(builder => { builder.AddSimpleConsole(options => { options.TimestampFormat = "[hh:mm:ss] "; }); });
 var logger = loggerFactory.CreateLogger<Program>();
 
+// Load the config
+var faqConfig = FaqConfigUtils.InitializeConfig(loggerFactory.CreateLogger<FaqConfig>());
+
 // Setup the FAQ handler
 var modelPath = Path.Join(Environment.CurrentDirectory, "models/onnx/use_l_v5.onnx");
 var faqHandler = new FaqHandler(loggerFactory, modelPath);
 
-IEnumerable<ValueTuple<string, string>> FaqEnumerable(string path)
-{
-    foreach (var question in File.ReadLines(path))
-    {
-        if (string.IsNullOrWhiteSpace(question) || question.StartsWith('#')) continue;
-
-        var qa = question.Split('|', 2);
-        if (qa.Length < 2) continue;
-
-        yield return new(qa[0], qa[1]);
-    }
-}
-
 // Add all questions
-faqHandler.AddItems(FaqEnumerable("FAQ.txt"));
+faqHandler.AddItems(faqConfig.QAEntryEnumerator());
 
 // Setup HNSW serialization stuff
 StaticCompositeResolver.Instance.Register(MessagePackSerializer.DefaultOptions.Resolver);
@@ -66,10 +56,10 @@ async Task HandleCommandAsync(SocketMessage messageParam)
     int argPos = 0;
 
     // Determine if the message is a command based on the prefix and make sure no bots trigger commands
-    if (!message.HasMentionPrefix(discordClient.CurrentUser, ref argPos) || message.Author.IsBot) return;
+    if (!(faqConfig.TargetChannels.Contains(message.Channel.Id.ToString()) || message.HasMentionPrefix(discordClient.CurrentUser, ref argPos)) || message.Author.IsBot) return;
 
     var args = message.Content.Substring(argPos).Trim();
-    logger.LogInformation(args);
+    //logger.LogInformation("Discord Message: {Message}", args);
 
     var searchResults = faqHandler.Search(args, 1);
     try
@@ -78,7 +68,7 @@ async Task HandleCommandAsync(SocketMessage messageParam)
     }
     catch (Exception ex)
     {
-        logger.LogError(ex, "Unable to reply");
+        logger.LogError(ex, "Unable to reply to a Discord message");
     }
 }
 

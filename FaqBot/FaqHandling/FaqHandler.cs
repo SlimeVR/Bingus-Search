@@ -4,11 +4,11 @@ using HNSW.Net;
 using MathNet.Numerics.LinearAlgebra;
 using Microsoft.Extensions.Logging;
 
-namespace FaqBot
+namespace FaqBot.FaqHandling
 {
-    public class FaqHandler
+    public record FaqHandler
     {
-        public class FaqEntry
+        public record FaqEntry
         {
             public int Id { get; set; } = -1;
             public string Question { get; set; } = "";
@@ -39,7 +39,7 @@ namespace FaqBot
             return _idCounter++;
         }
 
-        public void AddItems(IEnumerable<ValueTuple<string, string>> questionAnswerMappings)
+        public void AddItems(IEnumerable<(string, string)> questionAnswerMappings)
         {
             var hnswItems = new List<LazyKeyItem<int, float[]>>();
             foreach (var questionAnswerMapping in questionAnswerMappings)
