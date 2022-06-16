@@ -106,14 +106,16 @@
       "average_questions": false
     },
     {
-      "answer": "No, all you need to do is run the installer, put your trackers on, and set the body configuration.",
+      "answer": "SlimeVR does not take long to setup and you only need to do it once. You can find a guide for the setup here: https://docs.slimevr.dev/server-setup/slimevr-setup.html",
       "matched_questions": [
-        "Does setup take a long time and/or do you need to do it every time you play?"
+        "Does setup take a long time and/or do you need to do it every time you play?",
+        "Does setup take a long time?",
+        "do you need to configure it every time you play?"
       ],
       "average_questions": false
     },
     {
-      "answer": "The trackers will ship in November 2022.",
+      "answer": "The trackers will ship in November 2022, you can check for updates in the <#818062236492759050> channel or on the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker",
       "matched_questions": [
         "When are they shipping?",
         "When does it ship?",
@@ -124,7 +126,7 @@
       "average_questions": false
     },
     {
-      "answer": "If you use 3 trackers, you won't be able to bend your legs.",
+      "answer": "It's not recommended to use 3 trackers. If you use 3 trackers, you won't be able to bend your legs. Check here for more information: https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need",
       "matched_questions": [
         "can I use 3 trackers for full body tracking"
       ],
@@ -194,7 +196,7 @@
       "average_questions": false
     },
     {
-      "answer": "No, buying trackers from Amazon is not recommended as there have been many reports of faulty trackers from Amazon recently. The quality of the trackers you will receive is unknown and we can't assure that they work.",
+      "answer": "**__Don't__** buy trackers from Amazon. Buying trackers from Amazon is not recommended as there have been many reports of faulty trackers from Amazon recently. You can check in <#986713204656857138> for more information.",
       "matched_questions": [
         "are the amazon trackers ok to buy?",
         "can I buy from amazon?"
@@ -202,7 +204,7 @@
       "average_questions": false
     },
     {
-      "answer": "You likely have unofficial trackers from Amazon, it's recommended that you just return them. Otherwise if you really want to try to make them work, you can follow this guide: https://discord.com/channels/817184208525983775/878727840118505533/977740333955821599",
+      "answer": "You likely have unofficial trackers from Amazon, it's recommended that you just return them. Otherwise, if you really want to try to make them work, you can check in <#986713204656857138> for more information.",
       "matched_questions": [
         "No Blinking of the Tracker if WiFi Window is open",
         "WiFi Window does not show anything if I set the WiFi",
