@@ -1,5 +1,6 @@
 {
   "target_discord_channels": [],
+  "print_confidence_level": true,
   "faqs": [
     {
       "answer": "https://docs.slimevr.dev/common-issues.html#please-specify-upload_port-while-updating-firmware--trying-to-upload-firmware-fails",
@@ -210,6 +211,40 @@
         "WiFi Window does not show anything if I set the WiFi",
         "WiFi Window does't do anything",
         "Amazon Trackers setting the WiFi"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "SlimeVR can't run on standalone Quest *yet,* but works fine when connected to a PC using something like Link, AirLink, Virtual Desktop, or ALVR. Support for standalone Quest is still in development.",
+      "matched_questions": [
+        "can i use it with quest"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "SlimeVR works with any headset that connects to SteamVR, so Link, AirLink, Virtual Desktop, and ALVR should all work.",
+      "matched_questions": [
+        "can I use virtual desktop",
+        "can I use airlink?",
+        "does alvr work?"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "Here is an invite to the SlimeVR Discord: https://discord.gg/SlimeVR",
+      "matched_questions": [
+        "how do I join the Discord?",
+        "where's the discord",
+        "can I get an invite",
+        "how do I find the discord"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "You can find instructions for installing the SlimeVR server here: https://docs.slimevr.dev/server-setup/installing-and-connecting.html#install-the-latest-slimevr-installer",
+      "matched_questions": [
+        "how do I download the server?",
+        "where can I download the server from"
       ],
       "average_questions": false
     },

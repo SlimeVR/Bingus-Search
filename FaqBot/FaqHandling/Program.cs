@@ -64,7 +64,17 @@ async Task HandleCommandAsync(SocketMessage messageParam)
     var searchResults = faqHandler.Search(args, 1);
     try
     {
-        await message.ReplyAsync(GetEntry(searchResults.First().Item).Answer);
+        var topResult = searchResults.First();
+        var entry = GetEntry(topResult.Item);
+        var reply = entry.Answer;
+
+        if (faqConfig.PrintConfidenceLevel)
+        {
+            var confidence = (1f - topResult.Distance) * 100f;
+            reply = $"I'm {confidence:0.00}% confident in this answer: {reply}";
+        }
+
+        await message.ReplyAsync(reply);
     }
     catch (Exception ex)
     {
