@@ -34,8 +34,8 @@ namespace FaqBot.FaqHandling
         [JsonProperty(PropertyName = "target_discord_channels")]
         public List<string> TargetChannels { get; set; } = new();
 
-        [JsonProperty(PropertyName = "print_confidence_level")]
-        public bool PrintConfidenceLevel { get; set; } = true;
+        [JsonProperty(PropertyName = "print_relevance_level")]
+        public bool PrintRelevanceLevel { get; set; } = true;
 
         [JsonProperty(PropertyName = "faqs")]
         public List<FaqConfigEntry> FaqEntries { get; set; } = new();

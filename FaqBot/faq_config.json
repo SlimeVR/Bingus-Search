@@ -1,6 +1,6 @@
 {
   "target_discord_channels": [],
-  "print_confidence_level": true,
+  "print_relevance_level": true,
   "faqs": [
     {
       "answer": "https://docs.slimevr.dev/common-issues.html#please-specify-upload_port-while-updating-firmware--trying-to-upload-firmware-fails",

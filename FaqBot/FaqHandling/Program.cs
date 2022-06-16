@@ -68,10 +68,9 @@ async Task HandleCommandAsync(SocketMessage messageParam)
         var entry = GetEntry(topResult.Item);
         var reply = entry.Answer;
 
-        if (faqConfig.PrintConfidenceLevel)
+        if (faqConfig.PrintRelevanceLevel)
         {
-            var confidence = (1f - topResult.Distance) * 100f;
-            reply = $"*({confidence:0.0}% confidence)* {reply}";
+            reply = $"*({(1f - topResult.Distance) * 100f:0.0}% relevant)* {reply}";
         }
 
         await message.ReplyAsync(reply);
