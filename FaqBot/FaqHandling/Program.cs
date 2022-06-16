@@ -71,7 +71,7 @@ async Task HandleCommandAsync(SocketMessage messageParam)
         if (faqConfig.PrintConfidenceLevel)
         {
             var confidence = (1f - topResult.Distance) * 100f;
-            reply = $"I'm {confidence:0.00}% confident in this answer: {reply}";
+            reply = $"*({confidence:0.0}% confidence)* {reply}";
         }
 
         await message.ReplyAsync(reply);
