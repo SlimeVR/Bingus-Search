@@ -26,7 +26,18 @@ namespace FaqBot.SentenceEncoding
 
             ModelPath = Path.GetFullPath(modelPath);
 
-            SessionOptions.RegisterCustomOpLibraryV2("libs/ortcustomops.dll", out LibraryHandle);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                SessionOptions.RegisterCustomOpLibraryV2("libs/ortcustomops.dll", out LibraryHandle);
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                SessionOptions.RegisterCustomOpLibraryV2("libs/ortcustomops.so", out LibraryHandle);
+            }
+            else
+            {
+                Logger.LogError("Running on an unsupported OS, could not load ONNX custom ops!");
+            }
 
             try
             {
