@@ -32,7 +32,7 @@ namespace FaqBot.SentenceEncoding
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                SessionOptions.RegisterCustomOpLibraryV2("libs/ortcustomops.so", out LibraryHandle);
+                SessionOptions.RegisterCustomOpLibraryV2("libs/libortcustomops.so", out LibraryHandle);
             }
             else
             {
