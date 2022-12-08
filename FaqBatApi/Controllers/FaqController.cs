@@ -1,4 +1,3 @@
-using System.Net;
 using FaqBot.FaqHandling;
 using FaqBot.HNSW;
 using MessagePack;
@@ -53,9 +52,11 @@ public class FaqController : ControllerBase
         responseCount = Math.Clamp(responseCount, 1, 10);
         var results = faqHandler.Search(question, 5);
 
-        var responses = results.Select(result => {
+        var responses = results.Select(result =>
+        {
             var entry = GetEntry(result.Item);
-            return new FaqEntryResponse() {
+            return new FaqEntryResponse()
+            {
                 Relevance = (1f - result.Distance) * 100f,
                 Title = entry.Question,
                 Text = entry.Answer,
