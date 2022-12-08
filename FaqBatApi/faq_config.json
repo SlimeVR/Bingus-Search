@@ -1,0 +1,297 @@
+{
+  "model_path": "../FaqBot/models/onnx/use_l_v5.onnx",
+  "target_discord_channels": [],
+  "print_relevance_level": true,
+  "faqs": [
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#please-specify-upload_port-while-updating-firmware--trying-to-upload-firmware-fails",
+      "matched_questions": [
+        "Please specify upload_port while updating firmware",
+        "Trying to upload firmware fails"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#the-slimevr-server-wont-start",
+      "matched_questions": [
+        "The server won't start",
+        "The SlimeVR server won't start"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#the-wifi-settings-window-outputs-symbols-and-nothing-else",
+      "matched_questions": [
+        "The WiFi Settings window outputs ERROR",
+        "WiFi Settings window outputs symbols and nothing else"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing",
+      "matched_questions": [
+        "tracker keeps flashing"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server",
+      "matched_questions": [
+        "tracker never connects to Wi-Fi",
+        "my tracker never connects to wifi",
+        "tracker is not appearing on the Server",
+        "tracker doesn't show up",
+        "tracker doesn't connect to the network",
+        "tracker won't connect to the internet"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#my-aux-tracker-isnt-working",
+      "matched_questions": [
+        "aux tracker isn't working",
+        "extension isn't working"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#sensor-was-reset-error",
+      "matched_questions": [
+        "Sensor was reset error"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wifi-but-dont-turn-up-on-slimevr",
+      "matched_questions": [
+        "trackers are connected to my wifi but don't turn up on the server"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam",
+      "matched_questions": [
+        "trackers are connected to the server but aren't turning up on Steam",
+        "trackers aren't showing up in SteamVR",
+        "Tracker doesn't show up on SteamVR but it does on the server"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#my-trackers-are-bound-to-the-wrong-controllers-in-steamvr",
+      "matched_questions": [
+        "trackers are bound to the wrong controllers in SteamVR"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#your-trackers-are-drifting-more-than-expected",
+      "matched_questions": [
+        "trackers are drifting a lot"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#my-feet-sink-into-the-floor--im-sliding-a-lot",
+      "matched_questions": [
+        "feet sink into the floor",
+        "feet slide a lot"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/common-issues.html#trackers-are-moving-in-the-wrong-direction-when-i-move",
+      "matched_questions": [
+        "Trackers are moving in the wrong direction when I move",
+        "Trackers are rotating on SteamVR in the wrong direction when I move"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "SlimeVR does not take long to setup and you only need to do it once. You can find a guide for the setup here: https://docs.slimevr.dev/server-setup/slimevr-setup.html",
+      "matched_questions": [
+        "Does setup take a long time and/or do you need to do it every time you play?",
+        "Does setup take a long time?",
+        "do you need to configure it every time you play?"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "The trackers will ship in November 2022, you can check for updates in the <#818062236492759050> channel or on the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker",
+      "matched_questions": [
+        "When are they shipping?",
+        "When does it ship?",
+        "When are the trackers coming?",
+        "where are my trackers?",
+        "november of this year or next year?"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "It's not recommended to use 3 trackers. If you use 3 trackers, you won't be able to bend your legs. Check here for more information: https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need",
+      "matched_questions": [
+        "can I use 3 trackers for full body tracking"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need",
+      "matched_questions": [
+        "how many trackers do I need"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/server-setup/body-config.html",
+      "matched_questions": [
+        "how do I set up my body proportions?"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/diy/diy-trackers-guide.html",
+      "matched_questions": [
+        "how do I build trackers?",
+        "how to build",
+        "tutorial video",
+        "tracker tutorial",
+        "diy trackers"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers",
+      "matched_questions": [
+        "how can I get trackers?"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "You can pre-order trackers from here https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker",
+      "matched_questions": [
+        "where can I buy trackers?",
+        "How do I get trackers from crowdsupply?",
+        "whats the link for crowdsupply?"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order",
+      "matched_questions": [
+        "how do I change my order",
+        "change order",
+        "can I change my order",
+        "how do I modify my order on crowdsupply",
+        "how do i get a refund",
+        "how do I cancel my order",
+        "how do i refund my trackers"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "https://docs.slimevr.dev/",
+      "matched_questions": [
+        "the docs?",
+        "where can I find the docs?",
+        "documentation"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "**__Don't__** buy trackers from Amazon. Buying trackers from Amazon is not recommended as there have been many reports of faulty trackers from Amazon recently. You can check in <#986713204656857138> for more information.",
+      "matched_questions": [
+        "are the amazon trackers ok to buy?",
+        "can I buy from amazon?",
+        "should I buy trackers from amazon or will they suck?"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "You likely have unofficial trackers from Amazon, it's recommended that you just return them. Otherwise, if you really want to try to make them work, you can check in <#986713204656857138> for more information.",
+      "matched_questions": [
+        "No Blinking of the Tracker if WiFi Window is open",
+        "WiFi Window does not show anything if I set the WiFi",
+        "WiFi Window does't do anything",
+        "Amazon Trackers setting the WiFi"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "SlimeVR can't run on standalone Quest *yet,* but works fine when connected to a PC using something like Link, AirLink, Virtual Desktop, or ALVR. Support for standalone Quest is still in development.",
+      "matched_questions": [
+        "can i use it with quest"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "SlimeVR works with any headset that connects to SteamVR, so Link, AirLink, Virtual Desktop, and ALVR should all work.",
+      "matched_questions": [
+        "can I use virtual desktop",
+        "can I use airlink?",
+        "does alvr work?"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "Here is an invite to the SlimeVR Discord: https://discord.gg/SlimeVR",
+      "matched_questions": [
+        "how do I join the Discord?",
+        "where's the discord",
+        "can I get an invite",
+        "how do I find the discord"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "You can find instructions for installing the SlimeVR server here: https://docs.slimevr.dev/server-setup/installing-and-connecting.html#install-the-latest-slimevr-installer",
+      "matched_questions": [
+        "how do I download the server?",
+        "where can I download the server from"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "You don't need to ask to ask, just ask your question please!",
+      "matched_questions": [
+        "i need help",
+        "can I ask a question"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "You're welcome!",
+      "matched_questions": [
+        "thank you"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "Hello!",
+      "matched_questions": [
+        "hi"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "Heya!",
+      "matched_questions": [
+        "hello"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "owo",
+      "matched_questions": [
+        "uwu"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "uwu",
+      "matched_questions": [
+        "owo"
+      ],
+      "average_questions": false
+    }
+  ]
+}

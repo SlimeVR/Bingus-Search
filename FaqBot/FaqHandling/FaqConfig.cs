@@ -31,6 +31,9 @@ namespace FaqBot.FaqHandling
             }
         }
 
+        [JsonProperty(PropertyName = "model_path")]
+        public string ModelPath { get; set; } = "";
+
         [JsonProperty(PropertyName = "target_discord_channels")]
         public List<string> TargetChannels { get; set; } = new();
 

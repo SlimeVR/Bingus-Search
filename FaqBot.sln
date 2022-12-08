@@ -4,6 +4,8 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaqBot", "FaqBot\FaqBot.csproj", "{B962BE07-170D-444A-BFAB-BBA8C2B729DD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaqBatApi", "FaqBatApi\FaqBatApi.csproj", "{ACE298B7-8C0A-42EA-ABE1-F54104D58D0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,6 +16,10 @@ Global
 		{B962BE07-170D-444A-BFAB-BBA8C2B729DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B962BE07-170D-444A-BFAB-BBA8C2B729DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B962BE07-170D-444A-BFAB-BBA8C2B729DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACE298B7-8C0A-42EA-ABE1-F54104D58D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE298B7-8C0A-42EA-ABE1-F54104D58D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACE298B7-8C0A-42EA-ABE1-F54104D58D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE298B7-8C0A-42EA-ABE1-F54104D58D0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
