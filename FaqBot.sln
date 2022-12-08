@@ -4,7 +4,7 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaqBot", "FaqBot\FaqBot.csproj", "{B962BE07-170D-444A-BFAB-BBA8C2B729DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaqBatApi", "FaqBatApi\FaqBatApi.csproj", "{ACE298B7-8C0A-42EA-ABE1-F54104D58D0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaqBotApi", "FaqBotApi\FaqBotApi.csproj", "{ACE298B7-8C0A-42EA-ABE1-F54104D58D0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
