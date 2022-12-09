@@ -18,17 +18,14 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="libs\libortcustomops.so">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Update="libs\ortcustomops.dll">
+        <None Update="libs\libortextensions.so">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Update="models\onnx\use-m_l_v3.onnx">
+        <None Update="libs\ortextensions.dll">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Update="models\onnx\use_l_v5.onnx">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
 

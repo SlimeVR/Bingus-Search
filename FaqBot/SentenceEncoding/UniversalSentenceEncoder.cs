@@ -28,11 +28,11 @@ namespace FaqBot.SentenceEncoding
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                SessionOptions.RegisterCustomOpLibraryV2("libs/ortcustomops.dll", out LibraryHandle);
+                SessionOptions.RegisterCustomOpLibraryV2("libs/ortextensions.dll", out LibraryHandle);
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                SessionOptions.RegisterCustomOpLibraryV2("libs/libortcustomops.so", out LibraryHandle);
+                SessionOptions.RegisterCustomOpLibraryV2("libs/libortextensions.so", out LibraryHandle);
             }
             else
             {
