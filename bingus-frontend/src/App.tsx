@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from '@emotion/react';
-import { useMediaQuery, AppBar, createTheme, CssBaseline, Link, Toolbar, Typography } from '@mui/material';
+import { useMediaQuery, createTheme, CssBaseline, Typography, Container, TextField, Button, Stack } from '@mui/material';
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -14,25 +14,29 @@ function App() {
       }),
     [prefersDarkMode],
   );
-  
+
+  const queryBingus = async () => {
+    const results = fetch("https://bingus.bscotch.ca/faq/search?question=test");
+    console.log(results);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          position: 'relative',
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            <Link href='/' underline="none" color="inherit">Bingus Search</Link>
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Container maxWidth="md" sx={{ my: 8 }}>
+        <Typography variant="h4" align="center">
+          Bingus Search
+        </Typography>
+
+        <Stack spacing={1} direction="row" sx={{ my: 3 }}>
+          <TextField fullWidth label="Ask a question..." variant="outlined" />
+          <Button onClick={queryBingus} variant="outlined">Search</Button>
+        </Stack>
+
+        <Stack spacing={2} direction="column" sx={{ my: 3 }}>
+          Test
+        </Stack>
+      </Container>
     </ThemeProvider>
   );
 }

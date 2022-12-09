@@ -45,7 +45,7 @@ public class FaqController : ControllerBase
                 Title = entry.Question,
                 Text = entry.Answer,
             };
-        }).Reverse();
+        }).OrderByDescending(response => response.Relevance);
 
         return responses;
     }
