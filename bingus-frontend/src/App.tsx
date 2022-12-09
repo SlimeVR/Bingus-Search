@@ -1,15 +1,15 @@
-import { useMemo, useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import {
-  useMediaQuery,
+  Button,
+  Container,
   createTheme,
   CssBaseline,
-  Typography,
-  Container,
-  TextField,
-  Button,
   Stack,
+  TextField,
+  Typography,
+  useMediaQuery,
 } from "@mui/material";
+import { useMemo, useState } from "react";
 import { bake_cookie, read_cookie } from "sfcookies";
 
 function App() {
@@ -61,17 +61,38 @@ function App() {
     });
   };
 
-  const resultCard = function (text: string) {
+  const resultCard = function (text: string, relevance: number | null = null) {
     return (
       <Container
+        disableGutters
         sx={{
           bgcolor: "primary.dark",
-          padding: 1.5,
-          borderRadius: 1,
-          "&:hover": { bgcolor: "primary.main" },
+          borderRadius: 2,
         }}
       >
-        <Typography>{text}</Typography>
+        <Stack padding={1} spacing={1.5} direction="row">
+          {relevance ? (
+            <Typography
+              variant="caption"
+              color="secondary.contrastText"
+              sx={{
+                width: "fit-content",
+                height: "fit-content",
+                bgcolor: "primary.main",
+                boxShadow: 3,
+                borderRadius: 2,
+                padding: 1,
+              }}
+            >
+              {relevance.toFixed()}%
+            </Typography>
+          ) : (
+            <></>
+          )}
+          <Typography paragraph variant="body1" color="primary.contrastText">
+            {text}
+          </Typography>
+        </Stack>
       </Container>
     );
   };
@@ -113,7 +134,9 @@ function App() {
           sx={{ my: 3 }}
         >
           {lastResults?.length
-            ? lastResults?.map((result) => resultCard(result.text))
+            ? lastResults
+                ?.sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
+                .map((result) => resultCard(result.text, result.relevance))
             : resultCard("No results...")}
         </Stack>
       </Container>
