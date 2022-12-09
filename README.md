@@ -12,18 +12,24 @@ git clone --recurse-submodules https://github.com/microsoft/onnxruntime-extensio
 cd onnxruntime-extensions
 ```
 
-For Windows:
+### For Windows
 
 ```cmd
 rem Run the provided build script for Windows
 build.bat
 ```
 
-For Linux:
+### For Linux
 
 ```bash
 # Run the provided build script for Linux
 bash ./build.sh
+```
+
+The output file will be quite large (100+ MB), so to reduce the size, you can strip all debug information with this command:
+
+```bash
+strip --strip-all libortextensions.so
 ```
 
 ## Converting TensorFlow model to ONNX model
