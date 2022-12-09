@@ -47,10 +47,13 @@ function App() {
   };
 
   const search = async () => {
+    if (!input || !/\S/.test(input)) {
+      setLastResults(null);
+      return;
+    }
+
     const results = await queryBingus(input);
     setLastResults(results);
-
-    console.log(results);
   };
 
   const toggleTheme = async () => {
@@ -81,7 +84,7 @@ function App() {
                 bgcolor: "primary.main",
                 boxShadow: 3,
                 borderRadius: 2,
-                padding: 1,
+                padding: 0.75,
               }}
             >
               {relevance.toFixed()}%
