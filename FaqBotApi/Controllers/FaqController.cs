@@ -34,7 +34,7 @@ public class FaqController : ControllerBase
         }
 
         responseCount = Math.Clamp(responseCount, 1, 10);
-        var results = _faqHandler.Search(question, 5);
+        var results = _faqHandler.Search(question, responseCount);
 
         var responses = results.Select(result =>
         {
