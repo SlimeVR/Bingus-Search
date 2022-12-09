@@ -24,7 +24,7 @@ public class FaqController : ControllerBase
         return _faqHandler.GetEntry(((LazyKeyItem<int, float[]>)item).Key);
     }
 
-    [HttpGet(Name = "Search")]
+    [HttpGet(template: "Search", Name = "Search")]
     public IEnumerable<FaqEntryResponse> Search(string question, int responseCount = 5)
     {
         // Needs to have something at least
