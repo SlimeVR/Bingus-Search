@@ -1,7 +1,5 @@
 using FaqBot.FaqHandling;
 using FaqBot.HNSW;
-using MessagePack;
-using MessagePack.Resolvers;
 using Microsoft.AspNetCore.Mvc;
 using static FaqBot.FaqHandling.FaqHandler;
 
@@ -13,31 +11,17 @@ public class FaqController : ControllerBase
 {
     private readonly ILogger<FaqController> _logger;
 
-    private readonly FaqHandler faqHandler;
+    private readonly FaqHandler _faqHandler;
 
-    public FaqController(ILogger<FaqController> logger, ILoggerFactory loggerFactory)
+    public FaqController(ILogger<FaqController> logger, FaqHandler faqHandler)
     {
         _logger = logger;
-
-        // Load the config
-        var faqConfig = FaqConfigUtils.InitializeConfig(loggerFactory.CreateLogger<FaqConfig>());
-
-        // Setup the FAQ handler
-        var modelPath = Path.Join(Environment.CurrentDirectory, faqConfig.ModelPath);
-        faqHandler = new(loggerFactory, modelPath);
-
-        // Add all questions
-        faqHandler.AddItems(faqConfig.QAEntryEnumerator());
-
-        // Setup HNSW serialization stuff
-        StaticCompositeResolver.Instance.Register(MessagePackSerializer.DefaultOptions.Resolver);
-        StaticCompositeResolver.Instance.Register(new LazyKeyItemFormatter<int, float[]>(i => faqHandler.GetEntry(i).Vector!.AsArray()));
-        MessagePackSerializer.DefaultOptions.WithResolver(StaticCompositeResolver.Instance);
+        _faqHandler = faqHandler;
     }
 
     private FaqEntry GetEntry(ILazyItem<float[]> item)
     {
-        return faqHandler.GetEntry(((LazyKeyItem<int, float[]>)item).Key);
+        return _faqHandler.GetEntry(((LazyKeyItem<int, float[]>)item).Key);
     }
 
     [HttpGet(Name = "Search")]
@@ -50,7 +34,7 @@ public class FaqController : ControllerBase
         }
 
         responseCount = Math.Clamp(responseCount, 1, 10);
-        var results = faqHandler.Search(question, 5);
+        var results = _faqHandler.Search(question, 5);
 
         var responses = results.Select(result =>
         {
