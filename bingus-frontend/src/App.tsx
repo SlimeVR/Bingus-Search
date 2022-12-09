@@ -34,6 +34,7 @@ function App() {
   const [lastResults, setLastResults] = useState<
     [{ relevance: number; title: string; text: string }] | null
   >(null);
+  const [lastSearchInput, setLastSearchInput] = useState("");
 
   const queryBingus = async (query: string, responseCount: number = 5) => {
     const url = new URL("https://bingus.bscotch.ca/api/faq/search");
@@ -47,13 +48,19 @@ function App() {
   };
 
   const search = async () => {
+    if (input === lastSearchInput) {
+      return;
+    }
+
     if (!input || !/\S/.test(input)) {
       setLastResults(null);
+      setLastSearchInput(input);
       return;
     }
 
     const results = await queryBingus(input);
     setLastResults(results);
+    setLastSearchInput(input);
   };
 
   const toggleTheme = async () => {
