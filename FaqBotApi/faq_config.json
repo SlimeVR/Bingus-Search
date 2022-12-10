@@ -172,11 +172,14 @@
       "average_questions": false
     },
     {
-      "answer": "The SlimeVR Docs can be found at https://docs.slimevr.dev/",
+      "answer": "You can find the SlimeVR documentation here: https://docs.slimevr.dev/",
       "matched_questions": [
         "the docs?",
         "where can I find the docs?",
-        "documentation"
+        "documentation",
+        "i need help",
+        "how do I get help",
+        "where do I start?"
       ],
       "average_questions": false
     },
