@@ -10,9 +10,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useMemo, useState } from "react";
-import { bake_cookie, read_cookie } from "sfcookies";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { bake_cookie, read_cookie } from "sfcookies";
+import "./App.css";
 
 function App() {
   const cookieTheme = read_cookie("user-theme");
@@ -101,7 +102,17 @@ function App() {
           ) : (
             <></>
           )}
-          <Typography paragraph variant="body1" color="primary.contrastText">
+          <Typography
+            paragraph
+            variant="body1"
+            color="primary.contrastText"
+            sx={{
+              width: "fit-content",
+              height: "fit-content",
+              bgcolor: "primary.main",
+              margin: 0,
+            }}
+          >
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
           </Typography>
         </Stack>
