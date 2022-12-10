@@ -1,10 +1,12 @@
 import { ThemeProvider } from "@emotion/react";
 import {
+  Alert,
   Button,
   Card,
   Container,
   createTheme,
   CssBaseline,
+  Link,
   Paper,
   Stack,
   TextField,
@@ -139,8 +141,21 @@ function App() {
         component="main"
         className={prefersDarkMode ? "mddark" : ""}
       >
-        <Stack alignItems="end" direction="column-reverse" sx={{ my: 2 }}>
-          <Button variant="contained" onClick={toggleTheme}>
+        <Stack spacing={1} direction="row" sx={{ my: 2 }}>
+          <Alert variant="outlined" severity="info" sx={{ flexGrow: 1 }}>
+            This site is experimental and may not provide up-to-date
+            information. If you need any further help, you can join the SlimeVR
+            Discord at{" "}
+            <Link href="https://discord.gg/SlimeVR">
+              https://discord.gg/SlimeVR
+            </Link>
+            .
+          </Alert>
+          <Button
+            variant="contained"
+            onClick={toggleTheme}
+            sx={{ width: "fit-content", height: "fit-content" }}
+          >
             {prefersDarkMode ? "Dark" : "Light"}
           </Button>
         </Stack>
