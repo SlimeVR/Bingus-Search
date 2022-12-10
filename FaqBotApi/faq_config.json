@@ -29,9 +29,7 @@
     },
     {
       "answer": "https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing",
-      "matched_questions": [
-        "tracker keeps flashing"
-      ],
+      "matched_questions": ["tracker keeps flashing"],
       "average_questions": false
     },
     {
@@ -56,9 +54,7 @@
     },
     {
       "answer": "https://docs.slimevr.dev/common-issues.html#sensor-was-reset-error",
-      "matched_questions": [
-        "Sensor was reset error"
-      ],
+      "matched_questions": ["Sensor was reset error"],
       "average_questions": false
     },
     {
@@ -86,17 +82,12 @@
     },
     {
       "answer": "https://docs.slimevr.dev/common-issues.html#your-trackers-are-drifting-more-than-expected",
-      "matched_questions": [
-        "trackers are drifting a lot"
-      ],
+      "matched_questions": ["trackers are drifting a lot"],
       "average_questions": false
     },
     {
       "answer": "https://docs.slimevr.dev/common-issues.html#my-feet-sink-into-the-floor--im-sliding-a-lot",
-      "matched_questions": [
-        "feet sink into the floor",
-        "feet slide a lot"
-      ],
+      "matched_questions": ["feet sink into the floor", "feet slide a lot"],
       "average_questions": false
     },
     {
@@ -117,7 +108,7 @@
       "average_questions": false
     },
     {
-      "answer": "The trackers will ship in November 2022, you can check for updates in the <#818062236492759050> channel or on the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker",
+      "answer": "The trackers are estimated to ship on April 28th, 2023. You can check for updates in the [#updates](https://discord.com/channels/817184208525983775/818062236492759050) and [#production-progress](https://discord.com/channels/817184208525983775/1025118385585004544) channels on the Discord or on the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker",
       "matched_questions": [
         "When are they shipping?",
         "When does it ship?",
@@ -128,28 +119,22 @@
       "average_questions": false
     },
     {
-      "answer": "It's not recommended to use 3 trackers. If you use 3 trackers, you won't be able to bend your legs. Check here for more information: https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need",
-      "matched_questions": [
-        "can I use 3 trackers for full body tracking"
-      ],
+      "answer": "It's not recommended to use 3 trackers. If you use 3 trackers, you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). Check here for more information: https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need",
+      "matched_questions": ["can I use 3 trackers for full body tracking"],
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need",
-      "matched_questions": [
-        "how many trackers do I need"
-      ],
+      "answer": "Here's information about how many trackers you need: https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need",
+      "matched_questions": ["how many trackers do I need"],
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/server-setup/body-config.html",
-      "matched_questions": [
-        "how do I set up my body proportions?"
-      ],
+      "answer": "Here's documentation for configuring body proportions: https://docs.slimevr.dev/server-setup/body-config.html",
+      "matched_questions": ["how do I set up my body proportions?"],
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/diy/diy-trackers-guide.html",
+      "answer": "Here's a guide for how to build DIY trackers: https://docs.slimevr.dev/diy/diy-trackers-guide.html",
       "matched_questions": [
         "how do I build trackers?",
         "how to build",
@@ -160,14 +145,12 @@
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers",
-      "matched_questions": [
-        "how can I get trackers?"
-      ],
+      "answer": "Here's information on how to get trackers: https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers",
+      "matched_questions": ["how can I get trackers?"],
       "average_questions": false
     },
     {
-      "answer": "You can pre-order trackers from here https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker",
+      "answer": "You can pre-order trackers from here: https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker",
       "matched_questions": [
         "where can I buy trackers?",
         "How do I get trackers from crowdsupply?",
@@ -176,7 +159,7 @@
       "average_questions": false
     },
     {
-      "answer": "https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order",
+      "answer": "Here's information on how to change or cancel your order with CrowdSupply: https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order",
       "matched_questions": [
         "how do I change my order",
         "change order",
@@ -189,7 +172,7 @@
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/",
+      "answer": "The SlimeVR Docs can be found at https://docs.slimevr.dev/",
       "matched_questions": [
         "the docs?",
         "where can I find the docs?",
@@ -198,7 +181,7 @@
       "average_questions": false
     },
     {
-      "answer": "**__Don't__** buy trackers from Amazon. Buying trackers from Amazon is not recommended as there have been many reports of faulty trackers from Amazon recently. You can check in <#986713204656857138> for more information.",
+      "answer": "**__Don't__** buy trackers from Amazon. Buying trackers from Amazon is not recommended as there have been many reports of faulty trackers from Amazon. You can check in [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) for more information.",
       "matched_questions": [
         "are the amazon trackers ok to buy?",
         "can I buy from amazon?",
@@ -207,7 +190,7 @@
       "average_questions": false
     },
     {
-      "answer": "You likely have unofficial trackers from Amazon, it's recommended that you just return them. Otherwise, if you really want to try to make them work, you can check in <#986713204656857138> for more information.",
+      "answer": "You likely have unofficial trackers from Amazon, it's recommended that you just return them. Otherwise, if you really want to try to make them work, you can check in [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) for more information.",
       "matched_questions": [
         "No Blinking of the Tracker if WiFi Window is open",
         "WiFi Window does not show anything if I set the WiFi",
@@ -218,9 +201,7 @@
     },
     {
       "answer": "SlimeVR can't run on standalone Quest *yet,* but works fine when connected to a PC using something like Link, AirLink, Virtual Desktop, or ALVR. Support for standalone Quest is still in development.",
-      "matched_questions": [
-        "can i use it with quest"
-      ],
+      "matched_questions": ["can i use it with quest"],
       "average_questions": false
     },
     {
@@ -246,50 +227,9 @@
       "answer": "You can find instructions for installing the SlimeVR server here: https://docs.slimevr.dev/server-setup/installing-and-connecting.html#install-the-latest-slimevr-installer",
       "matched_questions": [
         "how do I download the server?",
-        "where can I download the server from"
-      ],
-      "average_questions": false
-    },
-    {
-      "answer": "You don't need to ask to ask, just ask your question please!",
-      "matched_questions": [
-        "i need help",
-        "can I ask a question"
-      ],
-      "average_questions": false
-    },
-    {
-      "answer": "You're welcome!",
-      "matched_questions": [
-        "thank you"
-      ],
-      "average_questions": false
-    },
-    {
-      "answer": "Hello!",
-      "matched_questions": [
-        "hi"
-      ],
-      "average_questions": false
-    },
-    {
-      "answer": "Heya!",
-      "matched_questions": [
-        "hello"
-      ],
-      "average_questions": false
-    },
-    {
-      "answer": "owo",
-      "matched_questions": [
-        "uwu"
-      ],
-      "average_questions": false
-    },
-    {
-      "answer": "uwu",
-      "matched_questions": [
-        "owo"
+        "where can I download the server from",
+        "how to download SlimeVR",
+        "how do I install slimevr"
       ],
       "average_questions": false
     }
