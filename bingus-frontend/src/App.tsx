@@ -109,7 +109,6 @@ function App() {
             sx={{
               width: "fit-content",
               height: "fit-content",
-              bgcolor: "primary.main",
               margin: 0,
             }}
           >
