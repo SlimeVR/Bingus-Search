@@ -235,6 +235,17 @@
         "how do I install slimevr"
       ],
       "average_questions": false
+    },
+    {
+      "answer": "You can find instructions for setting up keybinds here: https://docs.slimevr.dev/server-setup/setting-reset-bindings.html",
+      "matched_questions": [
+        "hey where is the Keybind directions",
+        "how do i set up keybinds",
+        "how to get keybind",
+        "reset keybinds",
+        "how do i set up the reset keybinds"
+      ],
+      "average_questions": false
     }
   ]
 }
