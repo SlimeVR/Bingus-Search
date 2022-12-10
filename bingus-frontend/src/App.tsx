@@ -107,7 +107,9 @@ function App() {
                 padding: 0.75,
               }}
             >
-              <Typography variant="caption">{relevance.toFixed()}%</Typography>
+              <Typography variant="caption" noWrap>
+                {relevance.toFixed()}%
+              </Typography>
             </Card>
           ) : (
             <></>
