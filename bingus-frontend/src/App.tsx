@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import { useMemo, useState } from "react";
 import { bake_cookie, read_cookie } from "sfcookies";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 function App() {
   const cookieTheme = read_cookie("user-theme");
@@ -100,7 +102,7 @@ function App() {
             <></>
           )}
           <Typography paragraph variant="body1" color="primary.contrastText">
-            {text}
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
           </Typography>
         </Stack>
       </Container>
