@@ -1,9 +1,11 @@
 import { ThemeProvider } from "@emotion/react";
 import {
   Button,
+  Card,
   Container,
   createTheme,
   CssBaseline,
+  Paper,
   Stack,
   TextField,
   Typography,
@@ -74,38 +76,45 @@ function App() {
     });
   };
 
+  const relevanceToElevation = function (
+    relevance: number | null,
+    scale: number = 24
+  ): number {
+    if (relevance) {
+      return Math.round((relevance / 100) * scale);
+    }
+
+    return 0;
+  };
+
   const resultCard = function (text: string, relevance: number | null = null) {
+    const relevanceElevation = relevanceToElevation(relevance, 6);
+
     return (
-      <Container
-        disableGutters
-        sx={{
-          bgcolor: "primary.dark",
-          borderRadius: 2,
-        }}
+      <Card
+        variant="elevation"
+        elevation={2 + relevanceElevation}
+        sx={{ width: "100%" }}
       >
-        <Stack padding={1} spacing={1.5} direction="row">
-          {relevance ? (
-            <Typography
-              variant="caption"
-              color="secondary.contrastText"
+        <Stack padding={1.25} spacing={1.75} direction="row">
+          {relevance !== null ? (
+            <Card
+              variant="elevation"
+              elevation={3 + relevanceElevation}
               sx={{
                 width: "fit-content",
                 height: "fit-content",
-                bgcolor: "primary.main",
-                boxShadow: 3,
-                borderRadius: 2,
                 padding: 0.75,
               }}
             >
-              {relevance.toFixed()}%
-            </Typography>
+              <Typography variant="caption">{relevance.toFixed()}%</Typography>
+            </Card>
           ) : (
             <></>
           )}
           <Typography
             paragraph
             variant="body1"
-            color="primary.contrastText"
             sx={{
               width: "fit-content",
               height: "fit-content",
@@ -115,7 +124,7 @@ function App() {
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
           </Typography>
         </Stack>
-      </Container>
+      </Card>
     );
   };
 
@@ -129,12 +138,14 @@ function App() {
         </Button>
       </Stack>
 
-      <Container maxWidth="md" sx={{ my: 3 }}>
-        <Typography variant="h4" align="center">
-          Bingus Search
-        </Typography>
+      <Container component="main" maxWidth="md">
+        <Paper sx={{ padding: 1 }}>
+          <Typography fontSize={64} fontFamily="Ubuntu" align="center">
+            Bingus Search
+          </Typography>
+        </Paper>
 
-        <Stack spacing={1} direction="row" sx={{ my: 3 }}>
+        <Stack spacing={1} direction="row" sx={{ my: 2 }}>
           <TextField
             fullWidth
             label="Ask a question..."
@@ -149,18 +160,15 @@ function App() {
           </Button>
         </Stack>
 
-        <Stack
-          spacing={2}
-          alignItems="center"
-          direction="column"
-          sx={{ my: 3 }}
-        >
-          {lastResults?.length
-            ? lastResults
-                ?.sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
-                .map((result) => resultCard(result.text, result.relevance))
-            : resultCard("No results...")}
-        </Stack>
+        <Paper variant="elevation" sx={{ padding: 1.5 }}>
+          <Stack spacing={1.5} alignItems="center" direction="column">
+            {lastResults?.length
+              ? lastResults
+                  ?.sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
+                  .map((result) => resultCard(result.text, result.relevance))
+              : resultCard("No results...")}
+          </Stack>
+        </Paper>
       </Container>
     </ThemeProvider>
   );
