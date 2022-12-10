@@ -146,7 +146,11 @@
     },
     {
       "answer": "Here's information on how to get trackers: https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers",
-      "matched_questions": ["how can I get trackers?"],
+      "matched_questions": [
+        "how can I get trackers?",
+        "Is there anyway to purchase slimeVR right now? Other than D.I.Y",
+        "where can i find trackers to buy"
+      ],
       "average_questions": false
     },
     {
@@ -154,7 +158,8 @@
       "matched_questions": [
         "where can I buy trackers?",
         "How do I get trackers from crowdsupply?",
-        "whats the link for crowdsupply?"
+        "whats the link for crowdsupply?",
+        "where do i buy"
       ],
       "average_questions": false
     },
@@ -244,6 +249,15 @@
         "how to get keybind",
         "reset keybinds",
         "how do i set up the reset keybinds"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "# Bingus Search\nHi! Welcome to Bingus Search. This is a tool for searching SlimeVR FAQ questions using AI.\n## How do I search?\nTo search using this tool, just type in a question in the text box (like you did to see this) and the results will show up below.",
+      "matched_questions": [
+        "what is this?",
+        "what is this bingus thhing",
+        "how to search"
       ],
       "average_questions": false
     }
