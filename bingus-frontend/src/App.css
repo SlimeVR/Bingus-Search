@@ -1,3 +1,11 @@
 p {
   margin: 0;
 }
+
+.mddark a {
+  color: lightblue;
+}
+
+.mddark a:visited {
+  color: lightpink;
+}

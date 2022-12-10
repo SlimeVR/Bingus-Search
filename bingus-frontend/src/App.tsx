@@ -121,7 +121,7 @@ function App() {
               margin: 0,
             }}
           >
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} children={text} />
           </Typography>
         </Stack>
       </Card>
@@ -132,43 +132,49 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <Stack alignItems="end" direction="column-reverse" sx={{ padding: 2 }}>
-        <Button variant="contained" onClick={toggleTheme}>
-          {prefersDarkMode ? "Dark" : "Light"}
-        </Button>
-      </Stack>
-
-      <Container component="main" maxWidth="md">
-        <Paper sx={{ padding: 1 }}>
-          <Typography fontSize={64} fontFamily="Ubuntu" align="center">
-            Bingus Search
-          </Typography>
-        </Paper>
-
-        <Stack spacing={1} direction="row" sx={{ my: 2 }}>
-          <TextField
-            fullWidth
-            label="Ask a question..."
-            variant="filled"
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") search();
-            }}
-          />
-          <Button onClick={search} variant="contained">
-            Search
+      <Container
+        maxWidth="md"
+        component="main"
+        className={prefersDarkMode ? "mddark" : ""}
+      >
+        <Stack alignItems="end" direction="column-reverse" sx={{ my: 2 }}>
+          <Button variant="contained" onClick={toggleTheme}>
+            {prefersDarkMode ? "Dark" : "Light"}
           </Button>
         </Stack>
 
-        <Paper variant="elevation" sx={{ padding: 1.5 }}>
-          <Stack spacing={1.5} alignItems="center" direction="column">
-            {lastResults?.length
-              ? lastResults
-                  ?.sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
-                  .map((result) => resultCard(result.text, result.relevance))
-              : resultCard("No results...")}
+        <Container disableGutters>
+          <Paper sx={{ padding: 1 }}>
+            <Typography fontSize={64} fontFamily="Ubuntu" align="center">
+              Bingus Search
+            </Typography>
+          </Paper>
+
+          <Stack spacing={1} direction="row" sx={{ my: 2 }}>
+            <TextField
+              fullWidth
+              label="Ask a question..."
+              variant="filled"
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") search();
+              }}
+            />
+            <Button onClick={search} variant="contained">
+              Search
+            </Button>
           </Stack>
-        </Paper>
+
+          <Paper variant="elevation" sx={{ padding: 1.5 }}>
+            <Stack spacing={1.5} alignItems="center" direction="column">
+              {lastResults?.length
+                ? lastResults
+                    ?.sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
+                    .map((result) => resultCard(result.text, result.relevance))
+                : resultCard("No results...")}
+            </Stack>
+          </Paper>
+        </Container>
       </Container>
     </ThemeProvider>
   );
