@@ -9,13 +9,10 @@ namespace FaqBatApi.Controllers;
 [Route("[controller]")]
 public class FaqController : ControllerBase
 {
-    private readonly ILogger<FaqController> _logger;
-
     private readonly FaqHandler _faqHandler;
 
-    public FaqController(ILogger<FaqController> logger, FaqHandler faqHandler)
+    public FaqController(FaqHandler faqHandler)
     {
-        _logger = logger;
         _faqHandler = faqHandler;
     }
 
@@ -45,7 +42,7 @@ public class FaqController : ControllerBase
                 Title = entry.Question,
                 Text = entry.Answer,
             };
-        }).OrderByDescending(response => response.Relevance);
+        }).GroupBy(result => result.Text).Select(groupedResults => groupedResults.MaxBy(result => result.Relevance) ?? groupedResults.First()).OrderByDescending(response => response.Relevance);
 
         return responses;
     }
