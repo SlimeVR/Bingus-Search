@@ -9,3 +9,8 @@ p {
 .mddark a:visited {
   color: lightpink;
 }
+
+@font-face {
+  font-family: "Ubuntu";
+  src: local("Ubuntu"), url("./fonts/Ubuntu-Regular.ttf") format("truetype");
+}
