@@ -233,7 +233,7 @@
       "average_questions": false
     },
     {
-      "answer": "You can find instructions for installing the SlimeVR server here: https://docs.slimevr.dev/server-setup/installing-and-connecting.html#install-the-latest-slimevr-installer",
+      "answer": "You can find instructions for installing the SlimeVR server here: https://docs.slimevr.dev/server-setup/initial-setup.html#install-the-latest-slimevr-installer",
       "matched_questions": [
         "how do I download the server?",
         "where can I download the server from",
