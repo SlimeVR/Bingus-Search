@@ -74,7 +74,7 @@ function App() {
     setLastSearchInput(input);
   };
 
-  if (!urlInputSearched.current && input) {
+  if (!urlInputSearched.current) {
     urlInputSearched.current = true;
     search();
   }
