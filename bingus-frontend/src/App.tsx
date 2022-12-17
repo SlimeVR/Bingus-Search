@@ -37,8 +37,8 @@ function App() {
     [prefersDarkMode]
   );
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const urlInput = urlParams.get("q") ?? "";
+  const url = new URL(window.location.href);
+  const urlInput = url.searchParams.get("q") ?? "";
 
   const urlInputSearched = useRef(false);
   const [input, setInput] = useState(urlInput);
@@ -46,6 +46,10 @@ function App() {
     [{ relevance: number; title: string; text: string }] | null
   >(null);
   const [lastSearchInput, setLastSearchInput] = useState("");
+
+  const updateUrl = function () {
+    window.history.replaceState({}, window.name, url.toString());
+  };
 
   const queryBingus = async (query: string, responseCount: number = 5) => {
     const url = new URL("https://bingus.bscotch.ca/api/faq/search");
@@ -62,6 +66,9 @@ function App() {
     if (input === lastSearchInput) {
       return;
     }
+
+    url.searchParams.set("q", input);
+    updateUrl();
 
     if (!input || !/\S/.test(input)) {
       setLastResults(null);
