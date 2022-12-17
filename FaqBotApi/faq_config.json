@@ -15,7 +15,10 @@
       "answer": "https://docs.slimevr.dev/common-issues.html#the-slimevr-server-wont-start",
       "matched_questions": [
         "The server won't start",
-        "The SlimeVR server won't start"
+        "The SlimeVR server won't start",
+        "slimevr isnt opening",
+        "slimevr doesn't start",
+        "the server doesn't open"
       ],
       "average_questions": false
     },
@@ -29,7 +32,7 @@
     },
     {
       "answer": "https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing",
-      "matched_questions": ["tracker keeps flashing"],
+      "matched_questions": ["tracker keeps flashing", "flashing doesn't stop"],
       "average_questions": false
     },
     {
@@ -48,7 +51,9 @@
       "answer": "https://docs.slimevr.dev/common-issues.html#my-aux-tracker-isnt-working",
       "matched_questions": [
         "aux tracker isn't working",
-        "extension isn't working"
+        "extension isn't working",
+        "my extension is broken",
+        "my extension tracker is broken"
       ],
       "average_questions": false
     },
@@ -60,7 +65,8 @@
     {
       "answer": "https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wifi-but-dont-turn-up-on-slimevr",
       "matched_questions": [
-        "trackers are connected to my wifi but don't turn up on the server"
+        "trackers are connected to my wifi but don't turn up on the server",
+        "my trackers are on wifi but not on the gui"
       ],
       "average_questions": false
     },
@@ -114,7 +120,8 @@
         "When does it ship?",
         "When are the trackers coming?",
         "where are my trackers?",
-        "november of this year or next year?"
+        "shipping of this year or next year?",
+        "shipping"
       ],
       "average_questions": false
     },
@@ -160,7 +167,8 @@
         "How do I get trackers from crowdsupply?",
         "whats the link for crowdsupply?",
         "where do i buy",
-        "where do i purchase trackes"
+        "where do i purchase trackes",
+        "crowdsupply"
       ],
       "average_questions": false
     },
@@ -228,7 +236,8 @@
         "how do I join the Discord?",
         "where's the discord",
         "can I get an invite",
-        "how do I find the discord"
+        "how do I find the discord",
+        "discord"
       ],
       "average_questions": false
     },
@@ -238,7 +247,8 @@
         "how do I download the server?",
         "where can I download the server from",
         "how to download SlimeVR",
-        "how do I install slimevr"
+        "how do I install slimevr",
+        "install"
       ],
       "average_questions": false
     },
@@ -249,7 +259,8 @@
         "how do i set up keybinds",
         "how to get keybind",
         "reset keybinds",
-        "how do i set up the reset keybinds"
+        "how do i set up the reset keybinds",
+        "keybinds"
       ],
       "average_questions": false
     },
@@ -258,7 +269,8 @@
       "matched_questions": [
         "what is this?",
         "what is this bingus thhing",
-        "how to search"
+        "how to search",
+        "bingus"
       ],
       "average_questions": false
     }

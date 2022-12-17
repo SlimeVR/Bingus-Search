@@ -13,7 +13,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { bake_cookie, read_cookie } from "sfcookies";
@@ -37,7 +37,11 @@ function App() {
     [prefersDarkMode]
   );
 
-  const [input, setInput] = useState("");
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlInput = urlParams.get("q") ?? "";
+
+  const urlInputSearched = useRef(false);
+  const [input, setInput] = useState(urlInput);
   const [lastResults, setLastResults] = useState<
     [{ relevance: number; title: string; text: string }] | null
   >(null);
@@ -69,6 +73,11 @@ function App() {
     setLastResults(results);
     setLastSearchInput(input);
   };
+
+  if (!urlInputSearched.current && input) {
+    urlInputSearched.current = true;
+    search();
+  }
 
   const toggleTheme = async () => {
     setPrefersDarkMode((value) => {
@@ -171,6 +180,7 @@ function App() {
             <TextField
               fullWidth
               label="Ask a question..."
+              value={input}
               variant="filled"
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => {
