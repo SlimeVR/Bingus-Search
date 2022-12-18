@@ -281,7 +281,11 @@
         "i cant open the gui",
         "slimevr wont open",
         "slimevr crashes when opening",
-        "error while running tauri application"
+        "error while running tauri application",
+        "webview2",
+        "webview",
+        "i don't have webview2",
+        "how do I get webview"
       ],
       "average_questions": false
     }
