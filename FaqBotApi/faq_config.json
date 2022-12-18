@@ -273,6 +273,17 @@
         "bingus"
       ],
       "average_questions": false
+    },
+    {
+      "answer": "It's possible that you don't have the required WebView2 installed. You can download the WebView2 installer from here, make sure to specifically run it as an administrator otherwise it may not work: https://developer.microsoft.com/en-us/microsoft-edge/webview2/consumer/",
+      "matched_questions": [
+        "gui wont launch",
+        "i cant open the gui",
+        "slimevr wont open",
+        "slimevr crashes when opening",
+        "error while running tauri application"
+      ],
+      "average_questions": false
     }
   ]
 }
