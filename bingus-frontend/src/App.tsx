@@ -51,7 +51,7 @@ function App() {
     window.history.replaceState({}, window.name, url.toString());
   };
 
-  const queryBingus = async (query: string, responseCount: number = 5) => {
+  const queryBingus = async (query: string, responseCount: number = 30) => {
     const url = new URL("https://bingus.bscotch.ca/api/faq/search");
 
     url.search = new URLSearchParams({

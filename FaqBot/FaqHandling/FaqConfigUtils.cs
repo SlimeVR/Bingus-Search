@@ -27,14 +27,6 @@ namespace FaqBot.FaqHandling
 
         public static FaqConfig InitializeConfig(ILogger<FaqConfig>? logger = null)
         {
-            // Make the config folder if needed
-            /*
-            if (!Directory.Exists(FaqConfigFolder))
-            {
-                Directory.CreateDirectory(FaqConfigFolder);
-            }
-            */
-
             if (File.Exists(FaqConfigFile))
             {
                 try

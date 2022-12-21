@@ -9,6 +9,9 @@ namespace FaqBatApi.Controllers;
 [Route("[controller]")]
 public class FaqController : ControllerBase
 {
+    private static readonly int _minQuery = 1;
+    private static readonly int _maxQuery = 50;
+
     private readonly FaqHandler _faqHandler;
 
     public FaqController(FaqHandler faqHandler)
@@ -30,7 +33,7 @@ public class FaqController : ControllerBase
             throw new ArgumentException("There must be a question to query.", nameof(question));
         }
 
-        responseCount = Math.Clamp(responseCount, 1, 10);
+        responseCount = Math.Clamp(responseCount, _minQuery, _maxQuery);
         var results = _faqHandler.Search(question, responseCount);
 
         var responses = results.Select(result =>
