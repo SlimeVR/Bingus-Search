@@ -233,8 +233,23 @@
       "average_questions": false
     },
     {
-      "answer": "SlimeVR can't run on standalone Quest *yet,* but works fine when connected to a PC using something like Link, AirLink, Virtual Desktop, or ALVR. Support for standalone Quest is still in development.",
-      "matched_questions": ["can i use it with quest"],
+      "answer": "SlimeVR running on standalone Quest is in early works with support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/tools/termux-installation.html or in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the SlimeVR Discord.",
+      "matched_questions": [
+        "can i use it with quest",
+        "does slimevr work standalone",
+        "can i use it standalone",
+        "does it work standalone",
+        "can i run it on my headset"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "SlimeVR has support for VRChat's OSC tracker protocol, you can find more information in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the SlimeVR Discord.",
+      "matched_questions": [
+        "does it work with osc?",
+        "can i use it for vrchat osc?",
+        "can it connect to vrchat osc"
+      ],
       "average_questions": false
     },
     {
