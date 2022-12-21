@@ -86,7 +86,10 @@
     },
     {
       "answer": "https://docs.slimevr.dev/common-issues.html#your-trackers-are-drifting-more-than-expected.",
-      "matched_questions": ["trackers are drifting a lot"],
+      "matched_questions": [
+        "trackers are drifting a lot",
+        "my trackers are drifting"
+      ],
       "average_questions": false
     },
     {
@@ -140,8 +143,17 @@
       "average_questions": false
     },
     {
-      "answer": "Here's documentation for configuring body proportions: https://docs.slimevr.dev/server-setup/body-config.html.",
-      "matched_questions": ["how do I set up my body proportions?"],
+      "answer": "You can find info for configuring body proportions at https://docs.slimevr.dev/server-setup/body-config.html or in the [#calibration](https://discord.com/channels/817184208525983775/930205281609187418) channel on the SlimeVR Discord.",
+      "matched_questions": [
+        "how do I set up my body proportions?",
+        "body proportions",
+        "proportions",
+        "autobone",
+        "automatic proportions",
+        "how do I do autobone",
+        "how do I use autobone",
+        "how do i measure body proportions"
+      ],
       "average_questions": false
     },
     {
@@ -202,7 +214,7 @@
       "average_questions": false
     },
     {
-      "answer": "**__Don't__** buy trackers from Amazon. Buying trackers from Amazon is not recommended as there have been many reports of faulty trackers from Amazon. You can check in [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) for more information.",
+      "answer": "**__Don't__** buy trackers from Amazon. Buying trackers from Amazon is not recommended as there have been many reports of faulty trackers from Amazon. You can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the SlimeVR Discord for more information.",
       "matched_questions": [
         "are the amazon trackers ok to buy?",
         "can I buy from amazon?",
@@ -211,7 +223,7 @@
       "average_questions": false
     },
     {
-      "answer": "You likely have unofficial trackers from Amazon, it's recommended that you just return them. Otherwise, if you really want to try to make them work, you can check in [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) for more information.",
+      "answer": "You likely have unofficial trackers from Amazon, it's recommended that you just return them. Otherwise, if you really want to try to make them work, you can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the SlimeVR Discord for more information.",
       "matched_questions": [
         "No Blinking of the Tracker if WiFi Window is open",
         "WiFi Window does not show anything if I set the WiFi",
