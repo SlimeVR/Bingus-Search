@@ -239,7 +239,11 @@
         "does slimevr work standalone",
         "can i use it standalone",
         "does it work standalone",
-        "can i run it on my headset"
+        "can i run it on my headset",
+        "termux",
+        "how do I use termux",
+        "how do I install termux",
+        "how can i use termux on my headset"
       ],
       "average_questions": false
     },
