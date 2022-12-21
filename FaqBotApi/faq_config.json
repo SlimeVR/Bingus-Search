@@ -1,7 +1,5 @@
 {
   "model_path": "../FaqBot/models/onnx/use_l_v5.onnx",
-  "target_discord_channels": [],
-  "print_relevance_level": true,
   "faqs": [
     {
       "answer": "https://docs.slimevr.dev/common-issues.html#please-specify-upload_port-while-updating-firmware--trying-to-upload-firmware-fails",
@@ -287,6 +285,33 @@
         "i don't have webview2",
         "how do I get webview",
         "how to get webview"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "You can find info about elbow tracking in the [#elbow-tracking](https://discord.com/channels/817184208525983775/951504607501221959) channel on the SlimeVR Discord.",
+      "matched_questions": [
+        "elbow",
+        "elbow tracking",
+        "how do I get elbow tracking to work",
+        "how do i get my elbows to work",
+        "what do i need for elbows"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "You can find info about owoTrack at https://docs.slimevr.dev/tools/owoTrack.html or in the [#owotrack](https://ptb.discord.com/channels/817184208525983775/882347715093233734) channel on the SlimeVR Discord.",
+      "matched_questions": [
+        "owo",
+        "owotrack",
+        "how do i use owotrackers",
+        "owotrackers for slimevr",
+        "how do i use my phones",
+        "phones",
+        "android",
+        "iphone",
+        "how do i use my iphone for slimevr",
+        "how do use my android for tracking"
       ],
       "average_questions": false
     }

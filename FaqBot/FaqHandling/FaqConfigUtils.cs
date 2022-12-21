@@ -5,8 +5,7 @@ namespace FaqBot.FaqHandling
 {
     public static class FaqConfigUtils
     {
-        //public static readonly string FaqConfigFolder = Path.GetFullPath("");
-        public static readonly string FaqConfigFile = Path.GetFullPath("faq_config.json"); //Path.GetFullPath(Path.Combine(FaqConfigFolder, "faq_config.json"));
+        public static readonly string FaqConfigFile = Path.GetFullPath("faq_config.json");
 
         private static readonly JsonSerializer JsonSerializer = new()
         {
