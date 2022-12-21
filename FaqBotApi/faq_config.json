@@ -2,15 +2,17 @@
   "model_path": "../FaqBot/models/onnx/use_l_v5.onnx",
   "faqs": [
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#please-specify-upload_port-while-updating-firmware--trying-to-upload-firmware-fails.",
+      "answer": "If you are having issues trying to update (or \"flash\") your trackers, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#please-specify-upload_port-while-updating-firmware--trying-to-upload-firmware-fails.",
       "matched_questions": [
         "Please specify upload_port while updating firmware",
-        "Trying to upload firmware fails"
+        "Trying to upload firmware fails",
+        "uploading using vscode fails",
+        "flashing my trackers fails"
       ],
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#the-slimevr-server-wont-start.",
+      "answer": "If the SlimeVR server is not opening, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-slimevr-server-wont-start.",
       "matched_questions": [
         "The server won't start",
         "The SlimeVR server won't start",
@@ -21,20 +23,24 @@
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#the-wifi-settings-window-outputs-symbols-and-nothing-else.",
+      "answer": "If your tracker's serial output is only random symbols, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-wifi-settings-window-outputs-symbols-and-nothing-else.",
       "matched_questions": [
         "The WiFi Settings window outputs ERROR",
-        "WiFi Settings window outputs symbols and nothing else"
+        "WiFi Settings window outputs symbols and nothing else",
+        "serial logs show only random stuff",
+        "serial console outputs random symbols and nothing more",
+        "why does my serial console just output random stuff",
+        "my tracker is outputting random symbols"
       ],
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing.",
+      "answer": "If you are concerned about your trackers' flashing lights, you can find more information at https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing.",
       "matched_questions": ["tracker keeps flashing", "flashing doesn't stop"],
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server.",
+      "answer": "If your trackers aren't connecting to WiFi, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server.",
       "matched_questions": [
         "tracker never connects to Wi-Fi",
         "my tracker never connects to wifi",
@@ -46,7 +52,7 @@
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#my-aux-tracker-isnt-working.",
+      "answer": "If you are having trouble with your aux tracker(s) (more commonly referred to as \"tracker extensions\"), you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-aux-tracker-isnt-working.",
       "matched_questions": [
         "aux tracker isn't working",
         "extension isn't working",
@@ -56,12 +62,12 @@
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#sensor-was-reset-error.",
+      "answer": "If you are getting a \"Sensor was reset error\" on your tracker's serial logs, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#sensor-was-reset-error.",
       "matched_questions": ["Sensor was reset error"],
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wifi-but-dont-turn-up-on-slimevr.",
+      "answer": "If your trackers are connected to WiFi but are not showing up on the SlimeVR server, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wifi-but-dont-turn-up-on-slimevr.",
       "matched_questions": [
         "trackers are connected to my wifi but don't turn up on the server",
         "my trackers are on wifi but not on the gui"
@@ -69,23 +75,27 @@
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam.",
+      "answer": "If your trackers are connected to the SlimeVR server but don't show up on SteamVR, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam.",
       "matched_questions": [
         "trackers are connected to the server but aren't turning up on Steam",
         "trackers aren't showing up in SteamVR",
-        "Tracker doesn't show up on SteamVR but it does on the server"
+        "Tracker doesn't show up on SteamVR but it does on the server",
+        "my trackers are showing up in SlimeVR but don't work with SteamVR"
       ],
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#my-trackers-are-bound-to-the-wrong-controllers-in-steamvr.",
+      "answer": "If your trackers are bound to the wrong body part in SteamVR, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-trackers-are-bound-to-the-wrong-body-part-in-steamvr.",
       "matched_questions": [
-        "trackers are bound to the wrong controllers in SteamVR"
+        "trackers are bound to the wrong controllers in SteamVR",
+        "trackers are bound to the wrong body part in SteamVR",
+        "my controllers aren't working properly",
+        "my controllers don't work with slimevr running"
       ],
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#your-trackers-are-drifting-more-than-expected.",
+      "answer": "If your trackers are drifting excessively, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#your-trackers-are-drifting-more-than-expected.",
       "matched_questions": [
         "trackers are drifting a lot",
         "my trackers are drifting"
@@ -93,12 +103,12 @@
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#my-feet-sink-into-the-floor--im-sliding-a-lot.",
+      "answer": "If your body proportions feel wrong or your feet feel like they're sliding excessively, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-feet-sink-into-the-floor--im-sliding-a-lot.",
       "matched_questions": ["feet sink into the floor", "feet slide a lot"],
       "average_questions": false
     },
     {
-      "answer": "https://docs.slimevr.dev/common-issues.html#trackers-are-moving-in-the-wrong-direction-when-i-move.",
+      "answer": "If your trackers are moving in the wrong direction, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#trackers-are-moving-in-the-wrong-direction-when-i-move.",
       "matched_questions": [
         "Trackers are moving in the wrong direction when I move",
         "Trackers are rotating on SteamVR in the wrong direction when I move"
@@ -110,7 +120,9 @@
       "matched_questions": [
         "Does setup take a long time and/or do you need to do it every time you play?",
         "Does setup take a long time?",
-        "do you need to configure it every time you play?"
+        "do you need to configure it every time you play?",
+        "how long does setup take",
+        "does it take a long time to install?"
       ],
       "average_questions": false
     },
@@ -122,24 +134,38 @@
         "When are the trackers coming?",
         "where are my trackers?",
         "shipping of this year or next year?",
-        "shipping"
+        "shipping",
+        "when is slimevr shipping?",
+        "when is it shipping",
+        "how long do I have to wait",
+        "whats the time to ship"
       ],
       "average_questions": false
     },
     {
-      "answer": "It's not recommended to use 3 trackers. If you use 3 trackers, you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). Check here for more information: https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need.",
+      "answer": "It's not recommended to use 3 trackers. If you use 3 trackers, you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). You can fine more information about how many trackers you need at https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need.",
       "matched_questions": [
         "can I use 3 trackers for full body tracking",
         "3 trackers",
         "can i use 3?",
         "i only have 3 phones",
-        "can i use 3 joycons?"
+        "can i use 3 joycons?",
+        "i built 3 trackers, why is it only rotation?",
+        "can i use my three psmove controllers?",
+        "what if i use three trackers",
+        "can i use three trackers?",
+        "three trackers"
       ],
       "average_questions": false
     },
     {
-      "answer": "Here's information about how many trackers you need: https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need.",
-      "matched_questions": ["how many trackers do I need"],
+      "answer": "You can find information about how many trackers you need at https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need.",
+      "matched_questions": [
+        "how many trackers do I need",
+        "how many trackers should I build",
+        "how many trackers do i need to build",
+        "what number of trackers should I buy"
+      ],
       "average_questions": false
     },
     {
@@ -157,18 +183,22 @@
       "average_questions": false
     },
     {
-      "answer": "Here's a guide for how to build DIY trackers: https://docs.slimevr.dev/diy/diy-trackers-guide.html.",
+      "answer": "You can find info for how to build DIY trackers at https://docs.slimevr.dev/diy/diy-trackers-guide.html or in the [#diy](https://discord.com/channels/817184208525983775/823930029070876736) channel on the SlimeVR Discord.",
       "matched_questions": [
         "how do I build trackers?",
         "how to build",
         "tutorial video",
         "tracker tutorial",
-        "diy trackers"
+        "diy trackers",
+        "how do I make my own?",
+        "how do i make slimevr trackers",
+        "how do I make diy trackers?",
+        "how can i make my own diy slimevr"
       ],
       "average_questions": false
     },
     {
-      "answer": "Here's information on how to get trackers: https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers.",
+      "answer": "You can find info on how to get trackers at https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers.",
       "matched_questions": [
         "how can I get trackers?",
         "Is there anyway to purchase slimeVR right now? Other than D.I.Y",
@@ -177,19 +207,20 @@
       "average_questions": false
     },
     {
-      "answer": "You can pre-order trackers from here: https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
+      "answer": "You can pre-order trackers from the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
       "matched_questions": [
         "where can I buy trackers?",
         "How do I get trackers from crowdsupply?",
         "whats the link for crowdsupply?",
         "where do i buy",
         "where do i purchase trackes",
-        "crowdsupply"
+        "crowdsupply",
+        "where can I buy it?"
       ],
       "average_questions": false
     },
     {
-      "answer": "Here's information on how to change or cancel your order with CrowdSupply: https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order.",
+      "answer": "You can find info on how to change or cancel your order with CrowdSupply at https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order.",
       "matched_questions": [
         "how do I change my order",
         "change order",
@@ -202,14 +233,18 @@
       "average_questions": false
     },
     {
-      "answer": "You can find the SlimeVR documentation at https://docs.slimevr.dev/.",
+      "answer": "You can find the SlimeVR documentation at https://docs.slimevr.dev/. The documentation gives thorough information on what SlimeVR is, how to get it, how to use it, and more.",
       "matched_questions": [
         "the docs?",
         "where can I find the docs?",
         "documentation",
         "i need help",
         "how do I get help",
-        "where do I start?"
+        "where do I start?",
+        "what is it",
+        "what is slimevr",
+        "whats slimevr",
+        "what does it do"
       ],
       "average_questions": false
     },
@@ -223,12 +258,14 @@
       "average_questions": false
     },
     {
-      "answer": "You likely have unofficial trackers from Amazon, it's recommended that you just return them. Otherwise, if you really want to try to make them work, you can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the SlimeVR Discord for more information.",
+      "answer": "If you're having trouble connecting your trackers with the serial monitor, you may have unofficial trackers from Amazon. If so, it's recommended that you just return them, otherwise if you really want to try to make them work, you can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the SlimeVR Discord for more information.",
       "matched_questions": [
         "No Blinking of the Tracker if WiFi Window is open",
         "WiFi Window does not show anything if I set the WiFi",
         "WiFi Window does't do anything",
-        "Amazon Trackers setting the WiFi"
+        "Amazon Trackers setting the WiFi",
+        "serial logs dont show anything",
+        "the serial console doesn't show any messages"
       ],
       "average_questions": false
     },
@@ -264,12 +301,15 @@
       "matched_questions": [
         "can I use virtual desktop",
         "can I use airlink?",
-        "does alvr work?"
+        "does alvr work?",
+        "will i be able to use virtual desktop",
+        "will i be able to use airlink",
+        "can i use alvr"
       ],
       "average_questions": false
     },
     {
-      "answer": "Here is an invite to the SlimeVR Discord: https://discord.gg/SlimeVR.",
+      "answer": "You can join the SlimeVR Discord using this invite link: https://discord.gg/SlimeVR.",
       "matched_questions": [
         "how do I join the Discord?",
         "where's the discord",
@@ -299,16 +339,6 @@
         "reset keybinds",
         "how do i set up the reset keybinds",
         "keybinds"
-      ],
-      "average_questions": false
-    },
-    {
-      "answer": "# Bingus Search\nHi! Welcome to Bingus Search. This is a tool for searching SlimeVR FAQ questions using AI.\n## How do I search?\nTo search using this tool, just type in a question in the text box (like you did to see this) and the results will show up below.",
-      "matched_questions": [
-        "what is this?",
-        "what is this bingus thhing",
-        "how to search",
-        "bingus"
       ],
       "average_questions": false
     },
@@ -378,6 +408,46 @@
         "wrangler",
         "how to get wrangler",
         "how use joycon"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "If your avatar appears to above the ground in VR, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-avatar-floats-above-the-ground.",
+      "matched_questions": [
+        "my avatar floats above the ground",
+        "why am i floating in vr",
+        "why is my avatar floating in vrchat"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "If your trackers are behaving as if your legs are not bending, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-legs-dont-bend.",
+      "matched_questions": [
+        "my legs don't bend",
+        "why aren't my legs bending",
+        "why cant i bend my legs",
+        "why can't i lift my feet"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "If your trackers are behaving as if your legs are crossing when you are sitting down (or in any similar motion), you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-legs-cross-when-sitting-down.",
+      "matched_questions": [
+        "my legs cross when sitting down",
+        "why do my legs cross?",
+        "why do my legs cross in vr",
+        "how come my legs cross when I sit"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "If one of your legs is higher than the other, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#one-of-my-leg-is-higher-than-the-other.",
+      "matched_questions": [
+        "one of my legs is higher than the other",
+        "one leg is higher",
+        "how come it seems like one of my legs is higher than the other?",
+        "why are my legs different",
+        "why are my legs at different heights"
       ],
       "average_questions": false
     }
