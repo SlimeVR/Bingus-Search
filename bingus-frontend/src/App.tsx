@@ -167,7 +167,9 @@ function App() {
         ?.sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
         .map((result) => resultCard(result.text, result.relevance))
     ) : (
-      <Typography padding={1}>No results...</Typography>
+      <Typography color="text.secondary" padding={1}>
+        No results...
+      </Typography>
     );
   };
 
