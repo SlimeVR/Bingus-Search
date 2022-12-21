@@ -47,7 +47,9 @@
         "tracker is not appearing on the Server",
         "tracker doesn't show up",
         "tracker doesn't connect to the network",
-        "tracker won't connect to the internet"
+        "tracker won't connect to the internet",
+        "my trackers aren't connecting to my router",
+        "tracker isn't connecting to router"
       ],
       "average_questions": false
     },
