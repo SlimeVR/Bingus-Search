@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FaqBot\FaqBot.csproj" />
+    <ProjectReference Include="..\BingusLib\BingusLib.csproj" />
   </ItemGroup>
 
 </Project>
