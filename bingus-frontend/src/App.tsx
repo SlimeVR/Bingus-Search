@@ -3,6 +3,7 @@ import {
   Alert,
   Button,
   Card,
+  CircularProgress,
   Container,
   createTheme,
   CssBaseline,
@@ -46,6 +47,7 @@ function App() {
     [{ relevance: number; title: string; text: string }] | null
   >(null);
   const [lastSearchInput, setLastSearchInput] = useState("");
+  const [loadingResults, setLoadingResults] = useState(false);
 
   const updateUrl = function () {
     window.history.replaceState({}, window.name, url.toString());
@@ -54,12 +56,16 @@ function App() {
   const queryBingus = async (query: string, responseCount: number = 30) => {
     const url = new URL("https://bingus.bscotch.ca/api/faq/search");
 
+    setLoadingResults(true);
+
     url.search = new URLSearchParams({
       question: query,
       responseCount: responseCount.toFixed().toString(),
     }).toString();
 
-    return fetch(url).then((response) => response.json());
+    return fetch(url)
+      .then((response) => response.json())
+      .finally(() => setLoadingResults(false));
   };
 
   const search = async () => {
@@ -67,14 +73,21 @@ function App() {
       return;
     }
 
-    url.searchParams.set("q", input);
-    updateUrl();
+    // Clear last search results
+    setLastResults(null);
 
     if (!input || !/\S/.test(input)) {
       setLastResults(null);
       setLastSearchInput(input);
+
+      url.searchParams.delete("q");
+      updateUrl();
+
       return;
     }
+
+    url.searchParams.set("q", input);
+    updateUrl();
 
     const results = await queryBingus(input);
     setLastResults(results);
@@ -148,6 +161,16 @@ function App() {
     );
   };
 
+  const results = function () {
+    return lastResults?.length ? (
+      lastResults
+        ?.sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
+        .map((result) => resultCard(result.text, result.relevance))
+    ) : (
+      <Typography padding={1}>No results...</Typography>
+    );
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -201,11 +224,15 @@ function App() {
 
           <Paper variant="elevation" sx={{ padding: 1.5 }}>
             <Stack spacing={1.5} alignItems="center" direction="column">
-              {lastResults?.length
-                ? lastResults
-                    ?.sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
-                    .map((result) => resultCard(result.text, result.relevance))
-                : resultCard("No results...")}
+              {loadingResults ? (
+                <CircularProgress
+                  thickness={5.5}
+                  size={64}
+                  sx={{ padding: 1 }}
+                />
+              ) : (
+                results()
+              )}
             </Stack>
           </Paper>
         </Container>
