@@ -1,4 +1,4 @@
-namespace FaqBot.HNSW
+namespace BingusLib.HNSW
 {
     public struct LazyItemValue<TItem> : ILazyItem<TItem>
     {

@@ -1,7 +1,7 @@
 using HNSW.Net;
 using MathNet.Numerics.LinearAlgebra;
 
-namespace FaqBot.HNSW
+namespace BingusLib.HNSW
 {
     public class HnswHandler
     {

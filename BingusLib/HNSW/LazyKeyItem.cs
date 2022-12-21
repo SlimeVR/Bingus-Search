@@ -1,7 +1,7 @@
 using MessagePack;
 using MessagePack.Formatters;
 
-namespace FaqBot.HNSW
+namespace BingusLib.HNSW
 {
     public class LazyKeyItem<TKey, TItem> : LazyItem<TItem>
     {

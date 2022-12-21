@@ -1,9 +1,9 @@
-using FaqBot.FaqHandling;
-using FaqBot.HNSW;
+using BingusLib.FaqHandling;
+using BingusLib.HNSW;
 using Microsoft.AspNetCore.Mvc;
-using static FaqBot.FaqHandling.FaqHandler;
+using static BingusLib.FaqHandling.FaqHandler;
 
-namespace FaqBatApi.Controllers;
+namespace BingusApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 
-namespace FaqBot.SentenceEncoding
+namespace BingusLib.SentenceEncoding
 {
     public class UniversalSentenceEncoder : IDisposable
     {

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace FaqBot.FaqHandling
+namespace BingusLib.FaqHandling
 {
     public record FaqConfig
     {

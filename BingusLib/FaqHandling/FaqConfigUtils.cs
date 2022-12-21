@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace FaqBot.FaqHandling
+namespace BingusLib.FaqHandling
 {
     public static class FaqConfigUtils
     {

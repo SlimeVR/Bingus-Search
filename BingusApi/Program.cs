@@ -1,5 +1,5 @@
-using FaqBot.FaqHandling;
-using FaqBot.HNSW;
+using BingusLib.FaqHandling;
+using BingusLib.HNSW;
 using MessagePack;
 using MessagePack.Resolvers;
 

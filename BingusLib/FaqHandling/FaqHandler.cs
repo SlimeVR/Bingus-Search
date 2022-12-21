@@ -1,10 +1,10 @@
-using FaqBot.HNSW;
-using FaqBot.SentenceEncoding;
+using BingusLib.HNSW;
+using BingusLib.SentenceEncoding;
 using HNSW.Net;
 using MathNet.Numerics.LinearAlgebra;
 using Microsoft.Extensions.Logging;
 
-namespace FaqBot.FaqHandling
+namespace BingusLib.FaqHandling
 {
     public record FaqHandler
     {

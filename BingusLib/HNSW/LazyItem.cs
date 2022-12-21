@@ -1,4 +1,4 @@
-namespace FaqBot.HNSW
+namespace BingusLib.HNSW
 {
     public class LazyItem<TItem> : ILazyItem<TItem>
     {

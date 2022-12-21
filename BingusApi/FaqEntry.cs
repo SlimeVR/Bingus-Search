@@ -1,4 +1,4 @@
-namespace FaqBatApi;
+namespace BingusApi;
 
 public record FaqEntryResponse
 {
