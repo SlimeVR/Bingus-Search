@@ -280,7 +280,7 @@
       "average_questions": false
     },
     {
-      "answer": "SlimeVR running on standalone Quest is in early works with support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/tools/termux-installation.html or in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the SlimeVR Discord.",
+      "answer": "SlimeVR running on standalone Quest and Android is in early works with support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/tools/termux-installation.html or in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the SlimeVR Discord.",
       "matched_questions": [
         "standalone",
         "can i use it with quest",
@@ -291,7 +291,11 @@
         "termux",
         "how do I use termux",
         "how do I install termux",
-        "how can i use termux on my headset"
+        "how can i use termux on my headset",
+        "anyone know how to use slimevr without pc",
+        "how do i use it without a computer",
+        "i don't have a computer",
+        "no computer"
       ],
       "average_questions": false
     },
