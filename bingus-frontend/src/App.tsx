@@ -12,21 +12,25 @@ import {
   Stack,
   TextField,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
 import { useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { bake_cookie, read_cookie } from "sfcookies";
 import "./App.css";
 
 function App() {
-  const cookieTheme = read_cookie("user-theme");
-  const systemDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const localTheme = localStorage.getItem("user-theme");
+  const systemDarkMode = matchMedia("(prefers-color-scheme: dark)");
 
   const [prefersDarkMode, setPrefersDarkMode] = useState(
-    cookieTheme.length ? cookieTheme === "dark" : systemDarkMode
+    localTheme ? localTheme === "dark" : systemDarkMode.matches,
   );
+  if (!localTheme) {
+    systemDarkMode.onchange = (ev) => {
+      !localStorage.getItem("user-theme") &&
+        setPrefersDarkMode(() => ev.matches);
+    };
+  }
 
   const theme = useMemo(
     () =>
@@ -35,7 +39,7 @@ function App() {
           mode: prefersDarkMode ? "dark" : "light",
         },
       }),
-    [prefersDarkMode]
+    [prefersDarkMode],
   );
 
   const url = new URL(window.location.href);
@@ -53,7 +57,7 @@ function App() {
     window.history.replaceState({}, window.name, url.toString());
   };
 
-  const queryBingus = async (query: string, responseCount: number = 30) => {
+  const queryBingus = async (query: string, responseCount = 30) => {
     const url = new URL("https://bingus.bscotch.ca/api/faq/search");
 
     setLoadingResults(true);
@@ -102,14 +106,14 @@ function App() {
   const toggleTheme = async () => {
     setPrefersDarkMode((value) => {
       const newValue = !value;
-      bake_cookie("user-theme", newValue ? "dark" : "light");
+      localStorage.setItem("user-theme", newValue ? "dark" : "light");
       return newValue;
     });
   };
 
   const relevanceToElevation = function (
     relevance: number | null,
-    scale: number = 24
+    scale = 24,
   ): number {
     if (relevance) {
       return Math.round((relevance / 100) * scale);
@@ -154,7 +158,7 @@ function App() {
               margin: 0,
             }}
           >
-            <ReactMarkdown remarkPlugins={[remarkGfm]} children={text} />
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
           </Typography>
         </Stack>
       </Card>
