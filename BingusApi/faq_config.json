@@ -311,14 +311,16 @@
       "average_questions": false
     },
     {
-      "answer": "SlimeVR works with any headset that connects to SteamVR, so Link, AirLink, Virtual Desktop, and ALVR should all work.",
+      "answer": "SlimeVR should work with any headset that connects to SteamVR, so Link, AirLink, Virtual Desktop, and ALVR will all work.",
       "matched_questions": [
         "can I use virtual desktop",
         "can I use airlink?",
         "does alvr work?",
         "will i be able to use virtual desktop",
         "will i be able to use airlink",
-        "can i use alvr"
+        "can i use alvr",
+        "how do I use it with alvr",
+        "how do i use it for wireless vr"
       ],
       "average_questions": false
     },
@@ -340,7 +342,10 @@
         "where can I download the server from",
         "how to download SlimeVR",
         "how do I install slimevr",
-        "install"
+        "install",
+        "how do I install it",
+        "how do i install the server",
+        "where do i install it"
       ],
       "average_questions": false
     },
@@ -357,7 +362,7 @@
       "average_questions": false
     },
     {
-      "answer": "It's possible that you don't have the required WebView2 installed. You can download the WebView2 installer from here, make sure to specifically run it as an administrator otherwise it may not work: https://developer.microsoft.com/en-us/microsoft-edge/webview2/consumer/.",
+      "answer": "It's possible that you don't have the required WebView2 component installed. You can download the WebView2 installer from here, make sure to specifically run it as an administrator otherwise it may not work: https://developer.microsoft.com/en-us/microsoft-edge/webview2/consumer/.",
       "matched_questions": [
         "gui wont launch",
         "i cant open the gui",
@@ -368,7 +373,9 @@
         "webview",
         "i don't have webview2",
         "how do I get webview",
-        "how to get webview"
+        "how to get webview",
+        "panicked at",
+        "panicked at error while ruinning tauri application"
       ],
       "average_questions": false
     },
@@ -379,7 +386,9 @@
         "elbow tracking",
         "how do I get elbow tracking to work",
         "how do i get my elbows to work",
-        "what do i need for elbows"
+        "what do i need for elbows",
+        "where do I put my elbow trackers",
+        "whats the best placement for elbows"
       ],
       "average_questions": false
     },
