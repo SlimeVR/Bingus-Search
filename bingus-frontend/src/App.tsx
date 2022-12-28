@@ -23,7 +23,7 @@ function App() {
   const systemDarkMode = matchMedia("(prefers-color-scheme: dark)");
 
   const [prefersDarkMode, setPrefersDarkMode] = useState(
-    localTheme === "dark" || systemDarkMode.matches,
+    localTheme ? localTheme === "dark" : systemDarkMode.matches,
   );
   if (!localTheme) {
     systemDarkMode.onchange = (ev) => {
