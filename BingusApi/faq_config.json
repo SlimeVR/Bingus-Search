@@ -499,7 +499,8 @@
         "aux tracker",
         "extension imu",
         "aux imu",
-        "aux"
+        "aux",
+        "what are extensions"
       ],
       "average_questions": false
     },
