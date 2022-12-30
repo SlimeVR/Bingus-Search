@@ -184,7 +184,7 @@ function App() {
       <Container
         maxWidth="md"
         component="main"
-        className={prefersDarkMode ? "mddark" : ""}
+        className={prefersDarkMode ? "dark" : ""}
       >
         <Stack spacing={1} direction="row" sx={{ my: 2 }}>
           <Alert variant="outlined" severity="info" sx={{ flexGrow: 1 }}>
