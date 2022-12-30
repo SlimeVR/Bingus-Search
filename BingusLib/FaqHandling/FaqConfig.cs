@@ -12,20 +12,16 @@ namespace BingusLib.FaqHandling
             [JsonProperty(PropertyName = "matched_questions")]
             public List<string> Questions { get; set; } = new();
 
-            [JsonProperty(PropertyName = "average_questions")]
-            public bool AverageQuestions { get; set; } = false;
-
             public FaqConfigEntry()
             {
             }
 
-            public FaqConfigEntry(string answer, bool averageQuestions = false) : this()
+            public FaqConfigEntry(string answer) : this()
             {
                 Answer = answer;
-                AverageQuestions = averageQuestions;
             }
 
-            public FaqConfigEntry(string answer, IEnumerable<string> questions, bool averageQuestions = false) : this(answer, averageQuestions)
+            public FaqConfigEntry(string answer, IEnumerable<string> questions) : this(answer)
             {
                 Questions.AddRange(questions);
             }
@@ -33,6 +29,9 @@ namespace BingusLib.FaqHandling
 
         [JsonProperty(PropertyName = "model_path")]
         public string ModelPath { get; set; } = "";
+
+        [JsonProperty(PropertyName = "average_questions")]
+        public bool AverageQuestions { get; set; } = false;
 
         [JsonProperty(PropertyName = "faqs")]
         public List<FaqConfigEntry> FaqEntries { get; set; } = new();
