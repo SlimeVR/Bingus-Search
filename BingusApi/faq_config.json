@@ -36,7 +36,13 @@
     },
     {
       "answer": "If you are concerned about your trackers' flashing lights, you can find more information at https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing.",
-      "matched_questions": ["tracker keeps flashing", "flashing doesn't stop"],
+      "matched_questions": [
+        "tracker keeps flashing",
+        "flashing doesn't stop",
+        "trackers keep blinking",
+        "blinking trackers",
+        "why do my trackers keep on blinking"
+      ],
       "average_questions": false
     },
     {
@@ -100,13 +106,19 @@
       "answer": "If your trackers are drifting excessively, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#your-trackers-are-drifting-more-than-expected.",
       "matched_questions": [
         "trackers are drifting a lot",
-        "my trackers are drifting"
+        "my trackers are drifting",
+        "excessive drift"
       ],
       "average_questions": false
     },
     {
       "answer": "If your body proportions feel wrong or your feet feel like they're sliding excessively, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-feet-sink-into-the-floor--im-sliding-a-lot.",
-      "matched_questions": ["feet sink into the floor", "feet slide a lot"],
+      "matched_questions": [
+        "feet sink into the floor",
+        "feet slide a lot",
+        "my feet are sliding a lot",
+        "my feet skate a lot"
+      ],
       "average_questions": false
     },
     {
@@ -471,6 +483,37 @@
         "how come it seems like one of my legs is higher than the other?",
         "why are my legs different",
         "why are my legs at different heights"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "You can find information about what an extension tracker (also known as an \"aux tracker\" or \"aux IMU\") is at https://docs.slimevr.dev/slimevr101.html#what-is-an-extension.",
+      "matched_questions": [
+        "what is an aux tracker",
+        "what is an aux imu",
+        "what's an extension tracker?",
+        "whats a tracker extension",
+        "what is an extension tracker",
+        "extension",
+        "extension tracker",
+        "aux tracker",
+        "extension imu",
+        "aux imu",
+        "aux"
+      ],
+      "average_questions": false
+    },
+    {
+      "answer": "You can find information about mounting trackers at https://docs.slimevr.dev/server-setup/putting-on-trackers.html.",
+      "matched_questions": [
+        "how do I mount my trackers",
+        "where do I put on my trackers",
+        "where do I put my trackers",
+        "how am i supposed to mount my trackers",
+        "where do i put trackers on my body?",
+        "where on my body do the trackers go?",
+        "mounting",
+        "tracker positions"
       ],
       "average_questions": false
     }
