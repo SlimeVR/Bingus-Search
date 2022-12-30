@@ -183,7 +183,7 @@
       "average_questions": false
     },
     {
-      "answer": "You can find info for configuring body proportions at https://docs.slimevr.dev/server-setup/body-config.html or in the [#calibration](https://discord.com/channels/817184208525983775/930205281609187418) channel on the SlimeVR Discord.",
+      "answer": "You can find information for configuring body proportions at https://docs.slimevr.dev/server-setup/body-config.html or in the [#calibration](https://discord.com/channels/817184208525983775/930205281609187418) channel on the SlimeVR Discord.",
       "matched_questions": [
         "how do I set up my body proportions?",
         "body proportions",
@@ -197,7 +197,7 @@
       "average_questions": false
     },
     {
-      "answer": "You can find info for how to build DIY trackers at https://docs.slimevr.dev/diy/diy-trackers-guide.html or in the [#diy](https://discord.com/channels/817184208525983775/823930029070876736) channel on the SlimeVR Discord.",
+      "answer": "You can find information for how to build DIY trackers at https://docs.slimevr.dev/diy/diy-trackers-guide.html or in the [#diy](https://discord.com/channels/817184208525983775/823930029070876736) channel on the SlimeVR Discord.",
       "matched_questions": [
         "how do I build trackers?",
         "how to build",
@@ -212,7 +212,7 @@
       "average_questions": false
     },
     {
-      "answer": "You can find info on how to get trackers at https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers.",
+      "answer": "You can find information on how to get trackers at https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers.",
       "matched_questions": [
         "how can I get trackers?",
         "Is there anyway to purchase slimeVR right now? Other than D.I.Y",
@@ -242,7 +242,7 @@
       "average_questions": false
     },
     {
-      "answer": "You can find info on how to change or cancel your order with CrowdSupply at https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order.",
+      "answer": "You can find information on how to change or cancel your order with CrowdSupply at https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order.",
       "matched_questions": [
         "how do I change my order",
         "change order",
@@ -392,7 +392,7 @@
       "average_questions": false
     },
     {
-      "answer": "You can find info about elbow tracking in the [#elbow-tracking](https://discord.com/channels/817184208525983775/951504607501221959) channel on the SlimeVR Discord.",
+      "answer": "You can find information about elbow tracking in the [#elbow-tracking](https://discord.com/channels/817184208525983775/951504607501221959) channel on the SlimeVR Discord.",
       "matched_questions": [
         "elbow",
         "elbow tracking",
@@ -405,7 +405,7 @@
       "average_questions": false
     },
     {
-      "answer": "You can find info about using phones with SlimeVR through owoTrack at https://docs.slimevr.dev/tools/owoTrack.html or in the [#owotrack](https://discord.com/channels/817184208525983775/882347715093233734) channel on the SlimeVR Discord.",
+      "answer": "You can find information about using phones with SlimeVR through owoTrack at https://docs.slimevr.dev/tools/owoTrack.html or in the [#owotrack](https://discord.com/channels/817184208525983775/882347715093233734) channel on the SlimeVR Discord.",
       "matched_questions": [
         "owo",
         "owotrack",
@@ -422,7 +422,7 @@
       "average_questions": false
     },
     {
-      "answer": "You can find info about installing SlimeVR on Linux at https://docs.slimevr.dev/tools/linux-installation.html.",
+      "answer": "You can find information about installing SlimeVR on Linux at https://docs.slimevr.dev/tools/linux-installation.html.",
       "matched_questions": [
         "linux",
         "how do I use slimevr on linux",
@@ -431,7 +431,7 @@
       "average_questions": false
     },
     {
-      "answer": "You can find info about using joycons with SlimeVR at https://docs.slimevr.dev/tools/slimevr-wrangler.html or in the [#joycons](https://discord.com/channels/817184208525983775/932234894518677534) channel on the SlimeVR Discord.",
+      "answer": "You can find information about using joycons with SlimeVR at https://docs.slimevr.dev/tools/slimevr-wrangler.html or in the [#joycons](https://discord.com/channels/817184208525983775/932234894518677534) channel on the SlimeVR Discord.",
       "matched_questions": [
         "joycons",
         "how do I use joycons",
