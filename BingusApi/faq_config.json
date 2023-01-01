@@ -66,7 +66,9 @@
     },
     {
       "answer": "If you are getting a \"Sensor was reset error\" on your tracker's serial logs, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#sensor-was-reset-error.",
-      "matched_questions": ["Sensor was reset error"]
+      "matched_questions": [
+        "Sensor was reset error"
+      ]
     },
     {
       "answer": "If your trackers are connected to WiFi but are not showing up on the SlimeVR server, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wifi-but-dont-turn-up-on-slimevr.",
@@ -139,7 +141,10 @@
         "when is slimevr shipping?",
         "when is it shipping",
         "how long do I have to wait",
-        "whats the time to ship"
+        "whats the time to ship",
+        "when do I get my slimes",
+        "how long does shipping take",
+        "how long does it take to ship"
       ]
     },
     {
