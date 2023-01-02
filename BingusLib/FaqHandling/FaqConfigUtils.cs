@@ -21,13 +21,20 @@ namespace BingusLib.FaqHandling
             JsonSerializer.Serialize(stream, config);
         }
 
-        public static void WriteConfig(string file, FaqConfig config)
+        public static void AtomicFileOp(string file, Action<string> operation, bool overwrite = false)
         {
             ArgumentException.ThrowIfNullOrEmpty(file);
 
+            if (!overwrite && File.Exists(file)) throw new IOException($"File \"{file}\" exists and \"{nameof(overwrite)}\" is set to false.");
+
             var tempFile = Path.GetTempFileName();
-            WriteConfigUnsafe(tempFile, config);
-            File.Move(tempFile, file, overwrite: true);
+            operation(tempFile);
+            File.Move(tempFile, file, overwrite);
+        }
+
+        public static void WriteConfig(string file, FaqConfig config)
+        {
+            AtomicFileOp(file, tempFile => WriteConfigUnsafe(tempFile, config), overwrite: true);
         }
 
         public static FaqConfig InitializeConfig(ILogger<FaqConfig>? logger = null)
@@ -45,7 +52,7 @@ namespace BingusLib.FaqHandling
                     var backupFile = $"{FaqConfigFile}.bak";
                     try
                     {
-                        File.Move(FaqConfigFile, backupFile, overwrite: true);
+                        AtomicFileOp(backupFile, tempFile => File.Copy(FaqConfigFile, tempFile, overwrite: true), overwrite: true);
                     }
                     catch (Exception e2)
                     {
