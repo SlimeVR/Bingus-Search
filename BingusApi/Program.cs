@@ -5,17 +5,20 @@ using MessagePack.Resolvers;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add dependencies
+// Add dependencies.
 builder.Services.AddSingleton(sp =>
 {
-    var loggerFactory = sp.GetRequiredService<ILoggerFactory>();
+    return FaqConfigUtils.InitializeConfig(sp.GetService<ILogger<FaqConfig>>());
+});
 
+builder.Services.AddSingleton(sp =>
+{
     // Load the config
-    var faqConfig = FaqConfigUtils.InitializeConfig(loggerFactory.CreateLogger<FaqConfig>());
+    var faqConfig = sp.GetRequiredService<FaqConfig>();
 
     // Setup the FAQ handler
     var modelPath = Path.Join(Environment.CurrentDirectory, faqConfig.ModelPath);
-    var faqHandler = new FaqHandler(loggerFactory, modelPath);
+    var faqHandler = new FaqHandler(sp.GetRequiredService<ILoggerFactory>(), modelPath);
 
     // Add all questions
     faqHandler.AddItems(faqConfig.QAEntryEnumerator());
@@ -45,9 +48,10 @@ if (app.Environment.IsDevelopment())
 }
 
 // app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
+// app.UseAuthorization();
 app.MapControllers();
+
+// Service warmup.
+app.Services.GetRequiredService<FaqHandler>();
 
 app.Run();
