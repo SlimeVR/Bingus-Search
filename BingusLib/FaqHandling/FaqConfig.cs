@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace BingusLib.FaqHandling
 {
@@ -6,10 +6,10 @@ namespace BingusLib.FaqHandling
     {
         public record FaqConfigEntry
         {
-            [JsonProperty(PropertyName = "answer")]
+            [JsonPropertyName("answer")]
             public string Answer { get; set; } = "";
 
-            [JsonProperty(PropertyName = "matched_questions")]
+            [JsonPropertyName("matched_questions")]
             public List<string> Questions { get; set; } = new();
 
             public FaqConfigEntry()
@@ -27,13 +27,13 @@ namespace BingusLib.FaqHandling
             }
         }
 
-        [JsonProperty(PropertyName = "model_path")]
+        [JsonPropertyName("model_path")]
         public string ModelPath { get; set; } = "";
 
-        [JsonProperty(PropertyName = "average_questions")]
+        [JsonPropertyName("average_questions")]
         public bool AverageQuestions { get; set; } = false;
 
-        [JsonProperty(PropertyName = "faqs")]
+        [JsonPropertyName("faqs")]
         public List<FaqConfigEntry> FaqEntries { get; set; } = new();
 
         public FaqConfigEntry? GetAnswerEntry(string answer)
