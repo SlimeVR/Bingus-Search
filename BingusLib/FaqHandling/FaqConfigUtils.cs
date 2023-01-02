@@ -36,7 +36,7 @@ namespace BingusLib.FaqHandling
             {
                 try
                 {
-                    return LoadConfig(FaqConfigFile) ?? throw new NullReferenceException($"Unable to load config at \"{FaqConfigFile}\".");
+                    return LoadConfig(FaqConfigFile) ?? throw new FaqConfigException($"Unable to load the config file at \"{FaqConfigFile}\".");
                 }
                 catch (Exception e)
                 {
@@ -46,13 +46,14 @@ namespace BingusLib.FaqHandling
                     try
                     {
                         File.Move(FaqConfigFile, backupFile, overwrite: true);
-                    }
-                    catch
-                    {
-                        throw new IOException($"Unable to back up the config file at \"{FaqConfigFile}\" to \"{backupFile}\".", e);
-                    }
 
-                    logger?.LogInformation("Backed up the erroneous config file to {backupFile}, generating a new config...", backupFile);
+                        // We shouldn't continue past this point, otherwise nothing will work
+                        throw new FaqConfigException($"Unable to load the config file at \"{FaqConfigFile}\"");
+                    }
+                    catch (Exception e2)
+                    {
+                        throw new AggregateException(new FaqConfigException($"Unable to back up the config file at \"{FaqConfigFile}\" to \"{backupFile}\".", e2), e);
+                    }
                 }
             }
 
