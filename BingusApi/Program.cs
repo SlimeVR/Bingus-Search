@@ -52,6 +52,6 @@ if (app.Environment.IsDevelopment())
 app.MapControllers();
 
 // Service warmup.
-app.Services.GetRequiredService<FaqHandler>();
+Task.Run(app.Services.GetService<FaqHandler>);
 
 app.Run();
