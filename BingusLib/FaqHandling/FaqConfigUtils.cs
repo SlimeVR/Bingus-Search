@@ -59,7 +59,7 @@ namespace BingusLib.FaqHandling
                         throw new AggregateException(new FaqConfigException($"Unable to back up the config file at \"{FaqConfigFile}\" to \"{backupFile}\".", e2), e);
                     }
 
-                    logger?.LogError(e, "Backed up the current config file to \"{backupFile}\".", backupFile);
+                    logger?.LogInformation("Backed up the current config file to \"{backupFile}\".", backupFile);
 
                     // We shouldn't continue past this point as the config is required
                     throw new FaqConfigException($"Unable to load the config file at \"{FaqConfigFile}\".");
