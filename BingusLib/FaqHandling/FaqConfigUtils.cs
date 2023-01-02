@@ -46,14 +46,16 @@ namespace BingusLib.FaqHandling
                     try
                     {
                         File.Move(FaqConfigFile, backupFile, overwrite: true);
-
-                        // We shouldn't continue past this point, otherwise nothing will work
-                        throw new FaqConfigException($"Unable to load the config file at \"{FaqConfigFile}\"");
                     }
                     catch (Exception e2)
                     {
                         throw new AggregateException(new FaqConfigException($"Unable to back up the config file at \"{FaqConfigFile}\" to \"{backupFile}\".", e2), e);
                     }
+
+                    logger?.LogError(e, "Backed up the current config file to \"{backupFile}\".", backupFile);
+
+                    // We shouldn't continue past this point as the config is required
+                    throw new FaqConfigException($"Unable to load the config file at \"{FaqConfigFile}\".");
                 }
             }
 
