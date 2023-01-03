@@ -6,8 +6,7 @@ namespace BingusLib.FaqHandling
     {
         public record FaqConfigEntry
         {
-            [JsonPropertyName("answer")]
-            public string Answer { get; set; } = "";
+            [JsonPropertyName("answer")] public string Answer { get; set; } = "";
 
             [JsonPropertyName("matched_questions")]
             public List<string> Questions { get; set; } = new();
@@ -27,14 +26,12 @@ namespace BingusLib.FaqHandling
             }
         }
 
-        [JsonPropertyName("model_path")]
-        public string ModelPath { get; set; } = "";
+        [JsonPropertyName("model_path")] public string ModelPath { get; set; } = "";
 
         [JsonPropertyName("average_questions")]
         public bool AverageQuestions { get; set; } = false;
 
-        [JsonPropertyName("faqs")]
-        public List<FaqConfigEntry> FaqEntries { get; set; } = new();
+        [JsonPropertyName("faqs")] public List<FaqConfigEntry> FaqEntries { get; set; } = new();
 
         public FaqConfigEntry? GetAnswerEntry(string answer)
         {
@@ -46,7 +43,7 @@ namespace BingusLib.FaqHandling
             return null;
         }
 
-        public IEnumerable<(string, string)> QAEntryEnumerator()
+        public IEnumerable<(string, string)> QaEntryEnumerator()
         {
             foreach (var entry in FaqEntries)
             {

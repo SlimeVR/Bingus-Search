@@ -21,17 +21,20 @@ namespace BingusLib.HNSW
             _hnswGraph.AddItems(items);
         }
 
-        public void AddItems(IProgressReporter? progressReporter = null, CancellationToken cancellationToken = default, params ILazyItem<float[]>[] items)
+        public void AddItems(IProgressReporter? progressReporter = null, CancellationToken cancellationToken = default,
+            params ILazyItem<float[]>[] items)
         {
             _hnswGraph.AddItems(items, progressReporter, cancellationToken);
         }
 
-        public void AddItems(IReadOnlyList<ILazyItem<float[]>> items, IProgressReporter? progressReporter = null, CancellationToken cancellationToken = default)
+        public void AddItems(IReadOnlyList<ILazyItem<float[]>> items, IProgressReporter? progressReporter = null,
+            CancellationToken cancellationToken = default)
         {
             _hnswGraph.AddItems(items, progressReporter, cancellationToken);
         }
 
-        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(ILazyItem<float[]> item, int numResults)
+        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(ILazyItem<float[]> item,
+            int numResults)
         {
             return _hnswGraph.KNNSearch(item, numResults);
         }
@@ -41,7 +44,8 @@ namespace BingusLib.HNSW
             return SearchItems(new LazyItemValue<float[]>(item), numResults);
         }
 
-        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(Vector<float> item, int numResults)
+        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(Vector<float> item,
+            int numResults)
         {
             return SearchItems(item.AsArray() ?? item.ToArray(), numResults);
         }

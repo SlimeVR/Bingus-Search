@@ -33,7 +33,8 @@ namespace BingusLib.HNSW
             return _itemResolver(key);
         }
 
-        public void Serialize(ref MessagePackWriter writer, LazyKeyItem<TKey, TItem> value, MessagePackSerializerOptions options)
+        public void Serialize(ref MessagePackWriter writer, LazyKeyItem<TKey, TItem> value,
+            MessagePackSerializerOptions options)
         {
             var formatter = options.Resolver.GetFormatter<TKey>();
             formatter.Serialize(ref writer, value.Key, options);

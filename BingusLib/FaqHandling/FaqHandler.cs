@@ -47,7 +47,13 @@ namespace BingusLib.FaqHandling
                 var id = GetId();
                 var vector = _useHandler.ComputeEmbeddingVector(questionAnswerMapping.Item1);
 
-                _idMapping[id] = new FaqEntry() { Id = id, Question = questionAnswerMapping.Item1, Answer = questionAnswerMapping.Item2, Vector = _useHandler.ComputeEmbeddingVector(questionAnswerMapping.Item1) };
+                _idMapping[id] = new FaqEntry()
+                {
+                    Id = id,
+                    Question = questionAnswerMapping.Item1,
+                    Answer = questionAnswerMapping.Item2,
+                    Vector = _useHandler.ComputeEmbeddingVector(questionAnswerMapping.Item1)
+                };
                 hnswItems.Add(new LazyKeyItem<int, float[]>(id, vector.AsArray));
             }
 

@@ -6,10 +6,7 @@ using MessagePack.Resolvers;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add dependencies.
-builder.Services.AddSingleton(sp =>
-{
-    return FaqConfigUtils.InitializeConfig(sp.GetService<ILogger<FaqConfig>>());
-});
+builder.Services.AddSingleton(sp => FaqConfigUtils.InitializeConfig(sp.GetService<ILogger<FaqConfig>>()));
 
 builder.Services.AddSingleton(sp =>
 {
@@ -21,11 +18,12 @@ builder.Services.AddSingleton(sp =>
     var faqHandler = new FaqHandler(sp.GetRequiredService<ILoggerFactory>(), modelPath);
 
     // Add all questions
-    faqHandler.AddItems(faqConfig.QAEntryEnumerator());
+    faqHandler.AddItems(faqConfig.QaEntryEnumerator());
 
     // Setup HNSW serialization stuff
     StaticCompositeResolver.Instance.Register(MessagePackSerializer.DefaultOptions.Resolver);
-    StaticCompositeResolver.Instance.Register(new LazyKeyItemFormatter<int, float[]>(i => faqHandler.GetEntry(i).Vector!.AsArray()));
+    StaticCompositeResolver.Instance.Register(
+        new LazyKeyItemFormatter<int, float[]>(i => faqHandler.GetEntry(i).Vector!.AsArray()));
     MessagePackSerializer.DefaultOptions.WithResolver(StaticCompositeResolver.Instance);
 
     return faqHandler;

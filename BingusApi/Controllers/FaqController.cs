@@ -9,8 +9,8 @@ namespace BingusApi.Controllers;
 [Route("[controller]")]
 public class FaqController : ControllerBase
 {
-    private static readonly int _minQuery = 1;
-    private static readonly int _maxQuery = 50;
+    private static readonly int MinQuery = 1;
+    private static readonly int MaxQuery = 50;
 
     private readonly FaqHandler _faqHandler;
 
@@ -33,19 +33,19 @@ public class FaqController : ControllerBase
             throw new ArgumentException("There must be a question to query.", nameof(question));
         }
 
-        responseCount = Math.Clamp(responseCount, _minQuery, _maxQuery);
+        responseCount = Math.Clamp(responseCount, MinQuery, MaxQuery);
         var results = _faqHandler.Search(question, responseCount);
 
         var responses = results.Select(result =>
-        {
-            var entry = GetEntry(result.Item);
-            return new FaqEntryResponse()
             {
-                Relevance = (1f - result.Distance) * 100f,
-                Title = entry.Question,
-                Text = entry.Answer,
-            };
-        }).GroupBy(result => result.Text).Select(groupedResults => groupedResults.MaxBy(result => result.Relevance) ?? groupedResults.First()).OrderByDescending(response => response.Relevance);
+                var entry = GetEntry(result.Item);
+                return new FaqEntryResponse()
+                {
+                    Relevance = (1f - result.Distance) * 100f, Title = entry.Question, Text = entry.Answer,
+                };
+            }).GroupBy(result => result.Text)
+            .Select(groupedResults => groupedResults.MaxBy(result => result.Relevance) ?? groupedResults.First())
+            .OrderByDescending(response => response.Relevance);
 
         return responses;
     }

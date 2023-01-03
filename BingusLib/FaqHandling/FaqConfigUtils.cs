@@ -7,12 +7,12 @@ namespace BingusLib.FaqHandling
     {
         public static readonly string FaqConfigFile = Path.GetFullPath("faq_config.json");
 
-        private static readonly JsonSerializerOptions options = new() { WriteIndented = true };
+        private static readonly JsonSerializerOptions Options = new() { WriteIndented = true };
 
         public static FaqConfig? LoadConfig(string file)
         {
             using var stream = new FileStream(file, FileMode.Open);
-            return JsonSerializer.Deserialize<FaqConfig>(stream, options);
+            return JsonSerializer.Deserialize<FaqConfig>(stream, Options);
         }
 
         public static void WriteConfigUnsafe(string file, FaqConfig config)
@@ -25,7 +25,8 @@ namespace BingusLib.FaqHandling
         {
             ArgumentException.ThrowIfNullOrEmpty(file);
 
-            if (!overwrite && File.Exists(file)) throw new IOException($"File \"{file}\" exists and \"{nameof(overwrite)}\" is set to false.");
+            if (!overwrite && File.Exists(file))
+                throw new IOException($"File \"{file}\" exists and \"{nameof(overwrite)}\" is set to false.");
 
             var tempFile = Path.GetTempFileName();
             operation(tempFile);
@@ -43,20 +44,27 @@ namespace BingusLib.FaqHandling
             {
                 try
                 {
-                    return LoadConfig(FaqConfigFile) ?? throw new FaqConfigException($"Unable to load the config file at \"{FaqConfigFile}\".");
+                    return LoadConfig(FaqConfigFile) ??
+                           throw new FaqConfigException($"Unable to load the config file at \"{FaqConfigFile}\".");
                 }
                 catch (Exception e)
                 {
-                    logger?.LogError(e, "Unable to load the config file at \"{FaqConfigFile}\", backing up the current config...", FaqConfigFile);
+                    logger?.LogError(e,
+                        "Unable to load the config file at \"{FaqConfigFile}\", backing up the current config...",
+                        FaqConfigFile);
 
                     var backupFile = $"{FaqConfigFile}.bak";
                     try
                     {
-                        AtomicFileOp(backupFile, tempFile => File.Copy(FaqConfigFile, tempFile, overwrite: true), overwrite: true);
+                        AtomicFileOp(backupFile, tempFile => File.Copy(FaqConfigFile, tempFile, overwrite: true),
+                            overwrite: true);
                     }
                     catch (Exception e2)
                     {
-                        throw new AggregateException(new FaqConfigException($"Unable to back up the config file at \"{FaqConfigFile}\" to \"{backupFile}\".", e2), e);
+                        throw new AggregateException(
+                            new FaqConfigException(
+                                $"Unable to back up the config file at \"{FaqConfigFile}\" to \"{backupFile}\".", e2),
+                            e);
                     }
 
                     logger?.LogInformation("Backed up the current config file to \"{backupFile}\".", backupFile);

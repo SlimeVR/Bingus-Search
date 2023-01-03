@@ -13,12 +13,12 @@ namespace BingusLib.SentenceEncoding
         public readonly string ModelPath;
         public readonly int OutputDimension = 512;
 
-        private readonly SessionOptions SessionOptions = new();
-        private readonly IntPtr LibraryHandle;
-        private readonly InferenceSession Session;
+        private readonly SessionOptions _sessionOptions = new();
+        private readonly IntPtr _libraryHandle;
+        private readonly InferenceSession _session;
 
-        private readonly DenseTensor<string> InputTensor = new(1);
-        private readonly NamedOnnxValue[] Inputs;
+        private readonly DenseTensor<string> _inputTensor = new(1);
+        private readonly NamedOnnxValue[] _inputs;
 
         public UniversalSentenceEncoder(ILogger<UniversalSentenceEncoder> logger, string modelPath)
         {
@@ -28,11 +28,11 @@ namespace BingusLib.SentenceEncoding
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                SessionOptions.RegisterCustomOpLibraryV2("libs/ortextensions.dll", out LibraryHandle);
+                _sessionOptions.RegisterCustomOpLibraryV2("libs/ortextensions.dll", out _libraryHandle);
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                SessionOptions.RegisterCustomOpLibraryV2("libs/libortextensions.so", out LibraryHandle);
+                _sessionOptions.RegisterCustomOpLibraryV2("libs/libortextensions.so", out _libraryHandle);
             }
             else
             {
@@ -41,7 +41,7 @@ namespace BingusLib.SentenceEncoding
 
             try
             {
-                SessionOptions.AppendExecutionProvider_CPU();
+                _sessionOptions.AppendExecutionProvider_CPU();
             }
             catch (Exception e)
             {
@@ -50,18 +50,18 @@ namespace BingusLib.SentenceEncoding
 
             try
             {
-                SessionOptions.AppendExecutionProvider_CUDA();
+                _sessionOptions.AppendExecutionProvider_CUDA();
             }
             catch (Exception e)
             {
                 Logger.LogWarning(e, "CUDA is not available");
             }
 
-            Session = new(ModelPath, SessionOptions);
+            _session = new(ModelPath, _sessionOptions);
 
             try
             {
-                OutputDimension = Session.OutputMetadata.Single().Value.Dimensions[1];
+                OutputDimension = _session.OutputMetadata.Single().Value.Dimensions[1];
                 logger.LogInformation("Output dimension detected as {OutputDimension}", OutputDimension);
             }
             catch (Exception e)
@@ -69,14 +69,14 @@ namespace BingusLib.SentenceEncoding
                 Logger.LogWarning(e, "Output dimension could not be detected, defaulting to 512");
             }
 
-            Inputs = new[] { NamedOnnxValue.CreateFromTensor("inputs", InputTensor) };
+            _inputs = new[] { NamedOnnxValue.CreateFromTensor("inputs", _inputTensor) };
         }
 
         public float[] ComputeEmbedding(string input, float[] vectorBuffer)
         {
-            InputTensor.SetValue(0, input);
+            _inputTensor.SetValue(0, input);
 
-            using var outputs = Session.Run(Inputs);
+            using var outputs = _session.Run(_inputs);
             var outputTensor = (DenseTensor<float>)outputs.Single().Value;
 
             for (var i = 0; i < OutputDimension; i++)
@@ -114,9 +114,9 @@ namespace BingusLib.SentenceEncoding
 
         public void Dispose()
         {
-            Session.Dispose();
-            SessionOptions.Dispose();
-            NativeLibrary.Free(LibraryHandle);
+            _session.Dispose();
+            _sessionOptions.Dispose();
+            NativeLibrary.Free(_libraryHandle);
             GC.SuppressFinalize(this);
         }
     }
