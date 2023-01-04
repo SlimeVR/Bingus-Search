@@ -41,7 +41,9 @@ public class FaqController : ControllerBase
                 var entry = GetEntry(result.Item);
                 return new FaqEntryResponse()
                 {
-                    Relevance = (1f - result.Distance) * 100f, Title = entry.Question, Text = entry.Answer,
+                    Relevance = (1f - result.Distance) * 100f,
+                    Title = entry.Question,
+                    Text = entry.Answer,
                 };
             }).GroupBy(result => result.Text)
             .Select(groupedResults => groupedResults.MaxBy(result => result.Relevance) ?? groupedResults.First())

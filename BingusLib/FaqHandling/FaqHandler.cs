@@ -21,15 +21,19 @@ namespace BingusLib.FaqHandling
         private readonly ILoggerFactory _loggerFactory;
         private readonly ILogger<FaqHandler> _logger;
 
+        private readonly IEmbeddingCache? _embeddingCache;
+
         private readonly UniversalSentenceEncoder _useHandler;
         private readonly HnswHandler _hnswHandler = new();
 
         private readonly Dictionary<int, FaqEntry> _idMapping = new();
 
-        public FaqHandler(ILoggerFactory loggerFactory, string modelPath)
+        public FaqHandler(ILoggerFactory loggerFactory, string modelPath, IEmbeddingCache? embeddingCache = null)
         {
             _loggerFactory = loggerFactory;
             _logger = _loggerFactory.CreateLogger<FaqHandler>();
+
+            _embeddingCache = embeddingCache;
 
             _useHandler = new(_loggerFactory.CreateLogger<UniversalSentenceEncoder>(), modelPath);
         }
@@ -42,19 +46,27 @@ namespace BingusLib.FaqHandling
         public void AddItems(IEnumerable<(string, string)> questionAnswerMappings)
         {
             var hnswItems = new List<LazyKeyItem<int, float[]>>();
-            foreach (var questionAnswerMapping in questionAnswerMappings)
+            foreach (var (question, answer) in questionAnswerMappings)
             {
                 var id = GetId();
-                var vector = _useHandler.ComputeEmbeddingVector(questionAnswerMapping.Item1);
+                Vector<float>? embedding = null;
+
+                if (_embeddingCache != null) embedding = _embeddingCache?.Get(question);
+
+                if (embedding == null)
+                {
+                    embedding = _useHandler.ComputeEmbeddingVector(question);
+                    _embeddingCache?.Add(question, embedding);
+                }
 
                 _idMapping[id] = new FaqEntry()
                 {
                     Id = id,
-                    Question = questionAnswerMapping.Item1,
-                    Answer = questionAnswerMapping.Item2,
-                    Vector = _useHandler.ComputeEmbeddingVector(questionAnswerMapping.Item1)
+                    Question = question,
+                    Answer = answer,
+                    Vector = embedding
                 };
-                hnswItems.Add(new LazyKeyItem<int, float[]>(id, vector.AsArray));
+                hnswItems.Add(new LazyKeyItem<int, float[]>(id, embedding.AsArray));
             }
 
             _hnswHandler.AddItems(hnswItems);
@@ -62,7 +74,7 @@ namespace BingusLib.FaqHandling
 
         public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> Search(string query, int numResults)
         {
-            var vector = _useHandler.ComputeEmbedding(query);
+            var vector = _embeddingCache?.GetRaw(query) ?? _useHandler.ComputeEmbedding(query);
             return _hnswHandler.SearchItems(vector, numResults);
         }
 

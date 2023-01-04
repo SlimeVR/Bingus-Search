@@ -1,11 +1,14 @@
+using BingusApi;
 using BingusLib.FaqHandling;
 using BingusLib.HNSW;
 using MessagePack;
 using MessagePack.Resolvers;
+using RocksDbSharp;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add dependencies.
+builder.Services.AddSingleton<IEmbeddingCache>(sp => new RocksDbCache(RocksDb.Open(new DbOptions().SetCreateIfMissing(true), "embedding_cache")));
 builder.Services.AddSingleton(sp => FaqConfigUtils.InitializeConfig(sp.GetService<ILogger<FaqConfig>>()));
 
 builder.Services.AddSingleton(sp =>
@@ -15,7 +18,7 @@ builder.Services.AddSingleton(sp =>
 
     // Setup the FAQ handler
     var modelPath = Path.Join(Environment.CurrentDirectory, faqConfig.ModelPath);
-    var faqHandler = new FaqHandler(sp.GetRequiredService<ILoggerFactory>(), modelPath);
+    var faqHandler = new FaqHandler(sp.GetRequiredService<ILoggerFactory>(), modelPath, embeddingCache: sp.GetService<IEmbeddingCache>());
 
     // Add all questions
     faqHandler.AddItems(faqConfig.QaEntryEnumerator());

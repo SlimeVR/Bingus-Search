@@ -478,3 +478,4 @@ $RECYCLE.BIN/
 
 # Bingus GitIgnore Entries
 BingusLib/models/
+BingusApi/embedding_cache/
