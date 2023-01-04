@@ -148,7 +148,7 @@
       ]
     },
     {
-      "answer": "It's not recommended to use 3 trackers. If you use 3 trackers, you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). You can fine more information about how many trackers you need at https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need.",
+      "answer": "It's not recommended to use 3 trackers. If you use 3 trackers, you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). You can see a demonstration of different combinations of trackers in ZRock's video at https://youtu.be/iKmrNKLacwk. You can find more information about how many trackers you need at https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need.",
       "matched_questions": [
         "can I use 3 trackers for full body tracking",
         "3 trackers",
@@ -159,7 +159,8 @@
         "can i use my three psmove controllers?",
         "what if i use three trackers",
         "can i use three trackers?",
-        "three trackers"
+        "three trackers",
+        "3"
       ]
     },
     {
