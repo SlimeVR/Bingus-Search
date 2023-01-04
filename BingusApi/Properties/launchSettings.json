@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "FaqBatApi": {
+    "BingusApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
