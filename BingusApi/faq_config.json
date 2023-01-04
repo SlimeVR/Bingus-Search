@@ -74,7 +74,10 @@
       "answer": "If your trackers are connected to WiFi but are not showing up on the SlimeVR server, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wifi-but-dont-turn-up-on-slimevr.",
       "matched_questions": [
         "trackers are connected to my wifi but don't turn up on the server",
-        "my trackers are on wifi but not on the gui"
+        "my trackers are on wifi but not on the gui",
+        "trackers are connected to the wifi but not slimevr",
+        "it connects to wifi but not slimevr",
+        "trackers are on my wifi but not slimevr server"
       ]
     },
     {
