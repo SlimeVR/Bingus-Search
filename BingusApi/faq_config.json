@@ -458,7 +458,7 @@
       ]
     },
     {
-      "answer": "You can find information about what an extension tracker (also known as an \"aux tracker\" or \"aux IMU\") is at https://docs.slimevr.dev/slimevr101.html#what-is-an-extension.",
+      "answer": "You can find information about extension trackers (also known as an \"aux tracker\" or \"aux IMU\") at https://docs.slimevr.dev/slimevr101.html#what-is-an-extension.",
       "matched_questions": [
         "what is an aux tracker",
         "what is an aux imu",
@@ -471,7 +471,8 @@
         "extension imu",
         "aux imu",
         "aux",
-        "what are extensions"
+        "what are extensions",
+        "What do the tracker extensions do? are they an additional imu?"
       ]
     },
     {
