@@ -54,7 +54,10 @@
         "my trackers aren't connecting to my router",
         "tracker isn't connecting to router",
         "my d1 mini doesnt connect to wifi",
-        "my esp doesnt connect to the wifi"
+        "my esp doesnt connect to the wifi",
+        "I uploaded firmware to the boards but it says wifi creds arent correct",
+        "wifi credentials",
+        "wifi error"
       ]
     },
     {
