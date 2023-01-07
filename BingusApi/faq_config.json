@@ -52,7 +52,9 @@
         "tracker doesn't connect to the network",
         "tracker won't connect to the internet",
         "my trackers aren't connecting to my router",
-        "tracker isn't connecting to router"
+        "tracker isn't connecting to router",
+        "my d1 mini doesnt connect to wifi",
+        "my esp doesnt connect to the wifi"
       ]
     },
     {
@@ -187,7 +189,9 @@
         "automatic proportions",
         "how do I do autobone",
         "how do I use autobone",
-        "how do i measure body proportions"
+        "how do i measure body proportions",
+        "body calibration",
+        "proportion calibration"
       ]
     },
     {
@@ -351,11 +355,13 @@
         "how to get keybind",
         "reset keybinds",
         "how do i set up the reset keybinds",
-        "keybinds"
+        "keybinds",
+        "reset bindings",
+        "how to setup reset bindings"
       ]
     },
     {
-      "answer": "It's possible that you don't have the required WebView2 component installed. You can download the WebView2 installer from here, make sure to specifically run it as an administrator otherwise it may not work: https://developer.microsoft.com/en-us/microsoft-edge/webview2/consumer/.",
+      "answer": "It's possible that you don't have the required WebView2 component installed. You can download the WebView2 installer from here, make sure to specifically run it as an administrator (right click, then click \"Run as administrator\") otherwise it may not work: https://developer.microsoft.com/en-us/microsoft-edge/webview2/consumer/.",
       "matched_questions": [
         "gui wont launch",
         "i cant open the gui",
@@ -488,6 +494,21 @@
         "where on my body do the trackers go?",
         "mounting",
         "tracker positions"
+      ]
+    },
+    {
+      "answer": "You can find information about IMU calibration at https://docs.slimevr.dev/server-setup/initial-setup.html#imu-calibration, or for specifically BMI160's, in the pins of the [#\"BMI160 IMU\"](https://discord.com/channels/817184208525983775/999926371218374666) thread on the SlimeVR Discord.",
+      "matched_questions": [
+        "how do I calibrate my IMUs",
+        "imu calibration",
+        "tracker calibration",
+        "how do i calibrate trackers",
+        "calibrate imus",
+        "sensor calibration",
+        "how to calibrate imus",
+        "bmi160 calibration",
+        "mpu calibration",
+        "mpu6500 calibration"
       ]
     }
   ]
