@@ -513,6 +513,19 @@
         "mpu calibration",
         "mpu6500 calibration"
       ]
+    },
+    {
+      "answer": "You can find information about using SlimeVR with ShadowPC at https://docs.slimevr.dev/tools/shadowpc.html.",
+      "matched_questions": [
+        "shadowpc",
+        "shadow",
+        "remote pc",
+        "cloud computer",
+        "how do i use slimevr with shadowpc",
+        "how can I use shadow pc",
+        "i have a shadowpc, how do i connect slimevr?",
+        "i have a shadowpc, how do i connect my trackers?"
+      ]
     }
   ]
 }
