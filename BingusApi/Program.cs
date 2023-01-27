@@ -2,10 +2,8 @@ using AspNetCoreRateLimit;
 using BingusApi;
 using BingusLib.FaqHandling;
 using BingusLib.HNSW;
-using MathNet.Numerics;
 using MessagePack;
 using MessagePack.Resolvers;
-using Microsoft.Extensions.Configuration;
 using RocksDbSharp;
 
 var builder = WebApplication.CreateBuilder(args);
