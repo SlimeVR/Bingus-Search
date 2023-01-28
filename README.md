@@ -1,9 +1,14 @@
 # Bingus
 
+## Recommended Models
+
+- <https://tfhub.dev/google/universal-sentence-encoder-large/5>
+- <https://tfhub.dev/google/universal-sentence-encoder-multilingual-large/3>
+
 ## Compiling ONNX Runtime Extensions
 
-- Link: https://github.com/microsoft/onnxruntime-extensions
-- Reference: https://github.com/microsoft/onnxruntime-extensions/blob/main/docs/development.md
+- Link: <https://github.com/microsoft/onnxruntime-extensions>
+- Reference: <https://github.com/microsoft/onnxruntime-extensions/blob/main/docs/development.md>
 
 To compile ONNX Runtime Extensions, run the following commands:
 
@@ -34,7 +39,7 @@ strip --strip-all libortextensions.so
 
 ## Converting TensorFlow model to ONNX model
 
-- Link: https://github.com/onnx/tensorflow-onnx
+- Link: <https://github.com/onnx/tensorflow-onnx>
 
 To convert the TensorFlow model to an ONNX model, you will need to have the ONNX Runtime Extensions, then run the following commands:
 
