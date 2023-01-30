@@ -195,6 +195,13 @@ function App() {
               https://discord.gg/SlimeVR
             </Link>
             .
+            <br />
+            <br />
+            You can leave any feedback about Bingus Search at{" "}
+            <Link href="https://bingus.bscotch.ca/feedback">
+              https://bingus.bscotch.ca/feedback
+            </Link>
+            .
           </Alert>
           <Button
             variant="contained"
