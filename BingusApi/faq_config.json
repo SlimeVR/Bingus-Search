@@ -364,7 +364,7 @@
       ]
     },
     {
-      "answer": "It's possible that you don't have the required WebView2 component installed. You can download the WebView2 installer from here, make sure to specifically run it as an administrator (right click, then click \"Run as administrator\") and from the C: drive on your PC, otherwise it may not work: https://developer.microsoft.com/en-us/microsoft-edge/webview2/consumer/.",
+      "answer": "If the SlimeVR GUI is crashing immediately and/or is showing an error relating to WebView2 (ex. \"panicked at ... WebView2Error\"), you can find potential fixes at https://docs.slimevr.dev/common-issues.html#webview2-is-missing--slimevr-gui-crashes-immediately--panicked-at--webview2error.",
       "matched_questions": [
         "gui wont launch",
         "i cant open the gui",
