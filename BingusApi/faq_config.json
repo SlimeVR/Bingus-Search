@@ -183,7 +183,7 @@
       ]
     },
     {
-      "answer": "You can find information for configuring body proportions at https://docs.slimevr.dev/server-setup/body-config.html or in the [#calibration](https://discord.com/channels/817184208525983775/930205281609187418) channel on the SlimeVR Discord.",
+      "answer": "You can find information for configuring body proportions at https://docs.slimevr.dev/server-setup/body-config.html or in the [#calibration](https://discord.com/channels/817184208525983775/930205281609187418) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "how do I set up my body proportions?",
         "body proportions",
@@ -198,7 +198,7 @@
       ]
     },
     {
-      "answer": "You can find information for how to build DIY trackers at https://docs.slimevr.dev/diy/diy-trackers-guide.html or in the [#diy](https://discord.com/channels/817184208525983775/823930029070876736) channel on the SlimeVR Discord.",
+      "answer": "You can find information for how to build DIY trackers at https://docs.slimevr.dev/diy/diy-trackers-guide.html or in the [#diy](https://discord.com/channels/817184208525983775/823930029070876736) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "how do I build trackers?",
         "how to build",
@@ -267,7 +267,7 @@
       ]
     },
     {
-      "answer": "**__Don't__** buy trackers from Amazon. Buying trackers from Amazon is not recommended as there have been many reports of faulty trackers from Amazon. You can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the SlimeVR Discord for more information.",
+      "answer": "**__Don't__** buy trackers from Amazon. Buying trackers from Amazon is not recommended as there have been many reports of faulty trackers from Amazon. You can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR) for more information.",
       "matched_questions": [
         "are the amazon trackers ok to buy?",
         "can I buy from amazon?",
@@ -275,7 +275,7 @@
       ]
     },
     {
-      "answer": "If you're having trouble connecting your trackers with the serial monitor, you may have unofficial trackers from Amazon. If so, it's recommended that you just return them, otherwise if you really want to try to make them work, you can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the SlimeVR Discord for more information.",
+      "answer": "If you're having trouble connecting your trackers with the serial monitor, you may have unofficial trackers from Amazon. If so, it's recommended that you just return them, otherwise if you really want to try to make them work, you can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR) for more information.",
       "matched_questions": [
         "No Blinking of the Tracker if WiFi Window is open",
         "WiFi Window does not show anything if I set the WiFi",
@@ -286,7 +286,7 @@
       ]
     },
     {
-      "answer": "SlimeVR running on standalone Quest and Android is in early works with support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/tools/termux-installation.html or in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the SlimeVR Discord.",
+      "answer": "SlimeVR running on standalone Quest and Android is in early works with support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/tools/termux-installation.html or in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "standalone",
         "can i use it with quest",
@@ -305,7 +305,7 @@
       ]
     },
     {
-      "answer": "SlimeVR has support for VRChat's OSC tracker protocol, you can find more information in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the SlimeVR Discord.",
+      "answer": "SlimeVR has support for VRChat's OSC tracker protocol, you can find more information in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "does it work with osc?",
         "can i use it for vrchat osc?",
@@ -328,7 +328,7 @@
       ]
     },
     {
-      "answer": "You can join the SlimeVR Discord using this invite link: https://discord.gg/SlimeVR.",
+      "answer": "The SlimeVR Discord invite link is https://discord.gg/SlimeVR.",
       "matched_questions": [
         "how do I join the Discord?",
         "where's the discord",
@@ -364,7 +364,7 @@
       ]
     },
     {
-      "answer": "It's possible that you don't have the required WebView2 component installed. You can download the WebView2 installer from here, make sure to specifically run it as an administrator (right click, then click \"Run as administrator\") otherwise it may not work: https://developer.microsoft.com/en-us/microsoft-edge/webview2/consumer/.",
+      "answer": "It's possible that you don't have the required WebView2 component installed. You can download the WebView2 installer from here, make sure to specifically run it as an administrator (right click, then click \"Run as administrator\") and from the C: drive on your PC, otherwise it may not work: https://developer.microsoft.com/en-us/microsoft-edge/webview2/consumer/.",
       "matched_questions": [
         "gui wont launch",
         "i cant open the gui",
@@ -382,7 +382,7 @@
       ]
     },
     {
-      "answer": "You can find information about elbow tracking in the [#elbow-tracking](https://discord.com/channels/817184208525983775/951504607501221959) channel on the SlimeVR Discord.",
+      "answer": "You can find information about elbow tracking in the [#elbow-tracking](https://discord.com/channels/817184208525983775/951504607501221959) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "elbow",
         "elbow tracking",
@@ -394,7 +394,7 @@
       ]
     },
     {
-      "answer": "You can find information about using phones with SlimeVR through owoTrack at https://docs.slimevr.dev/tools/owoTrack.html or in the [#owotrack](https://discord.com/channels/817184208525983775/882347715093233734) channel on the SlimeVR Discord.",
+      "answer": "You can find information about using phones with SlimeVR through owoTrack at https://docs.slimevr.dev/tools/owoTrack.html or in the [#owotrack](https://discord.com/channels/817184208525983775/882347715093233734) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "owo",
         "owotrack",
@@ -418,7 +418,7 @@
       ]
     },
     {
-      "answer": "You can find information about using joycons with SlimeVR at https://docs.slimevr.dev/tools/slimevr-wrangler.html or in the [#joycons](https://discord.com/channels/817184208525983775/932234894518677534) channel on the SlimeVR Discord.",
+      "answer": "You can find information about using joycons with SlimeVR at https://docs.slimevr.dev/tools/slimevr-wrangler.html or in the [#joycons](https://discord.com/channels/817184208525983775/932234894518677534) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "joycons",
         "how do I use joycons",
@@ -500,7 +500,7 @@
       ]
     },
     {
-      "answer": "You can find information about IMU calibration at https://docs.slimevr.dev/server-setup/initial-setup.html#imu-calibration, or for specifically BMI160's, in the pins of the [#\"BMI160 IMU\"](https://discord.com/channels/817184208525983775/999926371218374666) thread on the SlimeVR Discord.",
+      "answer": "You can find information about IMU calibration at https://docs.slimevr.dev/server-setup/initial-setup.html#imu-calibration, or for specifically BMI160's, in the pins of the [#\"BMI160 IMU\"](https://discord.com/channels/817184208525983775/999926371218374666) thread on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "how do I calibrate my IMUs",
         "imu calibration",
@@ -526,6 +526,18 @@
         "i have a shadowpc, how do i connect slimevr?",
         "i have a shadowpc, how do i connect my trackers?",
         "shadowpc how to"
+      ]
+    },
+    {
+      "answer": "If your SlimeVR GUI is never loading past \"Connecting to the server\", you can find potential fixes at https://docs.slimevr.dev/common-issues.html#slimevr-is-stuck-at-connecting-to-the-server.",
+      "matched_questions": [
+        "gui is stuck connecting to server",
+        "gui is connecting forever",
+        "the program just connects for ever",
+        "slimevr doesnt connect to the server",
+        "the server isn't connecting",
+        "i can't get the program to connect to the server",
+        "why is my slimevr never loading past \"connecting to the server\"?"
       ]
     }
   ]
