@@ -538,7 +538,8 @@
         "slimevr doesnt connect to the server",
         "the server isn't connecting",
         "i can't get the program to connect to the server",
-        "why is my slimevr never loading past \"connecting to the server\"?"
+        "why is my slimevr never loading past \"connecting to the server\"?",
+        "Connecting to the server"
       ]
     }
   ]
