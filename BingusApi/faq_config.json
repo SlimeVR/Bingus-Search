@@ -100,7 +100,9 @@
         "trackers are bound to the wrong controllers in SteamVR",
         "trackers are bound to the wrong body part in SteamVR",
         "my controllers aren't working properly",
-        "my controllers don't work with slimevr running"
+        "my controllers don't work with slimevr running",
+        "controllers dont work",
+        "my controllers stopped working after setting up slimevr"
       ]
     },
     {
@@ -128,7 +130,7 @@
       ]
     },
     {
-      "answer": "SlimeVR does not take long to setup and you only need to do it once. You can find a guide for the setup here: https://docs.slimevr.dev/server-setup/slimevr-setup.html.",
+      "answer": "SlimeVR does not take long to setup and you only need to do it once. You can find a guide for the setup here: https://docs.slimevr.dev/server/initial-setup.html.",
       "matched_questions": [
         "Does setup take a long time and/or do you need to do it every time you play?",
         "Does setup take a long time?",
@@ -183,7 +185,7 @@
       ]
     },
     {
-      "answer": "You can find information for configuring body proportions at https://docs.slimevr.dev/server-setup/body-config.html or in the [#calibration](https://discord.com/channels/817184208525983775/930205281609187418) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
+      "answer": "You can find information for configuring body proportions at https://docs.slimevr.dev/server/body-config.html or in the [#calibration](https://discord.com/channels/817184208525983775/930205281609187418) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "how do I set up my body proportions?",
         "body proportions",
@@ -198,7 +200,7 @@
       ]
     },
     {
-      "answer": "You can find information for how to build DIY trackers at https://docs.slimevr.dev/diy/diy-trackers-guide.html or in the [#diy](https://discord.com/channels/817184208525983775/823930029070876736) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
+      "answer": "You can find information for how to build DIY trackers at https://docs.slimevr.dev/diy/index.html or in the [#diy](https://discord.com/channels/817184208525983775/823930029070876736) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "how do I build trackers?",
         "how to build",
@@ -339,7 +341,7 @@
       ]
     },
     {
-      "answer": "You can find instructions for installing the SlimeVR server at https://docs.slimevr.dev/server-setup/initial-setup.html#install-the-latest-slimevr-installer.",
+      "answer": "You can find instructions for installing the SlimeVR server at https://docs.slimevr.dev/server/initial-setup.html#install-the-latest-slimevr-installer.",
       "matched_questions": [
         "how do I download the server?",
         "where can I download the server from",
@@ -352,7 +354,7 @@
       ]
     },
     {
-      "answer": "You can find instructions for setting up keybinds at https://docs.slimevr.dev/server-setup/setting-reset-bindings.html.",
+      "answer": "You can find instructions for setting up keybinds at https://docs.slimevr.dev/server/setting-reset-bindings.html.",
       "matched_questions": [
         "hey where is the Keybind directions",
         "how do i set up keybinds",
@@ -489,7 +491,7 @@
       ]
     },
     {
-      "answer": "You can find information about mounting trackers at https://docs.slimevr.dev/server-setup/putting-on-trackers.html.",
+      "answer": "You can find information about mounting trackers at https://docs.slimevr.dev/server/putting-on-trackers.html.",
       "matched_questions": [
         "how do I mount my trackers",
         "where do I put on my trackers",
@@ -502,7 +504,7 @@
       ]
     },
     {
-      "answer": "You can find information about IMU calibration at https://docs.slimevr.dev/server-setup/initial-setup.html#imu-calibration, or for specifically BMI160's, in the pins of the [#\"BMI160 IMU\"](https://discord.com/channels/817184208525983775/999926371218374666) thread on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
+      "answer": "You can find information about IMU calibration at https://docs.slimevr.dev/server/initial-setup.html#imu-calibration, or for specifically BMI160's, in the pins of the [#\"BMI160 IMU\"](https://discord.com/channels/817184208525983775/999926371218374666) thread on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "how do I calibrate my IMUs",
         "imu calibration",
