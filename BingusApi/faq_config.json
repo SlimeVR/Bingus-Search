@@ -557,6 +557,16 @@
         "why is my slimevr never loading past \"connecting to the server\"?",
         "Connecting to the server"
       ]
+    },
+    {
+      "answer": "You can find information about the difference between an IMU with a magnetometer (9 DOF) and an IMU without a magnetometer (6 DOF) at https://docs.slimevr.dev/diy/imu-comparison.html#whats-the-difference-between-an-imu-with-a-magnetometer-9-dof-and-an-imu-without-a-magnetometer-6-dof.",
+      "matched_questions": [
+        "magnetometer",
+        "what's the difference between using a magnetometer vs without?",
+        "what does using a magnetometer do",
+        "if I use a magnetomer, will I have less drift?",
+        "whats a magnetometer"
+      ]
     }
   ]
 }
