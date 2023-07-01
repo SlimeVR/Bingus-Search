@@ -82,7 +82,8 @@
         "my trackers are on wifi but not on the gui",
         "trackers are connected to the wifi but not slimevr",
         "it connects to wifi but not slimevr",
-        "trackers are on my wifi but not slimevr server"
+        "trackers are on my wifi but not slimevr server",
+        "looking for the server"
       ]
     },
     {
