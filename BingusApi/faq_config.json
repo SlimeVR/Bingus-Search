@@ -22,7 +22,7 @@
       ]
     },
     {
-      "answer": "If your tracker's serial output is only random symbols, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-wifi-settings-window-outputs-symbols-and-nothing-else.",
+      "answer": "If your tracker's serial output is only random symbols, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-wi-fi-settings-window-outputs-symbols-and-nothing-else.",
       "matched_questions": [
         "The WiFi Settings window outputs ERROR",
         "WiFi Settings window outputs symbols and nothing else",
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "answer": "If your trackers are connected to WiFi but are not showing up on the SlimeVR server, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wifi-but-dont-turn-up-on-slimevr.",
+      "answer": "If your trackers are connected to WiFi but are not showing up on the SlimeVR server, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wi-fi-but-dont-turn-up-on-slimevr.",
       "matched_questions": [
         "trackers are connected to my wifi but don't turn up on the server",
         "my trackers are on wifi but not on the gui",
