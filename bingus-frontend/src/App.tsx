@@ -184,7 +184,7 @@ function App() {
       <Container
         maxWidth="md"
         component="main"
-        className={prefersDarkMode ? "dark" : ""}
+        className={prefersDarkMode ? "mddark" : ""}
       >
         <Stack spacing={1} direction="row" sx={{ my: 2 }}>
           <Alert variant="outlined" severity="info" sx={{ flexGrow: 1 }}>
@@ -193,13 +193,6 @@ function App() {
             Discord at{" "}
             <Link href="https://discord.gg/SlimeVR">
               https://discord.gg/SlimeVR
-            </Link>
-            .
-            <br />
-            <br />
-            You can leave any feedback about Bingus Search at{" "}
-            <Link href="https://bingus.bscotch.ca/feedback">
-              https://bingus.bscotch.ca/feedback
             </Link>
             .
           </Alert>
@@ -225,7 +218,6 @@ function App() {
               label="Ask a question..."
               value={input}
               variant="filled"
-              autoFocus
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => {
                 if (e.key === "Enter") search();
