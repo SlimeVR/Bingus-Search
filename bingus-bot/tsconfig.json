@@ -4,7 +4,9 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "allowJs": false,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
   },
-  "include": ["src"]
+  "include": ["src"],
 }

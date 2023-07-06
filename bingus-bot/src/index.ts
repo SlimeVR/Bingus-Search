@@ -7,6 +7,8 @@ import {
   SlashCommandBuilder,
   SlashCommandStringOption,
 } from "discord.js";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import auth from "../auth.json" assert { type: "json" };
 import { EmbedList, fetchBingus } from "./util.js";
 
