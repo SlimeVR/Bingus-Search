@@ -1,6 +1,8 @@
 import {
+  APIEmbed,
   Client,
   GatewayIntentBits,
+  JSONEncodable,
   REST,
   Routes,
   SlashCommandBuilder,
@@ -8,6 +10,7 @@ import {
 } from "discord.js";
 import fetch from "node-fetch";
 import auth from "../auth.json" assert { type: "json" };
+import { fetchBingus } from "./util";
 
 const commands = [
   new SlashCommandBuilder()
@@ -44,45 +47,30 @@ client.on("interactionCreate", async (interaction) => {
 
   if (interaction.commandName === "search") {
     if (!interaction.isChatInputCommand()) return;
-    const query = interaction.options.getString("query");
-    if (query === null) return;
-    const url = `https://bingus.bscotch.ca/api/faq/search?question=${encodeURIComponent(
-      query,
-    )}&responseCount=30`;
+    const query = interaction.options.getString("query") ?? "";
 
     try {
-      const data = await fetch(url).then(
-        (res) => res.json() as Promise<BingusFaqResponse[]>,
-      );
-
+      await interaction.deferReply();
+      const data = await fetchBingus(query);
       if (data && data.length > 0) {
         const firstResult = data[0];
-        const embed = {
+        const embed: APIEmbed = {
           title: firstResult.title,
           description: firstResult.text,
         };
 
-        interaction.reply({
+        interaction.editReply({
           content: "Here is the first result:",
           embeds: [embed],
         });
       } else {
-        interaction.reply("No results found.");
+        interaction.editReply("No results found.");
       }
     } catch (error) {
       console.error(error);
-      interaction.reply("An error occurred while fetching results.");
+      interaction.editReply("An error occurred while fetching results.");
     }
   }
 });
-
-interface BingusFaqResponse {
-  relevance: number;
-  title: string;
-  /**
-   * Uses markdown
-   */
-  text: string;
-}
 
 client.login(auth.token);
