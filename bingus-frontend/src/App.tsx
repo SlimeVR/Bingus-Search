@@ -184,7 +184,7 @@ function App() {
       <Container
         maxWidth="md"
         component="main"
-        className={prefersDarkMode ? "mddark" : ""}
+        className={prefersDarkMode ? "dark" : ""}
       >
         <Stack spacing={1} direction="row" sx={{ my: 2 }}>
           <Alert variant="outlined" severity="info" sx={{ flexGrow: 1 }}>
@@ -193,6 +193,13 @@ function App() {
             Discord at{" "}
             <Link href="https://discord.gg/SlimeVR">
               https://discord.gg/SlimeVR
+            </Link>
+            .
+            <br />
+            <br />
+            You can leave any feedback about Bingus Search at{" "}
+            <Link href="https://bingus.bscotch.ca/feedback">
+              https://bingus.bscotch.ca/feedback
             </Link>
             .
           </Alert>
@@ -216,6 +223,7 @@ function App() {
             <TextField
               fullWidth
               label="Ask a question..."
+              autoFocus
               value={input}
               variant="filled"
               onChange={(e) => setInput(e.target.value)}
