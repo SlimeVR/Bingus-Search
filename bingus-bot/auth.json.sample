@@ -1,4 +1,5 @@
 {
   "token": "TOKEN_ID",
-  "client": "APPLICATION_ID"
+  "client": "APPLICATION_ID",
+  "forumsCheck": ["FORUM_ID"]
 }
