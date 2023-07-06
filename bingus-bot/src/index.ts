@@ -4,6 +4,7 @@ import {
   GatewayIntentBits,
   REST,
   Routes,
+  SlashCommandBooleanOption,
   SlashCommandBuilder,
   SlashCommandStringOption,
 } from "discord.js";
@@ -22,6 +23,14 @@ const commands = [
         .setRequired(true)
         .setDescription("What's your question owo")
         .setMaxLength(200),
+    )
+    .addBooleanOption(
+      new SlashCommandBooleanOption()
+        .setName("visible")
+        .setRequired(false)
+        .setDescription(
+          "Should the message be visible and interactable by others?",
+        ),
     ),
 ];
 
@@ -50,10 +59,11 @@ client.on("interactionCreate", async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const query = interaction.options.getString("query")!;
+    const ephemeral = !interaction.options.getBoolean("visible") ?? true;
     console.log(`User @${interaction.user.id} asked about "${query}"`);
 
     try {
-      await interaction.deferReply({ ephemeral: true });
+      await interaction.deferReply({ ephemeral });
       const data = await fetchBingus(query);
 
       if (data.length === 0) {

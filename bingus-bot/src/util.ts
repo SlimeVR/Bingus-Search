@@ -9,7 +9,6 @@ import {
   ReplyOptions,
   TextBasedChannel,
 } from "discord.js";
-import fetch from "node-fetch";
 
 export async function fetchBingus(query: string) {
   const url = `https://bingus.bscotch.ca/api/faq/search?question=${encodeURIComponent(
@@ -122,7 +121,7 @@ export class EmbedList {
     const collector = reply.createMessageComponentCollector({
       componentType: ComponentType.Button,
       time: EmbedList.MAX_TIME,
-      filter: (i) => i.user.id === interaction.user.id,
+      // filter: (i) => i.user.id === interaction.user.id,
     });
 
     collector.on("collect", async (i) => {
