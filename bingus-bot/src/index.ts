@@ -13,7 +13,7 @@ import { EmbedList, fetchBingus } from "./util.js";
 const commands = [
   new SlashCommandBuilder()
     .setName("ask")
-    .setDescription("Searches for the answer with Bingus")
+    .setDescription("Tries to solve your problems >~<")
     .addStringOption(
       new SlashCommandStringOption()
         .setName("query")
@@ -81,6 +81,9 @@ client.on("interactionCreate", async (interaction) => {
 // Check if a new thread is created on one of the configured forums to check
 client.on("threadCreate", async (thread, newly) => {
   if (!newly || !auth.forumsCheck.includes(thread.parentId ?? "")) return;
+  console.log(
+    `Answering to @${thread.ownerId} because of creating a thread with query "${thread.name}"`,
+  );
 
   try {
     const data = await fetchBingus(thread.name);
