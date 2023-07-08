@@ -1,5 +1,4 @@
 {
-  "model_path": "../BingusLib/models/onnx/use_l_v5.onnx",
   "average_questions": false,
   "faqs": [
     {
