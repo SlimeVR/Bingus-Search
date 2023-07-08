@@ -1,5 +1,6 @@
 using AspNetCoreRateLimit;
 using BingusApi;
+using BingusLib.Config;
 using BingusLib.FaqHandling;
 using BingusLib.HNSW;
 using MessagePack;
@@ -29,15 +30,17 @@ builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>()
 
 // Add dependencies
 builder.Services.AddSingleton<IEmbeddingCache>(sp => new RocksDbCache(RocksDb.Open(new DbOptions().SetCreateIfMissing(true), "embedding_cache")));
+builder.Services.AddSingleton(sp => BingusConfigUtils.InitializeConfig(sp.GetService<ILogger<BingusConfig>>()));
 builder.Services.AddSingleton(sp => FaqConfigUtils.InitializeConfig(sp.GetService<ILogger<FaqConfig>>()));
 
 builder.Services.AddSingleton(sp =>
 {
-    // Load the config
+    // Load the configs
+    var bingusConfig = sp.GetRequiredService<BingusConfig>();
     var faqConfig = sp.GetRequiredService<FaqConfig>();
 
     // Setup the FAQ handler
-    var modelPath = Path.Join(Environment.CurrentDirectory, faqConfig.ModelPath);
+    var modelPath = Path.Join(Environment.CurrentDirectory, bingusConfig.ModelPath);
     var faqHandler = new FaqHandler(sp.GetRequiredService<ILoggerFactory>(), modelPath, embeddingCache: sp.GetService<IEmbeddingCache>());
 
     // Add all questions

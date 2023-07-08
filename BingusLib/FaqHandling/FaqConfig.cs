@@ -26,8 +26,6 @@ namespace BingusLib.FaqHandling
             }
         }
 
-        [JsonPropertyName("model_path")] public string ModelPath { get; set; } = "";
-
         [JsonPropertyName("average_questions")]
         public bool AverageQuestions { get; set; } = false;
 
