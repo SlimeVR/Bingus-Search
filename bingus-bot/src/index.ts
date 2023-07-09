@@ -48,7 +48,9 @@ try {
   console.error(error);
 }
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent],
+});
 let faqConfig = (await fetchBingusData()).faqs.flatMap(
   (x) => x.matched_questions,
 );
@@ -116,12 +118,19 @@ client.on("interactionCreate", async (interaction) => {
 // Check if a new thread is created on one of the configured forums to check
 client.on("threadCreate", async (thread, newly) => {
   if (!newly || !auth.forumsCheck.includes(thread.parentId ?? "")) return;
+  const lastMessage = await thread.fetchStarterMessage()
+  if (lastMessage === null) {
+    console.error(
+      `Couldn't read @${thread.ownerId}'s message on thread #${thread.id}, message ${thread.lastMessageId}`,
+    );
+    return;
+  }
   console.log(
-    `Answering to @${thread.ownerId} because of creating a thread with query "${thread.name}"`,
+    `Answering to @${thread.ownerId} on #${thread.id} because of creating a thread with query "${lastMessage.content}"`,
   );
 
   try {
-    const data = await fetchBingus(thread.name);
+    const data = await fetchBingus(lastMessage.content);
 
     if (data.length === 0) {
       return;
