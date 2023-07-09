@@ -10,6 +10,10 @@ import {
   TextBasedChannel,
 } from "discord.js";
 
+import { readFile } from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
+
 export async function fetchBingus(query: string) {
   const url = `https://bingus.bscotch.ca/api/faq/search?question=${encodeURIComponent(
     query,
@@ -153,4 +157,25 @@ export class EmbedList {
 
     return collector;
   }
+}
+
+export interface FaqConfig {
+  average_questions: boolean;
+  faqs: {
+    title: string;
+    answer: string;
+    matched_questions: string[];
+  }[];
+}
+
+export async function fetchBingusData(): Promise<FaqConfig> {
+  return JSON.parse(
+    await readFile(
+      path.join(
+        fileURLToPath(import.meta.url),
+        "../../../BingusApi/faq_config.json",
+      ),
+      { encoding: "utf-8" },
+    ),
+  ) as FaqConfig;
 }

@@ -1,4 +1,5 @@
 import {
+  AutocompleteInteraction,
   Client,
   EmbedBuilder,
   GatewayIntentBits,
@@ -11,7 +12,7 @@ import {
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import auth from "../auth.json" assert { type: "json" };
-import { EmbedList, fetchBingus } from "./util.js";
+import { EmbedList, fetchBingus, fetchBingusData } from "./util.js";
 
 const commands = [
   new SlashCommandBuilder()
@@ -22,7 +23,8 @@ const commands = [
         .setName("query")
         .setRequired(true)
         .setDescription("What's your question owo")
-        .setMaxLength(200),
+        .setMaxLength(200)
+        .setAutocomplete(true),
     )
     .addBooleanOption(
       new SlashCommandBooleanOption()
@@ -47,12 +49,33 @@ try {
 }
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+let faqConfig = (await fetchBingusData()).faqs.flatMap(
+  (x) => x.matched_questions,
+);
+
+setInterval(async () => {
+  faqConfig = (await fetchBingusData()).faqs.flatMap(
+    (x) => x.matched_questions,
+  );
+}, 60 * 60 * 1000); // Do it every hour
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user?.tag}`);
 });
 
+async function onAutocomplete(interaction: AutocompleteInteraction) {
+  if (interaction.commandName === "ask") {
+    const focusedValue = interaction.options.getFocused().toLowerCase();
+    const filtered = faqConfig.filter((x) => x.includes(focusedValue));
+    filtered.length = Math.min(filtered.length, 25);
+    await interaction.respond(filtered.map((x) => ({ name: x, value: x })));
+  }
+}
+
 client.on("interactionCreate", async (interaction) => {
+  if (interaction.isAutocomplete()) {
+    return await onAutocomplete(interaction);
+  }
   if (!interaction.isCommand()) return;
 
   if (interaction.commandName === "ask") {
