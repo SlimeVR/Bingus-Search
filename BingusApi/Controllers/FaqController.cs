@@ -42,7 +42,8 @@ public class FaqController : ControllerBase
                 return new FaqEntryResponse()
                 {
                     Relevance = (1f - result.Distance) * 100f,
-                    Title = entry.Question,
+                    MatchedQuestion = entry.Question,
+                    Title = entry.Title,
                     Text = entry.Answer,
                 };
             }).GroupBy(result => result.Text)

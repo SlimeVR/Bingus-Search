@@ -11,6 +11,7 @@ namespace BingusLib.FaqHandling
         public record FaqEntry
         {
             public int Id { get; set; } = -1;
+            public string Title { get; set; } = "";
             public string Question { get; set; } = "";
             public string Answer { get; set; } = "";
             public Vector<float>? Vector { get; set; }
@@ -43,10 +44,10 @@ namespace BingusLib.FaqHandling
             return _idCounter++;
         }
 
-        public void AddItems(IEnumerable<(string, string)> questionAnswerMappings)
+        public void AddItems(IEnumerable<(string, string, string)> questionAnswerMappings)
         {
             var hnswItems = new List<LazyKeyItem<int, float[]>>();
-            foreach (var (question, answer) in questionAnswerMappings)
+            foreach (var (title, question, answer) in questionAnswerMappings)
             {
                 var id = GetId();
                 Vector<float>? embedding = null;
@@ -62,6 +63,7 @@ namespace BingusLib.FaqHandling
                 _idMapping[id] = new FaqEntry()
                 {
                     Id = id,
+                    Title = title,
                     Question = question,
                     Answer = answer,
                     Vector = embedding
