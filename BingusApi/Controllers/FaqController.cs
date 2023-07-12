@@ -12,6 +12,8 @@ public class FaqController : ControllerBase
     private static readonly int MinQuery = 1;
     private static readonly int MaxQuery = 50;
 
+    private static readonly int MaxLength = 4000;
+
     private readonly FaqHandler _faqHandler;
 
     public FaqController(FaqHandler faqHandler)
@@ -33,6 +35,7 @@ public class FaqController : ControllerBase
             throw new ArgumentException("There must be a question to query.", nameof(question));
         }
 
+        question = question.Length > MaxLength ? question[..MaxLength] : question;
         responseCount = Math.Clamp(responseCount, MinQuery, MaxQuery);
         var results = _faqHandler.Search(question, responseCount);
 
