@@ -125,12 +125,13 @@ client.on("threadCreate", async (thread, newly) => {
     );
     return;
   }
+  const content = lastMessage.content || thread.name;
   console.log(
-    `Answering to @${thread.ownerId} on #${thread.id} because of creating a thread with query "${lastMessage.content}"`,
+    `Answering to @${thread.ownerId} on #${thread.id} because of creating a thread with query "${content}"`,
   );
 
   try {
-    const data = await fetchBingus(lastMessage.content);
+    const data = await fetchBingus(content);
 
     if (data.length === 0) {
       return;
