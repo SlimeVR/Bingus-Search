@@ -223,9 +223,9 @@ function App() {
             <TextField
               fullWidth
               label="Ask a question..."
+              autoFocus
               value={input}
               variant="filled"
-              autoFocus
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => {
                 if (e.key === "Enter") search();
