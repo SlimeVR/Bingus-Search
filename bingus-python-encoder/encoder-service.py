@@ -6,7 +6,7 @@ import uvicorn
 class EncodeRequest(BaseModel):
     sentence: str
 
-model = SentenceTransformer("all-mpnet-base-v2", cache_folder = "./model-cache")
+model = SentenceTransformer("all-mpnet-base-v2", cache_folder = "./model-cache/")
 dimensions = len(model.encode(""))
 app = FastAPI()
 
