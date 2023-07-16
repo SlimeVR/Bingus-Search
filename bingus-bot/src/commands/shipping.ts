@@ -87,7 +87,7 @@ You can check on ${SHIPMENT_MESSAGE[shipment]} on the progress of the shipment.`
     await interaction.reply({
       content: `Your order is being made currently, it's shipment ${
         shipment + 2
-      } ${SHIPMENT_MESSAGE[shipment]}!
+      }!
 You can check on ${SHIPMENT_MESSAGE[shipment]} to see when it's going to get shipped.`,
       ephemeral: true,
     });
