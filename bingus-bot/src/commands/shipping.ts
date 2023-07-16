@@ -77,7 +77,7 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
       await interaction.reply({
         content: `Your order has been shipped to Crowdsupply, it's shipment ${
           shipment + 2
-        }!
+        } ${SHIPMENT_MESSAGE[shipment]}!
 You can check on ${SHIP_WHEN_CHANNEL} on the progress of the shipment.`,
         ephemeral: true,
       });
@@ -87,7 +87,7 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of the shipment.`,
     await interaction.reply({
       content: `Your order is being made currently, it's shipment ${
         shipment + 2
-      }!
+      } ${SHIPMENT_MESSAGE[shipment]}!
 You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
       ephemeral: true,
     });
@@ -96,6 +96,13 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
 
 // Index of shipped shipment
 const SHIPPED_SHIPMENTS = new Set([0]);
+
+// Link to shipment message
+const SHIPMENT_MESSAGE = [
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1129110457953812651",
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1129117575721267290",
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1130164280537391154",
+];
 
 // Shipments being prepared or shipped
 const SHIPMENTS = [
@@ -132,5 +139,22 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_PURPLE]: 141554,
     [SlimeSet.DELUXE_TRACKER_BLACK]: 130253,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
+  },
+  {
+    [SlimeSet.LOWER_BODY_PURPLE]: 130241,
+    [SlimeSet.LOWER_BODY_BLACK]: 130241,
+    [SlimeSet.LOWER_BODY_WHITE]: 130241,
+    [SlimeSet.CORE_PURPLE]: 130241,
+    [SlimeSet.CORE_BLACK]: 130241,
+    [SlimeSet.CORE_WHITE]: 130241,
+    [SlimeSet.ENHANCED_CORE_PURPLE]: 130241,
+    [SlimeSet.ENHANCED_CORE_BLACK]: 130241,
+    [SlimeSet.ENHANCED_CORE_WHITE]: 130241,
+    [SlimeSet.FULLBODY_PURPLE]: 130241,
+    [SlimeSet.FULLBODY_BLACK]: 130241,
+    [SlimeSet.FULLBODY_WHITE]: 130241,
+    [SlimeSet.DELUXE_TRACKER_PURPLE]: 130241,
+    [SlimeSet.DELUXE_TRACKER_BLACK]: 130241,
+    [SlimeSet.DELUXE_TRACKER_WHITE]: 130241,
   },
 ];
