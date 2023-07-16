@@ -77,8 +77,8 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
       await interaction.reply({
         content: `Your order has been shipped to Crowdsupply, it's shipment ${
           shipment + 2
-        } ${SHIPMENT_MESSAGE[shipment]}!
-You can check on ${SHIP_WHEN_CHANNEL} on the progress of the shipment.`,
+        }!
+You can check on ${SHIPMENT_MESSAGE[shipment]} on the progress of the shipment.`,
         ephemeral: true,
       });
       return;
@@ -88,7 +88,7 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of the shipment.`,
       content: `Your order is being made currently, it's shipment ${
         shipment + 2
       } ${SHIPMENT_MESSAGE[shipment]}!
-You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
+You can check on ${SHIPMENT_MESSAGE[shipment]} to see when it's going to get shipped.`,
       ephemeral: true,
     });
   },
