@@ -614,6 +614,31 @@
         "if I use a magnetomer, will I have less drift?",
         "whats a magnetometer"
       ]
+    },
+    {
+      "title": "CrowdSupply shipping FAQ",
+      "answer": "You can find detailed information about shipping from CrowdSupply at https://www.crowdsupply.com/shipping.",
+      "matched_questions": [
+        "shipping faq",
+        "i want to know more about shipping",
+        "how does crowdsupply ship",
+        "where do the trackers ship from?",
+        "crowdsupply shipping",
+        "do they have international shipping?"
+      ]
+    },
+    {
+      "title": "CrowdSupply restricted countries for shipping",
+      "answer": "You can find information about which countries are restricted from shipping to from CrowdSupply at https://www.crowdsupply.com/guide/fulfillment-and-logistics#restricted-countries.",
+      "matched_questions": [
+        "where can crowdsupply ship?",
+        "where do they ship to",
+        "how do I know if they can ship to my country",
+        "will they ship to my country",
+        "what countries do they ship to",
+        "what countries do they not ship to",
+        "what countries are restricted"
+      ]
     }
   ]
 }
