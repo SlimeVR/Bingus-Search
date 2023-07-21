@@ -639,6 +639,22 @@
         "what countries do they not ship to",
         "what countries are restricted"
       ]
+    },
+    {
+      "title": "CrowdSupply returns and cancellations FAQ",
+      "answer": "You can find information about returning or cancelling orders from CrowdSupply at https://www.crowdsupply.com/returns.",
+      "matched_questions": [
+        "what do I do if I get it and it's broken?",
+        "what if my trackers are damaged",
+        "i got shipped the wrong order",
+        "my package was lost",
+        "what do I do if the package gets lost during shipping?",
+        "how do I rma my trackers?",
+        "how do I return my trackers?",
+        "can I return my trackers",
+        "if my trackers show up faulty, should I return them?",
+        "my trackers are defective"
+      ]
     }
   ]
 }
