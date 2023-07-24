@@ -95,7 +95,7 @@ You can check on ${SHIPMENT_MESSAGE[shipment]} to see when it's going to get shi
 };
 
 // Index of shipped shipment
-const SHIPPED_SHIPMENTS = new Set([0]);
+const SHIPPED_SHIPMENTS = new Set([0, 1]);
 
 // Link to shipment message
 const SHIPMENT_MESSAGE = [

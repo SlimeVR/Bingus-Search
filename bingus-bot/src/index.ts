@@ -74,7 +74,9 @@ client.on("threadCreate", async (thread, newly) => {
     );
     return;
   }
-  const content = lastMessage.content || thread.name;
+  const content = lastMessage.content
+    ? `${thread.name}. ${lastMessage.content}`
+    : thread.name;
   console.log(
     `Answering to @${thread.ownerId} on #${thread.id} because of creating a thread with query "${content}"`,
   );
