@@ -66,7 +66,7 @@ export const shippingCommand: Command = {
 
     if (shipment === -1) {
       await interaction.reply({
-        content: `Your order hasn't been made yet.
+        content: `Your order hasn't been manufactured yet.
 You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
         ephemeral: true,
       });
