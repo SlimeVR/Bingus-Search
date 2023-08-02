@@ -67,14 +67,8 @@ client.on("interactionCreate", async (interaction) => {
 // Check if a new thread is created on one of the configured forums to check
 client.on("threadCreate", async (thread, newly) => {
   if (!newly || !auth.forumsCheck.includes(thread.parentId ?? "")) return;
-  const lastMessage = await thread.fetchStarterMessage();
-  if (lastMessage === null) {
-    console.error(
-      `Couldn't read @${thread.ownerId}'s message on thread #${thread.id}, message ${thread.lastMessageId}`,
-    );
-    return;
-  }
-  const content = lastMessage.content
+  const lastMessage = await thread.fetchStarterMessage().catch(() => null);
+  const content = lastMessage?.content
     ? `${thread.name}. ${lastMessage.content}`
     : thread.name;
   console.log(
