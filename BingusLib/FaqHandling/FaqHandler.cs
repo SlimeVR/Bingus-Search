@@ -10,65 +10,53 @@ namespace BingusLib.FaqHandling
     {
         public record FaqEntry
         {
-            public int Id { get; set; } = -1;
             public string Title { get; set; } = "";
             public string Question { get; set; } = "";
             public string Answer { get; set; } = "";
             public Vector<float>? Vector { get; set; }
         }
 
-        private int _idCounter = 0;
-
         private readonly ILoggerFactory _loggerFactory;
         private readonly ILogger<FaqHandler> _logger;
 
+        private readonly IEmbeddingStore? _embeddingStore;
         private readonly IEmbeddingCache? _embeddingCache;
 
         private readonly UniversalSentenceEncoder _useHandler;
         private readonly HnswHandler _hnswHandler = new();
 
-        private readonly Dictionary<int, FaqEntry> _idMapping = new();
-
-        public FaqHandler(ILoggerFactory loggerFactory, string modelPath, IEmbeddingCache? embeddingCache = null)
+        public FaqHandler(ILoggerFactory loggerFactory, string modelPath, IEmbeddingStore? embeddingStore = null, IEmbeddingCache? embeddingCache = null)
         {
             _loggerFactory = loggerFactory;
             _logger = _loggerFactory.CreateLogger<FaqHandler>();
 
+            _embeddingStore = embeddingStore;
             _embeddingCache = embeddingCache;
 
             _useHandler = new(_loggerFactory.CreateLogger<UniversalSentenceEncoder>(), modelPath);
         }
 
-        private int GetId()
-        {
-            return _idCounter++;
-        }
-
         public void AddItems(IEnumerable<(string, string, string)> questionAnswerMappings)
         {
-            var hnswItems = new List<LazyKeyItem<int, float[]>>();
+            var hnswItems = new List<LazyKeyItem<FaqEntry, float[]>>();
             foreach (var (title, question, answer) in questionAnswerMappings)
             {
-                var id = GetId();
-                Vector<float>? embedding = null;
-
-                if (_embeddingCache != null) embedding = _embeddingCache?.Get(question);
+                Vector<float>? embedding = _embeddingCache?.Get(question) ?? _embeddingStore?.Get(question);
 
                 if (embedding == null)
                 {
                     embedding = _useHandler.ComputeEmbeddingVector(question);
-                    _embeddingCache?.Add(question, embedding);
+                    _embeddingStore?.Add(question, embedding);
                 }
 
-                _idMapping[id] = new FaqEntry()
+                var faqEntry = new FaqEntry()
                 {
-                    Id = id,
                     Title = title,
                     Question = question,
                     Answer = answer,
                     Vector = embedding
                 };
-                hnswItems.Add(new LazyKeyItem<int, float[]>(id, embedding.AsArray));
+                hnswItems.Add(new LazyKeyItem<FaqEntry, float[]>(faqEntry, embedding.AsArray));
             }
 
             _hnswHandler.AddItems(hnswItems);
@@ -76,13 +64,9 @@ namespace BingusLib.FaqHandling
 
         public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> Search(string query, int numResults)
         {
-            var vector = _embeddingCache?.GetRaw(query) ?? _useHandler.ComputeEmbedding(query);
+            var vector = _embeddingCache?.GetRaw(query) ?? _embeddingStore?.GetRaw(query) ?? _useHandler.ComputeEmbedding(query);
+            _embeddingCache?.Add(query, vector);
             return _hnswHandler.SearchItems(vector, numResults);
-        }
-
-        public FaqEntry GetEntry(int id)
-        {
-            return _idMapping[id];
         }
     }
 }

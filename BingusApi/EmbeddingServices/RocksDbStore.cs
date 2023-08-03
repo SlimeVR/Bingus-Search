@@ -3,13 +3,13 @@ using BingusLib.FaqHandling;
 using MathNet.Numerics.LinearAlgebra;
 using RocksDbSharp;
 
-namespace BingusApi
+namespace BingusApi.EmbeddingServices
 {
-    public class RocksDbCache : IEmbeddingCache
+    public class RocksDbStore : IEmbeddingStore
     {
         private readonly RocksDb rocksDb;
 
-        public RocksDbCache(RocksDb rocksDb)
+        public RocksDbStore(RocksDb rocksDb)
         {
             this.rocksDb = rocksDb;
         }
@@ -33,13 +33,13 @@ namespace BingusApi
 
         public Vector<float>? Get(string key)
         {
-            byte[]? result = GetBytes(key);
+            var result = GetBytes(key);
             return result != null ? RocksDbSerializer.DeserializeVector(result) : null;
         }
 
         public float[]? GetRaw(string key)
         {
-            byte[]? result = GetBytes(key);
+            var result = GetBytes(key);
             return result != null ? RocksDbSerializer.DeserializeFloatArray(result) : null;
         }
 

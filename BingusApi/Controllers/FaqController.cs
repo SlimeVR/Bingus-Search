@@ -23,7 +23,7 @@ public class FaqController : ControllerBase
 
     private FaqEntry GetEntry(ILazyItem<float[]> item)
     {
-        return _faqHandler.GetEntry(((LazyKeyItem<int, float[]>)item).Key);
+        return ((LazyKeyItem<FaqEntry, float[]>)item).Key;
     }
 
     [HttpGet(template: "Search", Name = "Search")]

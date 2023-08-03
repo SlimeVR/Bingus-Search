@@ -1,6 +1,6 @@
 using MathNet.Numerics.LinearAlgebra;
 
-namespace BingusApi
+namespace BingusApi.EmbeddingServices
 {
     public static class RocksDbSerializer
     {

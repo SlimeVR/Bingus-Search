@@ -21,16 +21,14 @@ namespace BingusLib.HNSW
             _hnswGraph.AddItems(items);
         }
 
-        public void AddItems(IProgressReporter? progressReporter = null, CancellationToken cancellationToken = default,
-            params ILazyItem<float[]>[] items)
+        public void AddItems(IProgressReporter? progressReporter = null, params ILazyItem<float[]>[] items)
         {
-            _hnswGraph.AddItems(items, progressReporter, cancellationToken);
+            _hnswGraph.AddItems(items, progressReporter);
         }
 
-        public void AddItems(IReadOnlyList<ILazyItem<float[]>> items, IProgressReporter? progressReporter = null,
-            CancellationToken cancellationToken = default)
+        public void AddItems(IReadOnlyList<ILazyItem<float[]>> items, IProgressReporter? progressReporter = null)
         {
-            _hnswGraph.AddItems(items, progressReporter, cancellationToken);
+            _hnswGraph.AddItems(items, progressReporter);
         }
 
         public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(ILazyItem<float[]> item,
