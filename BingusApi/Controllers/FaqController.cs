@@ -11,6 +11,7 @@ public class FaqController : ControllerBase
 {
     private static readonly int MinQuery = 1;
     private static readonly int MaxQuery = 50;
+    private static readonly int SearchAmount = MaxQuery * 4;
 
     private static readonly int MaxLength = 4000;
 
@@ -37,8 +38,16 @@ public class FaqController : ControllerBase
 
         question = question.Length > MaxLength ? question[..MaxLength] : question;
         responseCount = Math.Clamp(responseCount, MinQuery, MaxQuery);
-        var results = _faqHandler.Search(question, responseCount);
 
+        // Actually query a larger set amount to reduce duplicates in the response,
+        // but one result will never have duplicates
+        var results = _faqHandler.Search(question, responseCount > 1 ? SearchAmount : 1);
+
+        // Format the entry JSON
+        // Group the duplicates
+        // Select the highest relevance entry for each duplicate group
+        // Sort the entries by relevance
+        // Take only the requested number of results
         var responses = results.Select(result =>
             {
                 var entry = GetEntry(result.Item);
@@ -51,7 +60,8 @@ public class FaqController : ControllerBase
                 };
             }).GroupBy(result => result.Text)
             .Select(groupedResults => groupedResults.MaxBy(result => result.Relevance) ?? groupedResults.First())
-            .OrderByDescending(response => response.Relevance);
+            .OrderByDescending(response => response.Relevance)
+            .Take(responseCount);
 
         return responses;
     }
