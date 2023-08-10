@@ -655,6 +655,16 @@
         "if my trackers show up faulty, should I return them?",
         "my trackers are defective"
       ]
+    },
+    {
+      "title": "Config and log locations",
+      "answer": "The app data for the SlimeVR server is located at `%AppData%\\dev.slimevr.SlimeVR` as of v0.9.0.",
+      "matched_questions": [
+        "where are the configs stored?",
+        "how do I find the logs for SlimeVR",
+        "whats the new location for config and logs now?",
+        "where did the configs go"
+      ]
     }
   ]
 }
