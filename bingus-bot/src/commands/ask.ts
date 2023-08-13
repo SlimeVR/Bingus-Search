@@ -1,6 +1,5 @@
 import {
   EmbedBuilder,
-  SlashCommandBooleanOption,
   SlashCommandBuilder,
   SlashCommandStringOption,
 } from "discord.js";
@@ -29,18 +28,27 @@ export const askCommand: Command = {
         .setMaxLength(200)
         .setAutocomplete(true),
     )
-    .addBooleanOption(
-      new SlashCommandBooleanOption()
-        .setName("visible")
-        .setRequired(false)
-        .setDescription(
-          "Should the message be visible and interactable by others?",
+    .addStringOption(
+      new SlashCommandStringOption()
+        .setName("custom")
+        .setDescription("Let's you customize how the embed will be shown")
+        .addChoices(
+          {
+            name: "Visible",
+            value: "VISIBLE",
+          },
+          {
+            name: "Only first answer",
+            value: "FIRST",
+          },
         ),
     ),
   async run(interaction) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const query = interaction.options.getString("query")!;
-    const ephemeral = !interaction.options.getBoolean("visible") ?? true;
+    const customOption = interaction.options.getString("custom");
+    const ephemeral = customOption === null;
+    const first = customOption === "FIRST";
     console.log(`User @${interaction.user.id} asked about "${query}"`);
 
     try {
@@ -49,6 +57,19 @@ export const askCommand: Command = {
 
       if (data.length === 0) {
         await interaction.editReply("No results found.");
+        return;
+      }
+
+      if (first) {
+        await interaction.editReply({
+          embeds: [
+            new EmbedBuilder()
+              .setTitle(data[0].title)
+              .setDescription(data[0].text)
+              .setColor("#65459A").data,
+          ],
+        });
+
         return;
       }
 
