@@ -1,17 +1,15 @@
 using System.Runtime.InteropServices;
-using MathNet.Numerics.LinearAlgebra;
 using Microsoft.Extensions.Logging;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 
 namespace BingusLib.SentenceEncoding
 {
-    public class UniversalSentenceEncoder : IDisposable
+    public class UniversalSentenceEncoder : SentenceEncoder, IDisposable
     {
         private readonly ILogger<UniversalSentenceEncoder> Logger;
 
         public readonly string ModelPath;
-        public readonly int OutputDimension = 512;
 
         private readonly SessionOptions _sessionOptions = new();
         private readonly IntPtr _libraryHandle;
@@ -20,7 +18,7 @@ namespace BingusLib.SentenceEncoding
         private readonly DenseTensor<string> _inputTensor = new(1);
         private readonly NamedOnnxValue[] _inputs;
 
-        public UniversalSentenceEncoder(ILogger<UniversalSentenceEncoder> logger, string modelPath)
+        public UniversalSentenceEncoder(ILogger<UniversalSentenceEncoder> logger, string modelPath) : base(512)
         {
             Logger = logger;
 
@@ -61,55 +59,30 @@ namespace BingusLib.SentenceEncoding
 
             try
             {
-                OutputDimension = _session.OutputMetadata.Single().Value.Dimensions[1];
-                logger.LogInformation("Output dimension detected as {OutputDimension}", OutputDimension);
+                EmbeddingDimension = _session.OutputMetadata.Single().Value.Dimensions[1];
+                logger.LogInformation("Output dimension detected as {EmbeddingDimension}", EmbeddingDimension);
             }
             catch (Exception e)
             {
-                Logger.LogWarning(e, "Output dimension could not be detected, defaulting to 512");
+                Logger.LogWarning(e, "Output dimension could not be detected, defaulting to {EmbeddingDimension}", EmbeddingDimension);
             }
 
             _inputs = new[] { NamedOnnxValue.CreateFromTensor("inputs", _inputTensor) };
         }
 
-        public float[] ComputeEmbedding(string input, float[] vectorBuffer)
+        protected override float[] InternalComputeEmbedding(string input, float[] vectorBuffer)
         {
             _inputTensor.SetValue(0, input);
 
             using var outputs = _session.Run(_inputs);
             var outputTensor = (DenseTensor<float>)outputs.Single().Value;
 
-            for (var i = 0; i < OutputDimension; i++)
+            for (var i = 0; i < EmbeddingDimension; i++)
             {
                 vectorBuffer[i] = outputTensor.GetValue(i);
             }
 
             return vectorBuffer;
-        }
-
-        public Vector<float> ComputeEmbeddingVector(string input, Vector<float> vectorBuffer)
-        {
-            var internalArray = vectorBuffer.AsArray();
-            if (internalArray != null)
-            {
-                ComputeEmbedding(input, internalArray);
-                return vectorBuffer;
-            }
-            else
-            {
-                vectorBuffer.SetValues(ComputeEmbedding(input, vectorBuffer.ToArray()));
-                return vectorBuffer;
-            }
-        }
-
-        public float[] ComputeEmbedding(string input)
-        {
-            return ComputeEmbedding(input, new float[OutputDimension]);
-        }
-
-        public Vector<float> ComputeEmbeddingVector(string input)
-        {
-            return Vector<float>.Build.Dense(ComputeEmbedding(input));
         }
 
         public void Dispose()
