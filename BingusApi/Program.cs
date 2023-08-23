@@ -27,8 +27,8 @@ builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>()
 
 // Add dependencies
 builder.Services.AddSingleton<IEmbeddingStore>(sp => new RocksDbStore(RocksDb.Open(new DbOptions().SetCreateIfMissing(true), "embedding_cache")));
-builder.Services.AddSingleton(sp => BingusConfigUtils.InitializeConfig(sp.GetService<ILogger<BingusConfig>>()));
-builder.Services.AddSingleton(sp => FaqConfigUtils.InitializeConfig(sp.GetService<ILogger<FaqConfig>>()));
+builder.Services.AddSingleton(sp => new JsonConfigHandler<BingusConfig>("bingus_config.json").InitializeConfig(BingusConfig.Default, sp.GetService<ILogger<BingusConfig>>()));
+builder.Services.AddSingleton(sp => new JsonConfigHandler<FaqConfig>("faq_config.json").InitializeConfig(FaqConfig.Default, sp.GetService<ILogger<FaqConfig>>()));
 
 builder.Services.AddSingleton(sp =>
 {

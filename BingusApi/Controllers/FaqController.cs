@@ -22,7 +22,7 @@ public class FaqController : ControllerBase
         _faqHandler = faqHandler;
     }
 
-    private FaqEntry GetEntry(ILazyItem<float[]> item)
+    private static FaqEntry GetEntry(ILazyItem<float[]> item)
     {
         return ((LazyKeyItem<FaqEntry, float[]>)item).Key;
     }

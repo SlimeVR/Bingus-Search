@@ -4,6 +4,8 @@ namespace BingusLib.FaqHandling
 {
     public record FaqConfig
     {
+        public static readonly FaqConfig Default = new();
+
         public record FaqConfigEntry
         {
             [JsonPropertyName("title")] public string Title { get; set; } = "";

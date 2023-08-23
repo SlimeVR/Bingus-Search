@@ -1,6 +1,6 @@
 namespace BingusLib.HNSW
 {
-    public struct LazyItemValue<TItem> : ILazyItem<TItem>
+    public readonly struct LazyItemValue<TItem> : ILazyItem<TItem>
     {
         private readonly Func<TItem> _getValue;
         public TItem Value => _getValue();
