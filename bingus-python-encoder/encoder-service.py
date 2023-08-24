@@ -7,11 +7,12 @@ class EncodeRequest(BaseModel):
     sentence: str
 
 model = SentenceTransformer("all-mpnet-base-v2", cache_folder = "./model-cache")
+dimensions = len(model.encode(""))
 app = FastAPI()
 
 @app.get("/dimensions/")
 async def get_dimensions():
-    return {"dimensions": len(model.encode(""))}
+    return {"dimensions": dimensions}
 
 @app.post("/encode/")
 async def encode_sentence(encode_request: EncodeRequest):
