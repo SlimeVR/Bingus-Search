@@ -22,22 +22,33 @@ namespace BingusLib.SentenceEncoding.Api
             EmbeddingDimension = RequestDimensions();
         }
 
-        private T SendRequest<T>(Uri uri, HttpContent? httpContent = null)
+        private static T HandleResponse<T>(HttpResponseMessage response)
         {
-            using var response = HttpClient.PostAsync(uri, httpContent).GetAwaiter().GetResult().EnsureSuccessStatusCode();
             var responseString = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             return JsonSerializer.Deserialize<T>(responseString) ?? throw new SentenceEncodeException("Failed to deserialize API response JSON, deserialized object is null.");
         }
 
+        private T PostRequest<T>(Uri uri, HttpContent? httpContent = null)
+        {
+            using var response = HttpClient.PostAsync(uri, httpContent).GetAwaiter().GetResult().EnsureSuccessStatusCode();
+            return HandleResponse<T>(response);
+        }
+
+        private T GetRequest<T>(Uri uri)
+        {
+            using var response = HttpClient.GetAsync(uri).GetAwaiter().GetResult().EnsureSuccessStatusCode();
+            return HandleResponse<T>(response);
+        }
+
         private int RequestDimensions()
         {
-            return SendRequest<DimensionsResponse>(DimensionsApiUri).Dimensions;
+            return GetRequest<DimensionsResponse>(DimensionsApiUri).Dimensions;
         }
 
         protected override float[] InternalComputeEmbedding(string input, float[] vectorBuffer)
         {
             using var httpContent = JsonContent.Create(new EncodeRequest() { Sentence = input });
-            return SendRequest<EncodeResponse>(EncodeApiUri, httpContent).Embedding;
+            return PostRequest<EncodeResponse>(EncodeApiUri, httpContent).Embedding;
         }
     }
 }
