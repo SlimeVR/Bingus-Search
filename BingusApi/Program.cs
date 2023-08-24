@@ -2,6 +2,7 @@ using AspNetCoreRateLimit;
 using BingusApi.EmbeddingServices;
 using BingusLib.Config;
 using BingusLib.FaqHandling;
+using BingusLib.SentenceEncoding;
 using RocksDbSharp;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +23,7 @@ builder.Services.Configure<IpRateLimitPolicies>(builder.Configuration.GetSection
 // Inject counter and rules stores
 builder.Services.AddInMemoryRateLimiting();
 
-// configuration (resolvers, counter key builders)
+// Configuration (resolvers, counter key builders)
 builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
 
 // Add dependencies
@@ -30,17 +31,21 @@ builder.Services.AddSingleton<IEmbeddingStore>(sp => new RocksDbStore(RocksDb.Op
 builder.Services.AddSingleton(sp => new JsonConfigHandler<BingusConfig>("bingus_config.json").InitializeConfig(BingusConfig.Default, sp.GetService<ILogger<BingusConfig>>()));
 builder.Services.AddSingleton(sp => new JsonConfigHandler<FaqConfig>("faq_config.json").InitializeConfig(FaqConfig.Default, sp.GetService<ILogger<FaqConfig>>()));
 
+builder.Services.AddSingleton<SentenceEncoder>(sp =>
+{
+    // Set up the sentence encoder
+    var bingusConfig = sp.GetRequiredService<BingusConfig>();
+    var modelPath = Path.Join(Environment.CurrentDirectory, bingusConfig.ModelPath);
+    return new UniversalSentenceEncoder(modelPath, sp.GetService<ILogger<UniversalSentenceEncoder>>());
+});
+
 builder.Services.AddSingleton(sp =>
 {
-    // Load the configs
-    var bingusConfig = sp.GetRequiredService<BingusConfig>();
+    // Set up the FAQ handler
     var faqConfig = sp.GetRequiredService<FaqConfig>();
+    var faqHandler = new FaqHandler(sp.GetRequiredService<SentenceEncoder>(), sp.GetService<IEmbeddingStore>(), sp.GetService<IEmbeddingCache>(), sp.GetService<ILogger<FaqHandler>>());
 
-    // Setup the FAQ handler
-    var modelPath = Path.Join(Environment.CurrentDirectory, bingusConfig.ModelPath);
-    var faqHandler = new FaqHandler(sp.GetRequiredService<ILoggerFactory>(), modelPath, embeddingStore: sp.GetService<IEmbeddingStore>(), embeddingCache: sp.GetService<IEmbeddingCache>());
-
-    // Add all questions
+    // Add all questions from the config
     faqHandler.AddItems(faqConfig.QaEntryEnumerator());
 
     return faqHandler;

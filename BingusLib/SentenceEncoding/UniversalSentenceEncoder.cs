@@ -7,7 +7,7 @@ namespace BingusLib.SentenceEncoding
 {
     public class UniversalSentenceEncoder : SentenceEncoder, IDisposable
     {
-        private readonly ILogger<UniversalSentenceEncoder> Logger;
+        private readonly ILogger<UniversalSentenceEncoder>? _logger;
 
         public readonly string ModelPath;
 
@@ -18,9 +18,9 @@ namespace BingusLib.SentenceEncoding
         private readonly DenseTensor<string> _inputTensor = new(1);
         private readonly NamedOnnxValue[] _inputs;
 
-        public UniversalSentenceEncoder(ILogger<UniversalSentenceEncoder> logger, string modelPath) : base(512)
+        public UniversalSentenceEncoder(string modelPath, ILogger<UniversalSentenceEncoder>? logger = null) : base(512)
         {
-            Logger = logger;
+            _logger = logger;
 
             ModelPath = Path.GetFullPath(modelPath);
 
@@ -34,7 +34,7 @@ namespace BingusLib.SentenceEncoding
             }
             else
             {
-                Logger.LogError("Running on an unsupported OS, could not load ONNX custom ops!");
+                _logger?.LogError("Running on an unsupported OS, could not load ONNX custom ops!");
             }
 
             try
@@ -43,7 +43,7 @@ namespace BingusLib.SentenceEncoding
             }
             catch (Exception e)
             {
-                Logger.LogWarning(e, "CPU is not available");
+                _logger?.LogWarning(e, "CPU is not available");
             }
 
             try
@@ -52,7 +52,7 @@ namespace BingusLib.SentenceEncoding
             }
             catch (Exception e)
             {
-                Logger.LogWarning(e, "CUDA is not available");
+                _logger?.LogWarning(e, "CUDA is not available");
             }
 
             _session = new(ModelPath, _sessionOptions);
@@ -60,11 +60,11 @@ namespace BingusLib.SentenceEncoding
             try
             {
                 EmbeddingDimension = _session.OutputMetadata.Single().Value.Dimensions[1];
-                logger.LogInformation("Output dimension detected as {EmbeddingDimension}", EmbeddingDimension);
+                _logger?.LogInformation("Output dimension detected as {EmbeddingDimension}", EmbeddingDimension);
             }
             catch (Exception e)
             {
-                Logger.LogWarning(e, "Output dimension could not be detected, defaulting to {EmbeddingDimension}", EmbeddingDimension);
+                _logger?.LogWarning(e, "Output dimension could not be detected, defaulting to {EmbeddingDimension}", EmbeddingDimension);
             }
 
             _inputs = new[] { NamedOnnxValue.CreateFromTensor("inputs", _inputTensor) };
