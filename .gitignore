@@ -407,7 +407,3 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
-# Bingus GitIgnore Entries
-BingusLib/models/
-BingusApi/embedding_cache/

@@ -13,7 +13,7 @@ namespace BingusLib.SentenceEncoding
             HttpClient = httpClient;
             BaseApiUri = baseApiUri;
 
-            EncodeApiUri = new Uri(baseApiUri, "encode");
+            EncodeApiUri = new Uri(baseApiUri, "/encode/");
         }
 
         protected override float[] InternalComputeEmbedding(string input, float[] vectorBuffer)
