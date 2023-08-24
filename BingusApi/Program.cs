@@ -3,6 +3,7 @@ using BingusApi.EmbeddingServices;
 using BingusLib.Config;
 using BingusLib.FaqHandling;
 using BingusLib.SentenceEncoding;
+using BingusLib.SentenceEncoding.Api;
 using RocksDbSharp;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,13 +31,27 @@ builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>()
 builder.Services.AddSingleton<IEmbeddingStore>(sp => new RocksDbStore(RocksDb.Open(new DbOptions().SetCreateIfMissing(true), "embedding_cache")));
 builder.Services.AddSingleton(sp => new JsonConfigHandler<BingusConfig>("bingus_config.json").InitializeConfig(BingusConfig.Default, sp.GetService<ILogger<BingusConfig>>()));
 builder.Services.AddSingleton(sp => new JsonConfigHandler<FaqConfig>("faq_config.json").InitializeConfig(FaqConfig.Default, sp.GetService<ILogger<FaqConfig>>()));
+builder.Services.AddSingleton(sp => new HttpClient());
+
 
 builder.Services.AddSingleton<SentenceEncoder>(sp =>
 {
-    // Set up the sentence encoder
+    // Load the config
     var bingusConfig = sp.GetRequiredService<BingusConfig>();
-    var modelPath = Path.Join(Environment.CurrentDirectory, bingusConfig.ModelPath);
-    return new UniversalSentenceEncoder(modelPath, sp.GetService<ILogger<UniversalSentenceEncoder>>());
+
+    // Select and set up the sentence encoder based on the config
+    switch (bingusConfig.EncoderType.ToLower())
+    {
+        case "use":
+            var modelPath = Path.Join(Environment.CurrentDirectory, bingusConfig.UseModelPath);
+            return new UniversalSentenceEncoder(modelPath, sp.GetService<ILogger<UniversalSentenceEncoder>>());
+
+        case "api":
+            return new ApiSentenceEncoder(sp.GetRequiredService<HttpClient>(), new Uri(bingusConfig.ApiUri));
+
+        default:
+            throw new Exception("No valid sentence encoder type was selected.");
+    }
 });
 
 builder.Services.AddSingleton(sp =>

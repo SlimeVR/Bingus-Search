@@ -9,6 +9,10 @@ class EncodeRequest(BaseModel):
 model = SentenceTransformer("all-mpnet-base-v2")
 app = FastAPI()
 
+@app.get("/dimensions/")
+async def get_dimensions():
+    return {"dimensions": len(model.encode(""))}
+
 @app.post("/encode/")
 async def encode_sentence(encode_request: EncodeRequest):
     return {"embedding": [val.item() for val in model.encode(encode_request.sentence)]}

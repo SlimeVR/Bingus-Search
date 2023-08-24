@@ -1,8 +1,8 @@
 using System.Text.Json.Serialization;
 
-namespace BingusLib.SentenceEncoding
+namespace BingusLib.SentenceEncoding.Api
 {
-    public record ApiSentenceEncoderRequest
+    public record EncodeRequest
     {
         [JsonPropertyName("sentence")] public string Sentence { get; set; } = "";
     }
