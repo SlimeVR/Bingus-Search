@@ -1,0 +1,16 @@
+version: '3'
+services:
+  bingus-encoder:
+    build:
+      context: .
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+    ports:
+      - 127.0.0.1:5000:5000
+    volumes:
+      - model-cache:/usr/src/app/model-cache
+
+volumes:
+  model-cache:
