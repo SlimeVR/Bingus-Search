@@ -665,6 +665,26 @@
         "whats the new location for config and logs now?",
         "where did the configs go"
       ]
+    },
+	{
+      "title": "Official Trackers - Blue Light of Death (BLOD)",
+      "answer": "Symptoms of this hardware issue that may occur on some of the **official** trackers include solid blue light (not blinking), suddenly stopped working, or suddenly stopped connecting to WiFi/SlimeVR server. Direct message Eiren with your order number and shipping details for instructions of getting your replacement tracker(s).",
+      "matched_questions": [
+        "solid blue light",
+        "tracker stopped working",
+        "tracker stopped connecting",
+        "blod"
+      ]
+    },
+	{
+      "title": "Official Trackers - Broken/Missing Extension Cables",
+      "answer": "There are two ways of getting replacement cables for your **official** tracker sets: [SlimeVR Store](https://shop.slimevr.dev/) (You will be helping SlimeVR pay for shipping cost) or by direct messaging Eiren with your order number and shipping details.",
+      "matched_questions": [
+        "extension cable issue",
+        "extension cable broke",
+        "extension cable snap",
+        "extension cable missing"
+      ]
     }
   ]
 }
