@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   bingus-encoder:
     build:
@@ -11,6 +11,7 @@ services:
       - 127.0.0.1:5000:5000
     volumes:
       - model-cache:/usr/src/app/model-cache
+      - ./local-models:/usr/src/app/local-models
 
 volumes:
   model-cache:
