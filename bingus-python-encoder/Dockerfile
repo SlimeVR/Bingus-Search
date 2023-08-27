@@ -2,11 +2,9 @@ FROM python:3-slim
 
 WORKDIR /usr/src/app
 
-COPY torch-cpu-requirements.txt ./
-RUN pip install --no-cache-dir -r torch-cpu-requirements.txt
-
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+COPY ./requirements/ ./requirements/
+RUN pip install --no-cache-dir -r ./requirements/torch-cpu-runtime.txt
+RUN pip install --no-cache-dir -r ./requirements/runtime.txt
 
 COPY . .
 
