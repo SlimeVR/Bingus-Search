@@ -1,9 +1,6 @@
-import {
-  SlashCommandBuilder,
-  SlashCommandIntegerOption,
-  SlashCommandStringOption,
-} from "discord.js";
+import { SlashCommandBuilder, SlashCommandIntegerOption } from "discord.js";
 import { Command } from "../index.js";
+import { readFile } from "node:fs/promises";
 
 enum SlimeSet {
   LOWER_BODY_PURPLE = "Purple Lower Body Set (5+0)",
@@ -23,8 +20,39 @@ enum SlimeSet {
   DELUXE_TRACKER_WHITE = "White Deluxe Tracker Set (10+6)",
 }
 
+const STRING_SET_MAP: Record<string, SlimeSet> = {
+  "SLIMEVR-FBT-LBS-P": SlimeSet.LOWER_BODY_PURPLE,
+  "SLIMEVR-FBT-LBS-B": SlimeSet.LOWER_BODY_BLACK,
+  "SLIMEVR-FBT-LBS-W": SlimeSet.LOWER_BODY_WHITE,
+  "SLIMEVR-FBT-CS-P": SlimeSet.CORE_PURPLE,
+  "SLIMEVR-FBT-CS-B": SlimeSet.CORE_BLACK,
+  "SLIMEVR-FBT-CS-W": SlimeSet.CORE_WHITE,
+  "SLIMEVR-FBT-ECS-P": SlimeSet.ENHANCED_CORE_PURPLE,
+  "SLIMEVR-FBT-ECS-B": SlimeSet.ENHANCED_CORE_BLACK,
+  "SLIMEVR-FBT-ECS-W": SlimeSet.ENHANCED_CORE_WHITE,
+  "SLIMEVR-FBT-FBS-P": SlimeSet.FULLBODY_PURPLE,
+  "SLIMEVR-FBT-FBS-B": SlimeSet.FULLBODY_BLACK,
+  "SLIMEVR-FBT-FBS-W": SlimeSet.FULLBODY_WHITE,
+  "SLIMEVR-FBT-DTS-P": SlimeSet.DELUXE_TRACKER_PURPLE,
+  "SLIMEVR-FBT-DTS-B": SlimeSet.DELUXE_TRACKER_BLACK,
+  "SLIMEVR-FBT-DTS-W": SlimeSet.DELUXE_TRACKER_WHITE,
+};
+
 const SHIP_WHEN_CHANNEL =
   "https://discord.com/channels/817184208525983775/1129107343058153623";
+
+let MAX_ORDER = 0;
+const ORDER_SET_MAP = new Map(
+  (await readFile("./assets/orders.csv", { encoding: "utf8" }))
+    .split("\n")
+    .slice(1)
+    .map((order) => {
+      const cols = order.split(",");
+      const orderNo = parseInt(cols[0]);
+      MAX_ORDER = Math.max(MAX_ORDER, orderNo);
+      return [orderNo, STRING_SET_MAP[cols[1]]];
+    }),
+);
 
 export const shippingCommand: Command = {
   builder: new SlashCommandBuilder()
@@ -38,22 +66,31 @@ export const shippingCommand: Command = {
         .setRequired(true)
         .setDescription("Your order number on Crowdsupply")
         .setMinValue(0),
-    )
-    .addStringOption(
-      new SlashCommandStringOption()
-        .setName("set")
-        .setDescription("What set did you buy")
-        .setRequired(true)
-        .addChoices(
-          ...Object.entries(SlimeSet).map(([, value]) => ({
-            name: value,
-            value,
-          })),
-        ),
     ),
+
   async run(interaction) {
     const order = interaction.options.getInteger("order")!;
-    const set = interaction.options.getString("set")! as SlimeSet;
+
+
+    if (order > MAX_ORDER) {
+      await interaction.reply({
+        content: `I can't seem to find your order yet, it might be a pretty new one.
+You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
+        ephemeral: true,
+      });
+      return;
+    }
+
+    const set = ORDER_SET_MAP.get(order);
+
+    if (set === undefined) {
+      await interaction.reply({
+        content: `I can't seem to find your order, are you sure you put it correctly?
+You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
+        ephemeral: true,
+      });
+      return;
+    }
 
     console.log(
       `User @${interaction.user.id} asked about order #${order} in set ${
@@ -78,7 +115,9 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
         content: `Your order has been shipped to Crowdsupply, it's shipment ${
           shipment + 2
         }!
-You can check on ${SHIPMENT_MESSAGE[shipment]} on the progress of the shipment.`,
+You can check on ${
+          SHIPMENT_MESSAGE[shipment]
+        } on the progress of the shipment.`,
         ephemeral: true,
       });
       return;
@@ -88,7 +127,9 @@ You can check on ${SHIPMENT_MESSAGE[shipment]} on the progress of the shipment.`
       content: `Your order is being made currently, it's shipment ${
         shipment + 2
       }!
-You can check on ${SHIPMENT_MESSAGE[shipment]} to see when it's going to get shipped.`,
+You can check on ${
+        SHIPMENT_MESSAGE[shipment]
+      } to see when it's going to get shipped.`,
       ephemeral: true,
     });
   },
