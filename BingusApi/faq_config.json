@@ -91,7 +91,9 @@
         "trackers are connected to the wifi but not slimevr",
         "it connects to wifi but not slimevr",
         "trackers are on my wifi but not slimevr server",
-        "looking for the server"
+        "looking for the server",
+        "could not find the server",
+        "can't find the server on my computer"
       ]
     },
     {
