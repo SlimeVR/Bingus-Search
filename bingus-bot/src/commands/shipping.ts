@@ -71,7 +71,6 @@ export const shippingCommand: Command = {
   async run(interaction) {
     const order = interaction.options.getInteger("order")!;
 
-
     if (order > MAX_ORDER) {
       await interaction.reply({
         content: `I can't seem to find your order yet, it might be a pretty new one.
@@ -99,7 +98,6 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
     );
 
     const shipment = SHIPMENTS.findIndex((x) => x[set] >= order);
-    const shipped = SHIPPED_SHIPMENTS.has(shipment);
 
     if (shipment === -1) {
       await interaction.reply({
@@ -110,7 +108,7 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
       return;
     }
 
-    if (shipped) {
+    if (SHIPPED_SHIPMENTS.has(shipment)) {
       await interaction.reply({
         content: `Your order has been shipped to Crowdsupply, it's shipment ${
           shipment + 2
@@ -123,17 +121,30 @@ You can check on ${
       return;
     }
 
+    if (MANUFACUTRED_SHIPMENTS.has(shipment)) {
+      await interaction.reply({
+        content: `Your order is being made currently, it's shipment ${
+          shipment + 2
+        }!
+You can check on ${
+          SHIPMENT_MESSAGE[shipment]
+        } to see when it's going to get shipped.`,
+        ephemeral: true,
+      });
+      return;
+    }
+
     await interaction.reply({
-      content: `Your order is being made currently, it's shipment ${
+      content: `Your order hasn't been manufactured yet, but it's scheduled to be in shipment ${
         shipment + 2
       }!
-You can check on ${
-        SHIPMENT_MESSAGE[shipment]
-      } to see when it's going to get shipped.`,
+You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
       ephemeral: true,
     });
   },
 };
+
+const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2]);
 
 // Index of shipped shipment
 const SHIPPED_SHIPMENTS = new Set([0, 1]);
@@ -197,5 +208,22 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_PURPLE]: 145844,
     [SlimeSet.DELUXE_TRACKER_BLACK]: 143353,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
+  },
+  {
+    [SlimeSet.LOWER_BODY_PURPLE]: 144879,
+    [SlimeSet.LOWER_BODY_BLACK]: 144879,
+    [SlimeSet.LOWER_BODY_WHITE]: 144879,
+    [SlimeSet.CORE_PURPLE]: 144879,
+    [SlimeSet.CORE_BLACK]: 144879,
+    [SlimeSet.CORE_WHITE]: 144879,
+    [SlimeSet.ENHANCED_CORE_PURPLE]: 144879,
+    [SlimeSet.ENHANCED_CORE_BLACK]: 144879,
+    [SlimeSet.ENHANCED_CORE_WHITE]: 144879,
+    [SlimeSet.FULLBODY_PURPLE]: 144879,
+    [SlimeSet.FULLBODY_BLACK]: 144879,
+    [SlimeSet.FULLBODY_WHITE]: 144879,
+    [SlimeSet.DELUXE_TRACKER_PURPLE]: 144879,
+    [SlimeSet.DELUXE_TRACKER_BLACK]: 144879,
+    [SlimeSet.DELUXE_TRACKER_WHITE]: 144879,
   },
 ];
