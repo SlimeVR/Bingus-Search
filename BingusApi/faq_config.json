@@ -396,7 +396,10 @@
         "install",
         "how do I install it",
         "how do i install the server",
-        "where do i install it"
+        "where do i install it",
+        "I need assistance in replacing the files in order to have it update, i tried uninstalling it and reinstalling the new download but it didnt work.",
+        "how do I update the server",
+        "i tried to update the server and it didn't change the version, what do i do?"
       ]
     },
     {
@@ -693,6 +696,19 @@
         "my tracker cable is missing from the box",
         "the extension wire broke when I was using it",
         "how do I get a replacement cable?"
+      ]
+    },
+    {
+      "title": "Mixing SteamVR trackers (Vive, Tundra, etc) with SlimeVR",
+      "answer": "You can find information about mixing SteamVR trackers (Vive, Tundra, etc) with SlimeVR at https://docs.slimevr.dev/tools/steamvr-trackers-mixing.html.",
+      "matched_questions": [
+        "can i use vives?",
+        "how do i use vives with SlimeVR?",
+        "what if I already have vive trackers",
+        "what if I already have tundra trackers",
+        "can I use HaritoraX with SlimeVR?",
+        "can I mix my existing trackers with SlimeVR?",
+        "is there a possible future plan where slimes can work in sync with other trackers (like vive, tundra) to enhance fbt?"
       ]
     }
   ]
