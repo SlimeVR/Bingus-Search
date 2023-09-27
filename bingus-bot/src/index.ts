@@ -117,27 +117,34 @@ client.on("threadCreate", async (thread, newly) => {
   }
 });
 
+const TRY_REACT_CHANNELS: string[] = [
+  "818062236492759050",
+  "1129107343058153623",
+  "903962635161174076",
+  "855164207615705118"
+];
+
 // This can only be for cute stuff!
 client.on("messageCreate", async (msg) => {
   await msg.fetch();
   const lowercase = msg.content.toLowerCase();
   // Check if Bingus is being mentioned in some way
-  if (
-    !(msg.mentions.users.has(clientId) || /bingus|bot|bingle/.test(lowercase))
-  ) {
-    return;
-  }
-
-  // Check if Bingus recently sent a message
-  const lastMessages = await msg.channel.messages.fetch({
-    limit: 10,
-    before: msg.id,
-    cache: false,
-  });
-  if (
-    !lastMessages.some((m) => m.author.id === clientId) &&
-    Math.random() > 0.25
-  ) {
+  if (msg.mentions.users.has(clientId) || /bot|bing\w{,4}/.test(lowercase)) {
+    // Check if Bingus recently sent a message
+    const lastMessages = await msg.channel.messages.fetch({
+      limit: 10,
+      before: msg.id,
+      cache: false,
+    });
+    if (
+      !lastMessages.some((m) => m.author.id === clientId) &&
+      Math.random() > 0.25
+    ) {
+      return;
+    }
+  } else if (TRY_REACT_CHANNELS.some((x) => x === msg.channelId)) {
+    1;
+  } else {
     return;
   }
 
@@ -149,7 +156,7 @@ client.on("messageCreate", async (msg) => {
     await msg.react(
       REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
     );
-  } else if (sentiment <= -0.5) {
+  } else if (sentiment <= -0.4) {
     await msg.react(SAD_EMOJIS[Math.floor(Math.random() * SAD_EMOJIS.length)]);
   }
 });

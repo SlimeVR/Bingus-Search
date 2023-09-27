@@ -198,6 +198,7 @@ export const REACTION_EMOJIS: EmojiIdentifierResolvable[] = [
   "🧡",
   "💙",
   "✨",
+  "😻",
 ];
 
 export const SAD_EMOJIS: EmojiIdentifierResolvable[] = [
