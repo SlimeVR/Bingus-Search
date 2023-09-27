@@ -121,7 +121,7 @@ const TRY_REACT_CHANNELS: string[] = [
   "818062236492759050",
   "1129107343058153623",
   "903962635161174076",
-  "855164207615705118"
+  "855164207615705118",
 ];
 
 // This can only be for cute stuff!
@@ -158,6 +158,22 @@ client.on("messageCreate", async (msg) => {
     );
   } else if (sentiment <= -0.4) {
     await msg.react(SAD_EMOJIS[Math.floor(Math.random() * SAD_EMOJIS.length)]);
+  } else if (
+    (msg.embeds.length > 0 || msg.attachments.size > 0) &&
+    TRY_REACT_CHANNELS.some((x) => x === msg.channelId)
+  ) {
+    const random = Math.random();
+    if (random < 0.75) {
+      if (random <= 0.15) {
+        await msg.react(
+          SAD_EMOJIS[Math.floor(Math.random() * SAD_EMOJIS.length)],
+        );
+      } else {
+        await msg.react(
+          REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
+        );
+      }
+    }
   }
 });
 
