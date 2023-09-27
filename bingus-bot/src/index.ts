@@ -122,7 +122,9 @@ client.on("messageCreate", async (msg) => {
   await msg.fetch();
   const lowercase = msg.content.toLowerCase();
   // Check if Bingus is being mentioned in some way
-  if (!(msg.mentions.users.has(clientId) || /bingus|bot/.test(lowercase))) {
+  if (
+    !(msg.mentions.users.has(clientId) || /bingus|bot|bingle/.test(lowercase))
+  ) {
     return;
   }
 
