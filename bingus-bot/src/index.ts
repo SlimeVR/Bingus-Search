@@ -11,7 +11,12 @@ import {
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import auth from "../auth.json" assert { type: "json" };
-import { EmbedList, fetchBingus } from "./util.js";
+import {
+  EmbedList,
+  REACTION_EMOJIS,
+  THANKFUL_WORDS,
+  fetchBingus,
+} from "./util.js";
 import { askCommand } from "./commands/ask.js";
 import { shippingCommand } from "./commands/shipping.js";
 
@@ -38,11 +43,14 @@ try {
 }
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent],
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages],
 });
 
-client.on("ready", () => {
-  console.log(`Logged in as ${client.user?.tag}`);
+let clientId: string;
+
+client.on("ready", (client) => {
+  console.log(`Logged in as ${client.user.tag}`);
+  clientId = client.user.id;
 });
 
 // Autocomplete handler
@@ -103,6 +111,32 @@ client.on("threadCreate", async (thread, newly) => {
   } catch (error) {
     console.error(error);
   }
+});
+
+// This can only be for cute stuff!
+client.on("messageCreate", async (msg) => {
+  await msg.fetch();
+  const lowercase = msg.content.toLowerCase();
+  // Check if Bingus is being mentioned in some way and check if they are thanking it.
+  if (
+    !(msg.mentions.users.has(clientId) || /bingus|bot/.test(lowercase)) &&
+    !THANKFUL_WORDS.some((q) => q.test(lowercase))
+  ) {
+    return;
+  }
+
+  // Check if Bingus recently sent a message
+  const lastMessages = await msg.channel.messages.fetch({
+    limit: 10,
+    before: msg.id,
+    cache: false,
+  });
+  if (!lastMessages.some((m) => m.author.id === clientId) && Math.random() > 0.25) return;
+
+  // React with an emoji
+  await msg.react(
+    REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
+  );
 });
 
 client.login(auth.token);

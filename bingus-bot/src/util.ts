@@ -6,6 +6,7 @@ import {
   ChatInputCommandInteraction,
   ComponentType,
   EmbedBuilder,
+  EmojiIdentifierResolvable,
   ReplyOptions,
   TextBasedChannel,
 } from "discord.js";
@@ -179,3 +180,28 @@ export async function fetchBingusData(): Promise<FaqConfig> {
     ),
   ) as FaqConfig;
 }
+
+export const REACTION_EMOJIS: EmojiIdentifierResolvable[] = [
+  "<:langwidjnom:1055961639842750534>",
+  "<:Heart:1117832451620868136>",
+  "<:nya_a:847203539352551544>",
+  "<:nya_umu:850498715617198080>",
+  "<:pcbnom:833469925980110908>",
+  "<:slimehug:822833057593294908>",
+  "💛",
+  "🖤",
+  "💚",
+  "🤎",
+  "🤍",
+  "💜",
+  "❤️",
+  "🧡",
+  "💙",
+  "✨",
+];
+
+export const THANKFUL_WORDS: RegExp[] = [
+  /thank|cute|fix/,
+  /(excellent|good|amazing) ?work/,
+  /answers?[\s\w]{,6} question/,
+];
