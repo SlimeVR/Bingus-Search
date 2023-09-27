@@ -11,20 +11,20 @@ import {
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import auth from "../auth.json" assert { type: "json" };
-import {
-  EmbedList,
-  REACTION_EMOJIS,
-  THANKFUL_WORDS,
-  fetchBingus,
-} from "./util.js";
+import { EmbedList, REACTION_EMOJIS, SAD_EMOJIS, fetchBingus } from "./util.js";
 import { askCommand } from "./commands/ask.js";
 import { shippingCommand } from "./commands/shipping.js";
+import winkNLP from "wink-nlp";
+import model from "wink-eng-lite-web-model";
 
 export interface Command {
   builder: Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">;
   run: (interaction: ChatInputCommandInteraction) => Promise<void>;
   autocomplete?: (interaction: AutocompleteInteraction) => Promise<void>;
 }
+
+const nlp = winkNLP(model, ["negation", "sentiment"]);
+const { its } = nlp;
 
 const commands = [askCommand, shippingCommand];
 
@@ -43,7 +43,11 @@ try {
 }
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMessages,
+  ],
 });
 
 let clientId: string;
@@ -117,11 +121,8 @@ client.on("threadCreate", async (thread, newly) => {
 client.on("messageCreate", async (msg) => {
   await msg.fetch();
   const lowercase = msg.content.toLowerCase();
-  // Check if Bingus is being mentioned in some way and check if they are thanking it.
-  if (
-    !(msg.mentions.users.has(clientId) || /bingus|bot/.test(lowercase)) &&
-    !THANKFUL_WORDS.some((q) => q.test(lowercase))
-  ) {
+  // Check if Bingus is being mentioned in some way
+  if (!(msg.mentions.users.has(clientId) || /bingus|bot/.test(lowercase))) {
     return;
   }
 
@@ -131,12 +132,24 @@ client.on("messageCreate", async (msg) => {
     before: msg.id,
     cache: false,
   });
-  if (!lastMessages.some((m) => m.author.id === clientId) && Math.random() > 0.25) return;
+  if (
+    !lastMessages.some((m) => m.author.id === clientId) &&
+    Math.random() > 0.25
+  ) {
+    return;
+  }
+
+  const sentiment = nlp.readDoc(msg.content).out(its.sentiment);
+  if (typeof sentiment === "string") return;
 
   // React with an emoji
-  await msg.react(
-    REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
-  );
+  if (sentiment >= 0.35) {
+    await msg.react(
+      REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
+    );
+  } else if (sentiment <= -0.5) {
+    await msg.react(SAD_EMOJIS[Math.floor(Math.random() * SAD_EMOJIS.length)]);
+  }
 });
 
 client.login(auth.token);

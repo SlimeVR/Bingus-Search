@@ -200,8 +200,12 @@ export const REACTION_EMOJIS: EmojiIdentifierResolvable[] = [
   "✨",
 ];
 
-export const THANKFUL_WORDS: RegExp[] = [
-  /thank|cute|fix/,
-  /(excellent|good|amazing) ?work/,
-  /answers?[\s\w]{,6} question/,
+export const SAD_EMOJIS: EmojiIdentifierResolvable[] = [
+  "<:spicypillownom:839133143793139733>",
+  "<:nya_gun:957426272030576671>",
+  "😭",
+  "😢",
+  "😓",
+  "💀",
+  "😈",
 ];
