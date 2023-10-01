@@ -191,7 +191,8 @@
         "can i use three trackers?",
         "three trackers",
         "3",
-        "three"
+        "three",
+        "Can I use 3 SlimeVR trackers?"
       ]
     },
     {
@@ -708,7 +709,9 @@
         "what if I already have tundra trackers",
         "can I use HaritoraX with SlimeVR?",
         "can I mix my existing trackers with SlimeVR?",
-        "is there a possible future plan where slimes can work in sync with other trackers (like vive, tundra) to enhance fbt?"
+        "is there a possible future plan where slimes can work in sync with other trackers (like vive, tundra) to enhance fbt?",
+        "If I got a 3 pack of Tundra (just as an example), could I still use slimeVR for untracked areas of my body (knees, chest, etc)?",
+        "how can i use slime tracker for the elbows only, when i try to connect vive and slime trackers being the slime for elbows"
       ]
     },
     {
