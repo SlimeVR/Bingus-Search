@@ -75,7 +75,7 @@ export const askCommand: Command = {
 
       const embedList = new EmbedList();
       embedList.push(
-        ...data.map(
+        ...data.slice(0, 5).map(
           (res) =>
             new EmbedBuilder()
               .setTitle(res.title)
