@@ -96,7 +96,7 @@ client.on("threadCreate", async (thread, newly) => {
 
     const embedList = new EmbedList();
     embedList.push(
-      ...data.map(
+      ...data.slice(0, 5).map(
         (res) =>
           new EmbedBuilder()
             .setTitle(res.title)
@@ -129,7 +129,7 @@ client.on("messageCreate", async (msg) => {
   await msg.fetch();
   const lowercase = msg.content.toLowerCase();
   // Check if Bingus is being mentioned in some way
-  if (msg.mentions.users.has(clientId) || /bot|bing\w{,4}/.test(lowercase)) {
+  if (msg.mentions.users.has(clientId) || /\b(bot|bing\w{0,4})\b/.test(lowercase)) {
     // Check if Bingus recently sent a message
     const lastMessages = await msg.channel.messages.fetch({
       limit: 10,

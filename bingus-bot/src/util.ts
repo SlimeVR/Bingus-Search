@@ -18,7 +18,7 @@ import { fileURLToPath } from "url";
 export async function fetchBingus(query: string) {
   const url = `https://bingus.bscotch.ca/api/faq/search?question=${encodeURIComponent(
     query,
-  )}&responseCount=30`;
+  )}&responseCount=5`;
 
   return await fetch(url).then(
     (res) => res.json() as Promise<BingusFaqResponse[]>,
