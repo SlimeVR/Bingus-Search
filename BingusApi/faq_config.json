@@ -684,7 +684,8 @@
         "blod",
         "One of my trackers was left on for a long time and died, and the switch stayed on until I noticed it. When I charged it for use, the light never went green, I flipped the switch and the blue light never came back on. I tried to connect it to my computer again and it never went past: \"Giving Wifi Credentials\".",
         "The tracker died after being left on too long. It did not charge or turn on again. They tried to re-sync it with the software, but it failed.",
-        "so i've had my trackers for a bit and now out of the blue it's not detecting the tracker at all, when i go into the serial console it's not even picking up there i don't know how to fix this or even what the full issue is"
+        "so i've had my trackers for a bit and now out of the blue it's not detecting the tracker at all, when i go into the serial console it's not even picking up there i don't know how to fix this or even what the full issue is",
+        "My trackers were working fine for a while but suddenly they stopped being detected at all. Even the serial console does not recognize them. I am not sure what the problem is or how to solve it."
       ]
     },
     {
