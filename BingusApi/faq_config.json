@@ -732,6 +732,17 @@
         "first tracker case to break, had a feeling these would give out sooner or later.",
         "i was using my trackers and part of the case broke off"
       ]
+    },
+    {
+      "title": "Trackers don't connect to serial",
+      "answer": "If you're having issues connecting your trackers through serial (USB), you can find potential fixes at https://docs.slimevr.dev/common-issues.html#no-serial-device-appears--looking-for-trackers--connection-to-serial-lost-reconnecting.",
+      "matched_questions": [
+        "stuck at \"Looking for trackers\"",
+        "serial won't connect",
+        "my tracker won't show up on the serial console",
+        "serial console stuck at \"Connection to serial lost, Reconnecting...\"",
+        "When they are turned on they flash 3 times (looking for wifi). When I plug them in they light up red but SlimeVR says \"Looking for trackers\". The serial console just says \"Connection to serial lost, Reconnecting...\". This doesnt change when I plug the tracker in. I use Wemos D1 mini."
+      ]
     }
   ]
 }
