@@ -47,7 +47,7 @@
       ]
     },
     {
-      "title": "Trackers wont connect to Wi-Fi",
+      "title": "Trackers won't connect to Wi-Fi",
       "answer": "If your trackers aren't connecting to Wi-Fi, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server.",
       "matched_questions": [
         "tracker never connects to Wi-Fi",
@@ -63,7 +63,8 @@
         "I uploaded firmware to the boards but it says wifi creds arent correct",
         "wifi credentials",
         "wifi error",
-        "My friend has used her trackers before, more than once, she got a new hotspot but some of the trackers weren't connecting to the WiFi, they wouldn't work for her no matter what she did, one of them started working but then the other stopped"
+        "My friend has used her trackers before, more than once, she got a new hotspot but some of the trackers weren't connecting to the WiFi, they wouldn't work for her no matter what she did, one of them started working but then the other stopped",
+        "I got my slimevr trackers, I'm on 2.4ghz wifi. I am on Ethernet cable due to virtual desktop, I plug in a tracker to get it connected to the wifi but it keeps saying unable to connect. I really wanted to get these to work but I can't figure out what's wrong."
       ]
     },
     {
@@ -316,7 +317,8 @@
       "matched_questions": [
         "are the amazon trackers ok to buy?",
         "can I buy from amazon?",
-        "should I buy trackers from amazon or will they suck?"
+        "should I buy trackers from amazon or will they suck?",
+        "ebay trackers"
       ]
     },
     {
@@ -580,7 +582,8 @@
         "how to calibrate imus",
         "bmi160 calibration",
         "mpu calibration",
-        "mpu6500 calibration"
+        "mpu6500 calibration",
+        "how do I calibrate a bmi 270"
       ]
     },
     {
@@ -671,7 +674,9 @@
         "where are the configs stored?",
         "how do I find the logs for SlimeVR",
         "whats the new location for config and logs now?",
-        "where did the configs go"
+        "where did the configs go",
+        "where is the app data stored",
+        "where can I find the files"
       ]
     },
     {
@@ -685,7 +690,12 @@
         "One of my trackers was left on for a long time and died, and the switch stayed on until I noticed it. When I charged it for use, the light never went green, I flipped the switch and the blue light never came back on. I tried to connect it to my computer again and it never went past: \"Giving Wifi Credentials\".",
         "The tracker died after being left on too long. It did not charge or turn on again. They tried to re-sync it with the software, but it failed.",
         "so i've had my trackers for a bit and now out of the blue it's not detecting the tracker at all, when i go into the serial console it's not even picking up there i don't know how to fix this or even what the full issue is",
-        "My trackers were working fine for a while but suddenly they stopped being detected at all. Even the serial console does not recognize them. I am not sure what the problem is or how to solve it."
+        "My trackers were working fine for a while but suddenly they stopped being detected at all. Even the serial console does not recognize them. I am not sure what the problem is or how to solve it.",
+        "Tracker is heating up",
+        "tracker gets very hot suddenly",
+        "as stated in the title i now have a 2nd dead trracker after just a few months :3 image is what i get in the console thanks...",
+        "I have a BN0085 chip that's over heating immediately after switching power on, it's too hot to touch! (I disassembled the tracker to unplug the battery which btw was very loose as if its not soldered on correctly)",
+        "All im getting is a blue light, no blinking. i have attempted to reconnect it to the wifi and that has not worked."
       ]
     },
     {
@@ -742,6 +752,20 @@
         "my tracker won't show up on the serial console",
         "serial console stuck at \"Connection to serial lost, Reconnecting...\"",
         "When they are turned on they flash 3 times (looking for wifi). When I plug them in they light up red but SlimeVR says \"Looking for trackers\". The serial console just says \"Connection to serial lost, Reconnecting...\". This doesnt change when I plug the tracker in. I use Wemos D1 mini."
+      ]
+    },
+    {
+      "title": "Uploading tracker firmware",
+      "answer": "If you're looking to flash/upload firmware to your tracker, you can find information at https://docs.slimevr.dev/firmware/index.html.",
+      "matched_questions": [
+        "upload firmware",
+        "update firmware",
+        "firmware tool",
+        "how do I flash my trackers?",
+        "How do I upload firmware to my trackers?",
+        "I just built trackers and i cant find the firmware tool, where is it?",
+        "I need help putting the firmware on my trackers please",
+        "I bought my trackers awhile ago and i was to that they may need updated"
       ]
     }
   ]
