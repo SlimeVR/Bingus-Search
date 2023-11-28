@@ -40,6 +40,7 @@ const STRING_SET_MAP: Record<string, SlimeSet> = {
 
 const SHIP_WHEN_CHANNEL =
   "https://discord.com/channels/817184208525983775/1129107343058153623";
+const FCC_MESSAGE = "https://discord.com/channels/817184208525983775/1129107343058153623/1178415897493381240";
 
 let MAX_ORDER = 0;
 const ORDER_SET_MAP = new Map(
@@ -50,7 +51,7 @@ const ORDER_SET_MAP = new Map(
       const cols = order.split(",");
       const orderNo = parseInt(cols[0]);
       MAX_ORDER = Math.max(MAX_ORDER, orderNo);
-      return [orderNo, STRING_SET_MAP[cols[1]]];
+      return [orderNo, { set: STRING_SET_MAP[cols[1]], date: new Date(`${cols[8]} UTC`) }];
     }),
 );
 
@@ -80,9 +81,9 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
       return;
     }
 
-    const set = ORDER_SET_MAP.get(order);
+    const orderInfo = ORDER_SET_MAP.get(order);
 
-    if (set === undefined) {
+    if (orderInfo === undefined) {
       await interaction.reply({
         content: `I can't seem to find your order, are you sure you put it correctly?
 You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
@@ -93,18 +94,26 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
 
     console.log(
       `User @${interaction.user.id} asked about order #${order} in set ${
-        Object.entries(SlimeSet).find(([, value]) => value === set)?.[0] ?? set
+        Object.entries(SlimeSet).find(([, value]) => value === orderInfo.set)?.[0] ?? orderInfo
       }`,
     );
 
-    const shipment = SHIPMENTS.findIndex((x) => x[set] >= order);
+    const shipment = SHIPMENTS.findIndex((x) => x[orderInfo.set] >= order);
 
     if (shipment === -1) {
-      await interaction.reply({
-        content: `Your order hasn't been manufactured yet.
+      if(orderInfo.date.getUTCFullYear() === 2022) {
+        await interaction.reply({
+          content: `Your order will follow after Batch 1 of the shipments.
+You can check on ${FCC_MESSAGE} on the progress of the last batches.`,
+          ephemeral: true,
+        });
+      } else {
+        await interaction.reply({
+          content: `Your order hasn't been manufactured yet.
 You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
-        ephemeral: true,
-      });
+          ephemeral: true,
+        });
+      }
       return;
     }
 
@@ -144,7 +153,7 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
   },
 };
 
-const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2]);
+const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3]);
 
 // Index of shipped shipment
 const SHIPPED_SHIPMENTS = new Set([0, 1]);
@@ -153,7 +162,8 @@ const SHIPPED_SHIPMENTS = new Set([0, 1]);
 const SHIPMENT_MESSAGE = [
   "https://discord.com/channels/817184208525983775/1129107343058153623/1129110457953812651",
   "https://discord.com/channels/817184208525983775/1129107343058153623/1129117575721267290",
-  "https://discord.com/channels/817184208525983775/1129107343058153623/1130164280537391154",
+  FCC_MESSAGE,
+  FCC_MESSAGE,
 ];
 
 // Shipments being prepared or shipped
@@ -208,22 +218,5 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_PURPLE]: 145844,
     [SlimeSet.DELUXE_TRACKER_BLACK]: 143353,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
-  },
-  {
-    [SlimeSet.LOWER_BODY_PURPLE]: 144879,
-    [SlimeSet.LOWER_BODY_BLACK]: 144879,
-    [SlimeSet.LOWER_BODY_WHITE]: 144879,
-    [SlimeSet.CORE_PURPLE]: 144879,
-    [SlimeSet.CORE_BLACK]: 144879,
-    [SlimeSet.CORE_WHITE]: 144879,
-    [SlimeSet.ENHANCED_CORE_PURPLE]: 144879,
-    [SlimeSet.ENHANCED_CORE_BLACK]: 144879,
-    [SlimeSet.ENHANCED_CORE_WHITE]: 144879,
-    [SlimeSet.FULLBODY_PURPLE]: 144879,
-    [SlimeSet.FULLBODY_BLACK]: 144879,
-    [SlimeSet.FULLBODY_WHITE]: 144879,
-    [SlimeSet.DELUXE_TRACKER_PURPLE]: 144879,
-    [SlimeSet.DELUXE_TRACKER_BLACK]: 144879,
-    [SlimeSet.DELUXE_TRACKER_WHITE]: 144879,
   },
 ];
