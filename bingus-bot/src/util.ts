@@ -181,6 +181,8 @@ export async function fetchBingusData(): Promise<FaqConfig> {
   ) as FaqConfig;
 }
 
+export const BINGUS_EMOJI: EmojiIdentifierResolvable = "<:bingus:1157717351861596200>";
+
 export const REACTION_EMOJIS: EmojiIdentifierResolvable[] = [
   "<:langwidjnom:1055961639842750534>",
   "<:Heart:1117832451620868136>",
@@ -199,6 +201,7 @@ export const REACTION_EMOJIS: EmojiIdentifierResolvable[] = [
   "💙",
   "✨",
   "😻",
+  BINGUS_EMOJI,
 ];
 
 export const SAD_EMOJIS: EmojiIdentifierResolvable[] = [

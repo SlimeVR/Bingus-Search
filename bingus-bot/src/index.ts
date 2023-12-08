@@ -11,7 +11,7 @@ import {
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import auth from "../auth.json" assert { type: "json" };
-import { EmbedList, REACTION_EMOJIS, SAD_EMOJIS, fetchBingus } from "./util.js";
+import { BINGUS_EMOJI, EmbedList, REACTION_EMOJIS, SAD_EMOJIS, fetchBingus } from "./util.js";
 import { askCommand } from "./commands/ask.js";
 import { shippingCommand } from "./commands/shipping.js";
 import winkNLP from "wink-nlp";
@@ -129,7 +129,11 @@ client.on("messageCreate", async (msg) => {
   await msg.fetch();
   const lowercase = msg.content.toLowerCase();
   // Check if Bingus is being mentioned in some way
-  if (msg.mentions.users.has(clientId) || /\b(bot|bing\w{0,4})\b/.test(lowercase)) {
+  if (msg.content.includes(BINGUS_EMOJI.toString())) {
+    // React back with the emote
+    await msg.react(BINGUS_EMOJI);
+    return;
+  } else if (msg.mentions.users.has(clientId) || /\b(bot|bing\w{0,4})\b/.test(lowercase)) {
     // Check if Bingus recently sent a message
     const lastMessages = await msg.channel.messages.fetch({
       limit: 10,
