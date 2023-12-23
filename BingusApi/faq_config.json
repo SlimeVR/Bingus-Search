@@ -95,7 +95,9 @@
         "trackers are on my wifi but not slimevr server",
         "looking for the server",
         "could not find the server",
-        "can't find the server on my computer"
+        "can't find the server on my computer",
+        "Trackers wont connect to server",
+        "Searching for the server on the local network..."
       ]
     },
     {
@@ -126,7 +128,9 @@
       "matched_questions": [
         "trackers are drifting a lot",
         "my trackers are drifting",
-        "excessive drift"
+        "excessive drift",
+        "I need help, when I use my trackers every minute everything works great but after 3 minutes the drift starts, they start to move from their place, I just bought them",
+        "My trackers have drift, every 2 minutes I have to restart them"
       ]
     },
     {
@@ -700,7 +704,11 @@
         "tracker gets very hot suddenly",
         "as stated in the title i now have a 2nd dead trracker after just a few months :3 image is what i get in the console thanks...",
         "I have a BN0085 chip that's over heating immediately after switching power on, it's too hot to touch! (I disassembled the tracker to unplug the battery which btw was very loose as if its not soldered on correctly)",
-        "All im getting is a blue light, no blinking. i have attempted to reconnect it to the wifi and that has not worked."
+        "All im getting is a blue light, no blinking. i have attempted to reconnect it to the wifi and that has not worked.",
+        "Blue light of death has happened",
+        "I have had the unfortunate blue light of death on another tracker. How do I go about starting a warranty and possibly ship back this board for testing and investigation.",
+        "Three of my trackers stopped working after using them for only a few months, they turn on but the blue light does not blink and they won't connect anymore.",
+        "why does my tracker not connect to internet and stays bright blue"
       ]
     },
     {
