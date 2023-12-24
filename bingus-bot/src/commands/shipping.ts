@@ -40,7 +40,8 @@ const STRING_SET_MAP: Record<string, SlimeSet> = {
 
 const SHIP_WHEN_CHANNEL =
   "https://discord.com/channels/817184208525983775/1129107343058153623";
-const FCC_MESSAGE = "https://discord.com/channels/817184208525983775/1129107343058153623/1178415897493381240";
+const FCC_MESSAGE =
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1178415897493381240";
 
 let MAX_ORDER = 0;
 const ORDER_SET_MAP = new Map(
@@ -51,7 +52,10 @@ const ORDER_SET_MAP = new Map(
       const cols = order.split(",");
       const orderNo = parseInt(cols[0]);
       MAX_ORDER = Math.max(MAX_ORDER, orderNo);
-      return [orderNo, { set: STRING_SET_MAP[cols[1]], date: new Date(`${cols[8]} UTC`) }];
+      return [
+        orderNo,
+        { set: STRING_SET_MAP[cols[1]], date: new Date(`${cols[8]} UTC`) },
+      ];
     }),
 );
 
@@ -94,22 +98,32 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
 
     console.log(
       `User @${interaction.user.id} asked about order #${order} in set ${
-        Object.entries(SlimeSet).find(([, value]) => value === orderInfo.set)?.[0] ?? orderInfo
+        Object.entries(SlimeSet).find(
+          ([, value]) => value === orderInfo.set,
+        )?.[0] ?? orderInfo
       }`,
     );
 
-    const shipment = SHIPMENTS.findIndex((x) => x[orderInfo.set] >= order);
+    let shipment = SHIPMENTS.findIndex((x) => x[orderInfo.set] >= order);
+
+    if (
+      shipment === -1 &&
+      orderInfo.date.getUTCFullYear() === 2022 &&
+      orderInfo.date.getUTCMonth() === 5
+    ) {
+      shipment = 4;
+    }
 
     if (shipment === -1) {
-      if(orderInfo.date.getUTCFullYear() === 2022) {
+      if (orderInfo.date.getUTCFullYear() === 2022) {
         await interaction.reply({
           content: `Your order will follow after Batch 1 of the shipments.
-You can check on ${FCC_MESSAGE} on the progress of the last batches.`,
+You can check on ${FCC_MESSAGE} on the progress of the last shipments.`,
           ephemeral: true,
         });
       } else {
         await interaction.reply({
-          content: `Your order hasn't been manufactured yet.
+          content: `There is no news about your order yet.
 You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
           ephemeral: true,
         });
@@ -153,7 +167,7 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
   },
 };
 
-const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3]);
+const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3, 4]);
 
 // Index of shipped shipment
 const SHIPPED_SHIPMENTS = new Set([0, 1]);
@@ -162,8 +176,9 @@ const SHIPPED_SHIPMENTS = new Set([0, 1]);
 const SHIPMENT_MESSAGE = [
   "https://discord.com/channels/817184208525983775/1129107343058153623/1129110457953812651",
   "https://discord.com/channels/817184208525983775/1129107343058153623/1129117575721267290",
-  FCC_MESSAGE,
-  FCC_MESSAGE,
+  "https://discord.com/channels/817184208525983775/818062236492759050/1188242154498310144",
+  "https://discord.com/channels/817184208525983775/818062236492759050/1188242154498310144",
+  "https://discord.com/channels/817184208525983775/818062236492759050/1188242154498310144",
 ];
 
 // Shipments being prepared or shipped
