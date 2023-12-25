@@ -109,7 +109,7 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
     if (
       shipment === -1 &&
       orderInfo.date.getUTCFullYear() === 2022 &&
-      orderInfo.date.getUTCMonth() === 5
+      orderInfo.date.getUTCMonth() <= 5
     ) {
       shipment = 4;
     }
