@@ -111,7 +111,7 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
       orderInfo.date.getUTCFullYear() === 2022 &&
       orderInfo.date.getUTCMonth() <= 5
     ) {
-      shipment = 4;
+      shipment = 3;
     }
 
     if (shipment === -1) {
@@ -167,10 +167,10 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
   },
 };
 
-const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3, 4]);
+const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3]);
 
 // Index of shipped shipment
-const SHIPPED_SHIPMENTS = new Set([0, 1]);
+const SHIPPED_SHIPMENTS = new Set([0]);
 
 // Link to shipment message
 const SHIPMENT_MESSAGE = [
