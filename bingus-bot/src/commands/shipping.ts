@@ -104,15 +104,7 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
       }`,
     );
 
-    let shipment = SHIPMENTS.findIndex((x) => x[orderInfo.set] >= order);
-
-    if (
-      shipment === -1 &&
-      orderInfo.date.getUTCFullYear() === 2022 &&
-      orderInfo.date.getUTCMonth() <= 5
-    ) {
-      shipment = 3;
-    }
+    const shipment = SHIPMENTS.findIndex((x) => x[orderInfo.set] >= order);
 
     if (shipment === -1) {
       if (orderInfo.date.getUTCFullYear() === 2022) {
@@ -134,6 +126,19 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
     if (SHIPPED_SHIPMENTS.has(shipment)) {
       await interaction.reply({
         content: `Your order has been shipped to Crowdsupply, it's shipment ${
+          shipment + 2
+        }!
+You can check on ${
+          SHIPMENT_MESSAGE[shipment]
+        } on the progress of the shipment.`,
+        ephemeral: true,
+      });
+      return;
+    }
+
+    if (JANUARY_SHIPMENT.has(shipment)) {
+      await interaction.reply({
+        content: `Your order is about to get shipped to Crowdsupply in January 3st, it's shipment ${
           shipment + 2
         }!
 You can check on ${
@@ -169,15 +174,17 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
 
 const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3]);
 
+const JANUARY_SHIPMENT = new Set([1, 2, 3]);
+
 // Index of shipped shipment
 const SHIPPED_SHIPMENTS = new Set([0]);
 
 // Link to shipment message
 const SHIPMENT_MESSAGE = [
   "https://discord.com/channels/817184208525983775/1129107343058153623/1129110457953812651",
-  "https://discord.com/channels/817184208525983775/818062236492759050/1188242154498310144",
-  "https://discord.com/channels/817184208525983775/818062236492759050/1188242154498310144",
-  "https://discord.com/channels/817184208525983775/818062236492759050/1188242154498310144",
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1129117575721267290",
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1130164280537391154",
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1183816649950888066",
 ];
 
 // Shipments being prepared or shipped
@@ -229,6 +236,23 @@ const SHIPMENTS = [
     [SlimeSet.FULLBODY_PURPLE]: 136423,
     [SlimeSet.FULLBODY_BLACK]: 148429,
     [SlimeSet.FULLBODY_WHITE]: 131751,
+    [SlimeSet.DELUXE_TRACKER_PURPLE]: 145844,
+    [SlimeSet.DELUXE_TRACKER_BLACK]: 143353,
+    [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
+  },
+  {
+    [SlimeSet.LOWER_BODY_PURPLE]: 145034,
+    [SlimeSet.LOWER_BODY_BLACK]: 146417,
+    [SlimeSet.LOWER_BODY_WHITE]: 143933,
+    [SlimeSet.CORE_PURPLE]: 148676,
+    [SlimeSet.CORE_BLACK]: 143948,
+    [SlimeSet.CORE_WHITE]: 147485,
+    [SlimeSet.ENHANCED_CORE_PURPLE]: 135028,
+    [SlimeSet.ENHANCED_CORE_BLACK]: 142973,
+    [SlimeSet.ENHANCED_CORE_WHITE]: 132923,
+    [SlimeSet.FULLBODY_PURPLE]: 156056,
+    [SlimeSet.FULLBODY_BLACK]: 148429,
+    [SlimeSet.FULLBODY_WHITE]: 152199,
     [SlimeSet.DELUXE_TRACKER_PURPLE]: 145844,
     [SlimeSet.DELUXE_TRACKER_BLACK]: 143353,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
