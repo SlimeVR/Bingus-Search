@@ -136,19 +136,6 @@ You can check on ${
       return;
     }
 
-    if (JANUARY_SHIPMENT.has(shipment)) {
-      await interaction.reply({
-        content: `Your order is about to get shipped to Crowdsupply in January 3st, it's shipment ${
-          shipment + 2
-        }!
-You can check on ${
-          SHIPMENT_MESSAGE[shipment]
-        } on the progress of the shipment.`,
-        ephemeral: true,
-      });
-      return;
-    }
-
     if (MANUFACUTRED_SHIPMENTS.has(shipment)) {
       await interaction.reply({
         content: `Your order is being made currently, it's shipment ${
@@ -174,10 +161,8 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
 
 const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3]);
 
-const JANUARY_SHIPMENT = new Set([1, 2, 3]);
-
 // Index of shipped shipment
-const SHIPPED_SHIPMENTS = new Set([0]);
+const SHIPPED_SHIPMENTS = new Set([0, 1, 2, 3]);
 
 // Link to shipment message
 const SHIPMENT_MESSAGE = [
