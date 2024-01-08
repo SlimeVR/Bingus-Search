@@ -824,7 +824,8 @@
         "why is my tracker errored?",
         "how do I fix my tracker showing an error?",
         "how do I see the logs for my tracker",
-        "how do I debug my tracker having an error"
+        "how do I debug my tracker having an error",
+        "The 8th and final one, connects fine, but displays a red error. Is there a debug log or something I can read to get a clue as to why it displays an error?"
       ]
     },
     {
