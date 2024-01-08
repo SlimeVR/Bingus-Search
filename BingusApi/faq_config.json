@@ -164,7 +164,7 @@
     },
     {
       "title": "Shipping estimate",
-      "answer": "As of December 14th, 2023, any new orders placed are estimated to ship on **March 29th, 2024** (this provided date is subject to change, please check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest information). For the latest information on shipping and production progress, you can check the [#when-my-order-ships](https://discord.com/channels/817184208525983775/1129107343058153623), [#updates](https://discord.com/channels/817184208525983775/818062236492759050), and [#production-progress](https://discord.com/channels/817184208525983775/1025118385585004544) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR) or visit the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
+      "answer": "As of January 7th, 2024, any new orders placed are estimated to ship on **May 31st, 2024** (this provided date is subject to change, please check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest information). For the latest information on shipping and production progress, you can check the [#when-my-order-ships](https://discord.com/channels/817184208525983775/1129107343058153623), [#updates](https://discord.com/channels/817184208525983775/818062236492759050), and [#production-progress](https://discord.com/channels/817184208525983775/1025118385585004544) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR) or visit the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
       "matched_questions": [
         "When are they shipping?",
         "When does it ship?",
@@ -764,7 +764,8 @@
         "serial won't connect",
         "my tracker won't show up on the serial console",
         "serial console stuck at \"Connection to serial lost, Reconnecting...\"",
-        "When they are turned on they flash 3 times (looking for wifi). When I plug them in they light up red but SlimeVR says \"Looking for trackers\". The serial console just says \"Connection to serial lost, Reconnecting...\". This doesnt change when I plug the tracker in. I use Wemos D1 mini."
+        "When they are turned on they flash 3 times (looking for wifi). When I plug them in they light up red but SlimeVR says \"Looking for trackers\". The serial console just says \"Connection to serial lost, Reconnecting...\". This doesnt change when I plug the tracker in. I use Wemos D1 mini.",
+        "I'm trying to connect my trackers but they only get detected by my pc and not the slimevr app"
       ]
     },
     {
@@ -812,6 +813,29 @@
         "how to enable/disable trackers in steamvr and vrchat osc",
         "enabling trackers",
         "disabling trackers"
+      ]
+    },
+    {
+      "title": "Debugging tracker errors",
+      "answer": "To debug a tracker error, you'll need to get the serial logs. To get the serial logs: Open the \"Settings\" tab of the GUI, open the serial console under the \"Utilities\" section, plug the tracker in via USB, press the \"Reboot\" button, and you should see output show up. If you don't see the output, you can also try pressing the reset button on your tracker if available.",
+      "matched_questions": [
+        "my tracker is connected but it says error",
+        "why is my tracker errored?",
+        "how do I fix my tracker showing an error?",
+        "how do I see the logs for my tracker",
+        "how do I debug my tracker having an error"
+      ]
+    },
+    {
+      "title": "Why did CrowdSupply push back my order?",
+      "answer": "CrowdSupply provides an estimate for when your order will ship, this estimate may change to more accurately reflect the current conditions. The CrowdSupply dates aren't updated frequently and usually the SlimeVR Discord will have information earlier through updates. For the latest information on shipping and production progress, you can check the [#when-my-order-ships](https://discord.com/channels/817184208525983775/1129107343058153623), [#updates](https://discord.com/channels/817184208525983775/818062236492759050), and [#production-progress](https://discord.com/channels/817184208525983775/1025118385585004544) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
+      "matched_questions": [
+        "Why did CrowdSupply push back my order?",
+        "how come the date on crowdsupply doesn't match what the discord says",
+        "why was my order delayed?",
+        "has there been a new delay for the trackers?",
+        "my order was pushed a month back",
+        "how accurate is the crowdsupply date?"
       ]
     }
   ]
