@@ -164,7 +164,7 @@
     },
     {
       "title": "Shipping estimate",
-      "answer": "As of January 7th, 2024, any new orders placed are estimated to ship on **May 31st, 2024** (this provided date is subject to change, please check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest information). For the latest information on shipping and production progress, you can check the [#when-my-order-ships](https://discord.com/channels/817184208525983775/1129107343058153623), [#updates](https://discord.com/channels/817184208525983775/818062236492759050), and [#production-progress](https://discord.com/channels/817184208525983775/1025118385585004544) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR) or visit the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
+      "answer": "As of January 12th, 2024, any new orders placed are estimated to ship on **May 31st, 2024** (this provided date is subject to change, please check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest information). For the latest information on shipping and production progress, you can check the [#when-my-order-ships](https://discord.com/channels/817184208525983775/1129107343058153623), [#updates](https://discord.com/channels/817184208525983775/818062236492759050), and [#production-progress](https://discord.com/channels/817184208525983775/1025118385585004544) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR) or visit the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
       "matched_questions": [
         "When are they shipping?",
         "When does it ship?",
@@ -232,7 +232,7 @@
     },
     {
       "title": "How to build trackers",
-      "answer": "You can find information for how to build DIY trackers at https://docs.slimevr.dev/diy/index.html or in the [#diy](https://discord.com/channels/817184208525983775/823930029070876736) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
+      "answer": "You can find how to build DIY trackers at https://docs.slimevr.dev/diy/index.html or in the [#diy](https://discord.com/channels/817184208525983775/823930029070876736) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "how do I build trackers?",
         "how to build",
@@ -247,7 +247,7 @@
     },
     {
       "title": "How to get trackers",
-      "answer": "You can find information on how to get trackers at https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers.",
+      "answer": "You can find how to get trackers at https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers.",
       "matched_questions": [
         "how can I get trackers?",
         "Is there anyway to purchase slimeVR right now? Other than D.I.Y",
@@ -277,7 +277,7 @@
     },
     {
       "title": "How to change or cancel your CrowdSupply order",
-      "answer": "You can find information on how to change or cancel your order with CrowdSupply at https://www.crowdsupply.com/contact#i-need-to-change-or-cancel-my-order.",
+      "answer": "You can find how to change or cancel your order with CrowdSupply at https://www.crowdsupply.com/contact/change-order. For the project name, put \"SlimeVR\".",
       "matched_questions": [
         "how do I change my order",
         "change order",
@@ -330,7 +330,7 @@
     },
     {
       "title": "Amazon trackers issues with serial console",
-      "answer": "If you're having trouble connecting your trackers with the serial monitor, you may have unofficial trackers from Amazon. If so, it's recommended that you just return them, otherwise if you really want to try to make them work, you can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR) for more information.",
+      "answer": "If you're having trouble connecting your trackers with the serial console, you may have unofficial trackers from Amazon. If so, it's recommended that you just return them, otherwise if you really want to try to make them work, you can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR) for more information.",
       "matched_questions": [
         "No Blinking of the Tracker if WiFi Window is open",
         "WiFi Window does not show anything if I set the WiFi",
@@ -649,7 +649,7 @@
     },
     {
       "title": "CrowdSupply restricted countries for shipping",
-      "answer": "You can find information about which countries are restricted from shipping to from CrowdSupply at https://www.crowdsupply.com/guide/fulfillment-and-logistics#restricted-countries.",
+      "answer": "You can find which countries are restricted from shipping to from CrowdSupply at https://www.crowdsupply.com/guide/fulfillment-and-logistics#restricted-countries.",
       "matched_questions": [
         "where can crowdsupply ship?",
         "where do they ship to",
@@ -678,14 +678,16 @@
     },
     {
       "title": "Config and log locations",
-      "answer": "The app data for the SlimeVR server is located at `%AppData%\\dev.slimevr.SlimeVR` as of v0.9.0.",
+      "answer": "The app data for the SlimeVR server is located at \"%AppData%\\dev.slimevr.SlimeVR\" as of v0.9.0. The main config file is \"vrconfig.yml\". The logs are stored in the \"logs\" folder, where \"log_last_X.log\" are server logs and \"slimevr_rX.log\" are GUI logs.",
       "matched_questions": [
         "where are the configs stored?",
         "how do I find the logs for SlimeVR",
         "whats the new location for config and logs now?",
         "where did the configs go",
         "where is the app data stored",
-        "where can I find the files"
+        "where can I find the files",
+        "log location",
+        "config location"
       ]
     },
     {
@@ -770,7 +772,7 @@
     },
     {
       "title": "Uploading tracker firmware",
-      "answer": "If you're looking to flash/upload firmware to your tracker, you can find information at https://docs.slimevr.dev/firmware/index.html.",
+      "answer": "You can find how to flash/upload firmware to your tracker at https://docs.slimevr.dev/firmware/index.html.",
       "matched_questions": [
         "upload firmware",
         "update firmware",
@@ -779,7 +781,8 @@
         "How do I upload firmware to my trackers?",
         "I just built trackers and i cant find the firmware tool, where is it?",
         "I need help putting the firmware on my trackers please",
-        "I bought my trackers awhile ago and i was to that they may need updated"
+        "I bought my trackers awhile ago and i was to that they may need updated",
+        "firmware"
       ]
     },
     {
@@ -801,7 +804,7 @@
     },
     {
       "title": "Enabling/disabling trackers in SteamVR and VRChat OSC",
-      "answer": "If you are looking to change which trackers appear in SteamVR and VRChat OSC, you can find information at https://docs.slimevr.dev/quick-setup.html#spawning-trackers.",
+      "answer": "You can find how to change which trackers appear in SteamVR and VRChat OSC at https://docs.slimevr.dev/quick-setup.html#spawning-trackers.",
       "matched_questions": [
         "how do I change which trackers show up in steamvr?",
         "how do I change which trackers show up in vrchat?",
@@ -825,7 +828,9 @@
         "how do I fix my tracker showing an error?",
         "how do I see the logs for my tracker",
         "how do I debug my tracker having an error",
-        "The 8th and final one, connects fine, but displays a red error. Is there a debug log or something I can read to get a clue as to why it displays an error?"
+        "The 8th and final one, connects fine, but displays a red error. Is there a debug log or something I can read to get a clue as to why it displays an error?",
+        "debug tracker error",
+        "tracker error"
       ]
     },
     {
@@ -837,7 +842,9 @@
         "why was my order delayed?",
         "has there been a new delay for the trackers?",
         "my order was pushed a month back",
-        "how accurate is the crowdsupply date?"
+        "how accurate is the crowdsupply date?",
+        "crowdsupply delay",
+        "CrowdSupply pushed back my order"
       ]
     }
   ]
