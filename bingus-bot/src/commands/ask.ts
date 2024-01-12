@@ -6,14 +6,16 @@ import {
 import { Command } from "../index.js";
 import { EmbedList, fetchBingus, fetchBingusData } from "../util.js";
 
-let faqConfig = (await fetchBingusData()).faqs.flatMap(
-  (x) => x.matched_questions,
-);
+async function getFaqConfig() {
+  return (await fetchBingusData()).faqs.flatMap(
+    (x) => x.matched_questions.filter((x) => x.length > 0 && x.length <= 100),
+  )
+}
+
+let faqConfig = await getFaqConfig();
 
 setInterval(async () => {
-  faqConfig = (await fetchBingusData()).faqs.flatMap(
-    (x) => x.matched_questions,
-  );
+  faqConfig = await getFaqConfig();
 }, 60 * 60 * 1000); // Do it every hour
 
 export const askCommand: Command = {
