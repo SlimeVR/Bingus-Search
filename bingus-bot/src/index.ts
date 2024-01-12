@@ -101,7 +101,8 @@ client.on("threadCreate", async (thread, newly) => {
           new EmbedBuilder()
             .setTitle(res.title)
             .setDescription(res.text)
-            .setColor("#65459A").data,
+            .setColor("#65459A")
+            .setFooter({text: `(${res.relevance.toFixed()}% relevant)`}).data,
       ),
     );
 

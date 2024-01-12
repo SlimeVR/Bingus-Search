@@ -66,7 +66,8 @@ export const askCommand: Command = {
             new EmbedBuilder()
               .setTitle(data[0].title)
               .setDescription(data[0].text)
-              .setColor("#65459A").data,
+              .setColor("#65459A")
+              .setFooter({text: `${data[0].relevance.toFixed()}% relevant`}).data,
           ],
         });
 
@@ -80,7 +81,8 @@ export const askCommand: Command = {
             new EmbedBuilder()
               .setTitle(res.title)
               .setDescription(res.text)
-              .setColor("#65459A").data,
+              .setColor("#65459A")
+              .setFooter({text: `(${res.relevance.toFixed()}% relevant)`}).data,
         ),
       );
 
