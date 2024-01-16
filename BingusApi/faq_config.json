@@ -578,7 +578,7 @@
     },
     {
       "title": "IMU calibration",
-      "answer": "You can find information about IMU calibration at https://docs.slimevr.dev/server/initial-setup.html#imu-calibration. For BMI160's, you can also find more specific information in the pins of the [#\"BMI160 IMU\"](https://discord.com/channels/817184208525983775/999926371218374666) thread on the [SlimeVR Discord](https://discord.gg/SlimeVR) or by following a video guide at https://youtu.be/mN_RC7pUNrA.",
+      "answer": "You can find information about IMU calibration at https://docs.slimevr.dev/server/imu-calibration.html. For BMI160's, you can also find more specific information in the pins of the [#\"BMI160 IMU\"](https://discord.com/channels/817184208525983775/999926371218374666) thread on the [SlimeVR Discord](https://discord.gg/SlimeVR) or by following a video guide at https://youtu.be/mN_RC7pUNrA.",
       "matched_questions": [
         "how do I calibrate my IMUs",
         "imu calibration",
@@ -592,7 +592,8 @@
         "mpu6500 calibration",
         "how do I calibrate a bmi 270",
         "Nonstop rotation even on flat surface",
-        "These were made for me a while ago, and worked great until my ankle extension started spinning nonstop."
+        "These were made for me a while ago, and worked great until my ankle extension started spinning nonstop.",
+        "bmi calibration"
       ]
     },
     {
