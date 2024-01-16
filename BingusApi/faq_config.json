@@ -692,7 +692,7 @@
     },
     {
       "title": "Official Trackers - Blue Light of Death (BLOD)",
-      "answer": "Symptoms of this hardware issue that may occur on some of the **official** trackers include solid blue light (not blinking), suddenly stopped working, or suddenly stopped connecting to WiFi/SlimeVR server. Direct message Eiren with your order number, name, shipping address, and phone number for instructions on getting your replacement tracker(s).",
+      "answer": "Symptoms of this hardware issue that may occur on some of the **official** trackers include solid blue light (not blinking), suddenly stopped working, or suddenly stopped connecting to WiFi/SlimeVR server. To get a warranty replacement, fill out the form at https://slimevr.dev/support.",
       "matched_questions": [
         "solid blue light",
         "tracker stopped working",
@@ -715,7 +715,7 @@
     },
     {
       "title": "Official Trackers - Broken/Missing Extension Cables",
-      "answer": "There are two ways of getting replacement cables for your **official** tracker sets: [SlimeVR Store](https://shop.slimevr.dev/) (You will be helping SlimeVR pay for shipping cost) or by direct messaging Eiren with your order number, name, shipping address, phone number, and SlimeVR tracker set name for a replacement under warranty.",
+      "answer": "To get warranty replacement cables for your **official** tracker set, fill out the form at https://slimevr.dev/support. Alternatively, extension cables are available on the [SlimeVR Store](https://shop.slimevr.dev/) (You will be helping SlimeVR pay for shipping costs).",
       "matched_questions": [
         "extension cable issue",
         "extension cable broke",
@@ -747,7 +747,7 @@
     },
     {
       "title": "Official Trackers - Broken Tracker Case",
-      "answer": "There are two ways of getting replacement main case for your **official** tracker sets: [SlimeVR Store](https://shop.slimevr.dev/products/slimevr-main-case) (You will be helping SlimeVR pay for shipping cost) or by direct messaging Eiren with your order number, name, shipping address, phone number, and case type/color for a replacement under warranty. For replacement aux/extension tracker cases, contact Eiren. (They are not currently available from the SlimeVR Store)",
+      "answer": "To get a warranty replacement main or aux/extension case for your **official** tracker set, fill out the form at https://slimevr.dev/support. Alternatively, main tracker cases are available on the [SlimeVR Store](https://shop.slimevr.dev/products/slimevr-main-case) (You will be helping SlimeVR pay for shipping costs).",
       "matched_questions": [
         "how can I get a replacement tracker case?",
         "case broke",
