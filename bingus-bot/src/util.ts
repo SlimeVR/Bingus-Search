@@ -60,8 +60,9 @@ export class EmbedList {
   }
 
   get(): EmbedBuilder {
-    return new EmbedBuilder(this.embeds[this.index]).setFooter({
-      text: `${this.index + 1}/${this.embeds.length}`,
+    const embed = this.embeds[this.index];
+    return new EmbedBuilder(embed).setFooter({
+      text: `${this.index + 1}/${this.embeds.length} ${embed.footer?.text}`.trim(),
     });
   }
 

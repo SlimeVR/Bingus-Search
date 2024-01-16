@@ -6,14 +6,16 @@ import {
 import { Command } from "../index.js";
 import { EmbedList, fetchBingus, fetchBingusData } from "../util.js";
 
-let faqConfig = (await fetchBingusData()).faqs.flatMap(
-  (x) => x.matched_questions,
-);
+async function getFaqConfig() {
+  return (await fetchBingusData()).faqs.flatMap(
+    (x) => x.matched_questions.filter((x) => x.length > 0 && x.length <= 100),
+  )
+}
+
+let faqConfig = await getFaqConfig();
 
 setInterval(async () => {
-  faqConfig = (await fetchBingusData()).faqs.flatMap(
-    (x) => x.matched_questions,
-  );
+  faqConfig = await getFaqConfig();
 }, 60 * 60 * 1000); // Do it every hour
 
 export const askCommand: Command = {
@@ -66,7 +68,8 @@ export const askCommand: Command = {
             new EmbedBuilder()
               .setTitle(data[0].title)
               .setDescription(data[0].text)
-              .setColor("#65459A").data,
+              .setColor("#65459A")
+              .setFooter({text: `${data[0].relevance.toFixed()}% relevant`}).data,
           ],
         });
 
@@ -80,7 +83,8 @@ export const askCommand: Command = {
             new EmbedBuilder()
               .setTitle(res.title)
               .setDescription(res.text)
-              .setColor("#65459A").data,
+              .setColor("#65459A")
+              .setFooter({text: `(${res.relevance.toFixed()}% relevant)`}).data,
         ),
       );
 

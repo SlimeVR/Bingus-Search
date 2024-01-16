@@ -18,6 +18,7 @@
     "wink-nlp": "^1.14.3"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^16.1.1"
+    "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^20.11.0"
   }
 }
