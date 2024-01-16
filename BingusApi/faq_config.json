@@ -755,7 +755,10 @@
         "strap loop snapped",
         "replacement case",
         "first tracker case to break, had a feeling these would give out sooner or later.",
-        "i was using my trackers and part of the case broke off"
+        "i was using my trackers and part of the case broke off",
+        "After a few months using these trackers, the quality of its handle are starting to show signs of cracks. And now, one tracker's handle has officially broke. (Being the left thigh) There is no other way to keep it still with super glue, 'cause it ends up popping off upon tightening the strap. Any other way to solve this issue than (for my last option) asking for a replacement?",
+        "one tracker's handle has officially broke. There is no other way to keep it still with super glue, because it ends up popping off upon tightening the strap.",
+        "Strap Handle broke."
       ]
     },
     {
@@ -816,7 +819,15 @@
         "how to enable/disable trackers in steamvr and vrchat osc",
         "enabling trackers",
         "disabling trackers",
-        "it automatically detects my Quest (2) Touch controllers as SlimeVR trackers, completely disabiling my ability to use them in any Steam application; I cannot use them in SteamVR or VRChat. Is there a way to disable SlimeVR from detecting them as trackers, and if so, how? Elsewise, is there a way to disable or cope with this?"
+        "it automatically detects my Quest (2) Touch controllers as SlimeVR trackers, completely disabiling my ability to use them in any Steam application; I cannot use them in SteamVR or VRChat. Is there a way to disable SlimeVR from detecting them as trackers, and if so, how? Elsewise, is there a way to disable or cope with this?",
+        "Enable and disable SteamVR trackers",
+        "Enable and disable OSC trackers",
+        "Toggle SteamVR trackers",
+        "Toggle OSC trackers",
+        "Enable SteamVR trackers",
+        "Disable SteamVR trackers",
+        "Enable OSC trackers",
+        "Disable SteamVR trackers"
       ]
     },
     {
@@ -830,7 +841,8 @@
         "how do I debug my tracker having an error",
         "The 8th and final one, connects fine, but displays a red error. Is there a debug log or something I can read to get a clue as to why it displays an error?",
         "debug tracker error",
-        "tracker error"
+        "tracker error",
+        "I tried, but set settings same as for WeMos D1 mini. It shows error Does slime VR has support for this?"
       ]
     },
     {
