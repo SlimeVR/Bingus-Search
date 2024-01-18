@@ -68,7 +68,7 @@
       ]
     },
     {
-      "title": "Aux trackers don't working",
+      "title": "Aux tracker isn't working",
       "answer": "If you are having trouble with your aux tracker(s) (more commonly referred to as \"tracker extensions\"), you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-aux-tracker-isnt-working.",
       "matched_questions": [
         "aux tracker isn't working",
@@ -732,7 +732,9 @@
         "the extension wire broke when I was using it",
         "how do I get a replacement cable?",
         "cable warranty",
-        "aux wire warranty replacement"
+        "aux wire warranty replacement",
+        "wire is broken",
+        "cable is broken"
       ]
     },
     {
@@ -767,7 +769,8 @@
         "case warranty",
         "how do I get a warranty replacement for my case?",
         "Strap holder on the case broke and I don't know how to go about it",
-        "strap holder broke"
+        "strap holder broke",
+        "Case is broken"
       ]
     },
     {
