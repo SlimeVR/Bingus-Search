@@ -19,7 +19,9 @@ builder.Services.AddMemoryCache();
 builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
 
 // Load IP rules from appsettings.json
-builder.Services.Configure<IpRateLimitPolicies>(builder.Configuration.GetSection("IpRateLimitPolicies"));
+builder.Services.Configure<IpRateLimitPolicies>(
+    builder.Configuration.GetSection("IpRateLimitPolicies")
+);
 
 // Inject counter and rules stores
 builder.Services.AddInMemoryRateLimiting();
@@ -28,11 +30,22 @@ builder.Services.AddInMemoryRateLimiting();
 builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
 
 // Add dependencies
-builder.Services.AddSingleton<IEmbeddingStore>(sp => new RocksDbStore(RocksDb.Open(new DbOptions().SetCreateIfMissing(true), "embedding_cache")));
-builder.Services.AddSingleton(sp => new JsonConfigHandler<BingusConfig>("bingus_config.json").InitializeConfig(BingusConfig.Default, sp.GetService<ILogger<BingusConfig>>()));
-builder.Services.AddSingleton(sp => new JsonConfigHandler<FaqConfig>("faq_config.json").InitializeConfig(FaqConfig.Default, sp.GetService<ILogger<FaqConfig>>()));
+builder.Services.AddSingleton<IEmbeddingStore>(sp => new RocksDbStore(
+    RocksDb.Open(new DbOptions().SetCreateIfMissing(true), "embedding_cache")
+));
+builder.Services.AddSingleton(sp =>
+    new JsonConfigHandler<BingusConfig>("bingus_config.json").InitializeConfig(
+        BingusConfig.Default,
+        sp.GetService<ILogger<BingusConfig>>()
+    )
+);
+builder.Services.AddSingleton(sp =>
+    new JsonConfigHandler<FaqConfig>("faq_config.json").InitializeConfig(
+        FaqConfig.Default,
+        sp.GetService<ILogger<FaqConfig>>()
+    )
+);
 builder.Services.AddSingleton(sp => new HttpClient());
-
 
 builder.Services.AddSingleton<SentenceEncoder>(sp =>
 {
@@ -44,10 +57,16 @@ builder.Services.AddSingleton<SentenceEncoder>(sp =>
     {
         case "use":
             var modelPath = Path.Join(Environment.CurrentDirectory, bingusConfig.UseModelPath);
-            return new UniversalSentenceEncoder(modelPath, sp.GetService<ILogger<UniversalSentenceEncoder>>());
+            return new UniversalSentenceEncoder(
+                modelPath,
+                sp.GetService<ILogger<UniversalSentenceEncoder>>()
+            );
 
         case "api":
-            return new ApiSentenceEncoder(sp.GetRequiredService<HttpClient>(), new Uri(bingusConfig.ApiUri));
+            return new ApiSentenceEncoder(
+                sp.GetRequiredService<HttpClient>(),
+                new Uri(bingusConfig.ApiUri)
+            );
 
         default:
             throw new Exception("No valid sentence encoder type was selected.");
@@ -58,7 +77,12 @@ builder.Services.AddSingleton(sp =>
 {
     // Set up the FAQ handler
     var faqConfig = sp.GetRequiredService<FaqConfig>();
-    var faqHandler = new FaqHandler(sp.GetRequiredService<SentenceEncoder>(), sp.GetService<IEmbeddingStore>(), sp.GetService<IEmbeddingCache>(), sp.GetService<ILogger<FaqHandler>>());
+    var faqHandler = new FaqHandler(
+        sp.GetRequiredService<SentenceEncoder>(),
+        sp.GetService<IEmbeddingStore>(),
+        sp.GetService<IEmbeddingCache>(),
+        sp.GetService<ILogger<FaqHandler>>()
+    );
 
     // Add all questions from the config
     faqHandler.AddItems(faqConfig.QaEntryEnumerator());
@@ -80,6 +104,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseIpRateLimiting();
+
 // app.UseHttpsRedirection();
 // app.UseAuthorization();
 app.MapControllers();

@@ -9,12 +9,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="HNSW" Version="1.0.36611" />
+        <PackageReference Include="CSharpier.MsBuild" Version="0.27.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="HNSW" Version="1.0.42139" />
         <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
-        <PackageReference Include="Microsoft.ML" Version="2.0.1" />
-        <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.15.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+        <PackageReference Include="Microsoft.ML" Version="3.0.0" />
+        <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.16.3" />
     </ItemGroup>
 
     <ItemGroup>

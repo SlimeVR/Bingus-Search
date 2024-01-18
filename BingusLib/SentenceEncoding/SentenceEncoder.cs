@@ -17,7 +17,10 @@ namespace BingusLib.SentenceEncoding
         {
             if (vectorBuffer.Length < EmbeddingDimension)
             {
-                throw new ArgumentException($"The provided buffer {nameof(vectorBuffer)} is not big enough to store the embedding vector (Expected: {EmbeddingDimension}, Provided: {vectorBuffer.Length})", nameof(vectorBuffer));
+                throw new ArgumentException(
+                    $"The provided buffer {nameof(vectorBuffer)} is not big enough to store the embedding vector (Expected: {EmbeddingDimension}, Provided: {vectorBuffer.Length})",
+                    nameof(vectorBuffer)
+                );
             }
 
             return InternalComputeEmbedding(input, vectorBuffer);

@@ -24,7 +24,12 @@ namespace BingusLib.FaqHandling
         private readonly SentenceEncoder _sentenceEncoder;
         private readonly HnswHandler _hnswHandler = new();
 
-        public FaqHandler(SentenceEncoder sentenceEncoder, IEmbeddingStore? embeddingStore = null, IEmbeddingCache? embeddingCache = null, ILogger<FaqHandler>? logger = null)
+        public FaqHandler(
+            SentenceEncoder sentenceEncoder,
+            IEmbeddingStore? embeddingStore = null,
+            IEmbeddingCache? embeddingCache = null,
+            ILogger<FaqHandler>? logger = null
+        )
         {
             _sentenceEncoder = sentenceEncoder;
             _embeddingStore = embeddingStore;
@@ -32,12 +37,13 @@ namespace BingusLib.FaqHandling
             _logger = logger;
         }
 
-        public void AddItems(IEnumerable<(string, string, string)> questionAnswerMappings)
+        public void AddItems(IEnumerable<(string title, string question, string answer)> tqaMapping)
         {
             var hnswItems = new List<LazyKeyItem<FaqEntry, float[]>>();
-            foreach (var (title, question, answer) in questionAnswerMappings)
+            foreach (var (title, question, answer) in tqaMapping)
             {
-                Vector<float>? embedding = _embeddingCache?.Get(question) ?? _embeddingStore?.Get(question);
+                Vector<float>? embedding =
+                    _embeddingCache?.Get(question) ?? _embeddingStore?.Get(question);
 
                 if (embedding == null)
                 {
@@ -58,9 +64,15 @@ namespace BingusLib.FaqHandling
             _hnswHandler.AddItems(hnswItems);
         }
 
-        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> Search(string query, int numResults)
+        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> Search(
+            string query,
+            int numResults
+        )
         {
-            var vector = _embeddingCache?.GetRaw(query) ?? _embeddingStore?.GetRaw(query) ?? _sentenceEncoder.ComputeEmbedding(query);
+            var vector =
+                _embeddingCache?.GetRaw(query)
+                ?? _embeddingStore?.GetRaw(query)
+                ?? _sentenceEncoder.ComputeEmbedding(query);
             _embeddingCache?.Add(query, vector);
             return _hnswHandler.SearchItems(vector, numResults);
         }

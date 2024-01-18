@@ -25,12 +25,18 @@ namespace BingusLib.Config
             JsonSerializer.Serialize(stream, config, Options);
         }
 
-        public static void AtomicFileOp(string file, Action<string> operation, bool overwrite = false)
+        public static void AtomicFileOp(
+            string file,
+            Action<string> operation,
+            bool overwrite = false
+        )
         {
             ArgumentException.ThrowIfNullOrEmpty(file);
 
             if (!overwrite && File.Exists(file))
-                throw new IOException($"File \"{file}\" exists and \"{nameof(overwrite)}\" is set to false.");
+                throw new IOException(
+                    $"File \"{file}\" exists and \"{nameof(overwrite)}\" is set to false."
+                );
 
             var tempFile = Path.GetTempFileName();
             operation(tempFile);
@@ -54,37 +60,60 @@ namespace BingusLib.Config
             {
                 try
                 {
-                    return LoadConfig(ConfigFilePath) ??
-                           throw new JsonConfigException($"Unable to load the config file at \"{ConfigFilePath}\".");
+                    return LoadConfig(ConfigFilePath)
+                        ?? throw new JsonConfigException(
+                            $"Unable to load the config file at \"{ConfigFilePath}\"."
+                        );
                 }
                 catch (Exception e)
                 {
-                    logger?.LogError(e,
-                        "Unable to load the config file at \"{ConfigFilePath}\", backing up the current config...", ConfigFilePath);
+                    logger?.LogError(
+                        e,
+                        "Unable to load the config file at \"{ConfigFilePath}\", backing up the current config...",
+                        ConfigFilePath
+                    );
 
                     var backupFile = $"{ConfigFilePath}.bak";
                     try
                     {
-                        AtomicFileOp(backupFile, tempFile => File.Copy(ConfigFilePath, tempFile, overwrite: true), overwrite: true);
+                        AtomicFileOp(
+                            backupFile,
+                            tempFile => File.Copy(ConfigFilePath, tempFile, overwrite: true),
+                            overwrite: true
+                        );
                     }
                     catch (Exception e2)
                     {
                         throw new AggregateException(
                             new JsonConfigException(
-                                $"Unable to back up the config file at \"{ConfigFilePath}\" to \"{backupFile}\".", e2),
-                            e);
+                                $"Unable to back up the config file at \"{ConfigFilePath}\" to \"{backupFile}\".",
+                                e2
+                            ),
+                            e
+                        );
                     }
 
-                    logger?.LogInformation("Backed up the current config file to \"{backupFile}\".", backupFile);
+                    logger?.LogInformation(
+                        "Backed up the current config file to \"{backupFile}\".",
+                        backupFile
+                    );
 
                     // We shouldn't continue past this point as the config is required
-                    throw new JsonConfigException($"Unable to load the config file at \"{ConfigFilePath}\".");
+                    throw new JsonConfigException(
+                        $"Unable to load the config file at \"{ConfigFilePath}\"."
+                    );
                 }
             }
 
-            logger?.LogInformation("Generating a default config file at {ConfigFilePath}...", ConfigFilePath);
+            logger?.LogInformation(
+                "Generating a default config file at {ConfigFilePath}...",
+                ConfigFilePath
+            );
             WriteConfig(ConfigFilePath, defaultConfig);
-            logger?.LogInformation("Generated a default config file at {ConfigFilePath}.", ConfigFilePath);
+            logger?.LogInformation(
+                "Generated a default config file at {ConfigFilePath}.",
+                ConfigFilePath
+            );
 
             return defaultConfig;
         }
