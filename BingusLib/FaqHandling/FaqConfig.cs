@@ -8,23 +8,25 @@ namespace BingusLib.FaqHandling
 
         public record FaqConfigEntry
         {
-            [JsonPropertyName("title")] public string Title { get; set; } = "";
+            [JsonPropertyName("title")]
+            public string Title { get; set; } = "";
 
-            [JsonPropertyName("answer")] public string Answer { get; set; } = "";
+            [JsonPropertyName("answer")]
+            public string Answer { get; set; } = "";
 
             [JsonPropertyName("matched_questions")]
             public List<string> Questions { get; set; } = new();
 
-            public FaqConfigEntry()
-            {
-            }
+            public FaqConfigEntry() { }
 
-            public FaqConfigEntry(string answer) : this()
+            public FaqConfigEntry(string answer)
+                : this()
             {
                 Answer = answer;
             }
 
-            public FaqConfigEntry(string answer, IEnumerable<string> questions) : this(answer)
+            public FaqConfigEntry(string answer, IEnumerable<string> questions)
+                : this(answer)
             {
                 Questions.AddRange(questions);
             }
@@ -33,13 +35,15 @@ namespace BingusLib.FaqHandling
         [JsonPropertyName("average_questions")]
         public bool AverageQuestions { get; set; } = false;
 
-        [JsonPropertyName("faqs")] public List<FaqConfigEntry> FaqEntries { get; set; } = new();
+        [JsonPropertyName("faqs")]
+        public List<FaqConfigEntry> FaqEntries { get; set; } = new();
 
         public FaqConfigEntry? GetAnswerEntry(string answer)
         {
             foreach (var entry in FaqEntries)
             {
-                if (entry.Answer == answer) return entry;
+                if (entry.Answer == answer)
+                    return entry;
             }
 
             return null;

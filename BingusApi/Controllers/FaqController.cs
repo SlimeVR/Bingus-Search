@@ -48,7 +48,8 @@ public class FaqController : ControllerBase
         // Select the highest relevance entry for each duplicate group
         // Sort the entries by relevance
         // Take only the requested number of results
-        var responses = results.Select(result =>
+        var responses = results
+            .Select(result =>
             {
                 var entry = GetEntry(result.Item);
                 return new FaqEntryResponse()
@@ -58,8 +59,11 @@ public class FaqController : ControllerBase
                     Title = entry.Title,
                     Text = entry.Answer,
                 };
-            }).GroupBy(result => result.Text)
-            .Select(groupedResults => groupedResults.MaxBy(result => result.Relevance) ?? groupedResults.First())
+            })
+            .GroupBy(result => result.Text)
+            .Select(groupedResults =>
+                groupedResults.MaxBy(result => result.Relevance) ?? groupedResults.First()
+            )
             .OrderByDescending(response => response.Relevance)
             .Take(responseCount);
 

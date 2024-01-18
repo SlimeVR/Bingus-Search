@@ -8,12 +8,14 @@ namespace BingusLib.HNSW
         private readonly TKey _key;
         public TKey Key => _key;
 
-        public LazyKeyItem(TKey key, Func<TItem> getValue) : base(getValue)
+        public LazyKeyItem(TKey key, Func<TItem> getValue)
+            : base(getValue)
         {
             _key = key;
         }
 
-        public LazyKeyItem(TKey key, Func<TKey, TItem> getValue) : base(() => getValue(key))
+        public LazyKeyItem(TKey key, Func<TKey, TItem> getValue)
+            : base(() => getValue(key))
         {
             _key = key;
         }
@@ -33,14 +35,20 @@ namespace BingusLib.HNSW
             return _itemResolver(key);
         }
 
-        public void Serialize(ref MessagePackWriter writer, LazyKeyItem<TKey, TItem> value,
-            MessagePackSerializerOptions options)
+        public void Serialize(
+            ref MessagePackWriter writer,
+            LazyKeyItem<TKey, TItem> value,
+            MessagePackSerializerOptions options
+        )
         {
             var formatter = options.Resolver.GetFormatter<TKey>();
             formatter.Serialize(ref writer, value.Key, options);
         }
 
-        public LazyKeyItem<TKey, TItem> Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+        public LazyKeyItem<TKey, TItem> Deserialize(
+            ref MessagePackReader reader,
+            MessagePackSerializerOptions options
+        )
         {
             var formatter = options.Resolver.GetFormatter<TKey>();
             var key = formatter.Deserialize(ref reader, options);

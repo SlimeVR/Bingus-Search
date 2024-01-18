@@ -18,7 +18,11 @@ namespace BingusLib.SentenceEncoding
         private readonly DenseTensor<string> _inputTensor = new(1);
         private readonly NamedOnnxValue[] _inputs;
 
-        public UniversalSentenceEncoder(string modelPath, ILogger<UniversalSentenceEncoder>? logger = null) : base(512)
+        public UniversalSentenceEncoder(
+            string modelPath,
+            ILogger<UniversalSentenceEncoder>? logger = null
+        )
+            : base(512)
         {
             _logger = logger;
 
@@ -26,11 +30,17 @@ namespace BingusLib.SentenceEncoding
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                _sessionOptions.RegisterCustomOpLibraryV2("libs/ortextensions.dll", out _libraryHandle);
+                _sessionOptions.RegisterCustomOpLibraryV2(
+                    "libs/ortextensions.dll",
+                    out _libraryHandle
+                );
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                _sessionOptions.RegisterCustomOpLibraryV2("libs/libortextensions.so", out _libraryHandle);
+                _sessionOptions.RegisterCustomOpLibraryV2(
+                    "libs/libortextensions.so",
+                    out _libraryHandle
+                );
             }
             else
             {
@@ -60,11 +70,18 @@ namespace BingusLib.SentenceEncoding
             try
             {
                 EmbeddingDimension = _session.OutputMetadata.Single().Value.Dimensions[1];
-                _logger?.LogInformation("Output dimension detected as {EmbeddingDimension}", EmbeddingDimension);
+                _logger?.LogInformation(
+                    "Output dimension detected as {EmbeddingDimension}",
+                    EmbeddingDimension
+                );
             }
             catch (Exception e)
             {
-                _logger?.LogWarning(e, "Output dimension could not be detected, defaulting to {EmbeddingDimension}", EmbeddingDimension);
+                _logger?.LogWarning(
+                    e,
+                    "Output dimension could not be detected, defaulting to {EmbeddingDimension}",
+                    EmbeddingDimension
+                );
             }
 
             _inputs = new[] { NamedOnnxValue.CreateFromTensor("inputs", _inputTensor) };

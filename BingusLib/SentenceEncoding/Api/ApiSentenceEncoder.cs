@@ -10,7 +10,8 @@ namespace BingusLib.SentenceEncoding.Api
         public readonly Uri DimensionsApiUri;
         public readonly Uri EncodeApiUri;
 
-        public ApiSentenceEncoder(HttpClient httpClient, Uri baseApiUri) : base(-1)
+        public ApiSentenceEncoder(HttpClient httpClient, Uri baseApiUri)
+            : base(-1)
         {
             HttpClient = httpClient;
             BaseApiUri = baseApiUri;
@@ -25,18 +26,29 @@ namespace BingusLib.SentenceEncoding.Api
         private static T HandleResponse<T>(HttpResponseMessage response)
         {
             var responseString = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            return JsonSerializer.Deserialize<T>(responseString) ?? throw new SentenceEncodeException("Failed to deserialize API response JSON, deserialized object is null.");
+            return JsonSerializer.Deserialize<T>(responseString)
+                ?? throw new SentenceEncodeException(
+                    "Failed to deserialize API response JSON, deserialized object is null."
+                );
         }
 
         private T PostRequest<T>(Uri uri, HttpContent? httpContent = null)
         {
-            using var response = HttpClient.PostAsync(uri, httpContent).GetAwaiter().GetResult().EnsureSuccessStatusCode();
+            using var response = HttpClient
+                .PostAsync(uri, httpContent)
+                .GetAwaiter()
+                .GetResult()
+                .EnsureSuccessStatusCode();
             return HandleResponse<T>(response);
         }
 
         private T GetRequest<T>(Uri uri)
         {
-            using var response = HttpClient.GetAsync(uri).GetAwaiter().GetResult().EnsureSuccessStatusCode();
+            using var response = HttpClient
+                .GetAsync(uri)
+                .GetAwaiter()
+                .GetResult()
+                .EnsureSuccessStatusCode();
             return HandleResponse<T>(response);
         }
 

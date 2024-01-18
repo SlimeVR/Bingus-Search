@@ -13,7 +13,11 @@ namespace BingusLib.HNSW
         public HnswHandler(Func<float[], float[], float>? distanceFunction = null)
         {
             _distanceFunction = new(i => i.Value, distanceFunction ?? CosineDistance.SIMD);
-            _hnswGraph = new(_distanceFunction.WrappedDistanceFunc, DefaultRandomGenerator.Instance, _hnswParameters);
+            _hnswGraph = new(
+                _distanceFunction.WrappedDistanceFunc,
+                DefaultRandomGenerator.Instance,
+                _hnswParameters
+            );
         }
 
         public void AddItems(params ILazyItem<float[]>[] items)
@@ -21,29 +25,42 @@ namespace BingusLib.HNSW
             _hnswGraph.AddItems(items);
         }
 
-        public void AddItems(IProgressReporter? progressReporter = null, params ILazyItem<float[]>[] items)
+        public void AddItems(
+            IProgressReporter? progressReporter = null,
+            params ILazyItem<float[]>[] items
+        )
         {
             _hnswGraph.AddItems(items, progressReporter);
         }
 
-        public void AddItems(IReadOnlyList<ILazyItem<float[]>> items, IProgressReporter? progressReporter = null)
+        public void AddItems(
+            IReadOnlyList<ILazyItem<float[]>> items,
+            IProgressReporter? progressReporter = null
+        )
         {
             _hnswGraph.AddItems(items, progressReporter);
         }
 
-        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(ILazyItem<float[]> item,
-            int numResults)
+        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(
+            ILazyItem<float[]> item,
+            int numResults
+        )
         {
             return _hnswGraph.KNNSearch(item, numResults);
         }
 
-        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(float[] item, int numResults)
+        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(
+            float[] item,
+            int numResults
+        )
         {
             return SearchItems(new LazyItemValue<float[]>(item), numResults);
         }
 
-        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(Vector<float> item,
-            int numResults)
+        public IList<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> SearchItems(
+            Vector<float> item,
+            int numResults
+        )
         {
             return SearchItems(item.AsArray() ?? item.ToArray(), numResults);
         }

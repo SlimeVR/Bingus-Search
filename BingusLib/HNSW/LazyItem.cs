@@ -10,8 +10,7 @@ namespace BingusLib.HNSW
             _getValue = getValue;
         }
 
-        public LazyItem(TItem value) : this(() => value)
-        {
-        }
+        public LazyItem(TItem value)
+            : this(() => value) { }
     }
 }
