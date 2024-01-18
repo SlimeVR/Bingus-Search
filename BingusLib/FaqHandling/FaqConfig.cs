@@ -49,7 +49,7 @@ namespace BingusLib.FaqHandling
             return null;
         }
 
-        public IEnumerable<(string, string, string)> QaEntryEnumerator()
+        public IEnumerable<(string title, string question, string answer)> QaEntryEnumerator()
         {
             foreach (var entry in FaqEntries)
             {

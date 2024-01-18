@@ -37,10 +37,10 @@ namespace BingusLib.FaqHandling
             _logger = logger;
         }
 
-        public void AddItems(IEnumerable<(string, string, string)> questionAnswerMappings)
+        public void AddItems(IEnumerable<(string title, string question, string answer)> tqaMapping)
         {
             var hnswItems = new List<LazyKeyItem<FaqEntry, float[]>>();
-            foreach (var (title, question, answer) in questionAnswerMappings)
+            foreach (var (title, question, answer) in tqaMapping)
             {
                 Vector<float>? embedding =
                     _embeddingCache?.Get(question) ?? _embeddingStore?.Get(question);
