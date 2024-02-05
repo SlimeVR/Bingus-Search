@@ -107,20 +107,12 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
     const shipment = SHIPMENTS.findIndex((x) => x[orderInfo.set] >= order);
 
     if (shipment === -1) {
-      if (orderInfo.date.getUTCFullYear() === 2022) {
-        await interaction.reply({
-          content: `Your order will follow after Batch 1 of the shipments.
-You can check on ${FCC_MESSAGE} on the progress of the last shipments.`,
-          ephemeral: true,
-        });
-      } else {
+
         await interaction.reply({
           content: `There is no news about your order yet.
 You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
           ephemeral: true,
         });
-      }
-      return;
     }
 
     if (SHIPPED_SHIPMENTS.has(shipment)) {
@@ -159,7 +151,7 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
   },
 };
 
-const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3]);
+const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3, 4]);
 
 // Index of shipped shipment
 const SHIPPED_SHIPMENTS = new Set([0, 1, 2, 3]);
@@ -170,6 +162,7 @@ const SHIPMENT_MESSAGE = [
   "https://discord.com/channels/817184208525983775/1129107343058153623/1129117575721267290",
   "https://discord.com/channels/817184208525983775/1129107343058153623/1130164280537391154",
   "https://discord.com/channels/817184208525983775/1129107343058153623/1183816649950888066",
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1195340407962349651",
 ];
 
 // Shipments being prepared or shipped
@@ -239,7 +232,24 @@ const SHIPMENTS = [
     [SlimeSet.FULLBODY_BLACK]: 149324,
     [SlimeSet.FULLBODY_WHITE]: 152199,
     [SlimeSet.DELUXE_TRACKER_PURPLE]: 145844,
-    [SlimeSet.DELUXE_TRACKER_BLACK]: 150693,
-    [SlimeSet.DELUXE_TRACKER_WHITE]: 162400,
+    [SlimeSet.DELUXE_TRACKER_BLACK]: 143353,
+    [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
+  },
+  {
+    [SlimeSet.LOWER_BODY_PURPLE]: 151381,
+    [SlimeSet.LOWER_BODY_BLACK]: 145131,
+    [SlimeSet.LOWER_BODY_WHITE]: 162815,
+    [SlimeSet.CORE_PURPLE]: 150209,
+    [SlimeSet.CORE_BLACK]: 147666,
+    [SlimeSet.CORE_WHITE]: 160923,
+    [SlimeSet.ENHANCED_CORE_PURPLE]: 161597,
+    [SlimeSet.ENHANCED_CORE_BLACK]: 154233,
+    [SlimeSet.ENHANCED_CORE_WHITE]: 157579,
+    [SlimeSet.FULLBODY_PURPLE]: 156432,
+    [SlimeSet.FULLBODY_BLACK]: 149681,
+    [SlimeSet.FULLBODY_WHITE]: 161193,
+    [SlimeSet.DELUXE_TRACKER_PURPLE]: 147390,
+    [SlimeSet.DELUXE_TRACKER_BLACK]: 147109,
+    [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
   }
 ];
