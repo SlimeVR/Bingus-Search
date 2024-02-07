@@ -40,8 +40,6 @@ const STRING_SET_MAP: Record<string, SlimeSet> = {
 
 const SHIP_WHEN_CHANNEL =
   "https://discord.com/channels/817184208525983775/1129107343058153623";
-const FCC_MESSAGE =
-  "https://discord.com/channels/817184208525983775/1129107343058153623/1178415897493381240";
 
 let MAX_ORDER = 0;
 const ORDER_SET_MAP = new Map(
@@ -107,12 +105,20 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
     const shipment = SHIPMENTS.findIndex((x) => x[orderInfo.set] >= order);
 
     if (shipment === -1) {
-
+      if (orderInfo.date.getUTCFullYear() === 2022) {
+        await interaction.reply({
+          content: `Your order is being made currently, it's shipment 7.
+You can check on ${SHIPMENT_MESSAGE[5]} to see when it's going to get shipped.`,
+          ephemeral: true,
+        });
+      } else {
         await interaction.reply({
           content: `There is no news about your order yet.
 You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
           ephemeral: true,
         });
+      }
+      return;
     }
 
     if (SHIPPED_SHIPMENTS.has(shipment)) {
@@ -163,6 +169,7 @@ const SHIPMENT_MESSAGE = [
   "https://discord.com/channels/817184208525983775/1129107343058153623/1130164280537391154",
   "https://discord.com/channels/817184208525983775/1129107343058153623/1183816649950888066",
   "https://discord.com/channels/817184208525983775/1129107343058153623/1195340407962349651",
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1204216527402836042",
 ];
 
 // Shipments being prepared or shipped
@@ -251,5 +258,5 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_PURPLE]: 147390,
     [SlimeSet.DELUXE_TRACKER_BLACK]: 147109,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
-  }
+  },
 ];
