@@ -102,15 +102,20 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
       }`,
     );
 
-    const shipment = SHIPMENTS.findIndex((x) => x[orderInfo.set] >= order);
+    let shipment = SHIPMENTS.findIndex((x) => x[orderInfo.set] >= order);
 
     if (shipment === -1) {
-      await interaction.reply({
-        content: `There is no news about your order yet.
-You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
-        ephemeral: true,
-      });
-      return;
+      if(order <= 162100) {
+        shipment = 5;
+      } else {
+        await interaction.reply({
+          content: `There is no news about your order yet.
+  You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
+          ephemeral: true,
+        });
+        return;
+      }
+      
     }
 
     if (SHIPPED_SHIPMENTS.has(shipment)) {
