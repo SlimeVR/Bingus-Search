@@ -166,3 +166,4 @@ cython_debug/
 ## Added GitIgnore Entries for Bingus
 /faq_config.json
 /local-models/
+/model-cache/
