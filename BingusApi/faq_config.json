@@ -68,16 +68,6 @@
       ]
     },
     {
-      "title": "Aux tracker isn't working",
-      "answer": "If you are having trouble with your aux tracker(s) (more commonly referred to as \"tracker extensions\"), you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-aux-tracker-isnt-working.",
-      "matched_questions": [
-        "aux tracker isn't working",
-        "extension isn't working",
-        "my extension is broken",
-        "my extension tracker is broken"
-      ]
-    },
-    {
       "title": "Sensor was reset error",
       "answer": "If you are getting a \"Sensor was reset error\" on your tracker's serial logs, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#sensor-was-reset-error.",
       "matched_questions": [
@@ -172,7 +162,6 @@
         "where are my trackers?",
         "shipping of this year or next year?",
         "shipping",
-        "shopping",
         "when is slimevr shipping?",
         "when is it shipping",
         "how long do I have to wait",
@@ -190,7 +179,6 @@
       "answer": "It's not recommended to use 3 trackers. If you use 3 trackers, you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). You can see a demonstration of different combinations of trackers in ZRock's video at https://youtu.be/iKmrNKLacwk. You can find more information about how many trackers you need at https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need.",
       "matched_questions": [
         "can I use 3 trackers for full body tracking",
-        "3 trackers",
         "can i use 3?",
         "i only have 3 phones",
         "can i use 3 joycons?",
@@ -198,9 +186,6 @@
         "can i use my three psmove controllers?",
         "what if i use three trackers",
         "can i use three trackers?",
-        "three trackers",
-        "3",
-        "three",
         "Can I use 3 SlimeVR trackers?"
       ]
     },
@@ -544,7 +529,7 @@
       ]
     },
     {
-      "title": "What are tracker extensions",
+      "title": "What are extension trackers",
       "answer": "You can find information about extension trackers (also known as an \"aux tracker\" or \"aux IMU\") at https://docs.slimevr.dev/slimevr101.html#what-is-an-extension.",
       "matched_questions": [
         "what is an aux tracker",
@@ -665,16 +650,12 @@
       "title": "CrowdSupply returns and cancellations FAQ",
       "answer": "You can find information about returning or cancelling orders from CrowdSupply at https://www.crowdsupply.com/returns.",
       "matched_questions": [
-        "what do I do if I get it and it's broken?",
-        "what if my trackers are damaged",
         "i got shipped the wrong order",
         "my package was lost",
         "what do I do if the package gets lost during shipping?",
         "how do I rma my trackers?",
         "how do I return my trackers?",
-        "can I return my trackers",
-        "if my trackers show up faulty, should I return them?",
-        "my trackers are defective"
+        "can I return my trackers"
       ]
     },
     {
@@ -715,7 +696,11 @@
         "how do I get a warranty replacement for my tracker?",
         "tracker warranty",
         "solid blue light help",
-        "i got a solid blue light now it wont connect"
+        "i got a solid blue light now it wont connect",
+        "if my trackers show up faulty, should I return them?",
+        "what do I do if I get it and it's broken?",
+        "what if my trackers are damaged",
+        "my trackers are defective"
       ]
     },
     {
@@ -871,6 +856,20 @@
         "how accurate is the crowdsupply date?",
         "crowdsupply delay",
         "CrowdSupply pushed back my order"
+      ]
+    },
+    {
+      "title": "Official Trackers - Broken/Missing Extension Tracker(s)",
+      "answer": "If you can't find your extension trackers in the box, check the section with the straps as it could be hidden underneath. To get warranty replacement extension trackers for your **official** tracker set, fill out the form at https://slimevr.dev/support. If these are DIY trackers, you can find information at https://docs.slimevr.dev/common-issues.html#my-aux-tracker-isnt-working.",
+      "matched_questions": [
+        "aux tracker isn't working",
+        "extension isn't working",
+        "my extension is broken",
+        "my extension tracker is broken",
+        "extension trackers are missing",
+        "i can't find the extension trackers in the box",
+        "Missing 3 Extension",
+        "I was opening my trackers and have found that im missing the 3 extenders for my enhanced core set"
       ]
     }
   ]
