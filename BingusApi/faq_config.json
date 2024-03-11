@@ -871,6 +871,17 @@
         "Missing 3 Extension",
         "I was opening my trackers and have found that im missing the 3 extenders for my enhanced core set"
       ]
+    },
+    {
+      "title": "Official Trackers - Broken/Missing Straps",
+      "answer": "To get warranty replacement straps for your **official** tracker set, fill out the form at https://slimevr.dev/support.",
+      "matched_questions": [
+        "Torn Velcro strap",
+        "After some use the strap has become torn where the hooks and the fibre meet. Is this covered under warranty and am I able to get a replacement?",
+        "straps are broken",
+        "my straps are torn from the velcro",
+        "the velcro straps are falling apart"
+      ]
     }
   ]
 }
