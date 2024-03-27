@@ -13,12 +13,12 @@
     "start": "npm run build && node dist/index.js"
   },
   "dependencies": {
-    "discord.js": "^14.13.0",
+    "discord.js": "^14.14.1",
     "wink-eng-lite-web-model": "^1.5.2",
-    "wink-nlp": "^1.14.3"
+    "wink-nlp": "^2.1.0"
   },
   "devDependencies": {
-    "@tsconfig/node18": "^18.2.2",
-    "@types/node": "^20.11.0"
+    "@tsconfig/node18": "^18.2.3",
+    "@types/node": "^20.11.30"
   }
 }
