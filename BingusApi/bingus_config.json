@@ -1,5 +1,0 @@
-{
-  "encoder_type": "use",
-  "use_model_path": "../BingusLib/models/onnx/use_l_v5.onnx",
-  "api_uri": "http://127.0.0.1:5000"
-}

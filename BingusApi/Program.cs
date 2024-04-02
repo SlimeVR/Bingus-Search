@@ -8,7 +8,22 @@ using RocksDbSharp;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var configDir = Path.GetFullPath("config");
+var appSettings = "appsettings.json";
+var appSettingsEnv = $"appsettings.{builder.Environment.EnvironmentName}.json";
+var bingusConfig = "bingus_config.json";
+var faqConfig = "faq_config.json";
+
+builder.Configuration.SetBasePath(configDir);
+string GetConfig(string fileName)
+{
+    return builder.Configuration.GetFileProvider().GetFileInfo(fileName).PhysicalPath
+        ?? Path.Combine(configDir, fileName);
+}
+
 // Load appsettings.json
+builder.Configuration.AddJsonFile(GetConfig(appSettings), false, true);
+builder.Configuration.AddJsonFile(GetConfig(appSettingsEnv), true, true);
 builder.Services.AddOptions();
 
 // Set up ratelimiting
@@ -34,13 +49,13 @@ builder.Services.AddSingleton<IEmbeddingStore>(sp => new RocksDbStore(
     RocksDb.Open(new DbOptions().SetCreateIfMissing(true), "embedding_cache")
 ));
 builder.Services.AddSingleton(sp =>
-    new JsonConfigHandler<BingusConfig>("bingus_config.json").InitializeConfig(
+    new JsonConfigHandler<BingusConfig>(GetConfig(bingusConfig)).InitializeConfig(
         BingusConfig.Default,
         sp.GetService<ILogger<BingusConfig>>()
     )
 );
 builder.Services.AddSingleton(sp =>
-    new JsonConfigHandler<FaqConfig>("faq_config.json").InitializeConfig(
+    new JsonConfigHandler<FaqConfig>(GetConfig(faqConfig)).InitializeConfig(
         FaqConfig.Default,
         sp.GetService<ILogger<FaqConfig>>()
     )

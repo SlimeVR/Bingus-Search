@@ -11,6 +11,8 @@ services:
       - 127.0.0.1:24789:8080
     volumes:
       - embedding-cache:/usr/src/app/embedding_cache
+      - ./BingusApi/models:/usr/src/app/models
+      - ./BingusApi/config:/usr/src/app/config
   bingus-encoder:
     build:
       context: ./bingus-python-encoder

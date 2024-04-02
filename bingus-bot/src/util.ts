@@ -175,7 +175,7 @@ export async function fetchBingusData(): Promise<FaqConfig> {
     await readFile(
       path.join(
         fileURLToPath(import.meta.url),
-        "../../../BingusApi/faq_config.json",
+        "../../../BingusApi/config/faq_config.json",
       ),
       { encoding: "utf-8" },
     ),

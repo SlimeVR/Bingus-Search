@@ -1,0 +1,5 @@
+{
+  "encoder_type": "use",
+  "use_model_path": "models/onnx/use_l_v5.onnx",
+  "api_uri": "http://bingus-encoder:5000"
+}

@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 ## Added GitIgnore Entries for Bingus
 /embedding_cache/
+/models/
