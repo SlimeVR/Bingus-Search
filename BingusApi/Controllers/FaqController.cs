@@ -16,10 +16,12 @@ public class FaqController : ControllerBase
     private static readonly int MaxLength = 4000;
 
     private readonly FaqHandler _faqHandler;
+    private readonly FaqConfig _faqConfig;
 
-    public FaqController(FaqHandler faqHandler)
+    public FaqController(FaqHandler faqHandler, FaqConfig faqConfig)
     {
         _faqHandler = faqHandler;
+        _faqConfig = faqConfig;
     }
 
     private static FaqEntry GetEntry(ILazyItem<float[]> item)
@@ -68,5 +70,11 @@ public class FaqController : ControllerBase
             .Take(responseCount);
 
         return responses;
+    }
+
+    [HttpGet(template: "Config", Name = "Config")]
+    public FaqConfig Config()
+    {
+        return _faqConfig;
     }
 }
