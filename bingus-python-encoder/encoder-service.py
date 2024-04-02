@@ -11,8 +11,11 @@ class EncodeRequest(BaseModel):
 with open("./config/encoder_config.json") as f:
     config = json.load(f)
 
-model = SentenceTransformer(config["model"], cache_folder="./model-cache/")
+model_file = config["model"]
+print(f"Loading model \"{model_file}\"...")
+model = SentenceTransformer(model_file, cache_folder="./model-cache/")
 dimensions = model.get_sentence_embedding_dimension()
+print(f"Model \"{model_file}\" loaded with dimension {dimensions}.")
 app = FastAPI()
 
 
