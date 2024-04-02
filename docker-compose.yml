@@ -20,6 +20,7 @@ services:
     volumes:
       - model-cache:/usr/src/app/model-cache
       - ./bingus-python-encoder/local-models:/usr/src/app/local-models
+      - ./bingus-python-encoder/config:/usr/src/app/config
     healthcheck:
       test: ["CMD", "curl", "-f", "http://bingus-encoder:5000/dimensions/"]
       interval: 1m

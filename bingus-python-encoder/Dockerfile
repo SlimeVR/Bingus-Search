@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r ./requirements/runtime.txt
 
 COPY . .
 
-CMD ["python", "./encoder-service.py"]
+CMD ["python", "./encoder-uvicorn.py"]
