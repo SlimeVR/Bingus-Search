@@ -1,14 +1,23 @@
 version: "3"
 services:
-  bingus-encoder:
+  bingus-api:
     build:
       context: .
     restart: unless-stopped
+    depends_on:
+      bingus-encoder:
+        condition: service_healthy
     ports:
-      - 127.0.0.1:5000:5000
+      - 127.0.0.1:24789:8080
+    volumes:
+      - embedding-cache:/usr/src/app/embedding_cache
+  bingus-encoder:
+    build:
+      context: ./bingus-python-encoder
+    restart: unless-stopped
     volumes:
       - model-cache:/usr/src/app/model-cache
-      - ./local-models:/usr/src/app/local-models
+      - ./bingus-python-encoder/local-models:/usr/src/app/local-models
     healthcheck:
       test: ["CMD", "curl", "-f", "http://bingus-encoder:5000/dimensions/"]
       interval: 1m
@@ -19,3 +28,4 @@ services:
 
 volumes:
   model-cache:
+  embedding-cache:

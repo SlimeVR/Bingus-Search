@@ -1,0 +1,10 @@
+**/.dockerignore
+docker-compose.yml
+**/__pycache__/
+**/.*/
+**/bin/
+**/obj/
+**/node_modules/
+/bingus-*/
+/BingusLib/models/
+/BingusApi/embedding_cache/
