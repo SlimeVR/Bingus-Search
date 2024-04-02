@@ -700,7 +700,8 @@
         "if my trackers show up faulty, should I return them?",
         "what do I do if I get it and it's broken?",
         "what if my trackers are damaged",
-        "my trackers are defective"
+        "my trackers are defective",
+        "warranty on tracker"
       ]
     },
     {
@@ -721,7 +722,9 @@
         "cable warranty",
         "aux wire warranty replacement",
         "wire is broken",
-        "cable is broken"
+        "cable is broken",
+        "warranty on cables",
+        "what do I do if the cable for my extensions broke?"
       ]
     },
     {
@@ -757,7 +760,9 @@
         "how do I get a warranty replacement for my case?",
         "Strap holder on the case broke and I don't know how to go about it",
         "strap holder broke",
-        "Case is broken"
+        "Case is broken",
+        "warranty on case",
+        "can I fix my tracker case?"
       ]
     },
     {
@@ -869,7 +874,11 @@
         "extension trackers are missing",
         "i can't find the extension trackers in the box",
         "Missing 3 Extension",
-        "I was opening my trackers and have found that im missing the 3 extenders for my enhanced core set"
+        "I was opening my trackers and have found that im missing the 3 extenders for my enhanced core set",
+        "estension warranty",
+        "warranty on extensions",
+        "the screws on the extension tracker are loose",
+        "I'm missing a screw on my extension tracker case"
       ]
     },
     {
@@ -880,7 +889,12 @@
         "After some use the strap has become torn where the hooks and the fibre meet. Is this covered under warranty and am I able to get a replacement?",
         "straps are broken",
         "my straps are torn from the velcro",
-        "the velcro straps are falling apart"
+        "the velcro straps are falling apart",
+        "strap warranty",
+        "warranty on straps",
+        "I need a replacement for my straps",
+        "my straps are starting to break apart",
+        "the seams on my straps are breaking"
       ]
     }
   ]
