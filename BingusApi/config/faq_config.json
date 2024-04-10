@@ -762,7 +762,12 @@
         "strap holder broke",
         "Case is broken",
         "warranty on case",
-        "can I fix my tracker case?"
+        "can I fix my tracker case?",
+        "my chest tracker loop has snapped and the other is on deaths door.",
+        "tracker arm has snapped",
+        "tracker arm is breaking",
+        "tracker arm is broken",
+        "tracker loop snapped"
       ]
     },
     {
@@ -876,6 +881,7 @@
         "Missing 3 Extension",
         "I was opening my trackers and have found that im missing the 3 extenders for my enhanced core set",
         "estension warranty",
+        "extension warranty",
         "warranty on extensions",
         "the screws on the extension tracker are loose",
         "I'm missing a screw on my extension tracker case",
