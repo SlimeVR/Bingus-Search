@@ -1,5 +1,4 @@
 **/.dockerignore
-docker-compose.yml
 **/__pycache__/
 **/.venv/
 /local-models/
