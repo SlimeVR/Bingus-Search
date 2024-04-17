@@ -669,7 +669,9 @@
         "where is the app data stored",
         "where can I find the files",
         "log location",
-        "config location"
+        "config location",
+        "logs",
+        "config"
       ]
     },
     {
