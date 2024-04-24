@@ -11,12 +11,11 @@ import {
   TextBasedChannel,
 } from "discord.js";
 
-import { readFile } from "fs/promises";
-import path from "path";
-import { fileURLToPath } from "url";
+export const BINGUS_SITE =
+  process.env.BINGUS_SITE || "https://bingus.bscotch.ca";
 
 export async function fetchBingus(query: string) {
-  const url = `https://bingus.bscotch.ca/api/faq/search?question=${encodeURIComponent(
+  const url = `${BINGUS_SITE}/api/faq/search?question=${encodeURIComponent(
     query,
   )}&responseCount=5`;
 
@@ -62,7 +61,9 @@ export class EmbedList {
   get(): EmbedBuilder {
     const embed = this.embeds[this.index];
     return new EmbedBuilder(embed).setFooter({
-      text: `${this.index + 1}/${this.embeds.length} ${embed.footer?.text}`.trim(),
+      text: `${this.index + 1}/${this.embeds.length} ${
+        embed.footer?.text
+      }`.trim(),
     });
   }
 
@@ -170,19 +171,14 @@ export interface FaqConfig {
   }[];
 }
 
-export async function fetchBingusData(): Promise<FaqConfig> {
-  return JSON.parse(
-    await readFile(
-      path.join(
-        fileURLToPath(import.meta.url),
-        "../../../BingusApi/config/faq_config.json",
-      ),
-      { encoding: "utf-8" },
-    ),
-  ) as FaqConfig;
+export function fetchBingusData(): Promise<FaqConfig> {
+  return fetch(`${BINGUS_SITE}/api/faq/config`).then((r) =>
+    r.json(),
+  ) as Promise<FaqConfig>;
 }
 
-export const BINGUS_EMOJI: EmojiIdentifierResolvable = "<:bingus:1157717351861596200>";
+export const BINGUS_EMOJI: EmojiIdentifierResolvable =
+  "<:bingus:1157717351861596200>";
 
 export const REACTION_EMOJIS: EmojiIdentifierResolvable[] = [
   "<:langwidjnom:1055961639842750534>",
