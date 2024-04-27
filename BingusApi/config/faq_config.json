@@ -327,7 +327,7 @@
     },
     {
       "title": "SlimeVR on Quest standalone",
-      "answer": "SlimeVR running on standalone Quest and Android is in early works with support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/tools/termux-installation.html, https://docs.slimevr.dev/server/osc-information.html, and in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR). Alternatively, there are also native Android and iOS apps in development which can in some cases be easier to install and use, you can find information about the native app in the [#\"Native Android Beta\"](https://discord.com/channels/817184208525983775/1045451713357819915) and [#\"iOS Beta Server\"](https://discord.com/channels/817184208525983775/1121564912292986880) threads on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
+      "answer": "SlimeVR running on standalone Quest and Android is in early works with support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/tools/mobile-installation.html, https://docs.slimevr.dev/server/osc-information.html, and in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR). For legacy use, you can find information on Termux at https://docs.slimevr.dev/tools/termux-installation.html, but it is recommended to use the native app instead.",
       "matched_questions": [
         "standalone",
         "can i use it with quest",
@@ -342,7 +342,10 @@
         "anyone know how to use slimevr without pc",
         "how do i use it without a computer",
         "i don't have a computer",
-        "no computer"
+        "no computer",
+        "apk",
+        "how do I run the server on my phone?",
+        "I wanna use the server on my headset"
       ]
     },
     {
