@@ -816,7 +816,8 @@
         "which imu should I buy?",
         "what's the best imu for my trackers?",
         "how long do BNOs take before drifting?",
-        "do BMIs drift quickly?"
+        "do BMIs drift quickly?",
+        "imu compare"
       ]
     },
     {
