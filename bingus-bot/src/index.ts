@@ -6,7 +6,7 @@ import {
   GatewayIntentBits,
   REST,
   Routes,
-  SlashCommandBuilder,
+  SlashCommandOptionsOnlyBuilder,
 } from "discord.js";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -18,7 +18,7 @@ import winkNLP from "wink-nlp";
 import model from "wink-eng-lite-web-model";
 
 export interface Command {
-  builder: Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">;
+  builder: SlashCommandOptionsOnlyBuilder;
   run: (interaction: ChatInputCommandInteraction) => Promise<void>;
   autocomplete?: (interaction: AutocompleteInteraction) => Promise<void>;
 }
