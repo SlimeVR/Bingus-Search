@@ -149,10 +149,10 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
   },
 };
 
-const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5]);
+const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6]);
 
 // Index of shipped shipment
-const SHIPPED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5]);
+const SHIPPED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6]);
 
 // Link to shipment message
 const SHIPMENT_MESSAGE = [
@@ -265,6 +265,23 @@ const SHIPMENTS = [
     [SlimeSet.FULLBODY_WHITE]: 169072,
     [SlimeSet.FULLBODY_BLACK]: 151247,
     [SlimeSet.DELUXE_TRACKER_PURPLE]: 158906,
+    [SlimeSet.DELUXE_TRACKER_WHITE]: 167795,
+    [SlimeSet.DELUXE_TRACKER_BLACK]: 166425,
+  },
+  {
+    [SlimeSet.LOWER_BODY_PURPLE]: 179075,
+    [SlimeSet.LOWER_BODY_WHITE]: 163329,
+    [SlimeSet.LOWER_BODY_BLACK]: 162280,
+    [SlimeSet.CORE_PURPLE]: 163405,
+    [SlimeSet.CORE_WHITE]: 163583,
+    [SlimeSet.CORE_BLACK]: 165195,
+    [SlimeSet.ENHANCED_CORE_PURPLE]: 189897,
+    [SlimeSet.ENHANCED_CORE_WHITE]: 163725,
+    [SlimeSet.ENHANCED_CORE_BLACK]: 163765,
+    [SlimeSet.FULLBODY_PURPLE]: 177650,
+    [SlimeSet.FULLBODY_WHITE]: 169072,
+    [SlimeSet.FULLBODY_BLACK]: 151247,
+    [SlimeSet.DELUXE_TRACKER_PURPLE]: 162039,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 167795,
     [SlimeSet.DELUXE_TRACKER_BLACK]: 166425,
   },
