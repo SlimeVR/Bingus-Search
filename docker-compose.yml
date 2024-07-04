@@ -7,12 +7,17 @@ services:
     depends_on:
       bingus-encoder:
         condition: service_healthy
-    ports:
-      - 127.0.0.1:24789:8080
     volumes:
       - embedding-cache:/usr/src/app/embedding_cache
       - ./BingusApi/models:/usr/src/app/models
       - ./BingusApi/config:/usr/src/app/config
+    networks: [traefik]
+    labels:
+        - traefik.enable=true
+        - traefik.http.routers.ci-bot.rule=Host(`bingus.slimevr.io`)
+        - traefik.http.routers.ci-bot.tls=true
+        - traefik.http.routers.ci-bot.tls.certresolver=letsencrypt
+        - traefik.http.services.ci-bot.loadbalancer.server.port=8080
   bingus-encoder:
     build:
       context: ./bingus-python-encoder
@@ -42,3 +47,7 @@ services:
 volumes:
   model-cache:
   embedding-cache:
+
+networks:
+    traefik:
+        external: true
