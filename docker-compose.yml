@@ -11,7 +11,9 @@ services:
       - embedding-cache:/usr/src/app/embedding_cache
       - ./BingusApi/models:/usr/src/app/models
       - ./BingusApi/config:/usr/src/app/config
-    networks: [traefik]
+    networks:
+      - backend
+      - traefik
     labels:
         - traefik.enable=true
         - traefik.http.routers.ci-bot.rule=Host(`bingus.slimevr.io`)
@@ -33,6 +35,8 @@ services:
       start_period: 2m
       start_interval: 1s
       retries: 5
+    networks:
+      - backend
   bingus-bot:
     build:
       context: .
@@ -49,5 +53,6 @@ volumes:
   embedding-cache:
 
 networks:
-    traefik:
-        external: true
+  backend:
+  traefik:
+    external: true
