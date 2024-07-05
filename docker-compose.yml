@@ -20,6 +20,11 @@ services:
         - traefik.http.routers.ci-bot.tls=true
         - traefik.http.routers.ci-bot.tls.certresolver=letsencrypt
         - traefik.http.services.ci-bot.loadbalancer.server.port=8080
+        - "traefik.http.middlewares.ci-bot.headers.accesscontrolallowmethods=GET,OPTIONS"
+        - "traefik.http.middlewares.ci-bot.headers.accesscontrolallowheaders=*"
+        - "traefik.http.middlewares.ci-bot.headers.accesscontrolalloworiginlist=https://bingus.bscotch.ca"
+        - "traefik.http.middlewares.ci-bot.headers.accesscontrolmaxage=100"
+        - "traefik.http.middlewares.ci-bot.headers.addvaryheader=true"
   bingus-encoder:
     build:
       context: ./bingus-python-encoder
