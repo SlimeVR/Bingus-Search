@@ -19,12 +19,13 @@ services:
         - traefik.http.routers.ci-bot.rule=Host(`bingus.slimevr.io`)
         - traefik.http.routers.ci-bot.tls=true
         - traefik.http.routers.ci-bot.tls.certresolver=letsencrypt
+        - traefik.http.routers.ci-bot.middlewares=bingus-bscotch@docker
         - traefik.http.services.ci-bot.loadbalancer.server.port=8080
-        - "traefik.http.middlewares.ci-bot.headers.accesscontrolallowmethods=GET,OPTIONS"
-        - "traefik.http.middlewares.ci-bot.headers.accesscontrolallowheaders=*"
-        - "traefik.http.middlewares.ci-bot.headers.accesscontrolalloworiginlist=https://bingus.bscotch.ca"
-        - "traefik.http.middlewares.ci-bot.headers.accesscontrolmaxage=100"
-        - "traefik.http.middlewares.ci-bot.headers.addvaryheader=true"
+        - "traefik.http.middlewares.bingus-bscotch.headers.accesscontrolallowmethods=GET,OPTIONS"
+        - "traefik.http.middlewares.bingus-bscotch.headers.accesscontrolallowheaders=*"
+        - "traefik.http.middlewares.bingus-bscotch.headers.accesscontrolalloworiginlist=https://bingus.bscotch.ca"
+        - "traefik.http.middlewares.bingus-bscotch.headers.accesscontrolmaxage=100"
+        - "traefik.http.middlewares.bingus-bscotch.headers.addvaryheader=true"
   bingus-encoder:
     build:
       context: ./bingus-python-encoder
