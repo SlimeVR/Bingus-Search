@@ -87,7 +87,8 @@
         "could not find the server",
         "can't find the server on my computer",
         "Trackers wont connect to server",
-        "Searching for the server on the local network..."
+        "Searching for the server on the local network...",
+        "Having an issue with none of my trackers being able to connect to the SlimeVR server anymore. They were all working fine just yesterday, but today none of them seem to want to connect."
       ]
     },
     {
@@ -154,7 +155,7 @@
     },
     {
       "title": "Shipping estimate",
-      "answer": "As of January 12th, 2024, any new orders placed are estimated to ship on **May 31st, 2024** (this provided date is subject to change, please check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest information). For the latest information on shipping and production progress, you can check the [#when-my-order-ships](https://discord.com/channels/817184208525983775/1129107343058153623), [#updates](https://discord.com/channels/817184208525983775/818062236492759050), and [#production-progress](https://discord.com/channels/817184208525983775/1025118385585004544) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR) or visit the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
+      "answer": "As of July 4th, 2024, any new orders placed are estimated to ship on **September 29th, 2024** (this provided date is subject to change, please check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest information). For the latest information on shipping and production progress, you can check the [#when-my-order-ships](https://discord.com/channels/817184208525983775/1129107343058153623), [#updates](https://discord.com/channels/817184208525983775/818062236492759050), and [#production-progress](https://discord.com/channels/817184208525983775/1025118385585004544) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR) or visit the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
       "matched_questions": [
         "When are they shipping?",
         "When does it ship?",
@@ -326,8 +327,8 @@
       ]
     },
     {
-      "title": "SlimeVR on Quest standalone",
-      "answer": "SlimeVR running on standalone Quest and Android is in early works with support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/tools/mobile-installation.html, https://docs.slimevr.dev/server/osc-information.html, and in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR). For legacy use, you can find information on Termux at https://docs.slimevr.dev/tools/termux-installation.html, but it is recommended to use the native app instead.",
+      "title": "SlimeVR on VRChat standalone",
+      "answer": "SlimeVR running on standalone Quest, Pico, and Android is in early works with support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/tools/mobile-installation.html, https://docs.slimevr.dev/server/osc-information.html, and in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR). For legacy use, you can find information on Termux at https://docs.slimevr.dev/tools/termux-installation.html, but it is recommended to use the native app instead.",
       "matched_questions": [
         "standalone",
         "can i use it with quest",
@@ -345,7 +346,9 @@
         "no computer",
         "apk",
         "how do I run the server on my phone?",
-        "I wanna use the server on my headset"
+        "I wanna use the server on my headset",
+        "iphone + connecting the trackers",
+        "can you use an iphone to set up the slime trackers or is it only android for now? also with the cable that connects each trackers to the wifi do you need a pc for that or can you do it on phone?"
       ]
     },
     {
@@ -706,7 +709,8 @@
         "what do I do if I get it and it's broken?",
         "what if my trackers are damaged",
         "my trackers are defective",
-        "warranty on tracker"
+        "warranty on tracker",
+        "Mandatory sensor 1 not found at address 0x4A"
       ]
     },
     {
@@ -772,7 +776,11 @@
         "tracker arm has snapped",
         "tracker arm is breaking",
         "tracker arm is broken",
-        "tracker loop snapped"
+        "tracker loop snapped",
+        "the screws on the extension tracker are loose",
+        "I'm missing a screw on my extension tracker case",
+        "Tracker snapped",
+        "Was putting on my tracker the other day when the loop for the strap snapped off. I've tried to use a hot glue gun and stick it back on but it keeps coming off. Should I ask for warranty or something?"
       ]
     },
     {
@@ -857,7 +865,8 @@
         "The 8th and final one, connects fine, but displays a red error. Is there a debug log or something I can read to get a clue as to why it displays an error?",
         "debug tracker error",
         "tracker error",
-        "I tried, but set settings same as for WeMos D1 mini. It shows error Does slime VR has support for this?"
+        "I tried, but set settings same as for WeMos D1 mini. It shows error Does slime VR has support for this?",
+        "I connected extentions and now 3 trackers have an error"
       ]
     },
     {
@@ -889,8 +898,6 @@
         "estension warranty",
         "extension warranty",
         "warranty on extensions",
-        "the screws on the extension tracker are loose",
-        "I'm missing a screw on my extension tracker case",
         "I checked every strap if ever they are attached to it and the whole box. I am only left with the extension cables. Not extensions at all, not even one.",
         "After 15 months, I finally got my Deluxe Tracker set. But the Extensions are nowhere to be seen."
       ]
