@@ -1,21 +1,37 @@
 import {
+  ApplicationCommandType,
   AutocompleteInteraction,
   ChatInputCommandInteraction,
   Client,
+  ContextMenuCommandBuilder,
   EmbedBuilder,
   GatewayIntentBits,
+  MessageContextMenuCommandInteraction,
   REST,
   Routes,
   SlashCommandOptionsOnlyBuilder,
+  UserContextMenuCommandInteraction,
 } from "discord.js";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import auth from "../auth.json" assert { type: "json" };
-import { BINGUS_EMOJI, EmbedList, REACTION_EMOJIS, SAD_EMOJIS, fetchBingus } from "./util.js";
+import {
+  BINGUS_EMOJI,
+  EmbedList,
+  REACTION_EMOJIS,
+  SAD_EMOJIS,
+  fetchBingus,
+} from "./util.js";
 import { askCommand } from "./commands/ask.js";
 import { shippingCommand } from "./commands/shipping.js";
 import winkNLP from "wink-nlp";
 import model from "wink-eng-lite-web-model";
+import { replyContext } from "./contexts/reply.js";
+import { replyListContext } from "./contexts/replyWithList.js";
+
+interface ContainsBuilder {
+  builder: unknown;
+}
 
 export interface Command {
   builder: SlashCommandOptionsOnlyBuilder;
@@ -23,10 +39,22 @@ export interface Command {
   autocomplete?: (interaction: AutocompleteInteraction) => Promise<void>;
 }
 
+export interface ContextMenu<
+  T extends ContextMenuCommandBuilder = ContextMenuCommandBuilder,
+> {
+  builder: T;
+  run: (
+    interaction: T["type"] extends ApplicationCommandType.User
+      ? UserContextMenuCommandInteraction
+      : MessageContextMenuCommandInteraction,
+  ) => Promise<void>;
+}
+
 const nlp = winkNLP(model, ["negation", "sentiment"]);
 const { its } = nlp;
 
 const commands = [askCommand, shippingCommand];
+const contexts = [replyContext, replyListContext];
 
 const rest = new REST({ version: "10" }).setToken(auth.token);
 
@@ -34,7 +62,9 @@ try {
   console.log("Started refreshing application (/) commands.");
 
   await rest.put(Routes.applicationCommands(auth.client), {
-    body: commands.map((x) => x.builder),
+    body: (commands as ContainsBuilder[])
+      .concat(contexts)
+      .map((x) => x.builder),
   });
 
   console.log("Successfully reloaded application (/) commands.");
@@ -76,6 +106,13 @@ client.on("interactionCreate", async (interaction) => {
   if (cmd) await cmd.run(interaction);
 });
 
+client.on("interactionCreate", async (interaction) => {
+  if (!interaction.isContextMenuCommand()) return;
+
+  const ctx = contexts.find((x) => x.builder.name === interaction.commandName);
+  if (ctx) await ctx.run(interaction as MessageContextMenuCommandInteraction);
+});
+
 // Check if a new thread is created on one of the configured forums to check
 client.on("threadCreate", async (thread, newly) => {
   if (!newly || !auth.forumsCheck.includes(thread.parentId ?? "")) return;
@@ -102,7 +139,7 @@ client.on("threadCreate", async (thread, newly) => {
             .setTitle(res.title)
             .setDescription(res.text)
             .setColor("#65459A")
-            .setFooter({text: `(${res.relevance.toFixed()}% relevant)`}).data,
+            .setFooter({ text: `(${res.relevance.toFixed()}% relevant)` }).data,
       ),
     );
 
@@ -134,7 +171,10 @@ client.on("messageCreate", async (msg) => {
     // React back with the emote
     await msg.react(BINGUS_EMOJI);
     return;
-  } else if (msg.mentions.users.has(clientId) || /\b(bot|bing\w{0,4})\b/.test(lowercase)) {
+  } else if (
+    msg.mentions.users.has(clientId) ||
+    /\b(bot|bing\w{0,4})\b/.test(lowercase)
+  ) {
     // Check if Bingus recently sent a message
     const lastMessages = await msg.channel.messages.fetch({
       limit: 10,

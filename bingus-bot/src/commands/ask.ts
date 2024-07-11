@@ -51,7 +51,7 @@ export const askCommand: Command = {
     const customOption = interaction.options.getString("custom");
     const ephemeral = customOption === null;
     const first = customOption === "FIRST";
-    console.log(`User @${interaction.user.id} asked about "${query}"`);
+    console.log(`User ${interaction.user} asked about "${query}"`);
 
     try {
       await interaction.deferReply({ ephemeral });

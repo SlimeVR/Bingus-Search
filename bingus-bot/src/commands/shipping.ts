@@ -95,7 +95,7 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
     }
 
     console.log(
-      `User @${interaction.user.id} asked about order #${order} in set ${
+      `User ${interaction.user} asked about order #${order} in set ${
         Object.entries(SlimeSet).find(
           ([, value]) => value === orderInfo.set,
         )?.[0] ?? orderInfo
