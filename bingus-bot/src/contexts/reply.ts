@@ -31,7 +31,7 @@ export const replyContext: ContextMenu = {
         embeds: [
           new EmbedBuilder()
             .setAuthor({
-              name: interaction.user.displayName,
+              name: `Triggered by ${interaction.user.displayName}`,
               iconURL: interaction.user.avatarURL() ?? undefined,
             })
             .setTitle(data[0].title)
