@@ -30,6 +30,10 @@ export const replyContext: ContextMenu = {
       interaction.targetMessage.reply({
         embeds: [
           new EmbedBuilder()
+            .setAuthor({
+              name: interaction.user.displayName,
+              iconURL: interaction.user.avatarURL() ?? undefined,
+            })
             .setTitle(data[0].title)
             .setDescription(data[0].text)
             .setColor("#65459A")

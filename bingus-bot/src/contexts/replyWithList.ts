@@ -32,6 +32,10 @@ export const replyListContext: ContextMenu = {
         ...data.slice(0, 5).map(
           (res) =>
             new EmbedBuilder()
+              .setAuthor({
+                name: interaction.user.displayName,
+                iconURL: interaction.user.avatarURL() ?? undefined,
+              })
               .setTitle(res.title)
               .setDescription(res.text)
               .setColor("#65459A")
