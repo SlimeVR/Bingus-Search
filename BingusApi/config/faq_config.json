@@ -139,7 +139,9 @@
       "answer": "If your trackers are moving in the wrong direction, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#trackers-are-moving-in-the-wrong-direction-when-i-move.",
       "matched_questions": [
         "Trackers are moving in the wrong direction when I move",
-        "Trackers are rotating on SteamVR in the wrong direction when I move"
+        "Trackers are rotating on SteamVR in the wrong direction when I move",
+        "knee is backward",
+        "when i kick my knee goes backward while my foot goes forward"
       ]
     },
     {
@@ -155,7 +157,7 @@
     },
     {
       "title": "Shipping estimate",
-      "answer": "As of July 4th, 2024, any new orders placed are estimated to ship on **September 29th, 2024** (this provided date is subject to change, please check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest information). For the latest information on shipping and production progress, you can check the [#when-my-order-ships](https://discord.com/channels/817184208525983775/1129107343058153623), [#updates](https://discord.com/channels/817184208525983775/818062236492759050), and [#production-progress](https://discord.com/channels/817184208525983775/1025118385585004544) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR) or visit the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
+      "answer": "As of July 12th, 2024, any new orders placed are estimated to ship on **September 29th, 2024** (this provided date is subject to change, please check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest information). For the latest information on shipping and production progress, you can check the [#when-my-order-ships](https://discord.com/channels/817184208525983775/1129107343058153623), [#updates](https://discord.com/channels/817184208525983775/818062236492759050), and [#production-progress](https://discord.com/channels/817184208525983775/1025118385585004544) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR) or visit the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
       "matched_questions": [
         "When are they shipping?",
         "When does it ship?",
@@ -177,7 +179,7 @@
     },
     {
       "title": "Using 3 trackers with SlimeVR",
-      "answer": "It's not recommended to use 3 trackers. If you use 3 trackers, you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). You can see a demonstration of different combinations of trackers in ZRock's video at https://youtu.be/iKmrNKLacwk. You can find more information about how many trackers you need at https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need.",
+      "answer": "Using only 3 trackers is not recommended, you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). You can see a demonstration of different combinations of trackers in ZRock's video at https://youtu.be/iKmrNKLacwk. You can find more information about how many trackers you need at https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need.",
       "matched_questions": [
         "can I use 3 trackers for full body tracking",
         "can i use 3?",
@@ -348,7 +350,10 @@
         "how do I run the server on my phone?",
         "I wanna use the server on my headset",
         "iphone + connecting the trackers",
-        "can you use an iphone to set up the slime trackers or is it only android for now? also with the cable that connects each trackers to the wifi do you need a pc for that or can you do it on phone?"
+        "can you use an iphone to set up the slime trackers or is it only android for now? also with the cable that connects each trackers to the wifi do you need a pc for that or can you do it on phone?",
+        "quest 2",
+        "quest 3",
+        "Uhm, does anyone know how to set up the slime vr with the quest 3?"
       ]
     },
     {
@@ -916,6 +921,40 @@
         "I need a replacement for my straps",
         "my straps are starting to break apart",
         "the seams on my straps are breaking"
+      ]
+    },
+    {
+      "title": "SlimeVR GUI repeatedly timing out",
+      "answer": "If your SlimeVR GUI is repeatedly timing out from the SlimeVR server (check the logs), you may be able to fix this by running the following command in an administrator console: `netsh int tcp set supplemental internet congestionprovider=default`",
+      "matched_questions": [
+        "slimevr gui timing out",
+        "Connection lost to the server. Trying to reconnect...",
+        "slimevr gui is always reconnecting",
+        "SlimeVR GUI repeatedly timing out"
+      ]
+    },
+    {
+      "title": "Official Trackers - Charging your trackers",
+      "answer": "When charging your trackers, a red light will indicate that the battery is charging, a green light will indicate when the tracker is fully charged. The battery percentage reported while the tracker is charging is not accurate and will always report 100%, you should rely on the lights instead.",
+      "matched_questions": [
+        "how do i know if my trackers are done charging?",
+        "charging",
+        "Charging the trackers",
+        "Will the trackers let me know if they're fully charged? I don't want to do anything that'll overcharge them or wither their battery life. I could also use any kind of indication so I can move onto charging the next tracker.",
+        "A question regarding charging the official trackers",
+        "Charging Slimes",
+        "lil question, how to you know if your slimes are changed all the way? Will the red light go green or do I have to turn them on and see through the app?"
+      ]
+    },
+    {
+      "title": "Trackers only turn on when plugged in",
+      "answer": "If your trackers are only turning on when plugged in, the trackers may be out of battery and need to charge. Try letting the tracker charge for at least 10 minutes or until the charging light is green. If the tracker still doesn't work while unplugged, there may be an issue with the battery.",
+      "matched_questions": [
+        "tracker only works when plugged in",
+        "tracker turns off after unplugging",
+        "my tracker only works when it is charging",
+        "I just received my trackers and they disconnect the moment i unplug them",
+        "my trackers turn off a few seconds after turning them on"
       ]
     }
   ]
