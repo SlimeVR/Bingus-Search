@@ -962,6 +962,16 @@
         "my trackers turn off a few seconds after turning them on",
         "I have one faulty tracker that keeps disconnecting after about a minute. I need to reconnect it with the usb cable for it to be detected again but then the same happens when I unplug it."
       ]
+    },
+    {
+      "title": "Official Trackers - Support Form",
+      "answer": "The support form for **official** tracker sets is available at https://slimevr.dev/support.",
+      "matched_questions": [
+        "support form",
+        "link for the support form",
+        "warranty form",
+        "link to the warranty support form"
+      ]
     }
   ]
 }
