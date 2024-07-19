@@ -797,7 +797,8 @@
         "my tracker won't show up on the serial console",
         "serial console stuck at \"Connection to serial lost, Reconnecting...\"",
         "When they are turned on they flash 3 times (looking for wifi). When I plug them in they light up red but SlimeVR says \"Looking for trackers\". The serial console just says \"Connection to serial lost, Reconnecting...\". This doesnt change when I plug the tracker in. I use Wemos D1 mini.",
-        "I'm trying to connect my trackers but they only get detected by my pc and not the slimevr app"
+        "I'm trying to connect my trackers but they only get detected by my pc and not the slimevr app",
+        "Hello, I'm trying to use the console to do the imu calibrations But console is stuck at \"Connection to serial lost, Reconnecting...\" any ideas what causes this?"
       ]
     },
     {
@@ -855,7 +856,8 @@
         "Enable SteamVR trackers",
         "Disable SteamVR trackers",
         "Enable OSC trackers",
-        "Disable SteamVR trackers"
+        "Disable SteamVR trackers",
+        "SteamVR trackers"
       ]
     },
     {
@@ -935,7 +937,7 @@
     },
     {
       "title": "Official Trackers - Charging your trackers",
-      "answer": "When charging your trackers, a red light will indicate that the battery is charging, a green light will indicate when the tracker is fully charged. The battery percentage reported while the tracker is charging is not accurate and will always report 100%, you should rely on the lights instead.",
+      "answer": "When charging your trackers, a red light will indicate that the battery is charging, a green light will indicate when the tracker is fully charged. It should take approximately 2.5 hours to fully charge from 0% to 100%. The battery percentage reported while the tracker is charging is not accurate and will always report 100%, you should rely on the red and green indicator lights instead.",
       "matched_questions": [
         "how do i know if my trackers are done charging?",
         "charging",
@@ -943,18 +945,22 @@
         "Will the trackers let me know if they're fully charged? I don't want to do anything that'll overcharge them or wither their battery life. I could also use any kind of indication so I can move onto charging the next tracker.",
         "A question regarding charging the official trackers",
         "Charging Slimes",
-        "lil question, how to you know if your slimes are changed all the way? Will the red light go green or do I have to turn them on and see through the app?"
+        "lil question, how to you know if your slimes are changed all the way? Will the red light go green or do I have to turn them on and see through the app?",
+        "how long does it take to charge my trackers",
+        "how fast do they charge?",
+        "when do I know they're done charging"
       ]
     },
     {
       "title": "Trackers only turn on when plugged in",
-      "answer": "If your trackers are only turning on when plugged in, the trackers may be out of battery and need to charge. Try letting the tracker charge for at least 10 minutes or until the charging light is green. If the tracker still doesn't work while unplugged, there may be an issue with the battery.",
+      "answer": "If your trackers are only turning on when plugged in or turning off quickly after unplugging, the trackers may be out of battery and need to charge. Try letting the tracker charge for at least 10 minutes or until the charging light is green. If the tracker still doesn't work while unplugged, there may be an issue with the battery.",
       "matched_questions": [
         "tracker only works when plugged in",
         "tracker turns off after unplugging",
         "my tracker only works when it is charging",
         "I just received my trackers and they disconnect the moment i unplug them",
-        "my trackers turn off a few seconds after turning them on"
+        "my trackers turn off a few seconds after turning them on",
+        "I have one faulty tracker that keeps disconnecting after about a minute. I need to reconnect it with the usb cable for it to be detected again but then the same happens when I unplug it."
       ]
     }
   ]
