@@ -209,4 +209,5 @@ export const SAD_EMOJIS: EmojiIdentifierResolvable[] = [
   "😓",
   "💀",
   "😈",
+  "💥",
 ];
