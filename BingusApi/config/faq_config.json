@@ -862,7 +862,7 @@
     },
     {
       "title": "Debugging tracker errors",
-      "answer": "To debug a tracker error, you'll need to get the serial logs. To get the serial logs: Open the \"Settings\" tab of the GUI, open the serial console under the \"Utilities\" section, plug the tracker in via USB, press the \"Reboot\" button, and you should see output show up. If you don't see the output, you can also try pressing the reset button on your tracker if available.",
+      "answer": "To debug a tracker error, you'll need to get the serial logs. To get the serial logs: Open the \"Settings\" tab of the GUI, open the serial console under the \"Utilities\" section, plug the tracker in via USB, press the \"Reboot\" button, and you should see output show up. If you don't see the output, you can also try pressing the reset button on your tracker if available. If this is in regards to a support issue, please show the console output to provide further information.",
       "matched_questions": [
         "my tracker is connected but it says error",
         "why is my tracker errored?",
@@ -873,7 +873,8 @@
         "debug tracker error",
         "tracker error",
         "I tried, but set settings same as for WeMos D1 mini. It shows error Does slime VR has support for this?",
-        "I connected extentions and now 3 trackers have an error"
+        "I connected extentions and now 3 trackers have an error",
+        "Anybody have any idea on why my tracker just says \"error\"? There was no other info and I tried to factory reset and reboot the tracker, but the error message was still there; It was my left thigh so no wires were attached to it"
       ]
     },
     {
