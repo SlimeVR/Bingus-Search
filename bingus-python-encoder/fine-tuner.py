@@ -26,7 +26,7 @@ else:
 model_cache = "./model-cache/"
 base_model = "all-MiniLM-L6-v2"
 
-model_ver = 9
+model_ver = 11
 model_name = f"Bingus-v{model_ver}{'_Eval' if eval_mode else ''}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 
@@ -93,14 +93,14 @@ for faq_set in faqs:
                 score = 1.0 if faq_set == other_faq_set else 0.0
 
                 # Do not include any eval data in training data if it's exclusive
-                if not is_exclusive_eval:
+                if not eval_mode or not is_exclusive_eval:
                     # Add to the training set if not eval
-                    if not is_eval or include_eval_in_training:
+                    if not eval_mode or not is_eval or include_eval_in_training:
                         training_set.append(InputExample(
                             texts=[faq, other_faq], label=score))
 
                 # Add to eval if it's within the interval
-                if is_eval or is_exclusive_eval:
+                if eval_mode and (is_eval or is_exclusive_eval):
                     sentences1.append(faq)
                     sentences2.append(other_faq)
                     scores.append(score)
@@ -124,4 +124,4 @@ if os.path.isdir(model_dir):
 # Tune the model
 print("Fine-tuning the model...")
 model.fit(train_objectives=[(training_dataloader, training_loss)], evaluator=evaluator, epochs=1, warmup_steps=100,
-          evaluation_steps=500, output_path=output_path, checkpoint_save_steps=500, checkpoint_path=checkpoint_path)
+          evaluation_steps=500 if eval_mode else 0, output_path=output_path, checkpoint_save_steps=500, checkpoint_path=checkpoint_path)
