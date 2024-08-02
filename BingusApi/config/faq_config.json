@@ -408,7 +408,9 @@
         "where do i install it",
         "I need assistance in replacing the files in order to have it update, i tried uninstalling it and reinstalling the new download but it didnt work.",
         "how do I update the server",
-        "i tried to update the server and it didn't change the version, what do i do?"
+        "i tried to update the server and it didn't change the version, what do i do?",
+        "Downloading the app/softwear",
+        "Im having trouble finding the right download for slime"
       ]
     },
     {
@@ -956,7 +958,7 @@
     },
     {
       "title": "Trackers only turn on when plugged in",
-      "answer": "If your trackers are only turning on when plugged in or turning off quickly after unplugging, the trackers may be out of battery and need to charge. Try letting the tracker charge for at least 10 minutes or until the charging light is green. If the tracker still doesn't work while unplugged, there may be an issue with the battery.",
+      "answer": "If your trackers are only turning on when plugged in or turning off quickly after unplugging, the trackers may be out of battery and need to charge. Try letting the tracker charge for at least 10 minutes or until the charging light is green (note that while plugged in, the tracker will always report 100% battery). If the tracker still doesn't work while unplugged, there may be an issue with the battery.",
       "matched_questions": [
         "tracker only works when plugged in",
         "tracker turns off after unplugging",
@@ -964,7 +966,10 @@
         "I just received my trackers and they disconnect the moment i unplug them",
         "my trackers turn off a few seconds after turning them on",
         "I have one faulty tracker that keeps disconnecting after about a minute. I need to reconnect it with the usb cable for it to be detected again but then the same happens when I unplug it.",
-        "Faulty tracker, disconnects after a minute"
+        "Faulty tracker, disconnects after a minute",
+        "Hello, I just got my trackers today and one of them keeps flashing blue rapidly after connecting it via USB during setup and then will disconnect a minute or so later. I haven't been able to even get through setup without it disconnecting.",
+        "Also worth noting it won't display the battery percentage unlike the other ones so maybe I received an uncharged one or something?",
+        "tracker disconnects after a minute"
       ]
     },
     {
