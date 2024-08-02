@@ -86,21 +86,21 @@ for faq_set in faqs:
                 if faq == other_faq or (is_exclusive_eval != is_exclusive_eval_other):
                     continue
 
-                is_eval = include_eval_in_other_pairs and eval_count % eval_interval == 0
+                is_eval = eval_mode and include_eval_in_other_pairs and eval_count % eval_interval == 0
                 eval_count += 1
 
                 # If it's part of the same set, it's similar questions, otherwise it's not similar
                 score = 1.0 if faq_set == other_faq_set else 0.0
 
                 # Do not include any eval data in training data if it's exclusive
-                if not eval_mode or not is_exclusive_eval:
+                if not is_exclusive_eval:
                     # Add to the training set if not eval
-                    if not eval_mode or not is_eval or include_eval_in_training:
+                    if not is_eval or include_eval_in_training:
                         training_set.append(InputExample(
                             texts=[faq, other_faq], label=score))
 
                 # Add to eval if it's within the interval
-                if eval_mode and (is_eval or is_exclusive_eval):
+                if is_eval or is_exclusive_eval:
                     sentences1.append(faq)
                     sentences2.append(other_faq)
                     scores.append(score)
