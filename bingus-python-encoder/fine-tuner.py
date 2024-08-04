@@ -1,14 +1,12 @@
 from datasets import Dataset
 from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer, SentenceTransformerTrainingArguments
-from sentence_transformers.losses import AnglELoss
-from sentence_transformers.training_args import BatchSamplers
+from sentence_transformers.losses import CoSENTLoss
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
 
 import sys
 import os
 import json
 import math
-import shutil
 
 # Define the default paths to check
 faq_config_paths = ["./faq_config.json",
@@ -133,28 +131,32 @@ if eval_mode:
 else:
     eval_dataset = None
 
-loss = AnglELoss(model)
+# CoSENTLoss - Slow to converge, doesn't overfit
+# AnglELoss - Has trouble converging
+# CosineSimilarityLoss - Overfits hard past 1 epoch
+loss = CoSENTLoss(model)
 
 args = SentenceTransformerTrainingArguments(
     # Required parameter:
     output_dir=checkpoint_path,
     # Optional training parameters:
-    num_train_epochs=20,
-    per_device_train_batch_size=64,
-    per_device_eval_batch_size=64,
-    learning_rate=0.00005 * math.sqrt(64/16),
+    num_train_epochs=80,
+    per_device_train_batch_size=128,
+    per_device_eval_batch_size=128,
+    learning_rate=0.00005 * math.sqrt(128/16),
     warmup_ratio=0.1,
-    fp16=True,  # Set to False if you get an error that your GPU can't run on FP16
-    bf16=False,  # Set to True if you have a GPU that supports BF16
+    fp16=True, # Set to False if you get an error that your GPU can't run on FP16
+    bf16=False, # Set to True if you have a GPU that supports BF16
     # Optional tracking/debugging parameters:
-    eval_strategy="steps",
-    eval_steps=400,
+    eval_strategy="steps" if eval_mode else "no",
+    eval_steps=2000 if eval_mode else 0,
     save_strategy="steps",
-    save_steps=400,
+    save_steps=2000,
     save_total_limit=2,
-    logging_steps=100,
+    logging_steps=500,
     run_name=model_name,  # Will be used in W&B if `wandb` is installed
-    eval_on_start=True,
+    do_eval=eval_mode,
+    eval_on_start=eval_mode,
 )
 
 if eval_mode:
