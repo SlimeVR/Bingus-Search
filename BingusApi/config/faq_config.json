@@ -969,7 +969,8 @@
         "Faulty tracker, disconnects after a minute",
         "Hello, I just got my trackers today and one of them keeps flashing blue rapidly after connecting it via USB during setup and then will disconnect a minute or so later. I haven't been able to even get through setup without it disconnecting.",
         "Also worth noting it won't display the battery percentage unlike the other ones so maybe I received an uncharged one or something?",
-        "tracker disconnects after a minute"
+        "tracker disconnects after a minute",
+        "Only connected when plugged in to computer"
       ]
     },
     {
