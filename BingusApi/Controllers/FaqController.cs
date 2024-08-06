@@ -51,6 +51,12 @@ public class FaqController : ControllerBase
         // Sort the entries by relevance
         // Take only the requested number of results
         var responses = results
+            .GroupBy(result => GetEntry(result.Item).Answer)
+            .Select(groupedResults =>
+                groupedResults.MinBy(result => result.Distance) ?? groupedResults.First()
+            )
+            .OrderByDescending(result => -result.Distance)
+            .Take(responseCount)
             .Select(result =>
             {
                 var entry = GetEntry(result.Item);
@@ -61,13 +67,7 @@ public class FaqController : ControllerBase
                     Title = entry.Title,
                     Text = entry.Answer,
                 };
-            })
-            .GroupBy(result => result.Text)
-            .Select(groupedResults =>
-                groupedResults.MaxBy(result => result.Relevance) ?? groupedResults.First()
-            )
-            .OrderByDescending(response => response.Relevance)
-            .Take(responseCount);
+            });
 
         return responses;
     }
