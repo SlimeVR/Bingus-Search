@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CSharpier.MsBuild" Version="0.27.0">
+        <PackageReference Include="CSharpier.MsBuild" Version="0.28.2">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
@@ -17,8 +17,8 @@
         <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
-        <PackageReference Include="Microsoft.ML" Version="3.0.0" />
-        <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.16.3" />
+        <PackageReference Include="Microsoft.ML" Version="3.0.1" />
+        <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.18.1" />
     </ItemGroup>
 
     <ItemGroup>
