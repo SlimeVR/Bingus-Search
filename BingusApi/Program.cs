@@ -125,8 +125,6 @@ app.UseIpRateLimiting();
 app.MapControllers();
 
 // Service warmup (these tasks do not need to be awaited, it will run in the background)
-#pragma warning disable CS4014
-Task.Run(app.Services.GetService<FaqHandler>);
-#pragma warning restore CS4014
+_ = Task.Run(app.Services.GetService<FaqHandler>);
 
 app.Run();

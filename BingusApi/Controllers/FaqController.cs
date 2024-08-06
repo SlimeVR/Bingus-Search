@@ -56,7 +56,7 @@ public class FaqController : ControllerBase
                 var entry = GetEntry(result.Item);
                 return new FaqEntryResponse()
                 {
-                    Relevance = (1f - result.Distance) * 100f,
+                    Relevance = Math.Clamp((1f - result.Distance) * 100f, 0f, 100f),
                     MatchedQuestion = entry.Question,
                     Title = entry.Title,
                     Text = entry.Answer,
