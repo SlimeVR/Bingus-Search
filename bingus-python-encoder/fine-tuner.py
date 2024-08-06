@@ -31,7 +31,7 @@ model_ver = 13
 model_name = f"Bingus-v{model_ver}{'_Eval' if eval_mode else ''}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 
-output_path = f"{model_dir}output/"
+output_path = f"{model_dir}{model_name}/"
 checkpoint_path = f"{model_dir}checkpoints/"
 
 # Search the paths for the config
