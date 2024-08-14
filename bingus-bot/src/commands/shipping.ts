@@ -149,7 +149,7 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
   },
 };
 
-const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6]);
+const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6, 7]);
 
 // Index of shipped shipment
 const SHIPPED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6]);
@@ -162,6 +162,8 @@ const SHIPMENT_MESSAGE = [
   "https://discord.com/channels/817184208525983775/1129107343058153623/1183816649950888066",
   "https://discord.com/channels/817184208525983775/1129107343058153623/1195340407962349651",
   "https://discord.com/channels/817184208525983775/1129107343058153623/1204216527402836042",
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1242966024886812722",
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1253778746838876191",
 ];
 
 // Shipments being prepared or shipped
@@ -284,5 +286,22 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_PURPLE]: 162039,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 167795,
     [SlimeSet.DELUXE_TRACKER_BLACK]: 166425,
+  },
+  {
+    [SlimeSet.LOWER_BODY_PURPLE]: 197569,
+    [SlimeSet.LOWER_BODY_WHITE]: 170895,
+    [SlimeSet.LOWER_BODY_BLACK]: 172511,
+    [SlimeSet.CORE_PURPLE]: 196811,
+    [SlimeSet.CORE_WHITE]: 167777,
+    [SlimeSet.CORE_BLACK]: 167968,
+    [SlimeSet.ENHANCED_CORE_PURPLE]: 192378,
+    [SlimeSet.ENHANCED_CORE_WHITE]: 163803,
+    [SlimeSet.ENHANCED_CORE_BLACK]: 168770,
+    [SlimeSet.FULLBODY_PURPLE]: 196898,
+    [SlimeSet.FULLBODY_WHITE]: 169072,
+    [SlimeSet.FULLBODY_BLACK]: 166912,
+    [SlimeSet.DELUXE_TRACKER_PURPLE]: 176283,
+    [SlimeSet.DELUXE_TRACKER_WHITE]: 167795,
+    [SlimeSet.DELUXE_TRACKER_BLACK]: 166758,
   },
 ];
