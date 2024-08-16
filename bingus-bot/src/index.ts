@@ -18,6 +18,8 @@ import auth from "../auth.json" assert { type: "json" };
 import {
   BINGUS_EMOJI,
   EmbedList,
+  GUNNYA_EMOJI,
+  NYAGUN_EMOJI,
   REACTION_EMOJIS,
   SAD_EMOJIS,
   fetchBingus,
@@ -175,6 +177,12 @@ client.on("messageCreate", async (msg) => {
     msg.mentions.users.has(clientId) ||
     /\b(bot|bing\w{0,4})\b/.test(lowercase)
   ) {
+    // React back with gun nya
+    if (msg.content.includes(NYAGUN_EMOJI.toString())) {
+      await msg.react(GUNNYA_EMOJI);
+      return;
+    }
+
     // Check if Bingus recently sent a message
     const lastMessages = await msg.channel.messages.fetch({
       limit: 10,

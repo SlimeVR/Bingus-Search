@@ -180,6 +180,11 @@ export function fetchBingusData(): Promise<FaqConfig> {
 export const BINGUS_EMOJI: EmojiIdentifierResolvable =
   "<:bingus:1157717351861596200>";
 
+export const NYAGUN_EMOJI: EmojiIdentifierResolvable =
+  "<:nya_gun:957426272030576671>";
+export const GUNNYA_EMOJI: EmojiIdentifierResolvable =
+  "<:gun_nya:962115210670383184>";
+
 export const REACTION_EMOJIS: EmojiIdentifierResolvable[] = [
   "<:langwidjnom:1055961639842750534>",
   "<:Heart:1117832451620868136>",
