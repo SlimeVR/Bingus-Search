@@ -177,9 +177,14 @@ client.on("messageCreate", async (msg) => {
     msg.mentions.users.has(clientId) ||
     /\b(bot|bing\w{0,4})\b/.test(lowercase)
   ) {
-    // React back with gun nya
+    // React back with gun nya when nya gun
     if (msg.content.includes(NYAGUN_EMOJI.toString())) {
       await msg.react(GUNNYA_EMOJI);
+      return;
+    }
+    // React back with nya gun when gun nya
+    else if (msg.content.includes(GUNNYA_EMOJI.toString())) {
+      await msg.react(NYAGUN_EMOJI);
       return;
     }
 
