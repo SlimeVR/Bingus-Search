@@ -58,7 +58,7 @@ function App() {
   };
 
   const queryBingus = async (query: string, responseCount = 30) => {
-    const url = new URL("https://bingus.bscotch.ca/api/faq/search");
+    const url = new URL("https://bingus.slimevr.io/faq/search");
 
     setLoadingResults(true);
 

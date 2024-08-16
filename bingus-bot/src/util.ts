@@ -12,10 +12,10 @@ import {
 } from "discord.js";
 
 export const BINGUS_SITE =
-  process.env.BINGUS_SITE || "https://bingus.bscotch.ca";
+  process.env.BINGUS_SITE || "https://bingus.slimevr.io";
 
 export async function fetchBingus(query: string) {
-  const url = `${BINGUS_SITE}/api/faq/search?question=${encodeURIComponent(
+  const url = `${BINGUS_SITE}/faq/search?question=${encodeURIComponent(
     query,
   )}&responseCount=5`;
 
@@ -172,7 +172,7 @@ export interface FaqConfig {
 }
 
 export function fetchBingusData(): Promise<FaqConfig> {
-  return fetch(`${BINGUS_SITE}/api/faq/config`).then((r) =>
+  return fetch(`${BINGUS_SITE}/faq/config`).then((r) =>
     r.json(),
   ) as Promise<FaqConfig>;
 }
