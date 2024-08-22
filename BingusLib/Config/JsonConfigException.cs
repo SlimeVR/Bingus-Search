@@ -12,8 +12,5 @@ namespace BingusLib.Config
 
         public JsonConfigException(string? message, Exception? innerException)
             : base(message, innerException) { }
-
-        protected JsonConfigException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
     }
 }

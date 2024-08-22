@@ -11,8 +11,5 @@ namespace BingusLib.SentenceEncoding
 
         public SentenceEncodeException(string? message, Exception? innerException)
             : base(message, innerException) { }
-
-        protected SentenceEncodeException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
     }
 }
