@@ -984,6 +984,19 @@
         "warranty form",
         "link to the warranty support form"
       ]
+    },
+    {
+      "title": "Resetting body proportions",
+      "answer": "You can reset your body proportions by going to the \"Body Proportions\" tab, click on the \"Manual proportions\" option, then while in VR with your headset on and standing up straight, click the \"Reset all proportions\" button in the bottom right corner. If your height is still wrong, then you may need to correct the floor level on your headset. If you do not have a headset connected, this will only reset to the SlimeVR default without scaling to your height.",
+      "matched_questions": [
+        "reset body proportions",
+        "how do I reset my proportions?",
+        "My proportions are messed up, how do I fix it?",
+        "Resetting proportions",
+        "How to reset my body proportions",
+        "Reset body proportions in SlimeVR",
+        "i messed up my body proportions, how do i reset it?"
+      ]
     }
   ]
 }
