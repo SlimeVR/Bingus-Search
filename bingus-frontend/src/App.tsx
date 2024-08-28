@@ -227,7 +227,7 @@ function App() {
               value={input}
               variant="filled"
               onChange={(e) => setInput(e.target.value)}
-              onKeyPress={(e) => {
+              onKeyUp={(e) => {
                 if (e.key === "Enter") search();
               }}
             />
