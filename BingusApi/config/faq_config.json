@@ -136,7 +136,7 @@
     },
     {
       "title": "Trackers move in the wrong direction",
-      "answer": "If your trackers are moving in the wrong direction, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#trackers-are-moving-in-the-wrong-direction-when-i-move.",
+      "answer": "If your trackers are moving in the wrong direction (ex. leg moves the wrong way when kicking), it's likely your mounting orientation is set incorrectly. You can see ZRock35's video guide at https://youtu.be/SYqfQdVseF4 for help with session calibrations, or find other potential fixes at https://docs.slimevr.dev/common-issues.html#trackers-are-moving-in-the-wrong-direction-when-i-move.",
       "matched_questions": [
         "Trackers are moving in the wrong direction when I move",
         "Trackers are rotating on SteamVR in the wrong direction when I move",
@@ -999,6 +999,27 @@
         "How to reset my body proportions",
         "Reset body proportions in SlimeVR",
         "i messed up my body proportions, how do i reset it?"
+      ]
+    },
+    {
+      "title": "Session calibrations guide",
+      "answer": "Performing session calibrations (full reset, yaw reset, mounting reset, etc) correctly is essential to having accurate tracking. For a guide to performing session calibrations, see ZRock35's video at https://youtu.be/SYqfQdVseF4.",
+      "matched_questions": [
+        "calibration guide",
+        "session calibration guide",
+        "session calibration",
+        "performing session calibration",
+        "how to do a full reset?",
+        "what pose do I need to do for a yaw reset?",
+        "how do I do a mounting reset?",
+        "what pose is for mounting",
+        "what pose for full reset?",
+        "what's a mounting reset",
+        "how do I fix mermaiding?",
+        "what are session calibrations?",
+        "zrock video guide",
+        "video calibration guide",
+        "where's zrock's video calibration guide?"
       ]
     }
   ]
