@@ -146,7 +146,7 @@
     },
     {
       "title": "SlimeVR server setup",
-      "answer": "You can download the SlimeVR installer from https://slimevr.dev/download. For **official** SlimeVR trackers, you can find a guide to set up at https://docs.slimevr.dev/quick-setup.html. For any other trackers, you can find a guide to set up at https://docs.slimevr.dev/server/initial-setup.html.",
+      "answer": "You can download the SlimeVR installer from https://slimevr.dev/download. For **official** SlimeVR trackers, you can follow the guide at https://docs.slimevr.dev/quick-setup.html. For any other trackers, see https://docs.slimevr.dev/server/initial-setup.html.",
       "matched_questions": [
         "Does setup take a long time and/or do you need to do it every time you play?",
         "Does setup take a long time?",
