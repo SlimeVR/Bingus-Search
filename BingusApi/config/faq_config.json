@@ -146,18 +146,32 @@
     },
     {
       "title": "SlimeVR server setup",
-      "answer": "SlimeVR does not take long to setup and you only need to do it once. For official SlimeVR trackers, you can find a guide to setup at https://docs.slimevr.dev/quick-setup.html. For any other trackers, you can find a guide to setup at https://docs.slimevr.dev/server/initial-setup.html.",
+      "answer": "You can download the SlimeVR installer from https://slimevr.dev/download. For **official** SlimeVR trackers, you can find a guide to set up at https://docs.slimevr.dev/quick-setup.html. For any other trackers, you can find a guide to set up at https://docs.slimevr.dev/server/initial-setup.html.",
       "matched_questions": [
         "Does setup take a long time and/or do you need to do it every time you play?",
         "Does setup take a long time?",
         "do you need to configure it every time you play?",
         "how long does setup take",
-        "does it take a long time to install?"
+        "does it take a long time to install?",
+        "how do I download the server?",
+        "where can I download the server from",
+        "how to download SlimeVR",
+        "how do I install slimevr",
+        "install",
+        "how do I install it",
+        "how do i install the server",
+        "where do i install it",
+        "I need assistance in replacing the files in order to have it update, i tried uninstalling it and reinstalling the new download but it didnt work.",
+        "how do I update the server",
+        "i tried to update the server and it didn't change the version, what do i do?",
+        "Downloading the app/softwear",
+        "Im having trouble finding the right download for slime",
+        "is it hard to set up?"
       ]
     },
     {
       "title": "Shipping estimate",
-      "answer": "As of September 7th, 2024, any new orders placed are estimated to ship on **October 31st, 2024** (this provided date is subject to change, please check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest information). For the latest information on shipping and production progress, you can check the [#shipping-progress](https://discord.com/channels/817184208525983775/1129107343058153623) and [#updates](https://discord.com/channels/817184208525983775/818062236492759050) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
+      "answer": "As of September 13th, 2024, any new orders placed are estimated to ship on **October 31st, 2024** (this provided date is subject to change, please check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest information). For the latest information on shipping and production progress, you can check the [#shipping-progress](https://discord.com/channels/817184208525983775/1129107343058153623) and [#updates](https://discord.com/channels/817184208525983775/818062236492759050) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "When are they shipping?",
         "When does it ship?",
@@ -178,8 +192,8 @@
       ]
     },
     {
-      "title": "Using 3 trackers with SlimeVR",
-      "answer": "Using only 3 trackers is not recommended, you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). You can see a demonstration of different combinations of trackers in ZRock's video at https://youtu.be/iKmrNKLacwk. You can find more information about how many trackers you need at https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need.",
+      "title": "How many trackers are needed",
+      "answer": "Generally, you need at least 5 trackers for full body tracking. You can find a demonstration of 5 to 11 tracker setups in ZRock35's video at https://youtu.be/KN3dxGNAq34. It's not recommended to use less than 5 trackers, as you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). You can find a demonstration of 1 to 3 tracker setups in ZRock35's video at https://youtu.be/iKmrNKLacwk. For more information about how many trackers you need, see https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need",
       "matched_questions": [
         "can I use 3 trackers for full body tracking",
         "can i use 3?",
@@ -189,13 +203,7 @@
         "can i use my three psmove controllers?",
         "what if i use three trackers",
         "can i use three trackers?",
-        "Can I use 3 SlimeVR trackers?"
-      ]
-    },
-    {
-      "title": "How many trackers are needed",
-      "answer": "You can find information about how many trackers you need at https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need. You can see a demonstration of different combinations of trackers in ZRock's video at https://youtu.be/iKmrNKLacwk.",
-      "matched_questions": [
+        "Can I use 3 SlimeVR trackers?",
         "how many trackers do I need",
         "how many trackers should I build",
         "how many trackers do i need to build",
@@ -395,25 +403,6 @@
       ]
     },
     {
-      "title": "Install SlimeVR server",
-      "answer": "You can find instructions for installing the SlimeVR server at https://docs.slimevr.dev/server/initial-setup.html#install-the-latest-slimevr-installer.",
-      "matched_questions": [
-        "how do I download the server?",
-        "where can I download the server from",
-        "how to download SlimeVR",
-        "how do I install slimevr",
-        "install",
-        "how do I install it",
-        "how do i install the server",
-        "where do i install it",
-        "I need assistance in replacing the files in order to have it update, i tried uninstalling it and reinstalling the new download but it didnt work.",
-        "how do I update the server",
-        "i tried to update the server and it didn't change the version, what do i do?",
-        "Downloading the app/softwear",
-        "Im having trouble finding the right download for slime"
-      ]
-    },
-    {
       "title": "Setting up keybinds",
       "answer": "You can find instructions for setting up keybinds at https://docs.slimevr.dev/server/setting-reset-bindings.html.",
       "matched_questions": [
@@ -479,7 +468,7 @@
     },
     {
       "title": "SlimeVR on Linux",
-      "answer": "You can find information about installing SlimeVR on Linux at https://docs.slimevr.dev/tools/linux-installation.html.",
+      "answer": "You can find information about installing SlimeVR on Linux at https://docs.slimevr.dev/tools/linux-installation.html. For tech support with Linux, you can go to the [#linux-support](https://discord.com/channels/817184208525983775/1065785802031898655) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR)",
       "matched_questions": [
         "linux",
         "how do I use slimevr on linux",
@@ -580,7 +569,7 @@
     },
     {
       "title": "IMU calibration",
-      "answer": "You can find information about IMU calibration at https://docs.slimevr.dev/server/imu-calibration.html. For BMI160's, you can also find more specific information in the pins of the [#\"BMI160 IMU\"](https://discord.com/channels/817184208525983775/999926371218374666) thread on the [SlimeVR Discord](https://discord.gg/SlimeVR) or by following a video guide at https://youtu.be/mN_RC7pUNrA.",
+      "answer": "You can find information about IMU calibration at https://docs.slimevr.dev/server/imu-calibration.html. You can also find a video guide by Adamant IT 2 at https://youtu.be/UmgGd9O-rn4.",
       "matched_questions": [
         "how do I calibrate my IMUs",
         "imu calibration",
@@ -628,7 +617,7 @@
       ]
     },
     {
-      "title": "Difference from using a magnetometer",
+      "title": "Difference between with and without magnetometer",
       "answer": "You can find information about the difference between an IMU with a magnetometer (9 DOF) and an IMU without a magnetometer (6 DOF) at https://docs.slimevr.dev/diy/imu-comparison.html#whats-the-difference-between-an-imu-with-a-magnetometer-9-dof-and-an-imu-without-a-magnetometer-6-dof.",
       "matched_questions": [
         "magnetometer",
@@ -677,7 +666,7 @@
     },
     {
       "title": "Config and log locations",
-      "answer": "The app data for the SlimeVR server is located at \"%AppData%\\dev.slimevr.SlimeVR\" as of v0.9.0. The main config file is \"vrconfig.yml\". The logs are stored in the \"logs\" folder, where \"log_last_X.log\" are server logs and \"slimevr_rX.log\" are GUI logs.",
+      "answer": "The app data for the SlimeVR server is located at \"%AppData%\\dev.slimevr.SlimeVR\". The main config file is \"vrconfig.yml\". The logs are stored in the \"logs\" folder, where \"log_last_X.log\" are server logs and \"slimevr_rX.log\" are GUI logs.",
       "matched_questions": [
         "where are the configs stored?",
         "how do I find the logs for SlimeVR",
