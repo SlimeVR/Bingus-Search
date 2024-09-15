@@ -857,7 +857,7 @@
     },
     {
       "title": "Debugging tracker errors",
-      "answer": "To debug a tracker error, you'll need to get the serial logs. To get the serial logs: Open the \"Settings\" tab of the GUI, open the serial console under the \"Utilities\" section, plug the tracker in via USB, press the \"Reboot\" button, and you should see output show up. If you don't see the output, you can also try pressing the reset button on your tracker if available. If this is in regards to a support issue, please show the console output to provide further information.",
+      "answer": "To debug a tracker error, you'll need to get the serial logs. To get the serial logs: Open the **Settings** tab of the GUI, open the **Serial console** under the **Utilities** section, **plug the tracker in via USB**, press the **Reboot** button, and you should see output show up. If you don't see the output, you can also try pressing the reset button on your tracker if available. If this is in regards to a support issue, please show the console output to provide further information.",
       "matched_questions": [
         "my tracker is connected but it says error",
         "why is my tracker errored?",
