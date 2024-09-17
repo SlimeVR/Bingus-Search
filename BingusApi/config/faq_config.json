@@ -13,8 +13,8 @@
       ]
     },
     {
-      "title": "SlimeVR server won't start",
-      "answer": "If the SlimeVR server is not opening, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-slimevr-server-wont-start.",
+      "title": "SlimeVR won't start",
+      "answer": "If SlimeVR is not opening, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-slimevr-server-wont-start.",
       "matched_questions": [
         "The server won't start",
         "The SlimeVR server won't start",
@@ -75,8 +75,8 @@
       ]
     },
     {
-      "title": "Trackers connect to Wi-Fi but not the SlimeVR server",
-      "answer": "If your trackers are connected to Wi-Fi but are not showing up on the SlimeVR server, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wi-fi-but-dont-turn-up-on-slimevr.",
+      "title": "Trackers connect to Wi-Fi but not SlimeVR",
+      "answer": "If your trackers are connected to Wi-Fi but are not showing up in SlimeVR, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wi-fi-but-dont-turn-up-on-slimevr. Also make sure that your network is set to Private, you can follow [the guide from Microsoft for help](https://support.microsoft.com/windows/make-a-wi-fi-network-public-or-private-in-windows-0460117d-8d3e-a7ac-f003-7a0da607448d).",
       "matched_questions": [
         "trackers are connected to my wifi but don't turn up on the server",
         "my trackers are on wifi but not on the gui",
@@ -92,13 +92,15 @@
       ]
     },
     {
-      "title": "Trackers don't show up in SteamVR",
-      "answer": "If your trackers are connected to the SlimeVR server but don't show up on SteamVR, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam.",
+      "title": "SlimeVR not connected to SteamVR/Feeder App or trackers don't show up in SteamVR",
+      "answer": "If SlimeVR reports that it can't connect to SteamVR or the Feeder App, or your trackers are connected to SlimeVR but don't show up on SteamVR, make sure that SlimeVR isn't being run as an administrator and that the \"slimevr\" driver is turned on in **SteamVR** under **Settings** > **Startup / Shutdown** > **Manage Add-Ons**. You can find additional help at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam.",
       "matched_questions": [
         "trackers are connected to the server but aren't turning up on Steam",
         "trackers aren't showing up in SteamVR",
         "Tracker doesn't show up on SteamVR but it does on the server",
-        "my trackers are showing up in SlimeVR but don't work with SteamVR"
+        "my trackers are showing up in SlimeVR but don't work with SteamVR",
+        "SlimeVR not connected to SteamVR",
+        "SlimeVR not connected to Feeder App"
       ]
     },
     {
@@ -145,7 +147,7 @@
       ]
     },
     {
-      "title": "SlimeVR server setup",
+      "title": "SlimeVR setup",
       "answer": "You can download the SlimeVR installer from https://slimevr.dev/download. For **official** SlimeVR trackers, you can follow the guide at https://docs.slimevr.dev/quick-setup.html. For any other trackers, see https://docs.slimevr.dev/server/initial-setup.html.",
       "matched_questions": [
         "Does setup take a long time and/or do you need to do it every time you play?",
@@ -666,7 +668,7 @@
     },
     {
       "title": "Config and log locations",
-      "answer": "The app data for the SlimeVR server is located at \"%AppData%\\dev.slimevr.SlimeVR\". The main config file is \"vrconfig.yml\". The logs are stored in the \"logs\" folder, where \"log_last_X.log\" are server logs and \"slimevr_rX.log\" are GUI logs.",
+      "answer": "The app data for SlimeVR is located at \"%AppData%\\dev.slimevr.SlimeVR\". The main config file is \"vrconfig.yml\". The logs are stored in the \"logs\" folder, where \"log_last_X.log\" are server logs and \"slimevr_rX.log\" are GUI logs.",
       "matched_questions": [
         "where are the configs stored?",
         "how do I find the logs for SlimeVR",
@@ -682,7 +684,7 @@
     },
     {
       "title": "Official Trackers - Blue Light of Death (BLOD)",
-      "answer": "Symptoms of this hardware issue that may occur on some of the **official** trackers include solid blue light (not blinking), suddenly stopped working, or suddenly stopped connecting to WiFi/SlimeVR server. To get a warranty replacement, fill out the form at https://slimevr.dev/support.",
+      "answer": "Symptoms of this hardware issue that may occur on some of the **official** trackers include solid blue light (not blinking), suddenly stopped working, or suddenly stopped connecting to WiFi/SlimeVR. To get a warranty replacement, fill out the form at https://slimevr.dev/support.",
       "matched_questions": [
         "solid blue light",
         "tracker stopped working",
