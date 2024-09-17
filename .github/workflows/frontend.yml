@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/frontend.yml
+      - bingus-frontend/**
+      - package*.json
   workflow_dispatch:
 
 permissions:
