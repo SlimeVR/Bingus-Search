@@ -100,7 +100,9 @@
         "Tracker doesn't show up on SteamVR but it does on the server",
         "my trackers are showing up in SlimeVR but don't work with SteamVR",
         "SlimeVR not connected to SteamVR",
-        "SlimeVR not connected to Feeder App"
+        "SlimeVR not connected to Feeder App",
+        "steamvr wont connect",
+        "the feeder app isn't connecting"
       ]
     },
     {
