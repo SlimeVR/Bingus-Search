@@ -6,6 +6,10 @@ p {
   word-break: break-word;
 }
 
+span {
+  word-break: break-word;
+}
+
 .dark {
   color-scheme: dark;
 }
