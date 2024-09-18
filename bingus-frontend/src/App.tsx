@@ -168,11 +168,8 @@ function App() {
         <Stack spacing={1} direction="row" sx={{ my: 2 }}>
           <Alert variant="outlined" severity="info" sx={{ flexGrow: 1 }}>
             <Typography>
-              This site may not provide up-to-date information. If you need any
-              further help, join the SlimeVR Discord at{" "}
-              <Link href="https://discord.gg/SlimeVR">
-                https://discord.gg/SlimeVR
-              </Link>
+              Information may not be up-to-date. If you need further help, join
+              the <Link href="https://discord.gg/SlimeVR">SlimeVR Discord</Link>
               .
             </Typography>
           </Alert>
