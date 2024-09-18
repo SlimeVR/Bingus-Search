@@ -3,7 +3,20 @@
 
 name: .NET
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - .github/workflows/dotnet.yml
+      - BingusApi/**
+      - BingusLib/**
+      - BingusBackend.sln
+  pull_request:
+    paths:
+      - .github/workflows/dotnet.yml
+      - BingusApi/**
+      - BingusLib/**
+      - BingusBackend.sln
+  workflow_dispatch:
 
 jobs:
   build:
