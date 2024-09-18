@@ -127,7 +127,7 @@ function App() {
     return 0;
   };
 
-  const resultCard = function (text: string, relevance: number | null = null) {
+  const resultCard = function (relevance: number, title: string, text: string) {
     const relevanceElevation = relevanceToElevation(relevance, 6);
 
     return (
@@ -155,7 +155,7 @@ function App() {
             <></>
           )}
           <Typography
-            paragraph
+            component="p"
             variant="body1"
             sx={{
               width: "fit-content",
@@ -174,7 +174,9 @@ function App() {
     return lastResults?.length ? (
       lastResults
         .sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
-        .map((result) => resultCard(result.text, result.relevance))
+        .map((result) =>
+          resultCard(result.relevance, result.title, result.text),
+        )
     ) : (
       <Typography color="text.secondary" padding={1}>
         No results...
@@ -194,18 +196,10 @@ function App() {
         <Stack spacing={1} direction="row" sx={{ my: 2 }}>
           <Alert variant="outlined" severity="info" sx={{ flexGrow: 1 }}>
             <Typography>
-              This site is experimental and may not provide up-to-date
-              information. If you need any further help, you can join the
-              SlimeVR Discord at{" "}
+              This site may not provide up-to-date information. If you need any
+              further help, join the SlimeVR Discord at{" "}
               <Link href="https://discord.gg/SlimeVR">
                 https://discord.gg/SlimeVR
-              </Link>
-              .
-              <br />
-              <br />
-              You can leave any feedback about Bingus Search at{" "}
-              <Link href="https://bingus.bscotch.ca/feedback">
-                https://bingus.bscotch.ca/feedback
               </Link>
               .
             </Typography>
