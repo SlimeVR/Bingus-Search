@@ -137,6 +137,7 @@ function App() {
           title={title}
           subheader={`${relevance.toFixed()}% relevant`}
           sx={{ pb: 1 }}
+          titleTypographyProps={{ sx: { typography: { sm: "h5", xs: "h6" } } }}
         />
         <CardContent sx={{ pt: 0 }}>
           <MuiMarkdown>{text}</MuiMarkdown>
