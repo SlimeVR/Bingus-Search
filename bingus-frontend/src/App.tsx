@@ -3,20 +3,20 @@ import {
   Alert,
   Button,
   Card,
+  CardContent,
+  CardHeader,
   CircularProgress,
   Container,
   createTheme,
   CssBaseline,
   Link,
-  Paper,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
 import { useMemo, useRef, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import "./App.css";
+import MuiMarkdown from "mui-markdown";
 
 export type Result = {
   relevance: number;
@@ -117,55 +117,31 @@ function App() {
   };
 
   const relevanceToElevation = function (
-    relevance: number | null,
+    relevance: number,
     scale = 24,
   ): number {
-    if (relevance) {
-      return Math.round((relevance / 100) * scale);
-    }
-
-    return 0;
+    return Math.round((relevance / 100) * scale);
   };
 
-  const resultCard = function (text: string, relevance: number | null = null) {
-    const relevanceElevation = relevanceToElevation(relevance, 6);
+  const resultCard = function (relevance: number, title: string, text: string) {
+    const relevanceElevation = relevanceToElevation(relevance, 5);
 
     return (
       <Card
+        key={title}
         variant="elevation"
-        elevation={2 + relevanceElevation}
+        elevation={1 + relevanceElevation}
         sx={{ width: "100%" }}
       >
-        <Stack padding={1.25} spacing={1.75} direction="row">
-          {relevance !== null ? (
-            <Card
-              variant="elevation"
-              elevation={3 + relevanceElevation}
-              sx={{
-                width: "fit-content",
-                height: "fit-content",
-                padding: 0.75,
-              }}
-            >
-              <Typography variant="caption" noWrap>
-                {relevance.toFixed()}%
-              </Typography>
-            </Card>
-          ) : (
-            <></>
-          )}
-          <Typography
-            paragraph
-            variant="body1"
-            sx={{
-              width: "fit-content",
-              height: "fit-content",
-              margin: 0,
-            }}
-          >
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
-          </Typography>
-        </Stack>
+        <CardHeader
+          title={title}
+          subheader={`${relevance.toFixed()}% relevant`}
+          sx={{ pb: 1 }}
+          titleTypographyProps={{ sx: { typography: { sm: "h5", xs: "h6" } } }}
+        />
+        <CardContent sx={{ pt: 0 }}>
+          <MuiMarkdown>{text}</MuiMarkdown>
+        </CardContent>
       </Card>
     );
   };
@@ -174,7 +150,9 @@ function App() {
     return lastResults?.length ? (
       lastResults
         .sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
-        .map((result) => resultCard(result.text, result.relevance))
+        .map((result) =>
+          resultCard(result.relevance, result.title, result.text),
+        )
     ) : (
       <Typography color="text.secondary" padding={1}>
         No results...
@@ -186,26 +164,14 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <Container
-        maxWidth="md"
-        component="main"
-        className={prefersDarkMode ? "dark" : ""}
-      >
+      <Container className={prefersDarkMode ? "dark" : ""}>
         <Stack spacing={1} direction="row" sx={{ my: 2 }}>
           <Alert variant="outlined" severity="info" sx={{ flexGrow: 1 }}>
             <Typography>
-              This site is experimental and may not provide up-to-date
-              information. If you need any further help, you can join the
-              SlimeVR Discord at{" "}
+              This site may not provide up-to-date information. If you need any
+              further help, join the SlimeVR Discord at{" "}
               <Link href="https://discord.gg/SlimeVR">
                 https://discord.gg/SlimeVR
-              </Link>
-              .
-              <br />
-              <br />
-              You can leave any feedback about Bingus Search at{" "}
-              <Link href="https://bingus.bscotch.ca/feedback">
-                https://bingus.bscotch.ca/feedback
               </Link>
               .
             </Typography>
@@ -222,7 +188,6 @@ function App() {
         <Container disableGutters>
           <Typography
             noWrap
-            fontFamily="Ubuntu"
             align="center"
             sx={{ typography: { md: "h2", sm: "h3", xs: "h4" } }}
           >
@@ -246,19 +211,13 @@ function App() {
             </Button>
           </Stack>
 
-          <Paper variant="elevation" sx={{ padding: 1.5 }}>
-            <Stack spacing={1.5} alignItems="center" direction="column">
-              {loadingResults ? (
-                <CircularProgress
-                  thickness={5.5}
-                  size={64}
-                  sx={{ padding: 1 }}
-                />
-              ) : (
-                results()
-              )}
-            </Stack>
-          </Paper>
+          <Stack spacing={2} alignItems="center" direction="column" my={3}>
+            {loadingResults ? (
+              <CircularProgress thickness={5.5} size={64} sx={{ padding: 1 }} />
+            ) : (
+              results()
+            )}
+          </Stack>
         </Container>
       </Container>
     </ThemeProvider>
