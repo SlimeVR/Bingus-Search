@@ -18,6 +18,13 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "./App.css";
 
+export type Result = {
+  relevance: number;
+  matchedQuestion: string;
+  title: string;
+  text: string;
+};
+
 function App() {
   const localTheme = localStorage.getItem("user-theme");
   const systemDarkMode = matchMedia("(prefers-color-scheme: dark)");
@@ -47,9 +54,7 @@ function App() {
 
   const urlInputSearched = useRef(false);
   const [input, setInput] = useState(urlInput);
-  const [lastResults, setLastResults] = useState<
-    [{ relevance: number; title: string; text: string }] | null
-  >(null);
+  const [lastResults, setLastResults] = useState<Result[] | null>(null);
   const [lastSearchInput, setLastSearchInput] = useState("");
   const [loadingResults, setLoadingResults] = useState(false);
 
@@ -168,7 +173,7 @@ function App() {
   const results = function () {
     return lastResults?.length ? (
       lastResults
-        ?.sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
+        .sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
         .map((result) => resultCard(result.text, result.relevance))
     ) : (
       <Typography color="text.secondary" padding={1}>
@@ -188,20 +193,22 @@ function App() {
       >
         <Stack spacing={1} direction="row" sx={{ my: 2 }}>
           <Alert variant="outlined" severity="info" sx={{ flexGrow: 1 }}>
-            This site is experimental and may not provide up-to-date
-            information. If you need any further help, you can join the SlimeVR
-            Discord at{" "}
-            <Link href="https://discord.gg/SlimeVR">
-              https://discord.gg/SlimeVR
-            </Link>
-            .
-            <br />
-            <br />
-            You can leave any feedback about Bingus Search at{" "}
-            <Link href="https://bingus.bscotch.ca/feedback">
-              https://bingus.bscotch.ca/feedback
-            </Link>
-            .
+            <Typography>
+              This site is experimental and may not provide up-to-date
+              information. If you need any further help, you can join the
+              SlimeVR Discord at{" "}
+              <Link href="https://discord.gg/SlimeVR">
+                https://discord.gg/SlimeVR
+              </Link>
+              .
+              <br />
+              <br />
+              You can leave any feedback about Bingus Search at{" "}
+              <Link href="https://bingus.bscotch.ca/feedback">
+                https://bingus.bscotch.ca/feedback
+              </Link>
+              .
+            </Typography>
           </Alert>
           <Button
             variant="contained"
@@ -213,11 +220,14 @@ function App() {
         </Stack>
 
         <Container disableGutters>
-          <Paper sx={{ padding: 1 }}>
-            <Typography fontSize={64} fontFamily="Ubuntu" align="center">
-              Bingus Search
-            </Typography>
-          </Paper>
+          <Typography
+            noWrap
+            fontFamily="Ubuntu"
+            align="center"
+            sx={{ typography: { md: "h2", sm: "h3", xs: "h4" } }}
+          >
+            Bingus Search
+          </Typography>
 
           <Stack spacing={1} direction="row" sx={{ my: 2 }}>
             <TextField
