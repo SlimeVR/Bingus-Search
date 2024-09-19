@@ -1,5 +1,3 @@
-using System.Runtime.Serialization;
-
 namespace BingusLib.SentenceEncoding
 {
     public class SentenceEncodeException : Exception
