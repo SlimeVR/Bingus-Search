@@ -22,19 +22,22 @@ namespace BingusLib.FaqHandling
         private readonly IEmbeddingCache? _embeddingCache;
 
         private readonly SentenceEncoder _sentenceEncoder;
-        private readonly HnswHandler _hnswHandler = new();
+        private readonly HnswHandler _hnswHandler;
 
         public FaqHandler(
             SentenceEncoder sentenceEncoder,
             IEmbeddingStore? embeddingStore = null,
             IEmbeddingCache? embeddingCache = null,
-            ILogger<FaqHandler>? logger = null
+            ILogger<FaqHandler>? logger = null,
+            Func<float[], float[], float>? distanceFunction = null,
+            SmallWorld<ILazyItem<float[]>, float>.Parameters? parameters = null
         )
         {
             _sentenceEncoder = sentenceEncoder;
             _embeddingStore = embeddingStore;
             _embeddingCache = embeddingCache;
             _logger = logger;
+            _hnswHandler = new(distanceFunction, parameters);
         }
 
         public void AddItems(IEnumerable<(string title, string question, string answer)> tqaMapping)
@@ -56,7 +59,7 @@ namespace BingusLib.FaqHandling
                     Title = title,
                     Question = question,
                     Answer = answer,
-                    Vector = embedding
+                    Vector = embedding,
                 };
                 hnswItems.Add(new LazyKeyItem<FaqEntry, float[]>(faqEntry, embedding.AsArray));
             }

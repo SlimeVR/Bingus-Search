@@ -5,14 +5,18 @@ namespace BingusLib.HNSW
 {
     public class HnswHandler
     {
-        private readonly SmallWorld<ILazyItem<float[]>, float>.Parameters _hnswParameters = new();
+        private readonly SmallWorld<ILazyItem<float[]>, float>.Parameters _hnswParameters;
         private readonly WrappedDistance<ILazyItem<float[]>, float[], float> _distanceFunction;
 
         private readonly SmallWorld<ILazyItem<float[]>, float> _hnswGraph;
 
-        public HnswHandler(Func<float[], float[], float>? distanceFunction = null)
+        public HnswHandler(
+            Func<float[], float[], float>? distanceFunction = null,
+            SmallWorld<ILazyItem<float[]>, float>.Parameters? parameters = null
+        )
         {
             _distanceFunction = new(i => i.Value, distanceFunction ?? CosineDistance.SIMD);
+            _hnswParameters = parameters ?? new();
             _hnswGraph = new(
                 _distanceFunction.WrappedDistanceFunc,
                 DefaultRandomGenerator.Instance,
