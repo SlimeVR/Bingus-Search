@@ -30,6 +30,7 @@ namespace BingusLib.FaqHandling
             IEmbeddingCache? embeddingCache = null,
             ILogger<FaqHandler>? logger = null,
             Func<float[], float[], float>? distanceFunction = null,
+            IProvideRandomValues? randomProvider = null,
             SmallWorld<ILazyItem<float[]>, float>.Parameters? parameters = null
         )
         {
@@ -37,7 +38,7 @@ namespace BingusLib.FaqHandling
             _embeddingStore = embeddingStore;
             _embeddingCache = embeddingCache;
             _logger = logger;
-            _hnswHandler = new(distanceFunction, parameters);
+            _hnswHandler = new(distanceFunction, randomProvider, parameters);
         }
 
         public void AddItems(IEnumerable<(string title, string question, string answer)> tqaMapping)

@@ -91,6 +91,9 @@ builder.Services.AddSingleton<SentenceEncoder>(sp =>
 });
 
 builder.Services.AddSingleton(CosineDistance.SIMDForUnits);
+builder.Services.AddSingleton<IProvideRandomValues>(sp => new SeededRandom(
+    sp.GetService<BingusConfig>()?.HnswSeed ?? 42
+));
 builder.Services.AddSingleton(sp =>
 {
     var parameters = new SmallWorld<ILazyItem<float[]>, float>.Parameters
@@ -100,7 +103,7 @@ builder.Services.AddSingleton(sp =>
         NeighbourHeuristic = NeighbourSelectionHeuristic.SelectHeuristic,
         ConstructionPruning = 400,
         ExpandBestSelection = true,
-        KeepPrunedConnections = false,
+        KeepPrunedConnections = true,
         EnableDistanceCacheForConstruction = true,
     };
     return parameters;

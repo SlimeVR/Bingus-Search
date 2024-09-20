@@ -1,5 +1,6 @@
 {
-  "encoder_type": "use",
+  "encoder_type": "api",
   "use_model_path": "models/onnx/use_l_v5.onnx",
-  "api_uri": "http://bingus-encoder:5000"
+  "api_uri": "http://bingus-encoder:5000",
+  "hnsw_seed": 42
 }
