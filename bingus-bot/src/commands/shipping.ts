@@ -102,7 +102,10 @@ You can check on ${SHIP_WHEN_CHANNEL} on the progress of orders.`,
       }`,
     );
 
-    const shipment = SHIPMENTS.findIndex((x) => x[orderInfo.set] >= order);
+    const shipment = SHIPMENTS.findIndex((shipment) => {
+      const maxOrder = shipment[orderInfo.set];
+      return maxOrder !== undefined && maxOrder >= order;
+    });
 
     if (shipment === -1) {
       await interaction.reply({
@@ -149,26 +152,28 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
   },
 };
 
-const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6, 7]);
+// Shipment number is offset by 2 (ex 7 = 9)
+const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
 // Index of shipped shipment
 const SHIPPED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6, 7]);
 
 // Link to shipment message
 const SHIPMENT_MESSAGE = [
-  "https://discord.com/channels/817184208525983775/1129107343058153623/1129110457953812651",
-  "https://discord.com/channels/817184208525983775/1129107343058153623/1129117575721267290",
-  "https://discord.com/channels/817184208525983775/1129107343058153623/1130164280537391154",
-  "https://discord.com/channels/817184208525983775/1129107343058153623/1183816649950888066",
-  "https://discord.com/channels/817184208525983775/1129107343058153623/1195340407962349651",
-  "https://discord.com/channels/817184208525983775/1129107343058153623/1204216527402836042",
-  "https://discord.com/channels/817184208525983775/1129107343058153623/1242966024886812722",
-  "https://discord.com/channels/817184208525983775/1129107343058153623/1253778746838876191",
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1129110457953812651", // 2
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1129117575721267290", // 3
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1130164280537391154", // 4
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1183816649950888066", // 5
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1195340407962349651", // 6
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1204216527402836042", // 7
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1242966024886812722", // 8
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1253778746838876191", // 9
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1286353083282231356", // 10
 ];
 
 // Shipments being prepared or shipped
 const SHIPMENTS = [
-  {
+  { // 2
     [SlimeSet.LOWER_BODY_PURPLE]: 145034,
     [SlimeSet.LOWER_BODY_BLACK]: 129822,
     [SlimeSet.LOWER_BODY_WHITE]: 143933,
@@ -185,7 +190,7 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_BLACK]: 127939,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
   },
-  {
+  { // 3
     [SlimeSet.LOWER_BODY_PURPLE]: 145034,
     [SlimeSet.LOWER_BODY_BLACK]: 144797,
     [SlimeSet.LOWER_BODY_WHITE]: 143933,
@@ -202,7 +207,7 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_BLACK]: 130253,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
   },
-  {
+  { // 4
     [SlimeSet.LOWER_BODY_PURPLE]: 145034,
     [SlimeSet.LOWER_BODY_BLACK]: 146417,
     [SlimeSet.LOWER_BODY_WHITE]: 143933,
@@ -219,7 +224,7 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_BLACK]: 143353,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
   },
-  {
+  { // 5
     [SlimeSet.LOWER_BODY_PURPLE]: 145755,
     [SlimeSet.LOWER_BODY_BLACK]: 147499,
     [SlimeSet.LOWER_BODY_WHITE]: 144215,
@@ -236,7 +241,7 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_BLACK]: 143353,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
   },
-  {
+  { // 6
     [SlimeSet.LOWER_BODY_PURPLE]: 151381,
     [SlimeSet.LOWER_BODY_WHITE]: 156589,
     [SlimeSet.LOWER_BODY_BLACK]: 150573,
@@ -253,7 +258,7 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_WHITE]: 150693,
     [SlimeSet.DELUXE_TRACKER_BLACK]: 147109,
   },
-  {
+  { // 7
     [SlimeSet.LOWER_BODY_PURPLE]: 151381,
     [SlimeSet.LOWER_BODY_WHITE]: 163329,
     [SlimeSet.LOWER_BODY_BLACK]: 150573,
@@ -270,7 +275,7 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_WHITE]: 167795,
     [SlimeSet.DELUXE_TRACKER_BLACK]: 166425,
   },
-  {
+  { // 8
     [SlimeSet.LOWER_BODY_PURPLE]: 179075,
     [SlimeSet.LOWER_BODY_WHITE]: 163329,
     [SlimeSet.LOWER_BODY_BLACK]: 162280,
@@ -287,21 +292,28 @@ const SHIPMENTS = [
     [SlimeSet.DELUXE_TRACKER_WHITE]: 167795,
     [SlimeSet.DELUXE_TRACKER_BLACK]: 166425,
   },
-  {
+  { // 9
     [SlimeSet.LOWER_BODY_PURPLE]: 197569,
     [SlimeSet.LOWER_BODY_WHITE]: 170895,
     [SlimeSet.LOWER_BODY_BLACK]: 172511,
     [SlimeSet.CORE_PURPLE]: 196811,
-    [SlimeSet.CORE_WHITE]: 167777,
+    [SlimeSet.CORE_WHITE]: 169108,
     [SlimeSet.CORE_BLACK]: 169286,
     [SlimeSet.ENHANCED_CORE_PURPLE]: 197224,
-    [SlimeSet.ENHANCED_CORE_WHITE]: 163803,
+    [SlimeSet.ENHANCED_CORE_WHITE]: 169961,
     [SlimeSet.ENHANCED_CORE_BLACK]: 168770,
-    [SlimeSet.FULLBODY_PURPLE]: 198644,
+    [SlimeSet.FULLBODY_PURPLE]: 198922,
     [SlimeSet.FULLBODY_WHITE]: 169072,
     [SlimeSet.FULLBODY_BLACK]: 175321,
     [SlimeSet.DELUXE_TRACKER_PURPLE]: 174567,
     [SlimeSet.DELUXE_TRACKER_WHITE]: 167795,
-    [SlimeSet.DELUXE_TRACKER_BLACK]: 166425,
+    [SlimeSet.DELUXE_TRACKER_BLACK]: 168457,
+  },
+  { // 10
+    [SlimeSet.LOWER_BODY_PURPLE]: 228278,
+    [SlimeSet.CORE_PURPLE]: 221041,
+    [SlimeSet.ENHANCED_CORE_PURPLE]: 221323,
+    [SlimeSet.FULLBODY_PURPLE]: 221642,
+    [SlimeSet.DELUXE_TRACKER_PURPLE]: 224055,
   },
 ];
