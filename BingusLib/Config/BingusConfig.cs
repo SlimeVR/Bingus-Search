@@ -14,5 +14,8 @@ namespace BingusLib.Config
 
         [JsonPropertyName("api_uri")]
         public string ApiUri { get; set; } = "";
+
+        [JsonPropertyName("hnsw_seed")]
+        public int HnswSeed { get; set; } = 42;
     }
 }

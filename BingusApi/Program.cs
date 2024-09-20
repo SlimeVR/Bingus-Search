@@ -2,8 +2,10 @@ using AspNetCoreRateLimit;
 using BingusApi.EmbeddingServices;
 using BingusLib.Config;
 using BingusLib.FaqHandling;
+using BingusLib.HNSW;
 using BingusLib.SentenceEncoding;
 using BingusLib.SentenceEncoding.Api;
+using HNSW.Net;
 using RocksDbSharp;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -60,7 +62,7 @@ builder.Services.AddSingleton(sp =>
         sp.GetService<ILogger<FaqConfig>>()
     )
 );
-builder.Services.AddSingleton(sp => new HttpClient());
+builder.Services.AddSingleton<HttpClient>();
 
 builder.Services.AddSingleton<SentenceEncoder>(sp =>
 {
@@ -88,22 +90,25 @@ builder.Services.AddSingleton<SentenceEncoder>(sp =>
     }
 });
 
+builder.Services.AddSingleton(CosineDistance.SIMDForUnits);
+builder.Services.AddSingleton<IProvideRandomValues>(sp => new SeededRandom(
+    sp.GetService<BingusConfig>()?.HnswSeed ?? 42
+));
 builder.Services.AddSingleton(sp =>
 {
-    // Set up the FAQ handler
-    var faqConfig = sp.GetRequiredService<FaqConfig>();
-    var faqHandler = new FaqHandler(
-        sp.GetRequiredService<SentenceEncoder>(),
-        sp.GetService<IEmbeddingStore>(),
-        sp.GetService<IEmbeddingCache>(),
-        sp.GetService<ILogger<FaqHandler>>()
-    );
-
-    // Add all questions from the config
-    faqHandler.AddItems(faqConfig.QaEntryEnumerator());
-
-    return faqHandler;
+    var parameters = new SmallWorld<ILazyItem<float[]>, float>.Parameters
+    {
+        M = 15,
+        LevelLambda = 1 / Math.Log(15),
+        NeighbourHeuristic = NeighbourSelectionHeuristic.SelectHeuristic,
+        ConstructionPruning = 400,
+        ExpandBestSelection = true,
+        KeepPrunedConnections = true,
+        EnableDistanceCacheForConstruction = true,
+    };
+    return parameters;
 });
+builder.Services.AddSingleton<FaqHandler>();
 
 // Add services to the container
 builder.Services.AddControllers();
@@ -124,7 +129,8 @@ app.UseIpRateLimiting();
 // app.UseAuthorization();
 app.MapControllers();
 
-// Service warmup (these tasks do not need to be awaited, it will run in the background)
-_ = Task.Run(app.Services.GetService<FaqHandler>);
+// Load FAQ
+app.Services.GetRequiredService<FaqHandler>()
+    .AddItems(app.Services.GetRequiredService<FaqConfig>().QaEntryEnumerator());
 
 app.Run();
