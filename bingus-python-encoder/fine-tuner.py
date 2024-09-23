@@ -145,8 +145,8 @@ args = SentenceTransformerTrainingArguments(
     per_device_eval_batch_size=128,
     learning_rate=0.00005 * math.sqrt(128/16),
     warmup_ratio=0.1,
-    fp16=True, # Set to False if you get an error that your GPU can't run on FP16
-    bf16=False, # Set to True if you have a GPU that supports BF16
+    fp16=True,  # Set to False if you get an error that your GPU can't run on FP16
+    bf16=False,  # Set to True if you have a GPU that supports BF16
     # Optional tracking/debugging parameters:
     eval_strategy="steps" if eval_mode else "no",
     eval_steps=2000 if eval_mode else 0,
