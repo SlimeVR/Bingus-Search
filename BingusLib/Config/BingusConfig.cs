@@ -1,4 +1,8 @@
 using System.Text.Json.Serialization;
+using BingusLib.SentenceEncoding;
+using BingusLib.SentenceEncoding.Api;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace BingusLib.Config
 {
@@ -20,5 +24,28 @@ namespace BingusLib.Config
 
         [JsonPropertyName("use_q2a")]
         public bool UseQ2A { get; set; } = false;
+
+        public SentenceEncoder GetSentenceEncoder(IServiceProvider serviceProvider)
+        {
+            // Select and set up the sentence encoder based on the config
+            switch (EncoderType.ToLower())
+            {
+                case "use":
+                    var modelPath = Path.Combine(Environment.CurrentDirectory, UseModelPath);
+                    return new UniversalSentenceEncoder(
+                        modelPath,
+                        serviceProvider.GetService<ILogger<UniversalSentenceEncoder>>()
+                    );
+
+                case "api":
+                    return new ApiSentenceEncoder(
+                        serviceProvider.GetRequiredService<HttpClient>(),
+                        new Uri(ApiUri)
+                    );
+
+                default:
+                    throw new JsonConfigException("No valid sentence encoder type was selected.");
+            }
+        }
     }
 }
