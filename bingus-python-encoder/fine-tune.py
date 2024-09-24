@@ -1,36 +1,51 @@
-from data_utils import load_faq_config, generate_question_answer_pairs, split_dataset
+from data_utils import load_faq_config, generate_question_pairs, generate_question_answer_pairs, generate_everything_pairs, split_dataset
 from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer, SentenceTransformerTrainingArguments
 from sentence_transformers.losses import CoSENTLoss
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
 import math
 
-# FAQ paths
-faq_config_paths = [
+# Load FAQ configuration
+faqs = load_faq_config([
     "./faq_config.json",
     "../BingusApi/config/faq_config.json",
     "./BingusApi/config/faq_config.json"
-]
+]).faqs
+
+# Data pairing mode
+# 0. Question to question (q2q)
+# 1. Question to answer (q2a)
+# 2. Everything to everything (e2e)
+pairing_modes = ["q2q", "q2a", "e2e"]
+pairing_mode = 1
+pairing_mode_name = pairing_modes[pairing_mode]
 
 # Evaluation settings
 eval_mode = False
 eval_percent = 0.2 if eval_mode else 0
+eval_name = "_Eval" if eval_mode else ""
 
-# Model settings
+# Input model settings
 model_cache = "./model-cache/"
 base_model = "all-MiniLM-L6-v2"
+
+# Output model settings
 model_ver = 3
-model_name = f"Bingus-q2a-v{model_ver}{'_Eval' if eval_mode else ''}_{base_model}"
+model_name = f"Bingus-{pairing_mode_name}-v{model_ver}{eval_name}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 output_path = f"{model_dir}{model_name}/"
 checkpoint_path = f"{model_dir}checkpoints/"
 
-# Load FAQ configuration
-faq_config = load_faq_config(faq_config_paths)
-
 # Generate dataset and split if in eval mode
 print("Generating datasets...")
-train_data, eval_data = split_dataset(
-    generate_question_answer_pairs(faq_config["faqs"]), eval_percent)
+if (pairing_mode == 0):
+    dataset = generate_question_pairs(faqs)
+elif (pairing_mode == 1):
+    dataset = generate_question_answer_pairs(faqs)
+elif (pairing_mode == 2):
+    dataset = generate_everything_pairs(faqs)
+else:
+    raise ValueError(f"Invalid pairing mode: {pairing_mode}")
+train_data, eval_data = split_dataset(dataset, eval_percent)
 
 print(
     f"Generated datasets: \n  > Train: {train_data.num_rows} entries\n  > Eval: {0 if eval_data is None else eval_data.num_rows} entries")
