@@ -15,7 +15,7 @@ namespace BingusLib.FaqHandling
             public string Answer { get; set; } = "";
 
             [JsonPropertyName("matched_questions")]
-            public List<string> Questions { get; set; } = new();
+            public List<string> Questions { get; set; } = [];
 
             public FaqConfigEntry() { }
 
@@ -33,7 +33,7 @@ namespace BingusLib.FaqHandling
         }
 
         [JsonPropertyName("faqs")]
-        public List<FaqConfigEntry> FaqEntries { get; set; } = new();
+        public List<FaqConfigEntry> FaqEntries { get; set; } = [];
 
         public FaqConfigEntry? GetAnswerEntry(string answer)
         {
@@ -54,6 +54,16 @@ namespace BingusLib.FaqHandling
                 {
                     yield return (entry.Title, question, entry.Answer);
                 }
+            }
+        }
+
+        public IEnumerable<(string title, string question, string answer)> AnswerEntryEnumerator()
+        {
+            foreach (var entry in FaqEntries)
+            {
+                // If we want to use an example question:
+                // entry.Questions.FirstOrDefault(entry.Title)
+                yield return (entry.Title, entry.Answer, entry.Answer);
             }
         }
     }

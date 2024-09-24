@@ -105,6 +105,10 @@ app.MapControllers();
 
 // Load FAQ
 app.Services.GetRequiredService<FaqHandler>()
-    .AddItems(app.Services.GetRequiredService<FaqConfig>().QaEntryEnumerator());
+    .AddItems(
+        app.Services.GetService<BingusConfig>()?.UseQ2A == true
+            ? app.Services.GetRequiredService<FaqConfig>().AnswerEntryEnumerator()
+            : app.Services.GetRequiredService<FaqConfig>().QaEntryEnumerator()
+    );
 
 app.Run();
