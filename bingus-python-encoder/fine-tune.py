@@ -57,7 +57,7 @@ model = SentenceTransformer(base_model, cache_folder=model_cache)
 # Set training arguments
 args = SentenceTransformerTrainingArguments(
     output_dir=checkpoint_path,
-    num_train_epochs=10,
+    num_train_epochs=20,
     per_device_train_batch_size=128,
     per_device_eval_batch_size=128,
     learning_rate=0.00005 * math.sqrt(128 / 16),
@@ -68,8 +68,8 @@ args = SentenceTransformerTrainingArguments(
     eval_steps=1 if eval_mode else 0,
     save_strategy="epoch",
     save_steps=1,
-    save_total_limit=10,
-    logging_first_step=True,
+    save_total_limit=None,
+    logging_first_step=False,
     logging_strategy="epoch",
     logging_steps=1,
     run_name=model_name,

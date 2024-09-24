@@ -64,7 +64,7 @@ def generate_question_pairs(faqs: list[FaqEntry]) -> Dataset:
     return generate_entry_pairs([faq.matched_questions for faq in faqs])
 
 
-def generate_question_answer_pairs(faqs: list[FaqEntry]) -> Dataset:
+def generate_question_answer_pairs(faqs: list[FaqEntry], include_title: bool = True) -> Dataset:
     """
     Generates question-answer pairs from the FAQs, where each question is paired with its correct
     answer (positive sample) and other incorrect answers (negative samples).
@@ -75,17 +75,29 @@ def generate_question_answer_pairs(faqs: list[FaqEntry]) -> Dataset:
     all_answers = [faq.answer for faq in faqs]
 
     for faq in faqs:
-        correct_answer = faq.answer
         for question in faq.matched_questions:
             # Positive sample (correct answer)
             questions.append(question)
-            answers.append(correct_answer)
+            answers.append(faq.answer)
             scores.append(1.0)
 
             # Negative samples (incorrect answers)
             for other_answer in all_answers:
-                if other_answer != correct_answer:
+                if other_answer != faq.answer:
                     questions.append(question)
+                    answers.append(other_answer)
+                    scores.append(0.0)
+
+        if include_title:
+            # Positive sample (correct answer)
+            questions.append(faq.title)
+            answers.append(faq.answer)
+            scores.append(1.0)
+
+            # Negative samples (incorrect answers)
+            for other_answer in all_answers:
+                if other_answer != faq.answer:
+                    questions.append(faq.title)
                     answers.append(other_answer)
                     scores.append(0.0)
 
