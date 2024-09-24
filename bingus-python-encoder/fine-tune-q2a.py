@@ -2,7 +2,6 @@ from datasets import Dataset
 from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer, SentenceTransformerTrainingArguments
 from sentence_transformers.losses import CoSENTLoss
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
-
 import os
 import json
 import math
@@ -14,14 +13,12 @@ faq_config_paths = [
     "./BingusApi/config/faq_config.json"
 ]
 
-# Evaluation mode settings
+# Model and training parameters
 eval_mode = False
 eval_percent = 0.2 if eval_mode else 0
-
-# Model parameters
 model_cache = "./model-cache/"
 base_model = "all-MiniLM-L6-v2"
-model_ver = 13
+model_ver = 12
 model_name = f"Bingus-v{model_ver}{'_Eval' if eval_mode else ''}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 output_path = f"{model_dir}{model_name}/"
@@ -30,8 +27,8 @@ checkpoint_path = f"{model_dir}checkpoints/"
 
 def load_faq_config(paths):
     """
-    Searches through a list of paths to find the first existing faq_config.json, loads it, and returns it.
-    If none of the paths exist, raises a FileNotFoundError.
+    Searches through a list of paths to find and load the first existing faq_config.json file.
+    Raises a FileNotFoundError if none of the paths exist.
     """
     for path in paths:
         if os.path.isfile(path):
@@ -44,37 +41,24 @@ def load_faq_config(paths):
 
 def generate_question_answer_pairs(faqs):
     """
-    Takes a list of faqs, where each faq is a dictionary with two keys:
-    "matched_questions" and "answer". It generates a dataset of question-answer
-    pairs, where each question is paired with its correct answer as a positive
-    sample, and with all other answers as negative samples.
-
-    Args:
-        faqs (list): A list of faqs, where each faq is a dictionary with two keys:
-            "matched_questions" and "answer".
-
-    Returns:
-        Dataset: A dataset with columns "sentence1", "sentence2", and "score". The
-            "sentence1" column contains the questions, the "sentence2" column contains
-            the answers, and the "score" column contains the score for each pair.
-            The score is 1.0 for positive samples and 0.0 for negative samples.
+    Generates question-answer pairs from a list of FAQs, where each question is paired
+    with its correct answer (positive sample) and other incorrect answers (negative samples).
     """
-
     questions, answers, scores = [], [], []
 
-    # Precompute all answers for negative sampling
+    # Precompute all answers for negative samples
     all_answers = [faq["answer"] for faq in faqs]
 
-    for i, faq in enumerate(faqs):
+    for faq in faqs:
         correct_answer = faq["answer"]
         for question in faq["matched_questions"]:
-            # Pair with correct answer (positive sample)
+            # Positive sample (correct answer)
             questions.append(question)
             answers.append(correct_answer)
             scores.append(1.0)
 
-            # Pair with other answers (negative samples)
-            for j, other_answer in enumerate(all_answers):
+            # Negative samples (incorrect answers)
+            for other_answer in all_answers:
                 if other_answer != correct_answer:
                     questions.append(question)
                     answers.append(other_answer)
@@ -87,32 +71,26 @@ def generate_question_answer_pairs(faqs):
     })
 
 
+# Load FAQ configuration
 faq_config = load_faq_config(faq_config_paths)
 
-# Generate training and evaluation datasets
+# Generate training data and split for evaluation if in eval mode
 print("Generating datasets...")
 train_data = generate_question_answer_pairs(faq_config["faqs"])
 
-# Split into eval
 eval_data = None
 if eval_mode:
     split = train_data.train_test_split(test_size=eval_percent)
-    train_data = split["train"]
-    eval_data = split["test"]
+    train_data, eval_data = split["train"], split["test"]
 
 print(
-    f"Generated datasets: \n  > Train: {train_data.num_rows} entries\n  > Test: {0 if eval_data is None else eval_data.num_rows} entries")
+    f"Generated datasets: \n  > Train: {train_data.num_rows} entries\n  > Eval: {0 if eval_data is None else eval_data.num_rows} entries")
 
 # Load the model
 print("Loading model to fine-tune...")
 model = SentenceTransformer(base_model, cache_folder=model_cache)
 
-# Define loss function and training arguments
-# CoSENTLoss - Slow to converge, doesn't overfit
-# AnglELoss - Has trouble converging
-# CosineSimilarityLoss - Overfits hard past 1 epoch
-loss = CoSENTLoss(model)
-
+# Set training arguments
 args = SentenceTransformerTrainingArguments(
     output_dir=checkpoint_path,
     num_train_epochs=80,
@@ -144,13 +122,16 @@ if eval_mode:
     )
 
 # Fine-tune the model
+# CoSENTLoss - Slow to converge, doesn't overfit
+# AnglELoss - Has trouble converging
+# CosineSimilarityLoss - Overfits hard past 1 epoch
 print("Fine-tuning the model...")
 trainer = SentenceTransformerTrainer(
     model=model,
     args=args,
     train_dataset=train_data,
     eval_dataset=eval_data,
-    loss=loss,
+    loss=CoSENTLoss(model),
     evaluator=dev_evaluator,
 )
 
