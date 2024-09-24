@@ -1,5 +1,4 @@
 using System.Net.Http.Json;
-using System.Text.Json;
 
 namespace BingusLib.SentenceEncoding.Api
 {
@@ -20,47 +19,47 @@ namespace BingusLib.SentenceEncoding.Api
             EncodeApiUri = new Uri(baseApiUri, "/encode/");
 
             // Automatically set dimensions from API
-            EmbeddingDimension = RequestDimensions();
+            EmbeddingDimension = RequestDimensions().Result;
         }
 
-        private static T HandleResponse<T>(HttpResponseMessage response)
+        private static async Task<T> HandleResponse<T>(
+            HttpResponseMessage response,
+            CancellationToken ct = default
+        )
         {
-            var responseString = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            return JsonSerializer.Deserialize<T>(responseString)
+            return await response.Content.ReadFromJsonAsync<T>(ct)
                 ?? throw new SentenceEncodeException(
                     "Failed to deserialize API response JSON, deserialized object is null."
                 );
         }
 
-        private T PostRequest<T>(Uri uri, HttpContent? httpContent = null)
+        private async Task<T> PostRequest<T>(
+            Uri uri,
+            HttpContent? httpContent = null,
+            CancellationToken ct = default
+        )
         {
-            using var response = HttpClient
-                .PostAsync(uri, httpContent)
-                .GetAwaiter()
-                .GetResult()
-                .EnsureSuccessStatusCode();
-            return HandleResponse<T>(response);
+            using var response = await HttpClient.PostAsync(uri, httpContent, ct);
+            response.EnsureSuccessStatusCode();
+            return await HandleResponse<T>(response, ct);
         }
 
-        private T GetRequest<T>(Uri uri)
+        private async Task<T> GetRequest<T>(Uri uri, CancellationToken ct = default)
         {
-            using var response = HttpClient
-                .GetAsync(uri)
-                .GetAwaiter()
-                .GetResult()
-                .EnsureSuccessStatusCode();
-            return HandleResponse<T>(response);
+            using var response = await HttpClient.GetAsync(uri, ct);
+            response.EnsureSuccessStatusCode();
+            return await HandleResponse<T>(response, ct);
         }
 
-        private int RequestDimensions()
+        private async Task<int> RequestDimensions(CancellationToken ct = default)
         {
-            return GetRequest<DimensionsResponse>(DimensionsApiUri).Dimensions;
+            return (await GetRequest<DimensionsResponse>(DimensionsApiUri, ct)).Dimensions;
         }
 
         protected override float[] InternalComputeEmbedding(string input, float[] vectorBuffer)
         {
             using var httpContent = JsonContent.Create(new EncodeRequest() { Sentence = input });
-            return PostRequest<EncodeResponse>(EncodeApiUri, httpContent).Embedding;
+            return PostRequest<EncodeResponse>(EncodeApiUri, httpContent).Result.Embedding;
         }
     }
 }

@@ -13,7 +13,7 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="HNSW" Version="1.0.51856" />
+        <PackageReference Include="HNSW" Version="1.0.52302" />
         <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
