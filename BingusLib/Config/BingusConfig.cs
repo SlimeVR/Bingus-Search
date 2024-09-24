@@ -17,5 +17,8 @@ namespace BingusLib.Config
 
         [JsonPropertyName("hnsw_seed")]
         public int HnswSeed { get; set; } = 42;
+
+        [JsonPropertyName("use_q2a")]
+        public bool UseQ2A { get; set; } = false;
     }
 }

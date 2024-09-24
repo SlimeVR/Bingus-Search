@@ -32,9 +32,6 @@ namespace BingusLib.FaqHandling
             }
         }
 
-        [JsonPropertyName("average_questions")]
-        public bool AverageQuestions { get; set; } = false;
-
         [JsonPropertyName("faqs")]
         public List<FaqConfigEntry> FaqEntries { get; set; } = new();
 

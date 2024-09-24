@@ -18,8 +18,8 @@ eval_percent = 0.2 if eval_mode else 0
 # Model settings
 model_cache = "./model-cache/"
 base_model = "all-MiniLM-L6-v2"
-model_ver = 13
-model_name = f"Bingus-v{model_ver}{'_Eval' if eval_mode else ''}_{base_model}"
+model_ver = 3
+model_name = f"Bingus-q2a-v{model_ver}{'_Eval' if eval_mode else ''}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 output_path = f"{model_dir}{model_name}/"
 checkpoint_path = f"{model_dir}checkpoints/"
