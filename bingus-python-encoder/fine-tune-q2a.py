@@ -18,7 +18,7 @@ eval_percent = 0.2 if eval_mode else 0
 # Model settings
 model_cache = "./model-cache/"
 base_model = "all-MiniLM-L6-v2"
-model_ver = 12
+model_ver = 13
 model_name = f"Bingus-v{model_ver}{'_Eval' if eval_mode else ''}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 output_path = f"{model_dir}{model_name}/"
@@ -42,18 +42,18 @@ model = SentenceTransformer(base_model, cache_folder=model_cache)
 # Set training arguments
 args = SentenceTransformerTrainingArguments(
     output_dir=checkpoint_path,
-    num_train_epochs=80,
+    num_train_epochs=10,
     per_device_train_batch_size=128,
     per_device_eval_batch_size=128,
     learning_rate=0.00005 * math.sqrt(128 / 16),
     warmup_ratio=0.1,
     fp16=True,
     bf16=False,
-    eval_strategy="steps" if eval_mode else "no",
-    eval_steps=2000 if eval_mode else 0,
-    save_strategy="steps",
-    save_steps=2000,
-    save_total_limit=2,
+    eval_strategy="epoch" if eval_mode else "no",
+    eval_steps=1 if eval_mode else 0,
+    save_strategy="epoch",
+    save_steps=1,
+    save_total_limit=10,
     logging_steps=500,
     run_name=model_name,
     do_eval=eval_mode,
