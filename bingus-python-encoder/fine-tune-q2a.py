@@ -6,16 +6,18 @@ import os
 import json
 import math
 
-# Paths to check for faq_config.json
+# FAQ paths
 faq_config_paths = [
     "./faq_config.json",
     "../BingusApi/config/faq_config.json",
     "./BingusApi/config/faq_config.json"
 ]
 
-# Model and training parameters
+# Evaluation settings
 eval_mode = False
 eval_percent = 0.2 if eval_mode else 0
+
+# Model settings
 model_cache = "./model-cache/"
 base_model = "all-MiniLM-L6-v2"
 model_ver = 12
@@ -41,8 +43,8 @@ def load_faq_config(paths):
 
 def generate_question_answer_pairs(faqs):
     """
-    Generates question-answer pairs from a list of FAQs, where each question is paired
-    with its correct answer (positive sample) and other incorrect answers (negative samples).
+    Generates question-answer pairs from the FAQs, where each question is paired with its correct
+    answer (positive sample) and other incorrect answers (negative samples).
     """
     questions, answers, scores = [], [], []
 
@@ -71,17 +73,21 @@ def generate_question_answer_pairs(faqs):
     })
 
 
+def split_dataset(dataset, eval_percent):
+    """Splits the dataset into training and evaluation sets based on the evaluation percentage."""
+    if eval_percent > 0:
+        split = dataset.train_test_split(test_size=eval_percent)
+        return split["train"], split["test"]
+    return dataset, None
+
+
 # Load FAQ configuration
 faq_config = load_faq_config(faq_config_paths)
 
-# Generate training data and split for evaluation if in eval mode
+# Generate dataset and split if in eval mode
 print("Generating datasets...")
-train_data = generate_question_answer_pairs(faq_config["faqs"])
-
-eval_data = None
-if eval_mode:
-    split = train_data.train_test_split(test_size=eval_percent)
-    train_data, eval_data = split["train"], split["test"]
+train_data, eval_data = split_dataset(
+    generate_question_answer_pairs(faq_config["faqs"]), eval_percent)
 
 print(
     f"Generated datasets: \n  > Train: {train_data.num_rows} entries\n  > Eval: {0 if eval_data is None else eval_data.num_rows} entries")
@@ -122,9 +128,9 @@ if eval_mode:
     )
 
 # Fine-tune the model
-# CoSENTLoss - Slow to converge, doesn't overfit
-# AnglELoss - Has trouble converging
-# CosineSimilarityLoss - Overfits hard past 1 epoch
+# > CoSENTLoss - Slow to converge, doesn't overfit
+# > AnglELoss - Has trouble converging
+# > CosineSimilarityLoss - Overfits hard past 1 epoch
 print("Fine-tuning the model...")
 trainer = SentenceTransformerTrainer(
     model=model,
