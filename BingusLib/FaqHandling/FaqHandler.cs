@@ -41,18 +41,22 @@ namespace BingusLib.FaqHandling
             _hnswHandler = new(distanceFunction, randomProvider, parameters);
         }
 
-        public void AddItems(IEnumerable<(string title, string question, string answer)> tqaMapping)
+        public void AddItems(
+            IEnumerable<(string title, string question, string answer)> tqaMapping,
+            bool useQ2A = false
+        )
         {
             var hnswItems = new List<LazyKeyItem<FaqEntry, float[]>>();
             foreach (var (title, question, answer) in tqaMapping)
             {
+                var query = useQ2A ? answer : question;
                 Vector<float>? embedding =
-                    _embeddingCache?.Get(question) ?? _embeddingStore?.Get(question);
+                    _embeddingCache?.Get(query) ?? _embeddingStore?.Get(query);
 
                 if (embedding == null)
                 {
-                    embedding = _sentenceEncoder.ComputeEmbeddingVector(question);
-                    _embeddingStore?.Add(question, embedding);
+                    embedding = _sentenceEncoder.ComputeEmbeddingVector(query);
+                    _embeddingStore?.Add(query, embedding);
                 }
 
                 var faqEntry = new FaqEntry()

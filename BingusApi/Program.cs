@@ -104,11 +104,9 @@ app.UseIpRateLimiting();
 app.MapControllers();
 
 // Load FAQ
+var useQ2A = app.Services.GetService<BingusConfig>()?.UseQ2A ?? false;
+var faqConf = app.Services.GetRequiredService<FaqConfig>();
 app.Services.GetRequiredService<FaqHandler>()
-    .AddItems(
-        app.Services.GetService<BingusConfig>()?.UseQ2A == true
-            ? app.Services.GetRequiredService<FaqConfig>().AnswerEntryEnumerator()
-            : app.Services.GetRequiredService<FaqConfig>().QaEntryEnumerator()
-    );
+    .AddItems(useQ2A ? faqConf.AnswerEntryEnumerator() : faqConf.QaEntryEnumerator(), useQ2A);
 
 app.Run();
