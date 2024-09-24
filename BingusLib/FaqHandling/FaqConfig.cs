@@ -63,7 +63,7 @@ namespace BingusLib.FaqHandling
             {
                 // If we want to use an example question:
                 // entry.Questions.FirstOrDefault(entry.Title)
-                yield return (entry.Title, entry.Answer, entry.Answer);
+                yield return (entry.Title, "", entry.Answer);
             }
         }
     }
