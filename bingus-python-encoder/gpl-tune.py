@@ -8,7 +8,7 @@ gpl.train(
     # base_ckpt='GPL/msmarco-distilbert-margin-mse',
     # The starting checkpoint of the experiments in the paper
     batch_size_gpl=32,
-    gpl_steps=140000,
+    gpl_steps=60000,
     output_dir=f"output/{dataset}",
     evaluation_data=f"./{dataset}",
     evaluation_output=f"evaluation/{dataset}",
