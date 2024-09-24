@@ -1,9 +1,7 @@
-from datasets import Dataset
+from data_utils import load_faq_config, generate_question_pairs, split_dataset
 from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer, SentenceTransformerTrainingArguments
 from sentence_transformers.losses import CoSENTLoss
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
-import os
-import json
 import math
 
 # FAQ paths
@@ -25,60 +23,6 @@ model_name = f"Bingus-v{model_ver}{'_Eval' if eval_mode else ''}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 output_path = f"{model_dir}{model_name}/"
 checkpoint_path = f"{model_dir}checkpoints/"
-
-
-def load_faq_config(paths):
-    """
-    Searches through a list of paths to find and load the first existing faq_config.json file.
-    Raises a FileNotFoundError if none of the paths exist.
-    """
-    for path in paths:
-        if os.path.isfile(path):
-            print(f"Found \"faq_config.json\" at \"{path}\"!")
-            with open(path, "r") as f:
-                return json.load(f)
-    raise FileNotFoundError(
-        "Could not find \"faq_config.json\" in any of the default paths.")
-
-
-def generate_question_pairs(faqs):
-    """
-    Generates question-to-question pairs from the FAQs, where each question is paired with all
-    other questions in its set (positive samples) and from other sets (negative sample).
-    """
-    questions1, questions2, scores = [], [], []
-
-    for faq_set in faqs:
-        for question in faq_set:
-            # Positive samples (same set)
-            for other_question in faq_set:
-                if question != other_question:
-                    questions1.append(question)
-                    questions2.append(other_question)
-                    scores.append(1.0)
-
-            # Negative samples (different sets)
-            for other_faq_set in faqs:
-                if faq_set != other_faq_set:
-                    for other_question in other_faq_set:
-                        questions1.append(question)
-                        questions2.append(other_question)
-                        scores.append(0.0)
-
-    return Dataset.from_dict({
-        "sentence1": questions1,
-        "sentence2": questions2,
-        "score": scores,
-    })
-
-
-def split_dataset(dataset, eval_percent):
-    """Splits the dataset into training and evaluation sets based on the evaluation percentage."""
-    if eval_percent > 0:
-        split = dataset.train_test_split(test_size=eval_percent)
-        return split["train"], split["test"]
-    return dataset, None
-
 
 # Load FAQ configuration
 faq_config = load_faq_config(faq_config_paths)
