@@ -34,22 +34,20 @@ def generate_entry_pairs(entries: list[list[str]]) -> Dataset:
     """
     items1, items2, scores = [], [], []
 
-    for entry in entries:
-        for item in entry:
+    for i, entry in enumerate(entries):
+        for j, item in enumerate(entry):
             # Positive samples (same set)
-            for other_item in entry:
-                if item != other_item:
-                    items1.append(item)
-                    items2.append(other_item)
-                    scores.append(1.0)
+            for _, other_item in enumerate(entry, start=j + 1):
+                items1.append(item)
+                items2.append(other_item)
+                scores.append(1.0)
 
             # Negative samples (different sets)
-            for other_entry in entries:
-                if entry != other_entry:
-                    for other_item in other_entry:
-                        items1.append(item)
-                        items2.append(other_item)
-                        scores.append(0.0)
+            for _, other_entry in enumerate(entries, start=i + 1):
+                for other_item in other_entry:
+                    items1.append(item)
+                    items2.append(other_item)
+                    scores.append(0.0)
 
     return Dataset.from_dict({
         "sentence1": items1,
@@ -103,7 +101,7 @@ def generate_everything_pairs(faqs: list[FaqEntry]) -> Dataset:
     Generates pairs of titles, answers, and questions from the FAQs, where each set is paired with its correct
     answer (positive sample) and other incorrect answers (negative samples).
     """
-    return generate_entry_pairs([[[faq.title, faq.answer, *faq.matched_questions] for faq in faqs]])
+    return generate_entry_pairs([[faq.title, faq.answer, *faq.matched_questions] for faq in faqs])
 
 
 def split_dataset(dataset: Dataset, eval_percent: float | int) -> tuple[Dataset, Dataset | None]:
