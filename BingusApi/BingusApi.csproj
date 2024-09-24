@@ -13,7 +13,7 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="RocksDB" Version="9.4.0.50294" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.0" />
     </ItemGroup>
 
     <ItemGroup>

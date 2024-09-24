@@ -3,8 +3,6 @@ using BingusApi.EmbeddingServices;
 using BingusLib.Config;
 using BingusLib.FaqHandling;
 using BingusLib.HNSW;
-using BingusLib.SentenceEncoding;
-using BingusLib.SentenceEncoding.Api;
 using HNSW.Net;
 using RocksDbSharp;
 
@@ -62,34 +60,10 @@ builder.Services.AddSingleton(sp =>
         sp.GetService<ILogger<FaqConfig>>()
     )
 );
+
+// Initialize Bingus library dependencies
 builder.Services.AddSingleton<HttpClient>();
-
-builder.Services.AddSingleton<SentenceEncoder>(sp =>
-{
-    // Load the config
-    var bingusConfig = sp.GetRequiredService<BingusConfig>();
-
-    // Select and set up the sentence encoder based on the config
-    switch (bingusConfig.EncoderType.ToLower())
-    {
-        case "use":
-            var modelPath = Path.Join(Environment.CurrentDirectory, bingusConfig.UseModelPath);
-            return new UniversalSentenceEncoder(
-                modelPath,
-                sp.GetService<ILogger<UniversalSentenceEncoder>>()
-            );
-
-        case "api":
-            return new ApiSentenceEncoder(
-                sp.GetRequiredService<HttpClient>(),
-                new Uri(bingusConfig.ApiUri)
-            );
-
-        default:
-            throw new Exception("No valid sentence encoder type was selected.");
-    }
-});
-
+builder.Services.AddSingleton(sp => sp.GetRequiredService<BingusConfig>().GetSentenceEncoder(sp));
 builder.Services.AddSingleton(CosineDistance.SIMDForUnits);
 builder.Services.AddSingleton<IProvideRandomValues>(sp => new SeededRandom(
     sp.GetService<BingusConfig>()?.HnswSeed ?? 42
@@ -130,7 +104,9 @@ app.UseIpRateLimiting();
 app.MapControllers();
 
 // Load FAQ
+var useQ2A = app.Services.GetService<BingusConfig>()?.UseQ2A ?? false;
+var faqConf = app.Services.GetRequiredService<FaqConfig>();
 app.Services.GetRequiredService<FaqHandler>()
-    .AddItems(app.Services.GetRequiredService<FaqConfig>().QaEntryEnumerator());
+    .AddItems(useQ2A ? faqConf.AnswerEntryEnumerator() : faqConf.QaEntryEnumerator(), useQ2A);
 
 app.Run();

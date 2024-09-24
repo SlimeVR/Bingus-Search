@@ -84,7 +84,7 @@ namespace BingusLib.SentenceEncoding
                 );
             }
 
-            _inputs = new[] { NamedOnnxValue.CreateFromTensor("inputs", _inputTensor) };
+            _inputs = [NamedOnnxValue.CreateFromTensor("inputs", _inputTensor)];
         }
 
         protected override float[] InternalComputeEmbedding(string input, float[] vectorBuffer)

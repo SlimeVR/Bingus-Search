@@ -5,6 +5,6 @@ namespace BingusLib.SentenceEncoding.Api
     public record EncodeResponse
     {
         [JsonPropertyName("embedding")]
-        public float[] Embedding { get; set; } = Array.Empty<float>();
+        public float[] Embedding { get; set; } = [];
     }
 }

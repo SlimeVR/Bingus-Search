@@ -402,6 +402,7 @@ FodyWeavers.xsd
 # Python Environments
 .env
 .venv
+.venv-linux
 env/
 venv/
 ENV/
