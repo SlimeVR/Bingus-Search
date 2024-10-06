@@ -156,7 +156,7 @@ You can check on ${SHIP_WHEN_CHANNEL} to see when it's going to get shipped.`,
 const MANUFACUTRED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
 // Index of shipped shipment
-const SHIPPED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6, 7]);
+const SHIPPED_SHIPMENTS = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
 // Link to shipment message
 const SHIPMENT_MESSAGE = [
@@ -169,6 +169,7 @@ const SHIPMENT_MESSAGE = [
   "https://discord.com/channels/817184208525983775/1129107343058153623/1242966024886812722", // 8
   "https://discord.com/channels/817184208525983775/1129107343058153623/1253778746838876191", // 9
   "https://discord.com/channels/817184208525983775/1129107343058153623/1286353083282231356", // 10
+  "https://discord.com/channels/817184208525983775/1129107343058153623/1291803190748123157", // 11
 ];
 
 // Shipments being prepared or shipped
@@ -311,9 +312,9 @@ const SHIPMENTS = [
   },
   { // 10
     [SlimeSet.LOWER_BODY_PURPLE]: 228278,
-    [SlimeSet.CORE_PURPLE]: 221041,
+    [SlimeSet.CORE_PURPLE]: 221152,
     [SlimeSet.ENHANCED_CORE_PURPLE]: 221323,
     [SlimeSet.FULLBODY_PURPLE]: 221642,
-    [SlimeSet.DELUXE_TRACKER_PURPLE]: 224055,
+    [SlimeSet.DELUXE_TRACKER_PURPLE]: 230531,
   },
 ];
