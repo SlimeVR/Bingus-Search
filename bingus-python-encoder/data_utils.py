@@ -1,6 +1,11 @@
 import os
+from typing import TypeAlias
 from pydantic import BaseModel
 from datasets import Dataset
+from typo import StrErrer
+from random import Random
+
+RandomSeed: TypeAlias = int | float | str | bytes | bytearray | None
 
 
 class FaqEntry(BaseModel):
@@ -13,7 +18,7 @@ class FaqConfig(BaseModel):
     faqs: list[FaqEntry]
 
 
-def load_faq_config(paths: list[str]) -> FaqConfig:
+def load_faq_config(paths: list[str] | str) -> FaqConfig:
     """
     Searches through a list of paths to find and load the first existing faq_config.json file.
     Raises a FileNotFoundError if none of the paths exist.
@@ -122,3 +127,45 @@ def split_dataset(dataset: Dataset, eval_percent: float | int) -> tuple[Dataset,
         split = dataset.train_test_split(test_size=eval_percent)
         return split["train"], split["test"]
     return dataset, None
+
+
+def random_typo(str_err: StrErrer, random: Random) -> StrErrer:
+    """Applies a random typo to a string."""
+    typo_type = random.randint(0, 8)
+    if typo_type == 0:
+        return str_err.char_swap()
+    if typo_type == 1:
+        return str_err.missing_char()
+    if typo_type == 2:
+        return str_err.extra_char()
+    if typo_type == 3:
+        return str_err.nearby_char()
+    if typo_type == 4:
+        return str_err.similar_char()
+    if typo_type == 5:
+        return str_err.skipped_space()
+    if typo_type == 6:
+        return str_err.random_space()
+    if typo_type == 7:
+        return str_err.repeated_char()
+    return str_err.unichar()
+
+
+def generate_typos(faqs: list[FaqEntry], min_typos: int, max_typos: int, seed: RandomSeed = None) -> list[FaqEntry]:
+    """
+    Takes a list of FaqEntry objects, generates typos for each question of each entry, and returns the modified
+    list of FaqEntry objects.
+    """
+    seeded_random = Random(seed)
+    for faq in faqs:
+        new_faqs = []
+
+        for question in faq.matched_questions:
+            typo_faq = StrErrer(question, seed=seeded_random.random())
+            for _ in range(seeded_random.randint(min_typos, max_typos)):
+                typo_faq = random_typo(typo_faq, seeded_random)
+            new_faqs.append(typo_faq.result)
+
+        faq.matched_questions.extend(new_faqs)
+
+    return faqs
