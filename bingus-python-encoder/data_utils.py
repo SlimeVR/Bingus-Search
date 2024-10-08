@@ -9,7 +9,7 @@ RandomSeed: TypeAlias = int | float | str | bytes | bytearray | None
 
 
 class FaqEntry(BaseModel):
-    title: str
+    title: str | None
     answer: str
     matched_questions: list[str]
 
@@ -93,7 +93,7 @@ def generate_question_answer_pairs(faqs: list[FaqEntry], include_title: bool = T
                     answers.append(other_answer)
                     scores.append(0.0)
 
-        if include_title:
+        if include_title and faq.title != None:
             # Positive sample (correct answer)
             questions.append(faq.title)
             answers.append(faq.answer)
