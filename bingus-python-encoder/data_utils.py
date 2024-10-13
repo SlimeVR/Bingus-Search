@@ -151,24 +151,34 @@ def random_typo(str_err: StrErrer, random: Random) -> StrErrer:
     return str_err.unichar()
 
 
-def generate_typos(faqs: list[FaqEntry], min_typos: int, max_typos: int, seed: RandomSeed = None) -> tuple[list[FaqEntry], int, int]:
+def generate_typos(faqs: list[FaqEntry], entry_variants: int, min_typos: int, max_typos: int, seed: RandomSeed = None) -> tuple[list[FaqEntry], int, int]:
     """
     Takes a list of FaqEntry objects, generates typos for each question of each entry, and returns the input
     list of FaqEntry objects, the number of entries added, and the number of typos generated.
     """
+    if entry_variants < 1:
+        raise ValueError("entry_variants must be greater than or equal to 1")
+    if min_typos < 0:
+        raise ValueError("min_typos must be greater than or equal to 0")
+    if max_typos < 1:
+        raise ValueError("max_typos must be greater than or equal to 1")
+    if min_typos > max_typos:
+        raise ValueError("min_typos must be less than or equal to max_typos")
+
     seeded_random = Random(seed)
     typo_entries = 0
     typo_count = 0
     for faq in faqs:
         new_faqs = []
 
-        for question in faq.matched_questions:
-            typo_faq = StrErrer(question, seed=seeded_random.random())
-            num_typos = seeded_random.randint(min_typos, max_typos)
-            for _ in range(num_typos):
-                typo_faq = random_typo(typo_faq, seeded_random)
-            new_faqs.append(typo_faq.result)
-            typo_count += num_typos
+        for _ in range(entry_variants):
+            for question in faq.matched_questions:
+                typo_faq = StrErrer(question, seed=seeded_random.random())
+                num_typos = seeded_random.randint(min_typos, max_typos)
+                for _ in range(num_typos):
+                    typo_faq = random_typo(typo_faq, seeded_random)
+                new_faqs.append(typo_faq.result)
+                typo_count += num_typos
 
         faq.matched_questions.extend(new_faqs)
         typo_entries += len(new_faqs)
