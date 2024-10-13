@@ -96,6 +96,10 @@ class FaqConfig(BaseModel):
         with open(path, "w") as f:
             f.write(self.model_dump_json())
 
+    def iterate_answers(self):
+        for faq in self.faqs:
+            yield faq.answer
+
     def question_count(self):
         return sum((len(faq.matched_questions) for faq in self.faqs))
 
@@ -171,13 +175,12 @@ class FaqConfig(BaseModel):
         """
         return generate_entry_pairs([faq.matched_questions for faq in self.faqs])
 
-    def generate_question_answer_pairs(self, include_title: bool = True) -> Dataset:
+    def generate_question_answer_pairs(self) -> Dataset:
         """
         Generates question-answer pairs from the FAQs, where each question is paired with its correct
         answer (positive sample) and other incorrect answers (negative samples).
         """
         questions, answers, scores = [], [], []
-        all_answers = (faq.answer for faq in self.faqs)
 
         for faq in self.faqs:
             for question in faq.matched_questions:
@@ -187,22 +190,9 @@ class FaqConfig(BaseModel):
                 scores.append(1.0)
 
                 # Negative samples (incorrect answers)
-                for other_answer in all_answers:
+                for other_answer in self.iterate_answers():
                     if other_answer != faq.answer:
                         questions.append(question)
-                        answers.append(other_answer)
-                        scores.append(0.0)
-
-            if include_title and faq.title != None:
-                # Positive sample (correct answer)
-                questions.append(faq.title)
-                answers.append(faq.answer)
-                scores.append(1.0)
-
-                # Negative samples (incorrect answers)
-                for other_answer in all_answers:
-                    if other_answer != faq.answer:
-                        questions.append(faq.title)
                         answers.append(other_answer)
                         scores.append(0.0)
 

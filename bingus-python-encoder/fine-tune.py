@@ -15,6 +15,7 @@ print(
     f"Loaded FAQ config:\n  > {len(faq_config.faqs)} FAQs\n  > {faq_config.question_count()} questions")
 
 # FAQ modifiers
+filter_short_questions = True
 generate_faq_typos = True
 save_modified_faq = True
 
@@ -42,10 +43,11 @@ model_dir = f"./local-models/{model_name}/"
 os.makedirs(model_dir, exist_ok=True)
 
 # Modify FAQ config
-print("Filtering short questions...")
-faq_config.filter_short_questions(4)
-print(
-    f"Filtered FAQ config:\n  > {len(faq_config.faqs)} FAQs\n  > {faq_config.question_count()} questions")
+if filter_short_questions:
+    print("Filtering short questions...")
+    faq_config.filter_short_questions(4)
+    print(
+        f"Filtered FAQ config:\n  > {len(faq_config.faqs)} FAQs\n  > {faq_config.question_count()} questions")
 
 if generate_faq_typos:
     print("Generating typos...")
@@ -71,7 +73,7 @@ print("Generating datasets...")
 if (pairing_mode == 0):
     dataset = faq_config.generate_question_pairs()
 elif (pairing_mode == 1):
-    dataset = faq_config.generate_question_answer_pairs(False)
+    dataset = faq_config.generate_question_answer_pairs()
 elif (pairing_mode == 2):
     dataset = faq_config.generate_everything_pairs()
 else:
@@ -88,10 +90,10 @@ model = SentenceTransformer(base_model, cache_folder=model_cache)
 # Set training arguments
 args = SentenceTransformerTrainingArguments(
     output_dir=f"{model_dir}checkpoints/",
-    num_train_epochs=2,
-    per_device_train_batch_size=128,
-    per_device_eval_batch_size=128,
-    learning_rate=0.00005 * math.sqrt(128 / 16),
+    num_train_epochs=4,
+    per_device_train_batch_size=64,
+    per_device_eval_batch_size=64,
+    learning_rate=0.00005,
     warmup_ratio=0.1,
     fp16=True,
     bf16=False,
