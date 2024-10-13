@@ -151,21 +151,26 @@ def random_typo(str_err: StrErrer, random: Random) -> StrErrer:
     return str_err.unichar()
 
 
-def generate_typos(faqs: list[FaqEntry], min_typos: int, max_typos: int, seed: RandomSeed = None) -> list[FaqEntry]:
+def generate_typos(faqs: list[FaqEntry], min_typos: int, max_typos: int, seed: RandomSeed = None) -> tuple[list[FaqEntry], int, int]:
     """
-    Takes a list of FaqEntry objects, generates typos for each question of each entry, and returns the modified
-    list of FaqEntry objects.
+    Takes a list of FaqEntry objects, generates typos for each question of each entry, and returns the input
+    list of FaqEntry objects, the number of entries added, and the number of typos generated.
     """
     seeded_random = Random(seed)
+    typo_entries = 0
+    typo_count = 0
     for faq in faqs:
         new_faqs = []
 
         for question in faq.matched_questions:
             typo_faq = StrErrer(question, seed=seeded_random.random())
-            for _ in range(seeded_random.randint(min_typos, max_typos)):
+            num_typos = seeded_random.randint(min_typos, max_typos)
+            for _ in range(num_typos):
                 typo_faq = random_typo(typo_faq, seeded_random)
             new_faqs.append(typo_faq.result)
+            typo_count += num_typos
 
         faq.matched_questions.extend(new_faqs)
+        typo_entries += len(new_faqs)
 
-    return faqs
+    return faqs, typo_entries, typo_count
