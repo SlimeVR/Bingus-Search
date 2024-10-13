@@ -13,6 +13,7 @@ faqs = load_faq_config([
 
 # Typo generation
 generate_faq_typos = True
+entry_variants = 2
 min_typos = 2
 max_typos = 4
 seed = 42
@@ -35,7 +36,7 @@ model_cache = "./model-cache/"
 base_model = "all-MiniLM-L6-v2"
 
 # Output model settings
-model_ver = 3
+model_ver = 4
 model_name = f"Bingus-{pairing_mode_name}-v{model_ver}{eval_name}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 output_path = f"{model_dir}{model_name}/"
@@ -45,7 +46,7 @@ checkpoint_path = f"{model_dir}checkpoints/"
 if generate_faq_typos:
     print("Generating typos...")
     faqs, typo_entries, typo_count = generate_typos(
-        faqs, min_typos, max_typos, seed)
+        faqs, entry_variants, min_typos, max_typos, seed)
     print(f"Generated {typo_entries} new entries with {typo_count} typos.")
 
 # Generate dataset and split if in eval mode
