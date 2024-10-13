@@ -1,22 +1,26 @@
-from data_utils import load_faq_config, generate_typos, generate_question_pairs, generate_question_answer_pairs, generate_everything_pairs, split_dataset
+from data_utils import FaqConfig, split_dataset
 from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer, SentenceTransformerTrainingArguments
 from sentence_transformers.losses import CoSENTLoss
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
 import math
+import os
 
 # Load FAQ configuration
-faqs = load_faq_config([
+faq_config = FaqConfig.load_from_file([
     "./faq_config.json",
     "../BingusApi/config/faq_config.json",
     "./BingusApi/config/faq_config.json"
-]).faqs
+])
 
 # Typo generation
 generate_faq_typos = True
-entry_variants = 2
-min_typos = 2
-max_typos = 4
+entry_variants = 3
+min_typos = 1
+max_typos = 2
+scale_max_per_word = True
+scale_min_per_word = True
 seed = 42
+save_generated_typos = True
 
 # Data pairing mode
 # 0. Question to question (q2q)
@@ -36,27 +40,33 @@ model_cache = "./model-cache/"
 base_model = "all-MiniLM-L6-v2"
 
 # Output model settings
-model_ver = 4
+model_ver = 5
 model_name = f"Bingus-{pairing_mode_name}-v{model_ver}{eval_name}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 output_path = f"{model_dir}{model_name}/"
 checkpoint_path = f"{model_dir}checkpoints/"
 
+os.makedirs(model_dir, exist_ok=True)
+
 # Generate typos in dataset
 if generate_faq_typos:
     print("Generating typos...")
-    faqs, typo_entries, typo_count = generate_typos(
-        faqs, entry_variants, min_typos, max_typos, seed)
+    typo_entries, typo_count = faq_config.generate_typos(
+        entry_variants, min_typos, max_typos, scale_max_per_word, scale_min_per_word, seed)
     print(f"Generated {typo_entries} new entries with {typo_count} typos.")
+    if save_generated_typos:
+        typo_output = f"{model_dir}faq_config.json"
+        print(f"Saving generated typos to \"{typo_output}\"...")
+        faq_config.save_to_file(typo_output)
 
 # Generate dataset and split if in eval mode
 print("Generating datasets...")
 if (pairing_mode == 0):
-    dataset = generate_question_pairs(faqs)
+    dataset = faq_config.generate_question_pairs()
 elif (pairing_mode == 1):
-    dataset = generate_question_answer_pairs(faqs, False)
+    dataset = faq_config.generate_question_answer_pairs(False)
 elif (pairing_mode == 2):
-    dataset = generate_everything_pairs(faqs)
+    dataset = faq_config.generate_everything_pairs()
 else:
     raise ValueError(f"Invalid pairing mode: {pairing_mode}")
 train_data, eval_data = split_dataset(dataset, eval_percent)
