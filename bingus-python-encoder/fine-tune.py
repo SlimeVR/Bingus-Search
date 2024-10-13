@@ -11,17 +11,12 @@ faq_config = FaqConfig.load_from_file([
     "../BingusApi/config/faq_config.json",
     "./BingusApi/config/faq_config.json"
 ])
+print(
+    f"Loaded FAQ config:\n  > {len(faq_config.faqs)} FAQs\n  > {faq_config.question_count()} questions")
 
-# Typo generation
+# FAQ modifiers
 generate_faq_typos = True
-entry_variants = 3
-min_typos = 1
-max_typos = 2
-scale_max_per_word = True
-scale_min_per_word = True
-per_word_multiplier = 0.2
-seed = 42
-save_generated_typos = True
+save_modified_faq = True
 
 # Data pairing mode
 # 0: Question to question (q2q)
@@ -44,21 +39,32 @@ base_model = "all-MiniLM-L6-v2"
 model_ver = 5
 model_name = f"Bingus-{pairing_mode_name}-v{model_ver}{eval_name}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
-checkpoint_path = f"{model_dir}checkpoints/"
-output_path = f"{model_dir}{model_name}/"
-
 os.makedirs(model_dir, exist_ok=True)
 
-# Generate typos in dataset
+# Modify FAQ config
+print("Filtering short questions...")
+faq_config.filter_short_questions(4)
+print(
+    f"Filtered FAQ config:\n  > {len(faq_config.faqs)} FAQs\n  > {faq_config.question_count()} questions")
+
 if generate_faq_typos:
     print("Generating typos...")
-    typo_entries, typo_count = faq_config.generate_typos(
-        entry_variants, min_typos, max_typos, scale_max_per_word, scale_min_per_word, per_word_multiplier, seed)
-    print(f"Generated {typo_entries} new entries with {typo_count} typos.")
-    if save_generated_typos:
-        typo_output = f"{model_dir}faq_config.json"
-        print(f"Saving generated typos to \"{typo_output}\"...")
-        faq_config.save_to_file(typo_output)
+    typo_entry_count, typo_count = faq_config.generate_typos(
+        entry_variants=3,
+        min_typos=1,
+        max_typos=2,
+        scale_max_per_word=True,
+        scale_min_per_word=True,
+        per_word_multiplier=0.2,
+        seed=42
+    )
+    print(
+        f"Generated {typo_entry_count} new questions with {typo_count} typos.")
+
+if save_modified_faq:
+    faq_output = f"{model_dir}faq_config.json"
+    faq_config.save_to_file(faq_output)
+    print(f"Saved modified FAQ to \"{faq_output}\".")
 
 # Generate dataset and split if in eval mode
 print("Generating datasets...")
@@ -81,7 +87,7 @@ model = SentenceTransformer(base_model, cache_folder=model_cache)
 
 # Set training arguments
 args = SentenceTransformerTrainingArguments(
-    output_dir=checkpoint_path,
+    output_dir=f"{model_dir}checkpoints/",
     num_train_epochs=20,
     per_device_train_batch_size=128,
     per_device_eval_batch_size=128,
@@ -127,4 +133,4 @@ trainer = SentenceTransformerTrainer(
 )
 
 trainer.train(resume_from_checkpoint=False)
-model.save_pretrained(output_path)
+model.save_pretrained(f"{model_dir}{model_name}/")
