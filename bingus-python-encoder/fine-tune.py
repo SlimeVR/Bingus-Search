@@ -36,7 +36,7 @@ model_cache = "./model-cache/"
 base_model = "all-MiniLM-L6-v2"
 
 # Output model settings
-model_ver = 5
+model_ver = 4
 model_name = f"Bingus-{pairing_mode_name}-v{model_ver}{eval_name}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 os.makedirs(model_dir, exist_ok=True)
@@ -88,7 +88,7 @@ model = SentenceTransformer(base_model, cache_folder=model_cache)
 # Set training arguments
 args = SentenceTransformerTrainingArguments(
     output_dir=f"{model_dir}checkpoints/",
-    num_train_epochs=20,
+    num_train_epochs=2,
     per_device_train_batch_size=128,
     per_device_eval_batch_size=128,
     learning_rate=0.00005 * math.sqrt(128 / 16),
