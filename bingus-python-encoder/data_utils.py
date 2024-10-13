@@ -96,6 +96,19 @@ class FaqConfig(BaseModel):
         with open(path, "w") as f:
             f.write(self.model_dump_json())
 
+    def question_count(self):
+        return sum((len(faq.matched_questions) for faq in self.faqs))
+
+    def filter_short_questions(self, min_words: int):
+        """
+        Filters out questions shorter than min_words and removes empty entries.
+        """
+        for faq in self.faqs:
+            faq.matched_questions = [
+                q for q in faq.matched_questions if len(q.split()) >= min_words]
+        self.faqs = [faq for faq in self.faqs if len(
+            faq.matched_questions) > 0]
+
     def generate_typos(
             self,
             entry_variants: int,
@@ -122,10 +135,10 @@ class FaqConfig(BaseModel):
                 "min_typos must be less than or equal to max_typos")
 
         seeded_random = Random(seed)
-        typo_entries = 0
+        typo_entry_count = 0
         typo_count = 0
         for faq in self.faqs:
-            new_faqs: list[str] = []
+            new_qs: list[str] = []
 
             for question in faq.matched_questions:
                 q_min_typos = min_typos
@@ -140,16 +153,16 @@ class FaqConfig(BaseModel):
                 for _ in range(entry_variants):
                     num_typos = seeded_random.randint(
                         math.ceil(q_min_typos), math.ceil(q_max_typos))
-                    typo_faq = StrErrer(question, seed=seeded_random.random())
+                    typo_q = StrErrer(question, seed=seeded_random.random())
                     for _ in range(num_typos):
-                        typo_faq = random_typo(typo_faq, seeded_random)
-                    new_faqs.append(typo_faq.result)
+                        typo_q = random_typo(typo_q, seeded_random)
+                    new_qs.append(typo_q.result)
                     typo_count += num_typos
 
-            faq.matched_questions.extend(new_faqs)
-            typo_entries += len(new_faqs)
+            faq.matched_questions.extend(new_qs)
+            typo_entry_count += len(new_qs)
 
-        return typo_entries, typo_count
+        return typo_entry_count, typo_count
 
     def generate_question_pairs(self) -> Dataset:
         """
@@ -164,9 +177,7 @@ class FaqConfig(BaseModel):
         answer (positive sample) and other incorrect answers (negative samples).
         """
         questions, answers, scores = [], [], []
-
-        # Precompute all answers for negative samples
-        all_answers = [faq.answer for faq in self.faqs]
+        all_answers = (faq.answer for faq in self.faqs)
 
         for faq in self.faqs:
             for question in faq.matched_questions:
