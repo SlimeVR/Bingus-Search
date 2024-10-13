@@ -1,3 +1,4 @@
+import math
 import os
 from typing import TypeAlias
 from pydantic import BaseModel
@@ -47,7 +48,7 @@ def generate_entry_pairs(entries: list[list[str]]) -> Dataset:
 
 def random_typo(str_err: StrErrer, random: Random) -> StrErrer:
     """Applies a random typo to a string."""
-    typo_type = random.randint(0, 8)
+    typo_type = random.randint(0, 7)
     if typo_type == 0:
         return str_err.char_swap()
     if typo_type == 1:
@@ -57,12 +58,10 @@ def random_typo(str_err: StrErrer, random: Random) -> StrErrer:
     if typo_type == 3:
         return str_err.nearby_char()
     if typo_type == 4:
-        return str_err.similar_char()
-    if typo_type == 5:
         return str_err.skipped_space()
-    if typo_type == 6:
+    if typo_type == 5:
         return str_err.random_space()
-    if typo_type == 7:
+    if typo_type == 6:
         return str_err.repeated_char()
     return str_err.unichar()
 
@@ -104,6 +103,7 @@ class FaqConfig(BaseModel):
             max_typos: int,
             scale_max_per_word: bool = True,
             scale_min_per_word: bool = False,
+            per_word_multiplier: float = 1.0,
             seed: RandomSeed = None
     ) -> tuple[int, int]:
         """
@@ -131,13 +131,15 @@ class FaqConfig(BaseModel):
                 q_min_typos = min_typos
                 q_max_typos = max_typos
                 if scale_max_per_word:
-                    num_words = len(question.split())
+                    num_words = max(1, len(question.split())
+                                    * per_word_multiplier)
                     q_max_typos *= num_words
                     if scale_min_per_word:
                         q_min_typos *= num_words
 
                 for _ in range(entry_variants):
-                    num_typos = seeded_random.randint(q_min_typos, q_max_typos)
+                    num_typos = seeded_random.randint(
+                        math.ceil(q_min_typos), math.ceil(q_max_typos))
                     typo_faq = StrErrer(question, seed=seeded_random.random())
                     for _ in range(num_typos):
                         typo_faq = random_typo(typo_faq, seeded_random)

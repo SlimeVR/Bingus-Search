@@ -19,6 +19,7 @@ min_typos = 1
 max_typos = 2
 scale_max_per_word = True
 scale_min_per_word = True
+per_word_multiplier = 0.2
 seed = 42
 save_generated_typos = True
 
@@ -52,7 +53,7 @@ os.makedirs(model_dir, exist_ok=True)
 if generate_faq_typos:
     print("Generating typos...")
     typo_entries, typo_count = faq_config.generate_typos(
-        entry_variants, min_typos, max_typos, scale_max_per_word, scale_min_per_word, seed)
+        entry_variants, min_typos, max_typos, scale_max_per_word, scale_min_per_word, per_word_multiplier, seed)
     print(f"Generated {typo_entries} new entries with {typo_count} typos.")
     if save_generated_typos:
         typo_output = f"{model_dir}faq_config.json"
