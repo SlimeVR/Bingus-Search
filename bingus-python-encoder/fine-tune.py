@@ -24,9 +24,9 @@ seed = 42
 save_generated_typos = True
 
 # Data pairing mode
-# 0. Question to question (q2q)
-# 1. Question to answer (q2a)
-# 2. Everything to everything (e2e)
+# 0: Question to question (q2q)
+# 1: Question to answer (q2a)
+# 2: Everything to everything (e2e)
 pairing_modes = ["q2q", "q2a", "e2e"]
 pairing_mode = 1
 pairing_mode_name = pairing_modes[pairing_mode]
@@ -44,8 +44,8 @@ base_model = "all-MiniLM-L6-v2"
 model_ver = 5
 model_name = f"Bingus-{pairing_mode_name}-v{model_ver}{eval_name}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
-output_path = f"{model_dir}{model_name}/"
 checkpoint_path = f"{model_dir}checkpoints/"
+output_path = f"{model_dir}{model_name}/"
 
 os.makedirs(model_dir, exist_ok=True)
 
