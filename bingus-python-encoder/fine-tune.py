@@ -1,4 +1,4 @@
-from data_utils import load_faq_config, generate_question_pairs, generate_question_answer_pairs, generate_everything_pairs, split_dataset
+from data_utils import load_faq_config, generate_typos, generate_question_pairs, generate_question_answer_pairs, generate_everything_pairs, split_dataset
 from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer, SentenceTransformerTrainingArguments
 from sentence_transformers.losses import CoSENTLoss
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
@@ -10,6 +10,12 @@ faqs = load_faq_config([
     "../BingusApi/config/faq_config.json",
     "./BingusApi/config/faq_config.json"
 ]).faqs
+
+# Typo generation
+generate_faq_typos = True
+min_typos = 2
+max_typos = 4
+seed = 42
 
 # Data pairing mode
 # 0. Question to question (q2q)
@@ -35,12 +41,19 @@ model_dir = f"./local-models/{model_name}/"
 output_path = f"{model_dir}{model_name}/"
 checkpoint_path = f"{model_dir}checkpoints/"
 
+# Generate typos in dataset
+if generate_faq_typos:
+    print("Generating typos...")
+    faqs, typo_entries, typo_count = generate_typos(
+        faqs, min_typos, max_typos, seed)
+    print(f"Generated {typo_entries} new entries with {typo_count} typos.")
+
 # Generate dataset and split if in eval mode
 print("Generating datasets...")
 if (pairing_mode == 0):
     dataset = generate_question_pairs(faqs)
 elif (pairing_mode == 1):
-    dataset = generate_question_answer_pairs(faqs)
+    dataset = generate_question_answer_pairs(faqs, False)
 elif (pairing_mode == 2):
     dataset = generate_everything_pairs(faqs)
 else:
@@ -48,7 +61,7 @@ else:
 train_data, eval_data = split_dataset(dataset, eval_percent)
 
 print(
-    f"Generated datasets: \n  > Train: {train_data.num_rows} entries\n  > Eval: {0 if eval_data is None else eval_data.num_rows} entries")
+    f"Generated datasets:\n  > Train: {train_data.num_rows} entries\n  > Eval: {0 if eval_data is None else eval_data.num_rows} entries")
 
 # Load the model
 print("Loading model to fine-tune...")
