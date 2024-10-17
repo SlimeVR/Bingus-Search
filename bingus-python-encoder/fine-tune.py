@@ -1,8 +1,7 @@
 from data_utils import FaqConfig, split_dataset
 from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer, SentenceTransformerTrainingArguments
-from sentence_transformers.losses import CoSENTLoss
+from sentence_transformers.losses import AnglELoss
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
-import math
 import os
 
 # Load FAQ configuration
@@ -130,7 +129,7 @@ trainer = SentenceTransformerTrainer(
     args=args,
     train_dataset=train_data,
     eval_dataset=eval_data,
-    loss=CoSENTLoss(model),
+    loss=AnglELoss(model),
     evaluator=dev_evaluator,
 )
 
