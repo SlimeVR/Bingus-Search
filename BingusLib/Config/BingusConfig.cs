@@ -1,6 +1,8 @@
 using System.Text.Json.Serialization;
 using BingusLib.SentenceEncoding;
 using BingusLib.SentenceEncoding.Api;
+using LLama.Common;
+using LLama.Native;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -18,6 +20,9 @@ namespace BingusLib.Config
 
         [JsonPropertyName("api_uri")]
         public string ApiUri { get; set; } = "";
+
+        [JsonPropertyName("llama_model_path")]
+        public string LlamaModelPath { get; set; } = "";
 
         [JsonPropertyName("hnsw_seed")]
         public int HnswSeed { get; set; } = 42;
@@ -41,6 +46,11 @@ namespace BingusLib.Config
                     return new ApiSentenceEncoder(
                         serviceProvider.GetRequiredService<HttpClient>(),
                         new Uri(ApiUri)
+                    );
+
+                case "llama":
+                    return new LlamaSentenceEncoder(
+                        new ModelParams(LlamaModelPath) { PoolingType = LLamaPoolingType.Mean }
                     );
 
                 default:

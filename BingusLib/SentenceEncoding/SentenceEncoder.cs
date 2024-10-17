@@ -6,14 +6,15 @@ namespace BingusLib.SentenceEncoding
     {
         public int EmbeddingDimension { get; protected set; }
 
+        protected SentenceEncoder()
+            : this(-1) { }
+
         protected SentenceEncoder(int embeddingDimension)
         {
             EmbeddingDimension = embeddingDimension;
         }
 
-        protected abstract float[] InternalComputeEmbedding(string input, float[] vectorBuffer);
-
-        public float[] ComputeEmbedding(string input, float[] vectorBuffer)
+        protected void ThrowIfBufferTooSmall(float[] vectorBuffer)
         {
             if (vectorBuffer.Length < EmbeddingDimension)
             {
@@ -22,11 +23,20 @@ namespace BingusLib.SentenceEncoding
                     nameof(vectorBuffer)
                 );
             }
+        }
 
+        protected abstract float[] InternalComputeEmbedding(string input, float[] vectorBuffer);
+
+        public virtual float[] ComputeEmbedding(string input, float[] vectorBuffer)
+        {
+            ThrowIfBufferTooSmall(vectorBuffer);
             return InternalComputeEmbedding(input, vectorBuffer);
         }
 
-        public Vector<float> ComputeEmbeddingVector(string input, Vector<float> vectorBuffer)
+        public virtual Vector<float> ComputeEmbeddingVector(
+            string input,
+            Vector<float> vectorBuffer
+        )
         {
             var internalArray = vectorBuffer.AsArray();
             if (internalArray != null)
@@ -41,12 +51,12 @@ namespace BingusLib.SentenceEncoding
             }
         }
 
-        public float[] ComputeEmbedding(string input)
+        public virtual float[] ComputeEmbedding(string input)
         {
             return ComputeEmbedding(input, new float[EmbeddingDimension]);
         }
 
-        public Vector<float> ComputeEmbeddingVector(string input)
+        public virtual Vector<float> ComputeEmbeddingVector(string input)
         {
             return Vector<float>.Build.Dense(ComputeEmbedding(input));
         }
