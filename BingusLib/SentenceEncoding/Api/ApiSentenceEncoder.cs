@@ -10,7 +10,6 @@ namespace BingusLib.SentenceEncoding.Api
         public readonly Uri EncodeApiUri;
 
         public ApiSentenceEncoder(HttpClient httpClient, Uri baseApiUri)
-            : base(-1)
         {
             HttpClient = httpClient;
             BaseApiUri = baseApiUri;
