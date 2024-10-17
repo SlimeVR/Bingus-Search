@@ -1,5 +1,6 @@
 using LLama;
 using LLama.Common;
+using LLama.Extensions;
 
 namespace BingusLib.SentenceEncoding
 {
@@ -25,7 +26,7 @@ namespace BingusLib.SentenceEncoding
 
         public override float[] ComputeEmbedding(string input)
         {
-            return _embedder.GetEmbeddings(input).Result.Single();
+            return _embedder.GetEmbeddings(input).Result.Single().EuclideanNormalization();
         }
 
         public void Dispose()
