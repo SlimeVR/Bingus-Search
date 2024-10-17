@@ -4,5 +4,5 @@
   "api_uri": "http://bingus-encoder:5000",
   "llama_model_path": "models/Bingus-q2a-v4.gguf",
   "hnsw_seed": 42,
-  "use_q2a": false
+  "use_q2a": true
 }
