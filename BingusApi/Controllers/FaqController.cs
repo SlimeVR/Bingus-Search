@@ -85,24 +85,21 @@ public class FaqController : ControllerBase
                 };
             });
 
-        if (_faqDict != null)
+        var dictAnswer = _faqDict?.Search(question);
+        if (dictAnswer != null)
         {
-            var dictAnswer = _faqDict.Search(question);
-            if (dictAnswer != null)
-            {
-                response = response
-                    .Where(result => result.Text != dictAnswer.Answer)
-                    .Prepend(
-                        new FaqEntryResponse()
-                        {
-                            Relevance = 100f,
-                            MatchedQuestion = dictAnswer.Question,
-                            Title = dictAnswer.Title,
-                            Text = dictAnswer.Answer,
-                        }
-                    )
-                    .Take(responseCount);
-            }
+            response = response
+                .Where(result => result.Text != dictAnswer.Answer)
+                .Prepend(
+                    new FaqEntryResponse()
+                    {
+                        Relevance = 100f,
+                        MatchedQuestion = dictAnswer.Question,
+                        Title = dictAnswer.Title,
+                        Text = dictAnswer.Answer,
+                    }
+                )
+                .Take(responseCount);
         }
 
         return response;
