@@ -62,7 +62,7 @@ builder.Services.AddSingleton(sp =>
 );
 
 // Initialize Bingus library dependencies
-builder.Services.AddSingleton<HttpClient>();
+builder.Services.AddHttpClient();
 builder.Services.AddSingleton(sp => sp.GetRequiredService<BingusConfig>().GetSentenceEncoder(sp));
 builder.Services.AddSingleton(CosineDistance.SIMDForUnits);
 builder.Services.AddSingleton<IProvideRandomValues>(sp => new SeededRandom(
