@@ -1,5 +1,7 @@
+using BingusLib.Config;
 using BingusLib.FaqHandling;
 using BingusLib.HNSW;
+using HNSW.Net;
 using Microsoft.AspNetCore.Mvc;
 using static BingusLib.FaqHandling.FaqHandler;
 
@@ -16,11 +18,13 @@ public class FaqController : ControllerBase
     private static readonly int MaxLength = 4000;
 
     private readonly FaqHandler _faqHandler;
+    private readonly BingusConfig _bingusConfig;
     private readonly FaqConfig _faqConfig;
 
-    public FaqController(FaqHandler faqHandler, FaqConfig faqConfig)
+    public FaqController(FaqHandler faqHandler, BingusConfig bingusConfig, FaqConfig faqConfig)
     {
         _faqHandler = faqHandler;
+        _bingusConfig = bingusConfig;
         _faqConfig = faqConfig;
     }
 
@@ -43,18 +47,28 @@ public class FaqController : ControllerBase
 
         // Actually query a larger set amount to reduce duplicates in the response,
         // but one result will never have duplicates
-        var results = _faqHandler.Search(question, responseCount > 1 ? SearchAmount : 1);
+        var searchAmount = _bingusConfig.UseQ2A
+            ? responseCount
+            : (responseCount > 1 ? SearchAmount : 1);
+        var results = _faqHandler.Search(question, searchAmount);
 
-        // Format the entry JSON
-        // Group the duplicates
-        // Select the highest relevance entry for each duplicate group
+        IEnumerable<SmallWorld<ILazyItem<float[]>, float>.KNNSearchResult> response = results;
+
+        // Only consider duplicates if Q2Q, there will only be one for Q2A
+        if (!_bingusConfig.UseQ2A)
+        {
+            // Group the duplicates
+            // Select the highest relevance entry for each duplicate group
+            response = response
+                .GroupBy(result => GetEntry(result.Item).Answer)
+                .Select(groupedResults =>
+                    groupedResults.MinBy(result => result.Distance) ?? groupedResults.First()
+                );
+        }
+
         // Sort the entries by relevance
         // Take only the requested number of results
-        var responses = results
-            .GroupBy(result => GetEntry(result.Item).Answer)
-            .Select(groupedResults =>
-                groupedResults.MinBy(result => result.Distance) ?? groupedResults.First()
-            )
+        return response
             .OrderByDescending(result => -result.Distance)
             .Take(responseCount)
             .Select(result =>
@@ -68,8 +82,7 @@ public class FaqController : ControllerBase
                     Text = entry.Answer,
                 };
             });
-
-        return responses;
+        ;
     }
 
     [HttpGet(template: "Config", Name = "Config")]
