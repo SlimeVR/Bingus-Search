@@ -4,6 +4,9 @@ namespace BingusLib.FaqHandling
     {
         private readonly Dictionary<string, FaqEntry> _faqDict = [];
 
+        public FaqDict(FaqConfig faqConfig)
+            : this(faqConfig.QaEntryEnumerator()) { }
+
         public FaqDict(IEnumerable<(string title, string question, string answer)> tqaMapping)
         {
             foreach (var (title, question, answer) in tqaMapping)

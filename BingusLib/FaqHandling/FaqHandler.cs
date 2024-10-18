@@ -33,9 +33,14 @@ namespace BingusLib.FaqHandling
             _hnswHandler = new(distanceFunction, randomProvider, parameters);
         }
 
+        public void AddItems(FaqConfig faq, bool useQ2A = true)
+        {
+            AddItems(useQ2A ? faq.AnswerEntryEnumerator() : faq.QaEntryEnumerator(), useQ2A);
+        }
+
         public void AddItems(
             IEnumerable<(string title, string question, string answer)> tqaMapping,
-            bool useQ2A = false
+            bool useQ2A = true
         )
         {
             var hnswItems = new List<LazyKeyItem<FaqEntry, float[]>>();

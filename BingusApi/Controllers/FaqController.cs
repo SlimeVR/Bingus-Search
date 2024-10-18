@@ -21,17 +21,12 @@ public class FaqController : ControllerBase
     private readonly FaqConfig _faqConfig;
     private readonly FaqDict? _faqDict;
 
-    public FaqController(
-        FaqHandler faqHandler,
-        BingusConfig bingusConfig,
-        FaqConfig faqConfig,
-        FaqDict? faqDict = null
-    )
+    public FaqController(FaqHandler faqHandler, BingusConfig bingusConfig, FaqConfig faqConfig)
     {
         _faqHandler = faqHandler;
         _bingusConfig = bingusConfig;
         _faqConfig = faqConfig;
-        _faqDict = faqDict;
+        _faqDict = bingusConfig.UseQ2A ? new FaqDict(faqConfig) : null;
     }
 
     private static FaqEntry GetEntry(ILazyItem<float[]> item)
