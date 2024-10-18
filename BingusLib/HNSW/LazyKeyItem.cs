@@ -3,7 +3,7 @@ using MessagePack.Formatters;
 
 namespace BingusLib.HNSW
 {
-    public class LazyKeyItem<TKey, TItem> : LazyItem<TItem>
+    public record class LazyKeyItem<TKey, TItem> : LazyItem<TItem>
     {
         private readonly TKey _key;
         public TKey Key => _key;

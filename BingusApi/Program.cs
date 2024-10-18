@@ -62,7 +62,7 @@ builder.Services.AddSingleton(sp =>
 );
 
 // Initialize Bingus library dependencies
-builder.Services.AddSingleton<HttpClient>();
+builder.Services.AddHttpClient();
 builder.Services.AddSingleton(sp => sp.GetRequiredService<BingusConfig>().GetSentenceEncoder(sp));
 builder.Services.AddSingleton(CosineDistance.SIMDForUnits);
 builder.Services.AddSingleton<IProvideRandomValues>(sp => new SeededRandom(
@@ -104,9 +104,8 @@ app.UseIpRateLimiting();
 app.MapControllers();
 
 // Load FAQ
-var useQ2A = app.Services.GetService<BingusConfig>()?.UseQ2A ?? false;
-var faqConf = app.Services.GetRequiredService<FaqConfig>();
+var useQ2A = app.Services.GetRequiredService<BingusConfig>().UseQ2A;
 app.Services.GetRequiredService<FaqHandler>()
-    .AddItems(useQ2A ? faqConf.AnswerEntryEnumerator() : faqConf.QaEntryEnumerator(), useQ2A);
+    .AddItems(app.Services.GetRequiredService<FaqConfig>(), useQ2A);
 
 app.Run();

@@ -6,16 +6,8 @@ using Microsoft.Extensions.Logging;
 
 namespace BingusLib.FaqHandling
 {
-    public record FaqHandler
+    public class FaqHandler
     {
-        public record FaqEntry
-        {
-            public string Title { get; set; } = "";
-            public string Question { get; set; } = "";
-            public string Answer { get; set; } = "";
-            public Vector<float>? Vector { get; set; }
-        }
-
         private readonly ILogger<FaqHandler>? _logger;
 
         private readonly IEmbeddingStore? _embeddingStore;
@@ -41,9 +33,14 @@ namespace BingusLib.FaqHandling
             _hnswHandler = new(distanceFunction, randomProvider, parameters);
         }
 
+        public void AddItems(FaqConfig faq, bool useQ2A = true)
+        {
+            AddItems(useQ2A ? faq.AnswerEntryEnumerator() : faq.QaEntryEnumerator(), useQ2A);
+        }
+
         public void AddItems(
             IEnumerable<(string title, string question, string answer)> tqaMapping,
-            bool useQ2A = false
+            bool useQ2A = true
         )
         {
             var hnswItems = new List<LazyKeyItem<FaqEntry, float[]>>();
