@@ -6,9 +6,9 @@ using Microsoft.Extensions.Logging;
 
 namespace BingusLib.FaqHandling
 {
-    public record FaqHandler
+    public class FaqHandler
     {
-        public record FaqEntry
+        public record class FaqEntry
         {
             public string Title { get; set; } = "";
             public string Question { get; set; } = "";
