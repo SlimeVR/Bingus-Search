@@ -8,3 +8,4 @@ docker-compose.yml
 /bingus-*/
 /BingusLib/models/
 /BingusApi/embedding_cache/
+/BingusLib/config/
