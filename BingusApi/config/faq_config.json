@@ -707,15 +707,8 @@
         "I have had the unfortunate blue light of death on another tracker. How do I go about starting a warranty and possibly ship back this board for testing and investigation.",
         "Three of my trackers stopped working after using them for only a few months, they turn on but the blue light does not blink and they won't connect anymore.",
         "why does my tracker not connect to internet and stays bright blue",
-        "how do I get a warranty replacement for my tracker?",
-        "tracker warranty",
         "solid blue light help",
         "i got a solid blue light now it wont connect",
-        "if my trackers show up faulty, should I return them?",
-        "what do I do if I get it and it's broken?",
-        "what if my trackers are damaged",
-        "my trackers are defective",
-        "warranty on tracker",
         "Mandatory sensor 1 not found at address 0x4A"
       ]
     },
@@ -984,7 +977,14 @@
         "link to the warranty support form",
         "Anyone know the link to the warranty replacement for slimes?",
         "warranty link",
-        "support link"
+        "support link",
+        "how do I get a warranty replacement for my tracker?",
+        "tracker warranty",
+        "if my trackers show up faulty, should I return them?",
+        "what do I do if I get it and it's broken?",
+        "what if my trackers are damaged",
+        "my trackers are defective",
+        "warranty on tracker"
       ]
     },
     {
