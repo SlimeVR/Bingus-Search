@@ -25,7 +25,6 @@ import {
   fetchBingus,
 } from "./util.js";
 import { askCommand } from "./commands/ask.js";
-import { shippingCommand } from "./commands/shipping.js";
 import winkNLP from "wink-nlp";
 import model from "wink-eng-lite-web-model";
 import { replyContext } from "./contexts/reply.js";
@@ -55,7 +54,7 @@ export interface ContextMenu<
 const nlp = winkNLP(model, ["negation", "sentiment"]);
 const { its } = nlp;
 
-const commands = [askCommand, shippingCommand];
+const commands = [askCommand];
 const contexts = [replyContext, replyListContext];
 
 const rest = new REST({ version: "10" }).setToken(auth.token);
