@@ -672,7 +672,7 @@
     },
     {
       "title": "Config and log locations",
-      "answer": "The app data for SlimeVR is located at \"%AppData%\\dev.slimevr.SlimeVR\". The main config file is \"vrconfig.yml\". The logs are stored in the \"logs\" folder, where \"log_last_X.log\" are server logs and \"slimevr_rX.log\" are GUI logs.",
+      "answer": "The app data for SlimeVR is located at \"**%AppData%\\dev.slimevr.SlimeVR**\". The main config file is \"**vrconfig.yml**\". The logs are stored in the \"**logs**\" folder, where \"**log_last_X.log**\" are server logs and \"**slimevr_rX.log**\" are GUI logs.",
       "matched_questions": [
         "where are the configs stored?",
         "how do I find the logs for SlimeVR",
