@@ -1021,6 +1021,16 @@
         "video calibration guide",
         "where's zrock's video calibration guide?"
       ]
+    },
+    {
+      "title": "Scanning for WiFi using a tracker",
+      "answer": "To perform a WiFi scan on a tracker, you'll need to use the serial console: Open the **Settings** tab of the GUI, open the **Serial console** under the **Utilities** section, **plug the tracker in via USB**, press the **Reboot** button, and you should see output show up. If you don't see the output, you can also try pressing the reset button on your tracker if available. Once you see output in the serial console, you can press the **Get WiFi Scan** button to perform the WiFi scan. If this is in regards to a support issue, please show the console output to provide further information.",
+      "matched_questions": [
+        "perform a wifi scan on my tracker",
+        "get wifi scan",
+        "wifi scan",
+        "how do I scan for wifi?"
+      ]
     }
   ]
 }
