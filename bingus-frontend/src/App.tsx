@@ -158,6 +158,8 @@ function App() {
       <Container>
         <Stack useFlexGap direction="column" py={2} spacing={2}>
           <IconButton
+            id="themeToggleButton"
+            aria-label="Theme Toggle Button"
             onClick={toggleTheme}
             sx={{
               width: "fit-content",
@@ -175,18 +177,27 @@ function App() {
           <Typography
             noWrap
             align="center"
-            variant="h2"
-            sx={{ typography: { md: "h2", sm: "h3", xs: "h3" } }}
+            variant="h1"
+            fontSize={{ md: 64, sm: 56, xs: 48 }}
+            fontWeight={700}
           >
-            <b>Bingus</b>
+            Bingus
           </Typography>
-          <Typography align="center" variant="subtitle2" color="textSecondary">
+          <Typography
+            align="center"
+            variant="subtitle1"
+            fontSize={14}
+            fontWeight={500}
+            color="textSecondary"
+          >
             Information may not be up-to-date. If you need further help, join
             the <Link href="https://discord.gg/SlimeVR">SlimeVR Discord</Link>.
           </Typography>
 
           <TextField
             fullWidth
+            id="searchBar"
+            aria-label="Search Bar"
             label="Ask a question..."
             autoFocus
             value={input}
@@ -199,7 +210,11 @@ function App() {
                 endAdornment: loadingResults ? (
                   <CircularProgress />
                 ) : (
-                  <IconButton onClick={search}>
+                  <IconButton
+                    id="searchButton"
+                    aria-label="Search Button"
+                    onClick={search}
+                  >
                     <SearchIcon fontSize="inherit" />
                   </IconButton>
                 ),
