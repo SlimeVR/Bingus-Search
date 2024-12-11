@@ -1,7 +1,5 @@
 import { ThemeProvider } from "@emotion/react";
 import {
-  Alert,
-  Button,
   Card,
   CardContent,
   CardHeader,
@@ -9,14 +7,18 @@ import {
   Container,
   createTheme,
   CssBaseline,
+  IconButton,
   Link,
+  Skeleton,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
 import { useMemo, useRef, useState } from "react";
-import "./App.css";
 import MuiMarkdown from "mui-markdown";
+import SearchIcon from "@mui/icons-material/Search";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 export type Result = {
   relevance: number;
@@ -24,6 +26,37 @@ export type Result = {
   title: string;
   text: string;
 };
+
+function relevanceToElevation(relevance: number, scale = 24): number {
+  return Math.round((relevance / 100) * scale);
+}
+
+interface ResultCardProps {
+  readonly relevance: number;
+  readonly title: string;
+  readonly text: string;
+}
+
+function ResultCard(props: ResultCardProps) {
+  return (
+    <Card
+      key={props.title}
+      variant="elevation"
+      elevation={1 + relevanceToElevation(props.relevance, 5)}
+      sx={{ width: "100%" }}
+    >
+      <CardHeader
+        title={props.title}
+        subheader={`${props.relevance.toFixed()}% relevant`}
+        sx={{ pb: 1 }}
+        titleTypographyProps={{ sx: { typography: { sm: "h5", xs: "h6" } } }}
+      />
+      <CardContent sx={{ pt: 0 }}>
+        <MuiMarkdown>{props.text}</MuiMarkdown>
+      </CardContent>
+    </Card>
+  );
+}
 
 function App() {
   const localTheme = localStorage.getItem("user-theme");
@@ -54,9 +87,12 @@ function App() {
 
   const urlInputSearched = useRef(false);
   const [input, setInput] = useState(urlInput);
-  const [lastResults, setLastResults] = useState<Result[] | null>(null);
-  const [lastSearchInput, setLastSearchInput] = useState("");
+  const [lastSearch, setLastSearch] = useState("");
+
   const [loadingResults, setLoadingResults] = useState(false);
+  const [searchResults, setSearchResults] = useState<Result[] | undefined>(
+    undefined,
+  );
 
   const updateUrl = function () {
     window.history.replaceState({}, window.name, url.toString());
@@ -78,16 +114,16 @@ function App() {
   };
 
   const search = async () => {
-    if (input === lastSearchInput) {
+    if (input === lastSearch) {
       return;
     }
 
     // Clear last search results
-    setLastResults(null);
+    setSearchResults(undefined);
 
     if (!input || !/\S/.test(input)) {
-      setLastResults(null);
-      setLastSearchInput(input);
+      setSearchResults(undefined);
+      setLastSearch(input);
 
       url.searchParams.delete("q");
       updateUrl();
@@ -98,9 +134,8 @@ function App() {
     url.searchParams.set("q", input);
     updateUrl();
 
-    const results = await queryBingus(input);
-    setLastResults(results);
-    setLastSearchInput(input);
+    setSearchResults(await queryBingus(input));
+    setLastSearch(input);
   };
 
   if (!urlInputSearched.current) {
@@ -116,106 +151,88 @@ function App() {
     });
   };
 
-  const relevanceToElevation = function (
-    relevance: number,
-    scale = 24,
-  ): number {
-    return Math.round((relevance / 100) * scale);
-  };
-
-  const resultCard = function (relevance: number, title: string, text: string) {
-    const relevanceElevation = relevanceToElevation(relevance, 5);
-
-    return (
-      <Card
-        key={title}
-        variant="elevation"
-        elevation={1 + relevanceElevation}
-        sx={{ width: "100%" }}
-      >
-        <CardHeader
-          title={title}
-          subheader={`${relevance.toFixed()}% relevant`}
-          sx={{ pb: 1 }}
-          titleTypographyProps={{ sx: { typography: { sm: "h5", xs: "h6" } } }}
-        />
-        <CardContent sx={{ pt: 0 }}>
-          <MuiMarkdown>{text}</MuiMarkdown>
-        </CardContent>
-      </Card>
-    );
-  };
-
-  const results = function () {
-    return lastResults?.length ? (
-      lastResults
-        .sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
-        .map((result) =>
-          resultCard(result.relevance, result.title, result.text),
-        )
-    ) : (
-      <Typography color="text.secondary" padding={1}>
-        No results...
-      </Typography>
-    );
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <Container className={prefersDarkMode ? "dark" : ""}>
-        <Stack spacing={1} direction="row" sx={{ my: 2 }}>
-          <Alert variant="outlined" severity="info" sx={{ flexGrow: 1 }}>
-            <Typography>
-              Information may not be up-to-date. If you need further help, join
-              the <Link href="https://discord.gg/SlimeVR">SlimeVR Discord</Link>
-              .
-            </Typography>
-          </Alert>
-          <Button
-            variant="contained"
+      <Container>
+        <Stack useFlexGap direction="column" py={2} spacing={2}>
+          <IconButton
             onClick={toggleTheme}
-            sx={{ width: "fit-content", height: "fit-content" }}
+            sx={{
+              width: "fit-content",
+              height: "fit-content",
+              alignSelf: "end",
+            }}
           >
-            {prefersDarkMode ? "Dark" : "Light"}
-          </Button>
-        </Stack>
+            {prefersDarkMode ? (
+              <DarkModeIcon fontSize="inherit" />
+            ) : (
+              <LightModeIcon fontSize="inherit" />
+            )}
+          </IconButton>
 
-        <Container disableGutters>
           <Typography
             noWrap
             align="center"
-            sx={{ typography: { md: "h2", sm: "h3", xs: "h4" } }}
+            variant="h2"
+            sx={{ typography: { md: "h2", sm: "h3", xs: "h3" } }}
           >
-            Bingus Search
+            <b>Bingus</b>
+          </Typography>
+          <Typography align="center" variant="subtitle2" color="textSecondary">
+            Information may not be up-to-date. If you need further help, join
+            the <Link href="https://discord.gg/SlimeVR">SlimeVR Discord</Link>.
           </Typography>
 
-          <Stack spacing={1} direction="row" sx={{ my: 2 }}>
-            <TextField
-              fullWidth
-              label="Ask a question..."
-              autoFocus
-              value={input}
-              variant="filled"
-              onChange={(e) => setInput(e.target.value)}
-              onKeyUp={(e) => {
-                if (e.key === "Enter") search();
-              }}
-            />
-            <Button onClick={search} variant="contained">
-              Search
-            </Button>
-          </Stack>
+          <TextField
+            fullWidth
+            label="Ask a question..."
+            autoFocus
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") search();
+            }}
+            slotProps={{
+              input: {
+                endAdornment: loadingResults ? (
+                  <CircularProgress />
+                ) : (
+                  <IconButton onClick={search}>
+                    <SearchIcon fontSize="inherit" />
+                  </IconButton>
+                ),
+              },
+            }}
+          />
 
-          <Stack spacing={2} alignItems="center" direction="column" my={3}>
-            {loadingResults ? (
-              <CircularProgress thickness={5.5} size={64} sx={{ padding: 1 }} />
-            ) : (
-              results()
-            )}
+          <Stack spacing={2} alignItems="center" direction="column">
+            {loadingResults
+              ? [...Array(30)].map((_, i) => (
+                  <Skeleton
+                    key={i}
+                    variant="rounded"
+                    width="100%"
+                    height={128}
+                  />
+                ))
+              : searchResults
+                  ?.sort((a, b) => (a.relevance <= b.relevance ? 1 : -1))
+                  ?.map((result) => (
+                    <ResultCard
+                      key={result.title}
+                      relevance={result.relevance}
+                      title={result.title}
+                      text={result.text}
+                    />
+                  )) || (
+                  <Typography color="text.secondary" padding={1}>
+                    No results...
+                  </Typography>
+                )}
           </Stack>
-        </Container>
+        </Stack>
       </Container>
     </ThemeProvider>
   );
