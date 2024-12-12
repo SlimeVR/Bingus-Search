@@ -75,6 +75,15 @@ function App() {
   const theme = useMemo(
     () =>
       createTheme({
+        components: {
+          MuiTypography: {
+            styleOverrides: {
+              root: {
+                wordBreak: "break-word",
+              },
+            },
+          },
+        },
         palette: {
           mode: prefersDarkMode ? "dark" : "light",
         },
