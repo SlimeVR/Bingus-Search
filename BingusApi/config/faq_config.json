@@ -177,7 +177,7 @@
     },
     {
       "title": "Shipping estimate",
-      "answer": "As of December 2nd, 2024, new orders are estimated to ship on **January 31st, 2025** (subject to change, check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest estimate). For the latest information on shipping and production progress, you can check the [#shipping-progress](https://discord.com/channels/817184208525983775/1129107343058153623) and [#updates](https://discord.com/channels/817184208525983775/818062236492759050) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
+      "answer": "As of December 13th, 2024, new orders are estimated to ship on **January 31st, 2025** (subject to change, check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest estimate). For the latest information on shipping and production progress, you can check the [#shipping-progress](https://discord.com/channels/817184208525983775/1129107343058153623) and [#updates](https://discord.com/channels/817184208525983775/818062236492759050) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "When are they shipping?",
         "When does it ship?",
@@ -318,28 +318,6 @@
         "whats slimevr",
         "what does it do",
         "docs"
-      ]
-    },
-    {
-      "title": "Amazon trackers",
-      "answer": "**__Don't__** buy trackers from Amazon. Buying trackers from Amazon is not recommended as there have been many reports of faulty trackers from Amazon. You can find more information in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
-      "matched_questions": [
-        "are the amazon trackers ok to buy?",
-        "can I buy from amazon?",
-        "should I buy trackers from amazon or will they suck?",
-        "ebay trackers"
-      ]
-    },
-    {
-      "title": "Amazon trackers issues with serial console",
-      "answer": "If you're having trouble connecting your trackers with the serial console, you may have unofficial trackers from Amazon. If so, it's recommended that you just return them, otherwise if you really want to try to make them work, you can check in the [#amazon-trackers](https://discord.com/channels/817184208525983775/986713204656857138) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR) for more information.",
-      "matched_questions": [
-        "No Blinking of the Tracker if WiFi Window is open",
-        "WiFi Window does not show anything if I set the WiFi",
-        "WiFi Window does't do anything",
-        "Amazon Trackers setting the WiFi",
-        "serial logs dont show anything",
-        "the serial console doesn't show any messages"
       ]
     },
     {
@@ -797,18 +775,25 @@
       ]
     },
     {
-      "title": "Uploading tracker firmware",
-      "answer": "You can find how to flash/upload firmware to your tracker at https://docs.slimevr.dev/firmware/index.html.",
+      "title": "Flashing/updating tracker firmware",
+      "answer": "To update the firmware on official trackers, you can follow the guide at https://docs.slimevr.dev/updating-firmware.html. To flash firmware onto DIY trackers, you can follow the guide at https://docs.slimevr.dev/firmware/index.html.",
       "matched_questions": [
+        "flash firmware",
         "upload firmware",
-        "update firmware",
         "firmware tool",
         "how do I flash my trackers?",
         "How do I upload firmware to my trackers?",
         "I just built trackers and i cant find the firmware tool, where is it?",
         "I need help putting the firmware on my trackers please",
-        "I bought my trackers awhile ago and i was to that they may need updated",
-        "firmware"
+        "Updating tracker firmware",
+        "update firmware",
+        "how do I update my trackers?",
+        "I have official trackers and I'm not sure how to update them",
+        "I bought my trackers awhile ago and i was to that they may need to be updated",
+        "firmware update",
+        "I was in the first batch of slimes to be shipped and my trackers have old firmware, how do I update them so I have the latest?",
+        "I tried updating the firmware on my trackers but every time I do it, it says it failed to connect to the ESP",
+        "firmware guide"
       ]
     },
     {
@@ -1030,6 +1015,17 @@
         "get wifi scan",
         "wifi scan",
         "how do I scan for wifi?"
+      ]
+    },
+    {
+      "title": "Automatic body proportions error",
+      "answer": "If you're getting an error while attempting automatic body proportions (AutoBone), it is likely that your **mounting orientation** is set incorrectly. Make sure that that your tracking is working as expected before fine-tuning body proportions, body proportions only affect how much your trackers move, not the direction. If your body proportions are incorrect, you may reset your body proportions using the manual proportions tab until you correct the underlying tracking issue.",
+      "matched_questions": [
+        "automatic body proportions error",
+        "autobone error",
+        "I keep getting an error while trying to use automatic body proportions, what am I doing wrong?",
+        "is autobone broken? i get an error every time I use it",
+        "why do I get an error when doing body proportions?"
       ]
     }
   ]
