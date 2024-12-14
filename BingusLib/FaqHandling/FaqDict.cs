@@ -1,3 +1,5 @@
+using static BingusLib.FaqHandling.FaqConfig;
+
 namespace BingusLib.FaqHandling
 {
     public class FaqDict
@@ -5,18 +7,28 @@ namespace BingusLib.FaqHandling
         private readonly Dictionary<string, FaqEntry> _faqDict = [];
 
         public FaqDict(FaqConfig faqConfig)
-            : this(faqConfig.QaEntryEnumerator()) { }
+            : this(faqConfig.FaqEntries) { }
 
-        public FaqDict(IEnumerable<(string title, string question, string answer)> tqaMapping)
+        public FaqDict(IEnumerable<FaqConfigEntry> faqConfigEntries)
         {
-            foreach (var (title, question, answer) in tqaMapping)
+            foreach (var entry in faqConfigEntries)
             {
-                _faqDict[CleanQuery(question)] = new FaqEntry()
+                _faqDict[CleanQuery(entry.Title)] = new FaqEntry()
                 {
-                    Title = title,
-                    Question = question,
-                    Answer = answer,
+                    Title = entry.Title,
+                    Question = entry.Title,
+                    Answer = entry.Answer,
                 };
+
+                foreach (var question in entry.Questions)
+                {
+                    _faqDict[CleanQuery(question)] = new FaqEntry()
+                    {
+                        Title = entry.Title,
+                        Question = question,
+                        Answer = entry.Answer,
+                    };
+                }
             }
         }
 

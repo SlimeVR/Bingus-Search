@@ -15,7 +15,7 @@ namespace BingusLib.FaqHandling
             public string Answer { get; set; } = "";
 
             [JsonPropertyName("matched_questions")]
-            public List<string> Questions { get; set; } = [];
+            public string[] Questions { get; set; } = [];
 
             public FaqConfigEntry() { }
 
@@ -28,12 +28,12 @@ namespace BingusLib.FaqHandling
             public FaqConfigEntry(string answer, IEnumerable<string> questions)
                 : this(answer)
             {
-                Questions.AddRange(questions);
+                Questions = questions.ToArray();
             }
         }
 
         [JsonPropertyName("faqs")]
-        public List<FaqConfigEntry> FaqEntries { get; set; } = [];
+        public FaqConfigEntry[] FaqEntries { get; set; } = [];
 
         public FaqConfigEntry? GetAnswerEntry(string answer)
         {
