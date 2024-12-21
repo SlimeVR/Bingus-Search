@@ -519,7 +519,7 @@
     },
     {
       "title": "What are extension trackers",
-      "answer": "You can find information about extension trackers (also known as an \"aux tracker\" or \"aux IMU\") at https://docs.slimevr.dev/slimevr101.html#what-is-an-extension.",
+      "answer": "Extension trackers (aka. \"aux tracker\" or \"aux IMU\") are a single additional tracking point that is connected to a full tracker with a wire. By being connected to a full tracker, it can be smaller as it doesn't require its own microcontroller or battery. You can find more information about extension trackers at https://docs.slimevr.dev/slimevr101.html#what-is-an-extension.",
       "matched_questions": [
         "what is an aux tracker",
         "what is an aux imu",
