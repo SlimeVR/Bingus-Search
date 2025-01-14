@@ -322,7 +322,7 @@
     },
     {
       "title": "SlimeVR on VRChat standalone",
-      "answer": "SlimeVR running on standalone Quest, Pico, and Android is in early works with support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/tools/mobile-installation.html, https://docs.slimevr.dev/server/osc-information.html, and in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR). For legacy use, you can find information on Termux at https://docs.slimevr.dev/tools/termux-installation.html, but it is recommended to use the native app instead.",
+      "answer": "SlimeVR running on standalone Quest, Pico, and Android is in early works with support for VRChat's OSC tracker protocol, you can follow the [mobile installation guide](https://docs.slimevr.dev/tools/mobile-installation.html) to install SlimeVR on a mobile device. For usage over OSC, you can find information at https://docs.slimevr.dev/server/osc-information.html and in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "standalone",
         "can i use it with quest",
