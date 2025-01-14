@@ -2,7 +2,7 @@ import math
 import os
 from typing import TypeAlias
 from pydantic import BaseModel
-from datasets import Dataset
+from datasets import Dataset, load_dataset
 from typo import StrErrer
 from random import Random
 
@@ -17,9 +17,9 @@ def split_dataset(dataset: Dataset, eval_percent: float | int) -> tuple[Dataset,
     return dataset, None
 
 
-def generate_entry_pairs(entries: list[list[str]]) -> Dataset:
+def make_entry_pairs(entries: list[list[str]]) -> Dataset:
     """
-    Generates item-to-item pairs from the entry list, where each item is paired with all
+    Makes item-to-item pairs from the entry list, where each item is paired with all
     other item in its set (positive samples) and from other sets (negative sample).
     """
     items1, items2, scores = [], [], []
@@ -100,6 +100,11 @@ class FaqConfig(BaseModel):
         for faq in self.faqs:
             yield faq.answer
 
+    def iterate_questions(self):
+        for faq in self.faqs:
+            for question in faq.matched_questions:
+                yield question
+
     def question_count(self):
         return sum((len(faq.matched_questions) for faq in self.faqs))
 
@@ -113,7 +118,7 @@ class FaqConfig(BaseModel):
         self.faqs = [faq for faq in self.faqs if len(
             faq.matched_questions) > 0]
 
-    def generate_typos(
+    def make_typos(
             self,
             entry_variants: int,
             min_typos: int,
@@ -124,8 +129,8 @@ class FaqConfig(BaseModel):
             seed: RandomSeed = None
     ) -> tuple[int, int]:
         """
-        Generates typos for each question of each entry and returns the number of entries added and the
-        number of typos generated.
+        Makes typos for each question of each entry and returns the number of entries added and the
+        number of typos made.
         """
         if entry_variants < 1:
             raise ValueError(
@@ -168,16 +173,16 @@ class FaqConfig(BaseModel):
 
         return typo_entry_count, typo_count
 
-    def generate_question_pairs(self) -> Dataset:
+    def make_question_pairs(self) -> Dataset:
         """
-        Generates question-to-question pairs from the FAQs, where each question is paired with all
+        Makes question-to-question pairs from the FAQs, where each question is paired with all
         other questions in its set (positive samples) and from other sets (negative sample).
         """
-        return generate_entry_pairs([faq.matched_questions for faq in self.faqs])
+        return make_entry_pairs([faq.matched_questions for faq in self.faqs])
 
-    def generate_question_answer_pairs(self) -> Dataset:
+    def make_question_answer_pairs(self) -> Dataset:
         """
-        Generates question-answer pairs from the FAQs, where each question is paired with its correct
+        Makes question-answer pairs from the FAQs, where each question is paired with its correct
         answer (positive sample) and other incorrect answers (negative samples).
         """
         questions, answers, scores = [], [], []
@@ -202,9 +207,56 @@ class FaqConfig(BaseModel):
             "score": scores,
         })
 
-    def generate_everything_pairs(self) -> Dataset:
+    def make_everything_pairs(self) -> Dataset:
         """
-        Generates pairs of titles, answers, and questions from the FAQs, where each set is paired with its correct
+        Makes pairs of titles, answers, and questions from the FAQs, where each set is paired with its correct
         answer (positive sample) and other incorrect answers (negative samples).
         """
-        return generate_entry_pairs([[faq.title, faq.answer, *faq.matched_questions] for faq in self.faqs])
+        return make_entry_pairs([[faq.title, faq.answer, *faq.matched_questions] for faq in self.faqs])
+
+
+def make_wiki_qa_dataset(faqs: FaqConfig, max_count: int = -1) -> Dataset:
+    questions, answers, scores = [], [], []
+
+    def hit_max():
+        return max_count > 0 and len(questions) >= max_count
+
+    wiki_qa = load_dataset("microsoft/wiki_qa")
+    last_q_id = ""
+    for row in wiki_qa["train"]:
+        # Only process new questions
+        q_id = row["question_id"]
+        if last_q_id != q_id:
+            last_q_id = q_id
+
+            # Negatively pair question with FAQ answers
+            question = row["question"]
+            for answer in faqs.iterate_answers():
+                questions.append(question)
+                answers.append(answer)
+                scores.append(0.0)
+
+                if hit_max():
+                    break
+
+        if hit_max():
+            break
+
+        # Negatively pair answer with FAQ questions
+        answer = row["answer"]
+        for question in faqs.iterate_questions():
+            questions.append(question)
+            answers.append(answer)
+            scores.append(0.0)
+
+            if hit_max():
+                break
+
+        if hit_max():
+            break
+
+    return Dataset.from_dict({
+        "sentence1": questions,
+        "sentence2": answers,
+        "score": scores,
+    })

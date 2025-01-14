@@ -1,8 +1,9 @@
-from data_utils import FaqConfig, split_dataset
+from data_utils import FaqConfig, split_dataset, make_wiki_qa_dataset
 from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer, SentenceTransformerTrainingArguments
 from sentence_transformers.losses import AnglELoss
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
 import os
+from datasets import Dataset, concatenate_datasets
 
 # Load FAQ configuration
 faq_config = FaqConfig.load_from_file([
@@ -15,7 +16,7 @@ print(
 
 # FAQ modifiers
 filter_short_questions = True
-generate_faq_typos = True
+make_faq_typos = True
 save_modified_faq = True
 
 # Data pairing mode
@@ -48,9 +49,12 @@ if filter_short_questions:
     print(
         f"Filtered FAQ config:\n  > {len(faq_config.faqs)} FAQs\n  > {faq_config.question_count()} questions")
 
-if generate_faq_typos:
-    print("Generating typos...")
-    typo_entry_count, typo_count = faq_config.generate_typos(
+# Load external data
+wiki_qa_data = make_wiki_qa_dataset(faq_config, 50000)
+
+if make_faq_typos:
+    print("Making typos...")
+    typo_entry_count, typo_count = faq_config.make_typos(
         entry_variants=3,
         min_typos=1,
         max_typos=2,
@@ -60,27 +64,28 @@ if generate_faq_typos:
         seed=42
     )
     print(
-        f"Generated {typo_entry_count} new questions with {typo_count} typos.")
+        f"Made {typo_entry_count} new questions with {typo_count} typos.")
 
 if save_modified_faq:
     faq_output = f"{model_dir}faq_config.json"
     faq_config.save_to_file(faq_output)
     print(f"Saved modified FAQ to \"{faq_output}\".")
 
-# Generate dataset and split if in eval mode
-print("Generating datasets...")
+# Make dataset and split if in eval mode
+print("Making datasets...")
 if (pairing_mode == 0):
-    dataset = faq_config.generate_question_pairs()
+    dataset = faq_config.make_question_pairs()
 elif (pairing_mode == 1):
-    dataset = faq_config.generate_question_answer_pairs()
+    dataset = faq_config.make_question_answer_pairs()
 elif (pairing_mode == 2):
-    dataset = faq_config.generate_everything_pairs()
+    dataset = faq_config.make_everything_pairs()
 else:
     raise ValueError(f"Invalid pairing mode: {pairing_mode}")
-train_data, eval_data = split_dataset(dataset, eval_percent)
 
+train_data, eval_data = split_dataset(dataset, eval_percent)
+train_data = concatenate_datasets([train_data, wiki_qa_data])
 print(
-    f"Generated datasets:\n  > Train: {train_data.num_rows} entries\n  > Eval: {0 if eval_data is None else eval_data.num_rows} entries")
+    f"Made datasets:\n  > Train: {train_data.num_rows} entries\n  > Eval: {0 if eval_data is None else eval_data.num_rows} entries")
 
 # Load the model
 print("Loading model to fine-tune...")
