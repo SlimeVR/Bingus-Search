@@ -93,7 +93,7 @@
     },
     {
       "title": "SlimeVR not connected to SteamVR/Feeder App or trackers don't show up in SteamVR",
-      "answer": "If SlimeVR reports that it can't connect to SteamVR or the Feeder App, or your trackers are connected to SlimeVR but don't show up on SteamVR, make sure that SlimeVR isn't being run as an administrator and that the \"slimevr\" driver is turned on in **SteamVR** under **Settings** > **Startup / Shutdown** > **Manage Add-Ons**. You can find additional help at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam.",
+      "answer": "If SlimeVR reports that it can't connect to SteamVR or the Feeder App, or your trackers are connected to SlimeVR but don't show up on SteamVR, make sure that SlimeVR isn't being run as an administrator and that the \"slimevr\" driver is turned on in **SteamVR** under **Settings** > **Startup / Shutdown** > **Manage Add-Ons**. You can find additional help at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam. Alternatively, you can use [VRChat OSC Trackers](https://docs.slimevr.dev/server/osc-information.html) to connect to VRChat specifically.",
       "matched_questions": [
         "trackers are connected to the server but aren't turning up on Steam",
         "trackers aren't showing up in SteamVR",
