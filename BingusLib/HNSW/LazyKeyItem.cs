@@ -42,7 +42,7 @@ namespace BingusLib.HNSW
         )
         {
             var formatter = options.Resolver.GetFormatter<TKey>();
-            formatter.Serialize(ref writer, value.Key, options);
+            formatter!.Serialize(ref writer, value.Key, options);
         }
 
         public LazyKeyItem<TKey, TItem> Deserialize(
@@ -51,7 +51,7 @@ namespace BingusLib.HNSW
         )
         {
             var formatter = options.Resolver.GetFormatter<TKey>();
-            var key = formatter.Deserialize(ref reader, options);
+            var key = formatter!.Deserialize(ref reader, options);
             return new LazyKeyItem<TKey, TItem>(key, () => ResolveItem(key));
         }
     }
