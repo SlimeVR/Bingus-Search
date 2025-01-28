@@ -1,2 +1,3 @@
 sentence-transformers[train] >= 3.1.1
 gpl >= 0.1.4
+typo >= 0.1.7
