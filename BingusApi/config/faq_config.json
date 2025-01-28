@@ -539,8 +539,8 @@
       ]
     },
     {
-      "title": "Tracker mounting",
-      "answer": "You can find information about mounting trackers at https://docs.slimevr.dev/server/putting-on-trackers.html.",
+      "title": "Physical tracker mounting",
+      "answer": "You can find information about where to mount/position your trackers on your body at https://docs.slimevr.dev/server/putting-on-trackers.html.",
       "matched_questions": [
         "how do I mount my trackers",
         "where do I put on my trackers",
