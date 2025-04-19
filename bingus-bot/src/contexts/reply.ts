@@ -2,6 +2,7 @@ import {
   ApplicationCommandType,
   ContextMenuCommandBuilder,
   EmbedBuilder,
+  MessageFlags,
 } from "discord.js";
 import { ContextMenu } from "../index.js";
 import { fetchBingus } from "../util.js";
@@ -19,7 +20,7 @@ export const replyContext: ContextMenu = {
     );
 
     try {
-      await interaction.deferReply({ ephemeral: true });
+      await interaction.deferReply({ flags: MessageFlags.Ephemeral });
       const data = await fetchBingus(query);
 
       if (data.length === 0) {

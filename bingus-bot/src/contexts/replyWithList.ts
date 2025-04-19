@@ -2,6 +2,7 @@ import {
   ApplicationCommandType,
   ContextMenuCommandBuilder,
   EmbedBuilder,
+  MessageFlags,
 } from "discord.js";
 import { ContextMenu } from "../index.js";
 import { EmbedList, fetchBingus } from "../util.js";
@@ -19,7 +20,7 @@ export const replyListContext: ContextMenu = {
     );
 
     try {
-      await interaction.deferReply({ ephemeral: true });
+      await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
       if (!interaction.targetMessage.channel.isSendable()) {
         await interaction.editReply("Unable to send messages to this channel.");

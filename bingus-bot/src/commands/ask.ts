@@ -1,5 +1,6 @@
 import {
   EmbedBuilder,
+  MessageFlags,
   SlashCommandBuilder,
   SlashCommandStringOption,
 } from "discord.js";
@@ -49,12 +50,11 @@ export const askCommand: Command = {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const query = interaction.options.getString("query")!;
     const customOption = interaction.options.getString("custom");
-    const ephemeral = customOption === null;
     const first = customOption === "FIRST";
     console.log(`User ${interaction.user} asked about "${query}"`);
 
     try {
-      await interaction.deferReply({ ephemeral });
+      await interaction.deferReply({ flags: customOption === null ? MessageFlags.Ephemeral : undefined });
       const data = await fetchBingus(query);
 
       if (data.length === 0) {
@@ -69,7 +69,7 @@ export const askCommand: Command = {
               .setTitle(data[0].title)
               .setDescription(data[0].text)
               .setColor("#65459A")
-              .setFooter({text: `${data[0].relevance.toFixed()}% relevant`}).data,
+              .setFooter({ text: `${data[0].relevance.toFixed()}% relevant` }).data,
           ],
         });
 
@@ -84,7 +84,7 @@ export const askCommand: Command = {
               .setTitle(res.title)
               .setDescription(res.text)
               .setColor("#65459A")
-              .setFooter({text: `(${res.relevance.toFixed()}% relevant)`}).data,
+              .setFooter({ text: `(${res.relevance.toFixed()}% relevant)` }).data,
         ),
       );
 
