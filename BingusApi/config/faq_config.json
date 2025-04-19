@@ -322,7 +322,7 @@
     },
     {
       "title": "SlimeVR on VRChat standalone",
-      "answer": "SlimeVR running on standalone Quest, Pico, and Android is in early works with support for VRChat's OSC tracker protocol, you can follow the [mobile installation guide](https://docs.slimevr.dev/tools/mobile-installation.html) to install SlimeVR on a mobile device. For usage over OSC, you can find information at https://docs.slimevr.dev/server/osc-information.html and in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
+      "answer": "SlimeVR can run on standalone Quest, Pico, and Android with support for VRChat's OSC tracker protocol, you can follow the [mobile installation guide](https://docs.slimevr.dev/tools/mobile-installation.html) to install SlimeVR on a mobile device. For usage over OSC, you can find information at https://docs.slimevr.dev/server/osc-information.html and in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "matched_questions": [
         "standalone",
         "can i use it with quest",
@@ -666,8 +666,8 @@
       ]
     },
     {
-      "title": "Official Trackers - Blue Light of Death (BLOD)",
-      "answer": "Symptoms of this hardware issue that may occur on some of the **official** trackers include solid blue light (not blinking), suddenly stopped working, or suddenly stopped connecting to WiFi/SlimeVR. To get a warranty replacement, fill out the form at https://slimevr.dev/support.",
+      "title": "Official Trackers - Broken Tracker(s)",
+      "answer": "Symptoms of hardware issues that may occur with **official** trackers include solid blue light (not blinking), suddenly stopping working, overheating, and battery issues. If your tracker is getting very hot when plugged in or turned on, **do not** charge the tracker or turn it on anymore, as it is a potential fire hazard. To get a warranty replacement, fill out the form at https://slimevr.dev/support.",
       "matched_questions": [
         "solid blue light",
         "tracker stopped working",
@@ -692,7 +692,7 @@
       ]
     },
     {
-      "title": "Official Trackers - Broken/Missing Extension Cables",
+      "title": "Official Trackers - Broken/Missing Extension Cable(s)",
       "answer": "To get warranty replacement cables for your **official** tracker set, fill out the form at https://slimevr.dev/support. Alternatively, extension cables are available on the [SlimeVR Shop](https://shop.slimevr.dev/) (You will be helping SlimeVR pay for shipping costs).",
       "matched_questions": [
         "extension cable issue",
