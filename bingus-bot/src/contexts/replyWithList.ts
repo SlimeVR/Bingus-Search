@@ -20,6 +20,12 @@ export const replyListContext: ContextMenu = {
 
     try {
       await interaction.deferReply({ ephemeral: true });
+
+      if (!interaction.targetMessage.channel.isSendable()) {
+        await interaction.editReply("Unable to send messages to this channel.");
+        return;
+      }
+
       const data = await fetchBingus(query);
 
       if (data.length === 0) {

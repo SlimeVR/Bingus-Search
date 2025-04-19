@@ -8,7 +8,7 @@ import {
   EmbedBuilder,
   EmojiIdentifierResolvable,
   ReplyOptions,
-  TextBasedChannel,
+  SendableChannels,
 } from "discord.js";
 
 export const BINGUS_SITE =
@@ -68,7 +68,7 @@ export class EmbedList {
   }
 
   async sendChannel(
-    channel: TextBasedChannel,
+    channel: SendableChannels,
     who: string | null,
     content?: string,
     reply?: ReplyOptions,
