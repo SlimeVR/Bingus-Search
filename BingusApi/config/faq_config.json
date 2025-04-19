@@ -1027,6 +1027,16 @@
         "is autobone broken? i get an error every time I use it",
         "why do I get an error when doing body proportions?"
       ]
+    },
+    {
+      "title": "Official Trackers - USB Firmware Recovery",
+      "answer": "If you have tried to update the firmware on your **official** trackers and they are no longer turning on, usually having the blue light only turn on for a quick moment before turning off and not blinking, you may need to recover the firmware over USB. You can find a guide to recovering firmware over USB at https://docs.slimevr.dev/updating-firmware.html#usb-recovery. In the case that you are unable to open the tracker or recovery did not work, you may need to contact SlimeVR support for further help by filling out the form at https://slimevr.dev/support.",
+      "matched_questions": [
+        "tracker no longer turns on after updating firmware",
+        "my tracker flashes blue and then stays dark after I turn it on",
+        "I tried updating the firmware on my tracker, but now it won't turn on",
+        "the tracker update failed and it bricked my tracker, what do I do?"
+      ]
     }
   ]
 }
