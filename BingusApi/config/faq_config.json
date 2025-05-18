@@ -724,7 +724,6 @@
         "how do i use vives with SlimeVR?",
         "what if I already have vive trackers",
         "what if I already have tundra trackers",
-        "can I use HaritoraX with SlimeVR?",
         "can I mix my existing trackers with SlimeVR?",
         "is there a possible future plan where slimes can work in sync with other trackers (like vive, tundra) to enhance fbt?",
         "If I got a 3 pack of Tundra (just as an example), could I still use slimeVR for untracked areas of my body (knees, chest, etc)?",
@@ -1038,6 +1037,20 @@
         "my tracker flashes blue and then stays dark after I turn it on",
         "I tried updating the firmware on my tracker, but now it won't turn on",
         "the tracker update failed and it bricked my tracker, what do I do?"
+      ]
+    },
+    {
+      "title": "HaritoraX trackers",
+      "answer": "We do not guarantee help for Shiftall's HaritoraX trackers used with SlimeVR. For issues or guides for the trackers themselves or middleware software (e.g. SlimeTora), please go to their respective support servers/wikis (e.g. https://docs.slimevr.dev/tools/slimetora.html).",
+      "matched_questions": [
+        "can I use HaritoraX with SlimeVR?",
+        "i have an issue with haritorax trackers",
+        "i need help with my haritorax trackers",
+        "how do i set up my haritorax trackers with slimetora?",
+        "i am using haritorax with slimetora",
+        "how do i set up my haritorax trackers with slimevr?",
+        "how do i use haritorax on standalone?",
+        "how do i use slimetora on standalone?"
       ]
     }
   ]
