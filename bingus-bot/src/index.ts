@@ -12,9 +12,7 @@ import {
   SlashCommandOptionsOnlyBuilder,
   UserContextMenuCommandInteraction,
 } from "discord.js";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import auth from "../auth.json" assert { type: "json" };
+import auth from "../auth.json" with { type: "json" };
 import {
   BINGUS_EMOJI,
   EmbedList,

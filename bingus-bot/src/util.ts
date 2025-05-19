@@ -114,7 +114,10 @@ export class EmbedList {
     });
   }
 
-  async sendChatInput(interaction: ChatInputCommandInteraction) {
+  async sendChatInput(
+    interaction: ChatInputCommandInteraction,
+    publicInteraction: boolean | undefined = true,
+  ) {
     const reply = await (interaction.deferred
       ? interaction.editReply({
           embeds: [this.get()],
@@ -128,7 +131,9 @@ export class EmbedList {
     const collector = reply.createMessageComponentCollector({
       componentType: ComponentType.Button,
       time: EmbedList.MAX_TIME,
-      // filter: (i) => i.user.id === interaction.user.id,
+      filter: publicInteraction
+        ? (i) => i.user.id === interaction.user.id
+        : undefined,
     });
 
     collector.on("collect", async (i) => {

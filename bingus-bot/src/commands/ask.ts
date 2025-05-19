@@ -8,9 +8,9 @@ import { Command } from "../index.js";
 import { EmbedList, fetchBingus, fetchBingusData } from "../util.js";
 
 async function getFaqConfig() {
-  return (await fetchBingusData()).faqs.flatMap(
-    (x) => x.matched_questions.filter((x) => x.length > 0 && x.length <= 100),
-  )
+  return (await fetchBingusData()).faqs.flatMap((x) =>
+    x.matched_questions.filter((x) => x.length > 0 && x.length <= 100),
+  );
 }
 
 let faqConfig = await getFaqConfig();
@@ -41,6 +41,10 @@ export const askCommand: Command = {
             value: "VISIBLE",
           },
           {
+            name: "Visible but only you can interact with it",
+            value: "KINDA_VISIBLE",
+          },
+          {
             name: "Only first answer",
             value: "FIRST",
           },
@@ -54,7 +58,9 @@ export const askCommand: Command = {
     console.log(`User ${interaction.user} asked about "${query}"`);
 
     try {
-      await interaction.deferReply({ flags: customOption === null ? MessageFlags.Ephemeral : undefined });
+      await interaction.deferReply({
+        flags: customOption === null ? MessageFlags.Ephemeral : undefined,
+      });
       const data = await fetchBingus(query);
 
       if (data.length === 0) {
@@ -69,7 +75,8 @@ export const askCommand: Command = {
               .setTitle(data[0].title)
               .setDescription(data[0].text)
               .setColor("#65459A")
-              .setFooter({ text: `${data[0].relevance.toFixed()}% relevant` }).data,
+              .setFooter({ text: `${data[0].relevance.toFixed()}% relevant` })
+              .data,
           ],
         });
 
@@ -84,11 +91,12 @@ export const askCommand: Command = {
               .setTitle(res.title)
               .setDescription(res.text)
               .setColor("#65459A")
-              .setFooter({ text: `(${res.relevance.toFixed()}% relevant)` }).data,
+              .setFooter({ text: `(${res.relevance.toFixed()}% relevant)` })
+              .data,
         ),
       );
 
-      await embedList.sendChatInput(interaction);
+      await embedList.sendChatInput(interaction, customOption === "KINDA_VISIBLE");
     } catch (error) {
       console.error(error);
       interaction.editReply("An error occurred while fetching results.");
