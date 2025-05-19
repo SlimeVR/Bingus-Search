@@ -53,7 +53,7 @@ export const replyListContext: ContextMenu = {
 
       await embedList.sendChannel(
         interaction.targetMessage.channel,
-        interaction.targetMessage.author.id,
+        interaction.user.id,
         undefined,
         { messageReference: interaction.targetMessage },
       );
