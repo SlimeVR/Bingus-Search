@@ -206,6 +206,9 @@ client.on("messageCreate", async (msg) => {
     }
   } else if (TRY_REACT_CHANNELS.some((x) => x === msg.channelId)) {
     1;
+    // React if mentioning translator role
+  } else if (msg.mentions.roles.has("1055961071313223810")) {
+    await msg.react(LANGUAGE_EMOJI);
   } else {
     return;
   }
@@ -236,9 +239,6 @@ client.on("messageCreate", async (msg) => {
         );
       }
     }
-    // React if mentioning translator role
-  } else if (msg.mentions.roles.has("1055961071313223810")) {
-    await msg.react(LANGUAGE_EMOJI);
   }
 });
 
