@@ -168,11 +168,11 @@ export class EmbedList {
 }
 
 export interface FaqConfig {
-  average_questions: boolean;
   faqs: {
     title: string;
     answer: string;
-    matched_questions: string[];
+    keywords: string[];
+    questions: string[];
   }[];
 }
 

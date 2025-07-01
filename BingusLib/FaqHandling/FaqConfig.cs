@@ -14,7 +14,10 @@ namespace BingusLib.FaqHandling
             [JsonPropertyName("answer")]
             public string Answer { get; set; } = "";
 
-            [JsonPropertyName("matched_questions")]
+            [JsonPropertyName("keywords")]
+            public string[] Keywords { get; set; } = [];
+
+            [JsonPropertyName("questions")]
             public string[] Questions { get; set; } = [];
 
             public FaqConfigEntry() { }
@@ -25,9 +28,14 @@ namespace BingusLib.FaqHandling
                 Answer = answer;
             }
 
-            public FaqConfigEntry(string answer, IEnumerable<string> questions)
+            public FaqConfigEntry(
+                string answer,
+                IEnumerable<string> keywords,
+                IEnumerable<string> questions
+            )
                 : this(answer)
             {
+                Keywords = keywords.ToArray();
                 Questions = questions.ToArray();
             }
         }
@@ -50,6 +58,11 @@ namespace BingusLib.FaqHandling
         {
             foreach (var entry in FaqEntries)
             {
+                foreach (var keyword in entry.Keywords)
+                {
+                    yield return (entry.Title, keyword, entry.Answer);
+                }
+
                 foreach (var question in entry.Questions)
                 {
                     yield return (entry.Title, question, entry.Answer);

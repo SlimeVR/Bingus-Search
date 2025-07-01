@@ -9,7 +9,7 @@ import { EmbedList, fetchBingus, fetchBingusData } from "../util.js";
 
 async function getFaqConfig() {
   return (await fetchBingusData()).faqs.flatMap((x) =>
-    x.matched_questions.filter((x) => x.length > 0 && x.length <= 100),
+    x.keywords.filter((x) => x.length > 0 && x.length <= 100),
   );
 }
 
