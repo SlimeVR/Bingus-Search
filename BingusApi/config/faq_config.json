@@ -3,65 +3,74 @@
     {
       "title": "Firmware upload fails",
       "answer": "If you are having issues trying to update (or \"flash\") your trackers, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#please-specify-upload_port-while-updating-firmware--trying-to-upload-firmware-fails.",
-      "matched_questions": [
+      "keywords": [
+        "Firmware upload fails",
         "Please specify upload_port while updating firmware",
         "Trying to upload firmware fails",
         "uploading using vscode fails",
-        "flashing my trackers fails",
-        "firmware upload fails"
-      ]
+        "flashing my trackers fails"
+      ],
+      "questions": []
     },
     {
       "title": "SlimeVR won't start",
       "answer": "If SlimeVR is not opening, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-slimevr-server-wont-start.",
-      "matched_questions": [
-        "The server won't start",
-        "The SlimeVR server won't start",
-        "slimevr isnt opening",
-        "slimevr doesn't start",
-        "the server doesn't open"
+      "keywords": [
+        "Slimevr doesn't start",
+        "Slimevr isnt opening",
+        "The server doesn't open",
+        "The server won't start"
+      ],
+      "questions": [
+        "The SlimeVR server won't start"
       ]
     },
     {
       "title": "Serial console outputs random characters",
       "answer": "If your tracker's serial output is only random symbols, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-wi-fi-settings-window-outputs-symbols-and-nothing-else.",
-      "matched_questions": [
+      "keywords": [
         "The WiFi Settings window outputs ERROR",
         "WiFi Settings window outputs symbols and nothing else",
-        "serial logs show only random stuff",
-        "serial console outputs random symbols and nothing more",
-        "why does my serial console just output random stuff",
-        "my tracker is outputting random symbols"
+        "Serial logs show only random stuff",
+        "Serial console outputs random symbols and nothing more",
+        "My tracker is outputting random symbols"
+      ],
+      "questions": [
+        "why does my serial console just output random stuff"
       ]
     },
     {
       "title": "Trackers keep flashing",
       "answer": "If you are concerned about your trackers' flashing lights, you can find more information at https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing.",
-      "matched_questions": [
-        "tracker keeps flashing",
-        "flashing doesn't stop",
-        "trackers keep blinking",
-        "blinking trackers",
+      "keywords": [
+        "Tracker keeps flashing",
+        "Flashing doesn't stop",
+        "Trackers keep blinking",
+        "Blinking trackers"
+      ],
+      "questions": [
         "why do my trackers keep on blinking"
       ]
     },
     {
       "title": "Trackers won't connect to Wi-Fi",
       "answer": "If your trackers aren't connecting to Wi-Fi, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server.",
-      "matched_questions": [
-        "tracker never connects to Wi-Fi",
-        "my tracker never connects to wifi",
-        "tracker is not appearing on the Server",
-        "tracker doesn't show up",
-        "tracker doesn't connect to the network",
-        "tracker won't connect to the internet",
-        "my trackers aren't connecting to my router",
-        "tracker isn't connecting to router",
-        "my d1 mini doesnt connect to wifi",
-        "my esp doesnt connect to the wifi",
+      "keywords": [
+        "WiFi credentials",
+        "WiFi error",
+        "Tracker doesn't show up",
+        "Tracker never connects to Wi-Fi",
+        "My tracker never connects to WiFi",
+        "Tracker is not appearing on the server",
+        "Tracker doesn't connect to the network",
+        "Tracker won't connect to the internet",
+        "My trackers aren't connecting to my router",
+        "Tracker isn't connecting to router",
+        "My D1 Mini doesn't connect to WiFi",
+        "My ESP doesn't connect to the WiFi"
+      ],
+      "questions": [
         "I uploaded firmware to the boards but it says wifi creds arent correct",
-        "wifi credentials",
-        "wifi error",
         "My friend has used her trackers before, more than once, she got a new hotspot but some of the trackers weren't connecting to the WiFi, they wouldn't work for her no matter what she did, one of them started working but then the other stopped",
         "I got my slimevr trackers, I'm on 2.4ghz wifi. I am on Ethernet cable due to virtual desktop, I plug in a tracker to get it connected to the wifi but it keeps saying unable to connect. I really wanted to get these to work but I can't figure out what's wrong.",
         "One of my friends recently got their slimes and they are able to connect 1 tracker to the server but after that it just says \"Can't find server\" on all their other slimes, and now none of their trackers will even connect to the WiFi."
@@ -70,60 +79,70 @@
     {
       "title": "Sensor was reset error",
       "answer": "If you are getting a \"Sensor was reset error\" on your tracker's serial logs, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#sensor-was-reset-error.",
-      "matched_questions": [
+      "keywords": [
         "Sensor was reset error"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Trackers connect to Wi-Fi but not SlimeVR",
       "answer": "If your trackers are connected to Wi-Fi but are not showing up in SlimeVR, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wi-fi-but-dont-turn-up-on-slimevr. Also make sure that your network is set to Private, you can follow [the guide from Microsoft for help](https://support.microsoft.com/windows/make-a-wi-fi-network-public-or-private-in-windows-0460117d-8d3e-a7ac-f003-7a0da607448d).",
-      "matched_questions": [
-        "trackers are connected to my wifi but don't turn up on the server",
-        "my trackers are on wifi but not on the gui",
-        "trackers are connected to the wifi but not slimevr",
-        "it connects to wifi but not slimevr",
-        "trackers are on my wifi but not slimevr server",
-        "looking for the server",
-        "could not find the server",
-        "can't find the server on my computer",
+      "keywords": [
+        "Looking for the server",
+        "Could not find the server",
         "Trackers wont connect to server",
         "Searching for the server on the local network...",
+        "It connects to wifi but not slimevr",
+        "Can't find the server on my computer",
+        "Trackers are on my wifi but not slimevr server",
+        "My trackers are on wifi but not on the gui",
+        "Trackers are connected to the wifi but not slimevr"
+      ],
+      "questions": [
+        "trackers are connected to my wifi but don't turn up on the server",
         "Having an issue with none of my trackers being able to connect to the SlimeVR server anymore. They were all working fine just yesterday, but today none of them seem to want to connect."
       ]
     },
     {
       "title": "SlimeVR not connected to SteamVR/Feeder App or trackers don't show up in SteamVR",
       "answer": "If SlimeVR reports that it can't connect to SteamVR or the Feeder App, or your trackers are connected to SlimeVR but don't show up on SteamVR, make sure that SlimeVR isn't being run as an administrator and that the \"slimevr\" driver is turned on in **SteamVR** under **Settings** > **Startup / Shutdown** > **Manage Add-Ons**. You can find additional help at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-turning-up-on-steam. Alternatively, you can use [VRChat OSC Trackers](https://docs.slimevr.dev/server/osc-information.html) to connect to VRChat specifically.",
-      "matched_questions": [
-        "trackers are connected to the server but aren't turning up on Steam",
-        "trackers aren't showing up in SteamVR",
-        "Tracker doesn't show up on SteamVR but it does on the server",
-        "my trackers are showing up in SlimeVR but don't work with SteamVR",
+      "keywords": [
+        "SteamVR wont connect",
         "SlimeVR not connected to SteamVR",
         "SlimeVR not connected to Feeder App",
-        "steamvr wont connect",
-        "the feeder app isn't connecting"
+        "The feeder app isn't connecting",
+        "Trackers aren't showing up in SteamVR"
+      ],
+      "questions": [
+        "trackers are connected to the server but aren't turning up on Steam",
+        "Tracker doesn't show up on SteamVR but it does on the server",
+        "my trackers are showing up in SlimeVR but don't work with SteamVR"
       ]
     },
     {
       "title": "Trackers are bound to the wrong body part in SteamVR",
       "answer": "If your trackers are bound to the wrong body part in SteamVR, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-trackers-are-bound-to-the-wrong-body-part-in-steamvr.",
-      "matched_questions": [
-        "trackers are bound to the wrong controllers in SteamVR",
-        "trackers are bound to the wrong body part in SteamVR",
-        "my controllers aren't working properly",
-        "my controllers don't work with slimevr running",
-        "controllers dont work",
-        "my controllers stopped working after setting up slimevr"
+      "keywords": [
+        "Trackers are bound to the wrong controllers in SteamVR",
+        "Trackers are bound to the wrong body part in SteamVR",
+        "My controllers aren't working properly",
+        "My controllers don't work with slimevr running",
+        "Controllers dont work"
+      ],
+      "questions": [
+        "my controllers stopped working after setting up slimevr",
+        "why don't my controllers work anymore now when I have SlimeVR open?"
       ]
     },
     {
       "title": "Trackers drift excessively",
       "answer": "If your trackers are drifting excessively, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#your-trackers-are-drifting-more-than-expected.",
-      "matched_questions": [
-        "trackers are drifting a lot",
-        "my trackers are drifting",
-        "excessive drift",
+      "keywords": [
+        "Trackers are drifting a lot",
+        "My trackers are drifting",
+        "Excessive drift"
+      ],
+      "questions": [
         "I need help, when I use my trackers every minute everything works great but after 3 minutes the drift starts, they start to move from their place, I just bought them",
         "My trackers have drift, every 2 minutes I have to restart them"
       ]
@@ -131,30 +150,34 @@
     {
       "title": "Inaccurate body proportions",
       "answer": "If your body proportions feel wrong or your feet feel like they're sliding excessively, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-feet-sink-into-the-floor--im-sliding-a-lot.",
-      "matched_questions": [
-        "feet sink into the floor",
-        "feet slide a lot",
-        "my feet are sliding a lot",
-        "my feet skate a lot"
-      ]
+      "keywords": [
+        "Feet sink into the floor",
+        "Feet slide a lot",
+        "My feet are sliding a lot",
+        "My feet skate a lot"
+      ],
+      "questions": []
     },
     {
       "title": "Trackers move in the wrong direction",
       "answer": "If your trackers are moving in the wrong direction (ex. leg moves the wrong way when kicking), it's likely your mounting orientation is set incorrectly. You can see ZRock35's video guide at https://youtu.be/SYqfQdVseF4 for help with session calibrations, or find other potential fixes at https://docs.slimevr.dev/common-issues.html#trackers-are-moving-in-the-wrong-direction-when-i-move.",
-      "matched_questions": [
+      "keywords": [
         "Trackers are moving in the wrong direction when I move",
-        "Trackers are rotating on SteamVR in the wrong direction when I move",
-        "knee is backward",
-        "when i kick my knee goes backward while my foot goes forward",
+        "Knee is backward",
         "Leg moves the wrong way",
-        "tracker moves the wrong way"
+        "Tracker moves the wrong way",
+        "Trackers move in the wrong direction",
+        "Bad mounting calibration"
+      ],
+      "questions": [
+        "Trackers are rotating on SteamVR in the wrong direction when I move",
+        "when i kick my knee goes backward while my foot goes forward"
       ]
     },
     {
       "title": "SlimeVR setup",
       "answer": "You can download the SlimeVR installer from https://slimevr.dev/download. For **official** SlimeVR trackers, you can follow the guide at https://docs.slimevr.dev/quick-setup.html. For any other trackers, see https://docs.slimevr.dev/server/initial-setup.html.",
-      "matched_questions": [
-        "Does setup take a long time and/or do you need to do it every time you play?",
+      "keywords": [
         "Does setup take a long time?",
         "do you need to configure it every time you play?",
         "how long does setup take",
@@ -167,18 +190,21 @@
         "how do I install it",
         "how do i install the server",
         "where do i install it",
-        "I need assistance in replacing the files in order to have it update, i tried uninstalling it and reinstalling the new download but it didnt work.",
         "how do I update the server",
-        "i tried to update the server and it didn't change the version, what do i do?",
-        "Downloading the app/softwear",
-        "Im having trouble finding the right download for slime",
+        "Downloading the app/software",
         "is it hard to set up?"
+      ],
+      "questions": [
+        "Does setup take a long time and/or do you need to do it every time you play?",
+        "I need assistance in replacing the files in order to have it update, i tried uninstalling it and reinstalling the new download but it didnt work.",
+        "i tried to update the server and it didn't change the version, what do i do?",
+        "Im having trouble finding the right download for slime"
       ]
     },
     {
       "title": "Shipping estimate",
       "answer": "You can check the [CrowdSupply page](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker#products) for the latest shipping estimate for new orders. For the latest information on shipping and production progress, you can check the [#shipping-progress](https://discord.com/channels/817184208525983775/1129107343058153623) and [#updates](https://discord.com/channels/817184208525983775/818062236492759050) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
-      "matched_questions": [
+      "keywords": [
         "When are they shipping?",
         "When does it ship?",
         "When are the trackers coming?",
@@ -192,15 +218,17 @@
         "when do I get my slimes",
         "how long does shipping take",
         "how long does it take to ship",
-        "I'm unsure weather I ordered with shipment 2 or 3 and was wondering if I could get some help knowing what shipment my order is with?",
         "when is my order shipping?",
         "how long will it take me to get my order?"
+      ],
+      "questions": [
+        "I'm unsure weather I ordered with shipment 2 or 3 and was wondering if I could get some help knowing what shipment my order is with?"
       ]
     },
     {
       "title": "How many trackers are needed",
       "answer": "Generally, you need at least 5 trackers for full body tracking. You can find a demonstration of 5 to 11 tracker setups in ZRock35's video at https://youtu.be/KN3dxGNAq34. It's not recommended to use less than 5 trackers, as you won't be able to bend your legs (commonly referred to as \"Minecraft\" legs). You can find a demonstration of 1 to 3 tracker setups in ZRock35's video at https://youtu.be/iKmrNKLacwk. For more information about how many trackers you need, see https://docs.slimevr.dev/slimevr101.html#how-many-trackers-do-you-need",
-      "matched_questions": [
+      "keywords": [
         "can I use 3 trackers for full body tracking",
         "can i use 3?",
         "i only have 3 phones",
@@ -214,12 +242,13 @@
         "how many trackers should I build",
         "how many trackers do i need to build",
         "what number of trackers should I buy"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Configuring body proportions",
       "answer": "You can find information for configuring body proportions at https://docs.slimevr.dev/server/body-config.html or in the [#calibration](https://discord.com/channels/817184208525983775/930205281609187418) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
-      "matched_questions": [
+      "keywords": [
         "how do I set up my body proportions?",
         "body proportions",
         "proportions",
@@ -230,12 +259,13 @@
         "how do i measure body proportions",
         "body calibration",
         "proportion calibration"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "How to build trackers",
       "answer": "You can find how to build DIY trackers at https://docs.slimevr.dev/diy/index.html or in the [#diy](https://discord.com/channels/817184208525983775/823930029070876736) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
-      "matched_questions": [
+      "keywords": [
         "how do I build trackers?",
         "how to build",
         "tutorial video",
@@ -245,14 +275,14 @@
         "how do i make slimevr trackers",
         "how do I make diy trackers?",
         "how can i make my own diy slimevr"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "How to get trackers",
       "answer": "You can find how to get trackers at https://docs.slimevr.dev/#how-do-i-get-my-hands-on-those-sweet-sweet-slimevr-trackers.",
-      "matched_questions": [
+      "keywords": [
         "how can I get trackers?",
-        "Is there anyway to purchase slimeVR right now? Other than D.I.Y",
         "where can i find trackers to buy",
         "how do i get them",
         "where do I get them",
@@ -262,12 +292,15 @@
         "where do i buy",
         "where can I buy trackers?",
         "where do i purchase trackes"
+      ],
+      "questions": [
+        "Is there anyway to purchase slimeVR right now? Other than D.I.Y"
       ]
     },
     {
       "title": "Where to get official SlimeVR trackers",
       "answer": "You can pre-order trackers from the CrowdSupply page at https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker.",
-      "matched_questions": [
+      "keywords": [
         "How do I get trackers from crowdsupply?",
         "whats the link for crowdsupply?",
         "where is crowdsupply",
@@ -275,12 +308,13 @@
         "where can i pre-order",
         "pre-order",
         "crowdsupply"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "How to change or cancel your CrowdSupply order",
       "answer": "You can find how to change or cancel your order with CrowdSupply at https://www.crowdsupply.com/contact/change-order. For the project name, put \"SlimeVR\".",
-      "matched_questions": [
+      "keywords": [
         "how do I change my order",
         "change order",
         "can I change my order",
@@ -301,12 +335,13 @@
         "change color",
         "change tracker color",
         "update order"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "SlimeVR documentation",
       "answer": "You can find the SlimeVR documentation at https://docs.slimevr.dev/. The documentation gives thorough information on what SlimeVR is, how to get it, how to use it, and more.",
-      "matched_questions": [
+      "keywords": [
         "the docs?",
         "where can I find the docs?",
         "documentation",
@@ -318,12 +353,13 @@
         "whats slimevr",
         "what does it do",
         "docs"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "SlimeVR on VRChat standalone",
       "answer": "SlimeVR can run on standalone Quest, Pico, and Android with support for VRChat's OSC tracker protocol, you can follow the [mobile installation guide](https://docs.slimevr.dev/tools/mobile-installation.html) to install SlimeVR on a mobile device. For usage over OSC, you can find information at https://docs.slimevr.dev/server/osc-information.html and in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
-      "matched_questions": [
+      "keywords": [
         "standalone",
         "can i use it with quest",
         "does slimevr work standalone",
@@ -342,34 +378,37 @@
         "how do I run the server on my phone?",
         "I wanna use the server on my headset",
         "iphone + connecting the trackers",
-        "can you use an iphone to set up the slime trackers or is it only android for now? also with the cable that connects each trackers to the wifi do you need a pc for that or can you do it on phone?",
         "quest 2",
         "quest 3",
-        "Uhm, does anyone know how to set up the slime vr with the quest 3?",
         "mobile installation",
         "how do I install slimevr on my mobile phone",
-        "Alright, I need help with setting this up on Android cause I'm struggling and can't seem to understand or find the correct links",
         "how do i use my phone",
         "phone",
         "android",
         "iphone"
+      ],
+      "questions": [
+        "can you use an iphone to set up the slime trackers or is it only android for now? also with the cable that connects each trackers to the wifi do you need a pc for that or can you do it on phone?",
+        "Uhm, does anyone know how to set up the slime vr with the quest 3?",
+        "Alright, I need help with setting this up on Android cause I'm struggling and can't seem to understand or find the correct links"
       ]
     },
     {
       "title": "SlimeVR with VRChat OSC trackers",
       "answer": "SlimeVR has support for VRChat's OSC tracker protocol, you can find more information at https://docs.slimevr.dev/server/osc-information.html or in the [#vrchat-osctrackers](https://discord.com/channels/817184208525983775/1045451713357819915) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
-      "matched_questions": [
+      "keywords": [
         "does it work with osc?",
         "can i use it for vrchat osc?",
         "can it connect to vrchat osc",
         "osc",
         "vrchat osc"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Headsets that work with SlimeVR",
       "answer": "SlimeVR should work with any headset that connects to SteamVR, so Link, AirLink, Virtual Desktop, and ALVR will all work.",
-      "matched_questions": [
+      "keywords": [
         "can I use virtual desktop",
         "can I use airlink?",
         "does alvr work?",
@@ -378,23 +417,25 @@
         "can i use alvr",
         "how do I use it with alvr",
         "how do i use it for wireless vr"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "SlimeVR Discord",
       "answer": "The SlimeVR Discord invite link is https://discord.gg/SlimeVR.",
-      "matched_questions": [
+      "keywords": [
         "how do I join the Discord?",
         "where's the discord",
         "can I get an invite",
         "how do I find the discord",
         "discord"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Setting up keybinds",
       "answer": "You can find instructions for setting up keybinds at https://docs.slimevr.dev/server/setting-reset-bindings.html.",
-      "matched_questions": [
+      "keywords": [
         "hey where is the Keybind directions",
         "how do i set up keybinds",
         "how to get keybind",
@@ -403,12 +444,13 @@
         "keybinds",
         "reset bindings",
         "how to setup reset bindings"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "WebView2 error",
       "answer": "If the SlimeVR GUI is crashing immediately and/or is showing an error relating to WebView2 (ex. \"panicked at ... WebView2Error\"), you can find potential fixes at https://docs.slimevr.dev/common-issues.html#webview2-is-missing--slimevr-gui-crashes-immediately--panicked-at--webview2error.",
-      "matched_questions": [
+      "keywords": [
         "gui wont launch",
         "i cant open the gui",
         "slimevr wont open",
@@ -422,12 +464,13 @@
         "panicked at",
         "panicked at error while running tauri application",
         "tauri"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "How to use elbow tracking",
       "answer": "You can find information about elbow tracking in the [#elbow-tracking](https://discord.com/channels/817184208525983775/951504607501221959) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
-      "matched_questions": [
+      "keywords": [
         "elbow",
         "elbows",
         "elbow tracking",
@@ -436,12 +479,13 @@
         "what do i need for elbows",
         "where do I put my elbow trackers",
         "whats the best placement for elbows"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Using phones with SlimeVR (owoTrack)",
       "answer": "You can find information about using phones with SlimeVR through owoTrack at https://docs.slimevr.dev/tools/owoTrack.html or in the [#owotrack](https://discord.com/channels/817184208525983775/882347715093233734) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
-      "matched_questions": [
+      "keywords": [
         "owo",
         "owotrack",
         "owotracker",
@@ -449,21 +493,23 @@
         "owotrackers for slimevr",
         "how do i use my iphone as a slimevr tracker",
         "how do use my android for tracking"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "SlimeVR on Linux",
       "answer": "You can find information about installing SlimeVR on Linux at https://docs.slimevr.dev/tools/linux-installation.html. For tech support with Linux, you can go to the [#linux-support](https://discord.com/channels/817184208525983775/1065785802031898655) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR)",
-      "matched_questions": [
+      "keywords": [
         "linux",
         "how do I use slimevr on linux",
         "how do I install slimevr on Linux"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Using joycons with SlimeVR",
       "answer": "You can find information about using joycons with SlimeVR at https://docs.slimevr.dev/tools/slimevr-wrangler.html or in the [#joycons](https://discord.com/channels/817184208525983775/932234894518677534) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
-      "matched_questions": [
+      "keywords": [
         "joycons",
         "how do I use joycons",
         "how do I use joycons for slimevr",
@@ -473,54 +519,61 @@
         "slimevr wrangler",
         "wrangler",
         "how to get wrangler",
-        "how use joycon",
+        "how use joycon"
+      ],
+      "questions": [
         "I followed all the instructions and downloaded the Ubuntu file. Is there any other way to run Wrangler on Linux?"
       ]
     },
     {
       "title": "Avatar floating above the ground in VR",
       "answer": "If your avatar appears to above the ground in VR, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-avatar-floats-above-the-ground.",
-      "matched_questions": [
+      "keywords": [
         "my avatar floats above the ground",
         "why am i floating in vr",
         "why is my avatar floating in vrchat"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Legs don't bend",
       "answer": "If your trackers are behaving as if your legs are not bending, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-legs-dont-bend.",
-      "matched_questions": [
+      "keywords": [
         "my legs don't bend",
         "why aren't my legs bending",
         "why cant i bend my legs",
         "why can't i lift my feet"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Legs crossing",
       "answer": "If your trackers are behaving as if your legs are crossing when you are sitting down (or in any similar motion), you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-legs-cross-when-sitting-down.",
-      "matched_questions": [
+      "keywords": [
         "my legs cross when sitting down",
         "why do my legs cross?",
         "why do my legs cross in vr",
         "how come my legs cross when I sit"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "One leg is higher than the other",
       "answer": "If one of your legs is higher than the other, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#one-of-my-leg-is-higher-than-the-other.",
-      "matched_questions": [
+      "keywords": [
         "one of my legs is higher than the other",
         "one leg is higher",
-        "how come it seems like one of my legs is higher than the other?",
         "why are my legs different",
         "why are my legs at different heights"
+      ],
+      "questions": [
+        "how come it seems like one of my legs is higher than the other?"
       ]
     },
     {
       "title": "What are extension trackers",
       "answer": "Extension trackers (aka. \"aux tracker\" or \"aux IMU\") are a single additional tracking point that is connected to a full tracker with a wire. By being connected to a full tracker, it can be smaller as it doesn't require its own microcontroller or battery. You can find more information about extension trackers at https://docs.slimevr.dev/slimevr101.html#what-is-an-extension.",
-      "matched_questions": [
+      "keywords": [
         "what is an aux tracker",
         "what is an aux imu",
         "what's an extension tracker?",
@@ -532,16 +585,18 @@
         "extension imu",
         "aux imu",
         "aux",
-        "what are extensions",
+        "what are extensions"
+      ],
+      "questions": [
         "What do the tracker extensions do? are they an additional imu?",
-        "Cannot figure out what additional pieces are for",
+        "I cannot figure out what additional pieces are for, I got them in the box but idk what to do with them",
         "I received my Core set today and have my 5 trackers, I also received an additional piece that I am unable to identify"
       ]
     },
     {
       "title": "Physical tracker mounting",
       "answer": "You can find information about where to mount/position your trackers on your body at https://docs.slimevr.dev/server/putting-on-trackers.html.",
-      "matched_questions": [
+      "keywords": [
         "how do I mount my trackers",
         "where do I put on my trackers",
         "where do I put my trackers",
@@ -550,12 +605,13 @@
         "where on my body do the trackers go?",
         "mounting",
         "tracker positions"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "IMU calibration",
       "answer": "You can find information about IMU calibration at https://docs.slimevr.dev/server/imu-calibration.html. You can also find a video guide by Adamant IT 2 at https://youtu.be/UmgGd9O-rn4.",
-      "matched_questions": [
+      "keywords": [
         "how do I calibrate my IMUs",
         "imu calibration",
         "tracker calibration",
@@ -568,14 +624,16 @@
         "mpu6500 calibration",
         "how do I calibrate a bmi 270",
         "Nonstop rotation even on flat surface",
-        "These were made for me a while ago, and worked great until my ankle extension started spinning nonstop.",
         "bmi calibration"
+      ],
+      "questions": [
+        "These were made for me a while ago, and worked great until my ankle extension started spinning nonstop."
       ]
     },
     {
       "title": "SlimeVR with ShadowPC",
       "answer": "You can find information about using SlimeVR with ShadowPC at https://docs.slimevr.dev/tools/shadowpc.html.",
-      "matched_questions": [
+      "keywords": [
         "shadowpc",
         "shadow",
         "remote pc",
@@ -585,49 +643,58 @@
         "i have a shadowpc, how do i connect slimevr?",
         "i have a shadowpc, how do i connect my trackers?",
         "shadowpc how to"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "SlimeVR GUI not connecting to the server",
       "answer": "If your SlimeVR GUI is never loading past \"Connecting to the server\", you can find potential fixes at https://docs.slimevr.dev/common-issues.html#slimevr-is-stuck-at-connecting-to-the-server.",
-      "matched_questions": [
+      "keywords": [
         "gui is stuck connecting to server",
         "gui is connecting forever",
         "the program just connects for ever",
         "slimevr doesnt connect to the server",
         "the server isn't connecting",
         "i can't get the program to connect to the server",
-        "why is my slimevr never loading past \"connecting to the server\"?",
         "Connecting to the server"
+      ],
+      "questions": [
+        "why is my slimevr never loading past \"connecting to the server\"?"
       ]
     },
     {
       "title": "Difference between with and without magnetometer",
       "answer": "You can find information about the difference between an IMU with a magnetometer (9 DOF) and an IMU without a magnetometer (6 DOF) at https://docs.slimevr.dev/diy/imu-comparison.html#whats-the-difference-between-an-imu-with-a-magnetometer-9-dof-and-an-imu-without-a-magnetometer-6-dof.",
-      "matched_questions": [
+      "keywords": [
         "magnetometer",
-        "what's the difference between using a magnetometer vs without?",
         "what does using a magnetometer do",
         "if I use a magnetomer, will I have less drift?",
-        "whats a magnetometer"
+        "whats a magnetometer",
+        "magnetometer vs without",
+        "magnetometer difference"
+      ],
+      "questions": [
+        "what's the difference between using a magnetometer vs without?"
       ]
     },
     {
       "title": "CrowdSupply shipping FAQ",
       "answer": "You can find detailed information about shipping from CrowdSupply at https://www.crowdsupply.com/shipping.",
-      "matched_questions": [
+      "keywords": [
         "shipping faq",
         "i want to know more about shipping",
         "how does crowdsupply ship",
         "where do the trackers ship from?",
         "crowdsupply shipping",
-        "do they have international shipping?"
-      ]
+        "do they have international shipping?",
+        "international shipping"
+      ],
+      "questions": []
     },
     {
       "title": "CrowdSupply restricted countries for shipping",
       "answer": "You can find which countries are restricted from shipping to from CrowdSupply at https://www.crowdsupply.com/guide/fulfillment-and-logistics#restricted-countries.",
-      "matched_questions": [
+      "keywords": [
         "where can crowdsupply ship?",
         "where do they ship to",
         "how do I know if they can ship to my country",
@@ -635,27 +702,29 @@
         "what countries do they ship to",
         "what countries do they not ship to",
         "what countries are restricted"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "CrowdSupply returns and cancellations FAQ",
       "answer": "You can find information about returning or cancelling orders from CrowdSupply at https://www.crowdsupply.com/returns.",
-      "matched_questions": [
+      "keywords": [
         "i got shipped the wrong order",
         "my package was lost",
-        "what do I do if the package gets lost during shipping?",
         "how do I rma my trackers?",
         "how do I return my trackers?",
         "can I return my trackers"
+      ],
+      "questions": [
+        "what do I do if the package gets lost during shipping?"
       ]
     },
     {
       "title": "Config and log locations",
       "answer": "The app data for SlimeVR is located at \"**%AppData%\\dev.slimevr.SlimeVR**\". The main config file is \"**vrconfig.yml**\". The logs are stored in the \"**logs**\" folder, where \"**slimevr-server_X.log**\" are server logs and \"**slimevr_rX.log**\" are GUI logs.",
-      "matched_questions": [
+      "keywords": [
         "where are the configs stored?",
         "how do I find the logs for SlimeVR",
-        "whats the new location for config and logs now?",
         "where did the configs go",
         "where is the app data stored",
         "where can I find the files",
@@ -663,40 +732,45 @@
         "config location",
         "logs",
         "config"
+      ],
+      "questions": [
+        "whats the new location for config and logs now?"
       ]
     },
     {
       "title": "Official Trackers - Broken Tracker(s)",
       "answer": "Symptoms of hardware issues that may occur with **official** trackers include solid blue light (not blinking), suddenly stopping working, overheating, and battery issues. If your tracker is getting very hot when plugged in or turned on, **do not** charge the tracker or turn it on anymore, as it is a potential fire hazard. To get a warranty replacement, fill out the form at https://slimevr.dev/support.",
-      "matched_questions": [
+      "keywords": [
         "solid blue light",
         "tracker stopped working",
         "tracker stopped connecting",
         "blod",
+        "Tracker is heating up",
+        "tracker gets very hot suddenly",
+        "Blue light of death has happened",
+        "Mandatory sensor 1 not found at address 0x4A",
+        "my tracker is EXPLODE",
+        "solid blue light help"
+      ],
+      "questions": [
         "One of my trackers was left on for a long time and died, and the switch stayed on until I noticed it. When I charged it for use, the light never went green, I flipped the switch and the blue light never came back on. I tried to connect it to my computer again and it never went past: \"Giving Wifi Credentials\".",
         "The tracker died after being left on too long. It did not charge or turn on again. They tried to re-sync it with the software, but it failed.",
         "so i've had my trackers for a bit and now out of the blue it's not detecting the tracker at all, when i go into the serial console it's not even picking up there i don't know how to fix this or even what the full issue is",
         "My trackers were working fine for a while but suddenly they stopped being detected at all. Even the serial console does not recognize them. I am not sure what the problem is or how to solve it.",
-        "Tracker is heating up",
-        "tracker gets very hot suddenly",
         "as stated in the title i now have a 2nd dead trracker after just a few months :3 image is what i get in the console thanks...",
         "I have a BN0085 chip that's over heating immediately after switching power on, it's too hot to touch! (I disassembled the tracker to unplug the battery which btw was very loose as if its not soldered on correctly)",
         "All im getting is a blue light, no blinking. i have attempted to reconnect it to the wifi and that has not worked.",
-        "Blue light of death has happened",
         "I have had the unfortunate blue light of death on another tracker. How do I go about starting a warranty and possibly ship back this board for testing and investigation.",
         "Three of my trackers stopped working after using them for only a few months, they turn on but the blue light does not blink and they won't connect anymore.",
         "why does my tracker not connect to internet and stays bright blue",
-        "solid blue light help",
         "i got a solid blue light now it wont connect",
-        "Mandatory sensor 1 not found at address 0x4A",
-        "my tracker is EXPLODE",
         "my tracker blew up when I was trying to use it wtf"
       ]
     },
     {
       "title": "Official Trackers - Broken/Missing Extension Cable(s)",
       "answer": "To get warranty replacement cables for your **official** tracker set, fill out the form at https://slimevr.dev/support. Alternatively, extension cables are available on the [SlimeVR Shop](https://shop.slimevr.dev/) (You will be helping SlimeVR pay for shipping costs).",
-      "matched_questions": [
+      "keywords": [
         "extension cable issue",
         "extension cable broke",
         "extension cable snap",
@@ -714,17 +788,20 @@
         "cable is broken",
         "warranty on cables",
         "what do I do if the cable for my extensions broke?"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Mixing SteamVR trackers (Vive, Tundra, etc) with SlimeVR",
       "answer": "You can find information about mixing SteamVR trackers (Vive, Tundra, etc) with SlimeVR at https://docs.slimevr.dev/tools/steamvr-trackers-mixing.html.",
-      "matched_questions": [
+      "keywords": [
         "can i use vives?",
         "how do i use vives with SlimeVR?",
         "what if I already have vive trackers",
         "what if I already have tundra trackers",
-        "can I mix my existing trackers with SlimeVR?",
+        "can I mix my existing trackers with SlimeVR?"
+      ],
+      "questions": [
         "is there a possible future plan where slimes can work in sync with other trackers (like vive, tundra) to enhance fbt?",
         "If I got a 3 pack of Tundra (just as an example), could I still use slimeVR for untracked areas of my body (knees, chest, etc)?",
         "how can i use slime tracker for the elbows only, when i try to connect vive and slime trackers being the slime for elbows"
@@ -733,43 +810,49 @@
     {
       "title": "Official Trackers - Broken Tracker Case",
       "answer": "To get a warranty replacement main or aux/extension case for your **official** tracker set, fill out the form at https://slimevr.dev/support. Alternatively, main tracker cases are available on the [SlimeVR Shop](https://shop.slimevr.dev/products/copy-of-slimevr-main-case-pc-plastic) (You will be helping SlimeVR pay for shipping costs).",
-      "matched_questions": [
+      "keywords": [
         "how can I get a replacement tracker case?",
         "case broke",
         "strap loop broke",
         "strap loop snapped",
         "replacement case",
-        "first tracker case to break, had a feeling these would give out sooner or later.",
-        "i was using my trackers and part of the case broke off",
-        "After a few months using these trackers, the quality of its handle are starting to show signs of cracks. And now, one tracker's handle has officially broke. (Being the left thigh) There is no other way to keep it still with super glue, 'cause it ends up popping off upon tightening the strap. Any other way to solve this issue than (for my last option) asking for a replacement?",
-        "one tracker's handle has officially broke. There is no other way to keep it still with super glue, because it ends up popping off upon tightening the strap.",
         "Strap Handle broke.",
         "case warranty",
-        "how do I get a warranty replacement for my case?",
-        "Strap holder on the case broke and I don't know how to go about it",
         "strap holder broke",
         "Case is broken",
         "warranty on case",
         "can I fix my tracker case?",
-        "my chest tracker loop has snapped and the other is on deaths door.",
         "tracker arm has snapped",
         "tracker arm is breaking",
         "tracker arm is broken",
         "tracker loop snapped",
         "the screws on the extension tracker are loose",
         "I'm missing a screw on my extension tracker case",
-        "Tracker snapped",
-        "Was putting on my tracker the other day when the loop for the strap snapped off. I've tried to use a hot glue gun and stick it back on but it keeps coming off. Should I ask for warranty or something?"
+        "Tracker snapped"
+      ],
+      "questions": [
+        "first tracker case to break, had a feeling these would give out sooner or later.",
+        "i was using my trackers and part of the case broke off",
+        "After a few months using these trackers, the quality of its handle are starting to show signs of cracks. And now, one tracker's handle has officially broke. (Being the left thigh) There is no other way to keep it still with super glue, 'cause it ends up popping off upon tightening the strap. Any other way to solve this issue than (for my last option) asking for a replacement?",
+        "one tracker's handle has officially broke. There is no other way to keep it still with super glue, because it ends up popping off upon tightening the strap.",
+        "how do I get a warranty replacement for my case?",
+        "Strap holder on the case broke and I don't know how to go about it",
+        "my chest tracker loop has snapped and the other is on deaths door.",
+        "Was putting on my tracker the other day when the loop for the strap snapped off. I've tried to use a hot glue gun and stick it back on but it keeps coming off. Should I ask for warranty or something?",
+        "For some reason one of the screws is missing on my tracker case, what do I do about that? I have no idea where it could've gone or like how this happened"
       ]
     },
     {
       "title": "Trackers don't connect to serial",
       "answer": "If you're having issues connecting your trackers through serial (USB), you can find potential fixes at https://docs.slimevr.dev/common-issues.html#no-serial-device-appears--looking-for-trackers--connection-to-serial-lost-reconnecting.",
-      "matched_questions": [
+      "keywords": [
         "stuck at \"Looking for trackers\"",
         "serial won't connect",
         "my tracker won't show up on the serial console",
         "serial console stuck at \"Connection to serial lost, Reconnecting...\"",
+        "Connection to serial lost, Reconnecting..."
+      ],
+      "questions": [
         "When they are turned on they flash 3 times (looking for wifi). When I plug them in they light up red but SlimeVR says \"Looking for trackers\". The serial console just says \"Connection to serial lost, Reconnecting...\". This doesnt change when I plug the tracker in. I use Wemos D1 mini.",
         "I'm trying to connect my trackers but they only get detected by my pc and not the slimevr app",
         "Hello, I'm trying to use the console to do the imu calibrations But console is stuck at \"Connection to serial lost, Reconnecting...\" any ideas what causes this?"
@@ -778,30 +861,31 @@
     {
       "title": "Flashing/updating tracker firmware",
       "answer": "To update the firmware on official trackers, you can follow the guide at https://docs.slimevr.dev/updating-firmware.html. To flash firmware onto DIY trackers, you can follow the guide at https://docs.slimevr.dev/firmware/index.html.",
-      "matched_questions": [
+      "keywords": [
         "flash firmware",
         "upload firmware",
         "firmware tool",
         "how do I flash my trackers?",
         "How do I upload firmware to my trackers?",
-        "I just built trackers and i cant find the firmware tool, where is it?",
-        "I need help putting the firmware on my trackers please",
         "Updating tracker firmware",
         "update firmware",
         "how do I update my trackers?",
-        "I have official trackers and I'm not sure how to update them",
-        "I bought my trackers awhile ago and i was to that they may need to be updated",
         "firmware update",
+        "firmware guide"
+      ],
+      "questions": [
         "I was in the first batch of slimes to be shipped and my trackers have old firmware, how do I update them so I have the latest?",
         "I tried updating the firmware on my trackers but every time I do it, it says it failed to connect to the ESP",
-        "firmware guide"
+        "I have official trackers and I'm not sure how to update them",
+        "I bought my trackers awhile ago and i was to that they may need to be updated",
+        "I just built trackers and i cant find the firmware tool, where is it?",
+        "I need help putting the firmware on my trackers please"
       ]
     },
     {
       "title": "IMU comparison",
       "answer": "You can find information about the comparison between and quality of different IMUs at https://docs.slimevr.dev/diy/imu-comparison.html.",
-      "matched_questions": [
-        "I've read through the recommendations when it comes to IMU's and even though The BMO's are better, the BMI's are recommended for their cost. Now I was wondering how big the difference actually is.",
+      "keywords": [
         "IMU comparison",
         "what's the difference in IMU?",
         "should I get BMIs or BNOs?",
@@ -813,23 +897,23 @@
         "how long do BNOs take before drifting?",
         "do BMIs drift quickly?",
         "imu compare"
+      ],
+      "questions": [
+        "I've read through the recommendations when it comes to IMU's and even though The BMO's are better, the BMI's are recommended for their cost. Now I was wondering how big the difference actually is."
       ]
     },
     {
       "title": "Enabling/disabling trackers in SteamVR and VRChat OSC",
       "answer": "You can find how to change which trackers appear in SteamVR and VRChat OSC at https://docs.slimevr.dev/quick-setup.html#spawning-trackers.",
-      "matched_questions": [
+      "keywords": [
         "how do I change which trackers show up in steamvr?",
         "how do I change which trackers show up in vrchat?",
         "how do I change which trackers show up in vrchat with osc?",
-        "for some reason only my hip and feet trackers show up in steamvr",
         "how do I make my chest show up in steamvr",
         "how do I make my elbows show up in vrchat",
-        "how do I make my chest show up in vr? it shows as connected in SlimeVR",
         "how to enable/disable trackers in steamvr and vrchat osc",
         "enabling trackers",
         "disabling trackers",
-        "it automatically detects my Quest (2) Touch controllers as SlimeVR trackers, completely disabiling my ability to use them in any Steam application; I cannot use them in SteamVR or VRChat. Is there a way to disable SlimeVR from detecting them as trackers, and if so, how? Elsewise, is there a way to disable or cope with this?",
         "Enable and disable SteamVR trackers",
         "Enable and disable OSC trackers",
         "Toggle SteamVR trackers",
@@ -839,20 +923,27 @@
         "Enable OSC trackers",
         "Disable SteamVR trackers",
         "SteamVR trackers"
+      ],
+      "questions": [
+        "it automatically detects my Quest (2) Touch controllers as SlimeVR trackers, completely disabiling my ability to use them in any Steam application; I cannot use them in SteamVR or VRChat. Is there a way to disable SlimeVR from detecting them as trackers, and if so, how? Elsewise, is there a way to disable or cope with this?",
+        "how do I make my chest show up in vr? it shows as connected in SlimeVR",
+        "for some reason only my hip and feet trackers show up in steamvr"
       ]
     },
     {
       "title": "Debugging tracker errors",
       "answer": "To debug a tracker error, you'll need to get the serial logs. To get the serial logs: Open the **Settings** tab of the GUI, open the **Serial console** under the **Utilities** section, **plug the tracker in via USB**, turn the tracker **on**, press the **Reboot** button, and you should see output show up. If you don't see the output, you can also try pressing the reset button on your tracker if available. If this is in regards to a support issue, please show the console output to provide further information.",
-      "matched_questions": [
+      "keywords": [
         "my tracker is connected but it says error",
         "why is my tracker errored?",
         "how do I fix my tracker showing an error?",
         "how do I see the logs for my tracker",
         "how do I debug my tracker having an error",
-        "The 8th and final one, connects fine, but displays a red error. Is there a debug log or something I can read to get a clue as to why it displays an error?",
         "debug tracker error",
-        "tracker error",
+        "tracker error"
+      ],
+      "questions": [
+        "The 8th and final one, connects fine, but displays a red error. Is there a debug log or something I can read to get a clue as to why it displays an error?",
         "I tried, but set settings same as for WeMos D1 mini. It shows error Does slime VR has support for this?",
         "I connected extentions and now 3 trackers have an error",
         "Anybody have any idea on why my tracker just says \"error\"? There was no other info and I tried to factory reset and reboot the tracker, but the error message was still there; It was my left thigh so no wires were attached to it"
@@ -861,21 +952,23 @@
     {
       "title": "Why did CrowdSupply push back my order?",
       "answer": "CrowdSupply provides an estimate for when your order will ship, this estimate may change to more accurately reflect the current conditions. The CrowdSupply dates aren't updated frequently and usually the SlimeVR Discord will have information earlier through updates. For the latest information on shipping and production progress, you can check the [#shipping-progress](https://discord.com/channels/817184208525983775/1129107343058153623) and [#updates](https://discord.com/channels/817184208525983775/818062236492759050) channels on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
-      "matched_questions": [
+      "keywords": [
         "Why did CrowdSupply push back my order?",
-        "how come the date on crowdsupply doesn't match what the discord says",
         "why was my order delayed?",
         "has there been a new delay for the trackers?",
         "my order was pushed a month back",
         "how accurate is the crowdsupply date?",
         "crowdsupply delay",
         "CrowdSupply pushed back my order"
+      ],
+      "questions": [
+        "how come the date on crowdsupply doesn't match what the discord says"
       ]
     },
     {
       "title": "Official Trackers - Broken/Missing Extension Tracker(s)",
       "answer": "If you can't find your extension trackers in the box, check the section with the straps as it could be hidden underneath. To get warranty replacement extension trackers for your **official** tracker set, fill out the form at https://slimevr.dev/support. If these are DIY trackers, you can find information at https://docs.slimevr.dev/common-issues.html#my-aux-tracker-isnt-working.",
-      "matched_questions": [
+      "keywords": [
         "aux tracker isn't working",
         "extension isn't working",
         "my extension is broken",
@@ -883,10 +976,12 @@
         "extension trackers are missing",
         "i can't find the extension trackers in the box",
         "Missing 3 Extension",
-        "I was opening my trackers and have found that im missing the 3 extenders for my enhanced core set",
         "estension warranty",
         "extension warranty",
-        "warranty on extensions",
+        "warranty on extensions"
+      ],
+      "questions": [
+        "I was opening my trackers and have found that im missing the 3 extenders for my enhanced core set",
         "I checked every strap if ever they are attached to it and the whole box. I am only left with the extension cables. Not extensions at all, not even one.",
         "After 15 months, I finally got my Deluxe Tracker set. But the Extensions are nowhere to be seen."
       ]
@@ -894,9 +989,8 @@
     {
       "title": "Official Trackers - Broken/Missing Straps",
       "answer": "To get warranty replacement straps for your **official** tracker set, fill out the form at https://slimevr.dev/support. Alternatively, tracker straps are available on the [SlimeVR Shop](https://shop.slimevr.dev/products/official-slimevr-straps-v2) (You will be helping SlimeVR pay for shipping costs).",
-      "matched_questions": [
+      "keywords": [
         "Torn Velcro strap",
-        "After some use the strap has become torn where the hooks and the fibre meet. Is this covered under warranty and am I able to get a replacement?",
         "straps are broken",
         "my straps are torn from the velcro",
         "the velcro straps are falling apart",
@@ -905,34 +999,40 @@
         "I need a replacement for my straps",
         "my straps are starting to break apart",
         "the seams on my straps are breaking"
+      ],
+      "questions": [
+        "After some use the strap has become torn where the hooks and the fibre meet. Is this covered under warranty and am I able to get a replacement?"
       ]
     },
     {
       "title": "SlimeVR GUI repeatedly timing out",
       "answer": "If your SlimeVR GUI is repeatedly timing out from the SlimeVR server (check the logs), you may be able to fix this by running the following command in an administrator console: `netsh int tcp set supplemental internet congestionprovider=default`",
-      "matched_questions": [
+      "keywords": [
         "slimevr gui timing out",
         "Connection lost to the server. Trying to reconnect...",
         "slimevr gui is always reconnecting",
         "SlimeVR GUI repeatedly timing out"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Official Trackers - Charging your trackers",
       "answer": "When charging your trackers, a red light will indicate that the battery is charging, a green light will indicate when the tracker is fully charged. It should take approximately 2.5 hours to fully charge from 0% to 100%. The battery percentage reported while the tracker is charging is not accurate and will always report 100%, you should rely on the red and green indicator lights instead.",
-      "matched_questions": [
+      "keywords": [
         "how do i know if my trackers are done charging?",
         "charging",
         "Charging the trackers",
-        "Will the trackers let me know if they're fully charged? I don't want to do anything that'll overcharge them or wither their battery life. I could also use any kind of indication so I can move onto charging the next tracker.",
-        "A question regarding charging the official trackers",
+        "charging the official trackers",
         "Charging Slimes",
-        "lil question, how to you know if your slimes are changed all the way? Will the red light go green or do I have to turn them on and see through the app?",
         "how long does it take to charge my trackers",
         "how fast do they charge?",
         "when do I know they're done charging",
         "battery",
-        "battery status",
+        "battery status"
+      ],
+      "questions": [
+        "Will the trackers let me know if they're fully charged? I don't want to do anything that'll overcharge them or wither their battery life. I could also use any kind of indication so I can move onto charging the next tracker.",
+        "lil question, how to you know if your slimes are changed all the way? Will the red light go green or do I have to turn them on and see through the app?",
         "how do I check the battrery status of my trackers",
         "was looking for documentation on the battery status and I can't find it"
       ]
@@ -940,117 +1040,140 @@
     {
       "title": "Trackers only turn on when plugged in",
       "answer": "If your trackers are only turning on when plugged in or turning off quickly after unplugging, the trackers may be out of battery and need to charge. Try letting the tracker charge for at least 10 minutes or until the charging light is green (note that while plugged in, the tracker will always report 100% battery). If the tracker still doesn't work while unplugged, there may be an issue with the battery.",
-      "matched_questions": [
+      "keywords": [
         "tracker only works when plugged in",
         "tracker turns off after unplugging",
         "my tracker only works when it is charging",
+        "Faulty tracker, disconnects after a minute",
+        "tracker disconnects after a minute",
+        "Only connected when plugged in to computer"
+      ],
+      "questions": [
         "I just received my trackers and they disconnect the moment i unplug them",
         "my trackers turn off a few seconds after turning them on",
         "I have one faulty tracker that keeps disconnecting after about a minute. I need to reconnect it with the usb cable for it to be detected again but then the same happens when I unplug it.",
-        "Faulty tracker, disconnects after a minute",
         "Hello, I just got my trackers today and one of them keeps flashing blue rapidly after connecting it via USB during setup and then will disconnect a minute or so later. I haven't been able to even get through setup without it disconnecting.",
-        "Also worth noting it won't display the battery percentage unlike the other ones so maybe I received an uncharged one or something?",
-        "tracker disconnects after a minute",
-        "Only connected when plugged in to computer"
+        "Also worth noting it won't display the battery percentage unlike the other ones so maybe I received an uncharged one or something?"
       ]
     },
     {
       "title": "Official Trackers - Support Form",
       "answer": "The support form for **official** tracker sets is available at https://slimevr.dev/support.",
-      "matched_questions": [
+      "keywords": [
         "support form",
         "link for the support form",
         "warranty form",
         "link to the warranty support form",
-        "Anyone know the link to the warranty replacement for slimes?",
         "warranty link",
         "support link",
-        "how do I get a warranty replacement for my tracker?",
         "tracker warranty",
-        "if my trackers show up faulty, should I return them?",
-        "what do I do if I get it and it's broken?",
         "what if my trackers are damaged",
         "my trackers are defective",
         "warranty on tracker"
+      ],
+      "questions": [
+        "Anyone know the link to the warranty replacement for slimes?",
+        "how do I get a warranty replacement for my tracker?",
+        "if my trackers show up faulty, should I return them?",
+        "what do I do if I get it and it's broken?"
       ]
     },
     {
       "title": "Resetting body proportions",
       "answer": "You can reset your body proportions by going to the \"Body Proportions\" tab, click on the \"Manual proportions\" option, then while in VR with your headset on and standing up straight, click the \"Reset all proportions\" button in the bottom right corner. If your height is still wrong, then you may need to correct the floor level on your headset. If you do not have a headset connected, this will only reset to the SlimeVR default without scaling to your height.",
-      "matched_questions": [
+      "keywords": [
         "reset body proportions",
         "how do I reset my proportions?",
-        "My proportions are messed up, how do I fix it?",
         "Resetting proportions",
         "How to reset my body proportions",
-        "Reset body proportions in SlimeVR",
+        "Reset body proportions in SlimeVR"
+      ],
+      "questions": [
+        "My proportions are messed up, how do I fix it?",
         "i messed up my body proportions, how do i reset it?"
       ]
     },
     {
       "title": "Session calibrations guide",
       "answer": "Performing session calibrations (full reset, yaw reset, mounting reset, etc) correctly is essential to having accurate tracking. For a guide to performing session calibrations, see ZRock35's video at https://youtu.be/SYqfQdVseF4.",
-      "matched_questions": [
+      "keywords": [
         "calibration guide",
         "session calibration guide",
         "session calibration",
         "performing session calibration",
         "how to do a full reset?",
-        "what pose do I need to do for a yaw reset?",
         "how do I do a mounting reset?",
         "what pose is for mounting",
         "what pose for full reset?",
         "what's a mounting reset",
         "how do I fix mermaiding?",
-        "what are session calibrations?",
         "zrock video guide",
-        "video calibration guide",
-        "where's zrock's video calibration guide?"
+        "video calibration guide"
+      ],
+      "questions": [
+        "where's zrock's video calibration guide?",
+        "what pose do I need to do for a yaw reset?",
+        "what are session calibrations?"
       ]
     },
     {
       "title": "Scanning for WiFi using a tracker",
       "answer": "To perform a WiFi scan on a tracker, you'll need to use the serial console: Open the **Settings** tab of the GUI, open the **Serial console** under the **Utilities** section, **plug the tracker in via USB**, turn the tracker **on**, press the **Reboot** button, and you should see output show up. If you don't see the output, you can also try pressing the reset button on your tracker if available. Once you see output in the serial console, you can press the **Get WiFi Scan** button to perform the WiFi scan. If this is in regards to a support issue, please show the console output to provide further information.",
-      "matched_questions": [
+      "keywords": [
         "perform a wifi scan on my tracker",
         "get wifi scan",
         "wifi scan",
         "how do I scan for wifi?"
-      ]
+      ],
+      "questions": []
     },
     {
       "title": "Automatic body proportions error",
       "answer": "If you're getting an error while attempting automatic body proportions (AutoBone), it is likely that your **mounting orientation** is set incorrectly. Make sure that that your tracking is working as expected before fine-tuning body proportions, body proportions only affect how much your trackers move, not the direction. If your body proportions are incorrect, you may reset your body proportions using the manual proportions tab until you correct the underlying tracking issue.",
-      "matched_questions": [
+      "keywords": [
         "automatic body proportions error",
         "autobone error",
-        "I keep getting an error while trying to use automatic body proportions, what am I doing wrong?",
-        "is autobone broken? i get an error every time I use it",
         "why do I get an error when doing body proportions?"
+      ],
+      "questions": [
+        "I keep getting an error while trying to use automatic body proportions, what am I doing wrong?",
+        "is autobone broken? i get an error every time I use it"
       ]
     },
     {
       "title": "Official Trackers - USB Firmware Recovery",
       "answer": "If you have tried to update the firmware on your **official** trackers and they are no longer turning on, usually having the blue light only turn on for a quick moment before turning off and not blinking, you may need to recover the firmware over USB. You can find a guide to recovering firmware over USB at https://docs.slimevr.dev/updating-firmware.html#usb-recovery. In the case that you are unable to open the tracker or recovery did not work, you may need to contact SlimeVR support for further help by filling out the form at https://slimevr.dev/support.",
-      "matched_questions": [
-        "tracker no longer turns on after updating firmware",
+      "keywords": [
+        "usb firmware recovery",
+        "flash over usb",
+        "firmware recovery"
+      ],
+      "questions": [
+        "so my tracker no longer turns on after updating firmware, did I brick it? I tried restarting the server and it still doesn't show up when I plug it in",
         "my tracker flashes blue and then stays dark after I turn it on",
-        "I tried updating the firmware on my tracker, but now it won't turn on",
+        "I tried updating the firmware on my tracker, but now it won't turn on anymore",
         "the tracker update failed and it bricked my tracker, what do I do?"
       ]
     },
     {
       "title": "HaritoraX trackers",
       "answer": "We do not guarantee help for Shiftall's HaritoraX trackers used with SlimeVR. For issues or guides for the trackers themselves or middleware software (e.g. SlimeTora), please go to their respective support servers/wikis (e.g. https://docs.slimevr.dev/tools/slimetora.html).",
-      "matched_questions": [
+      "keywords": [
         "can I use HaritoraX with SlimeVR?",
         "i have an issue with haritorax trackers",
         "i need help with my haritorax trackers",
-        "how do i set up my haritorax trackers with slimetora?",
         "i am using haritorax with slimetora",
         "how do i set up my haritorax trackers with slimevr?",
         "how do i use haritorax on standalone?",
-        "how do i use slimetora on standalone?"
+        "how do i use slimetora on standalone?",
+        "HaritoraX",
+        "SlimeTora"
+      ],
+      "questions": [
+        "Do HaritoraX trackers work with SlimeVR? I just got my trackers and I really want to use them with SlimeVR but idk how",
+        "How do I install SlimeTora?",
+        "Where can I find the instructions for using Haritora trackers? I looked on Google and couldn't really find much about it, so I figured I'd ask here",
+        "how do i set up my haritorax trackers with slimetora?"
       ]
     }
   ]

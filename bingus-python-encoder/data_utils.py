@@ -69,7 +69,8 @@ def random_typo(str_err: StrErrer, random: Random) -> StrErrer:
 class FaqEntry(BaseModel):
     title: str | None
     answer: str
-    matched_questions: list[str]
+    keywords: list[str]
+    questions: list[str]
 
 
 class FaqConfig(BaseModel):
@@ -102,21 +103,21 @@ class FaqConfig(BaseModel):
 
     def iterate_questions(self):
         for faq in self.faqs:
-            for question in faq.matched_questions:
+            for question in faq.questions:
                 yield question
 
     def question_count(self):
-        return sum((len(faq.matched_questions) for faq in self.faqs))
+        return sum((len(faq.questions) for faq in self.faqs))
 
     def filter_short_questions(self, min_words: int):
         """
         Filters out questions shorter than min_words and removes empty entries.
         """
         for faq in self.faqs:
-            faq.matched_questions = [
-                q for q in faq.matched_questions if len(q.split()) >= min_words]
+            faq.questions = [
+                q for q in faq.questions if len(q.split()) >= min_words]
         self.faqs = [faq for faq in self.faqs if len(
-            faq.matched_questions) > 0]
+            faq.questions) > 0]
 
     def make_typos(
             self,
@@ -149,7 +150,7 @@ class FaqConfig(BaseModel):
         for faq in self.faqs:
             new_qs: list[str] = []
 
-            for question in faq.matched_questions:
+            for question in faq.questions:
                 q_min_typos = min_typos
                 q_max_typos = max_typos
                 if scale_max_per_word:
@@ -168,7 +169,7 @@ class FaqConfig(BaseModel):
                     new_qs.append(typo_q.result)
                     typo_count += num_typos
 
-            faq.matched_questions.extend(new_qs)
+            faq.questions.extend(new_qs)
             typo_entry_count += len(new_qs)
 
         return typo_entry_count, typo_count
@@ -178,7 +179,7 @@ class FaqConfig(BaseModel):
         Makes question-to-question pairs from the FAQs, where each question is paired with all
         other questions in its set (positive samples) and from other sets (negative sample).
         """
-        return make_entry_pairs([faq.matched_questions for faq in self.faqs])
+        return make_entry_pairs([faq.questions for faq in self.faqs])
 
     def make_question_answer_pairs(self) -> Dataset:
         """
@@ -188,7 +189,7 @@ class FaqConfig(BaseModel):
         questions, answers, scores = [], [], []
 
         for faq in self.faqs:
-            for question in faq.matched_questions:
+            for question in faq.questions:
                 # Positive sample (correct answer)
                 questions.append(question)
                 answers.append(faq.answer)
@@ -212,7 +213,7 @@ class FaqConfig(BaseModel):
         Makes pairs of titles, answers, and questions from the FAQs, where each set is paired with its correct
         answer (positive sample) and other incorrect answers (negative samples).
         """
-        return make_entry_pairs([[faq.title, faq.answer, *faq.matched_questions] for faq in self.faqs])
+        return make_entry_pairs([[faq.title, faq.answer, *faq.questions] for faq in self.faqs])
 
 
 def make_wiki_qa_dataset(faqs: FaqConfig, max_count: int = -1) -> Dataset:

@@ -1,8 +1,9 @@
+using System.Text.RegularExpressions;
 using static BingusLib.FaqHandling.FaqConfig;
 
 namespace BingusLib.FaqHandling
 {
-    public class FaqDict
+    public partial class FaqDict
     {
         private readonly Dictionary<string, FaqEntry> _faqDict = [];
 
@@ -20,6 +21,16 @@ namespace BingusLib.FaqHandling
                     Answer = entry.Answer,
                 };
 
+                foreach (var keyword in entry.Keywords)
+                {
+                    _faqDict[CleanQuery(keyword)] = new FaqEntry()
+                    {
+                        Title = entry.Title,
+                        Question = keyword,
+                        Answer = entry.Answer,
+                    };
+                }
+
                 foreach (var question in entry.Questions)
                 {
                     _faqDict[CleanQuery(question)] = new FaqEntry()
@@ -32,11 +43,15 @@ namespace BingusLib.FaqHandling
             }
         }
 
-        private static string CleanQuery(string query) => query.Trim().ToLowerInvariant();
+        private static string CleanQuery(string query) =>
+            QueryFilterRegex().Replace(query.ToLowerInvariant(), "");
 
         public FaqEntry? Search(string query)
         {
             return _faqDict.TryGetValue(CleanQuery(query), out var entry) ? entry : null;
         }
+
+        [GeneratedRegex("[^A-Za-z]")]
+        private static partial Regex QueryFilterRegex();
     }
 }
