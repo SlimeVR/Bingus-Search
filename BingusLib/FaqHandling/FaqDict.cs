@@ -21,6 +21,16 @@ namespace BingusLib.FaqHandling
                     Answer = entry.Answer,
                 };
 
+                foreach (var keyword in entry.Keywords)
+                {
+                    _faqDict[CleanQuery(keyword)] = new FaqEntry()
+                    {
+                        Title = entry.Title,
+                        Question = keyword,
+                        Answer = entry.Answer,
+                    };
+                }
+
                 foreach (var question in entry.Questions)
                 {
                     _faqDict[CleanQuery(question)] = new FaqEntry()
