@@ -6,7 +6,7 @@ COPY . .
 # Restore as distinct layers
 RUN dotnet restore BingusApi
 # Build and publish a release
-RUN dotnet publish BingusApi -c Release -o out
+RUN dotnet publish BingusApi -c Release -o out -p:CSharpier_Bypass=true
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
