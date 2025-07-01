@@ -216,8 +216,20 @@ class FaqConfig(BaseModel):
         return make_entry_pairs([[faq.title, faq.answer, *faq.questions] for faq in self.faqs])
 
 
-def make_wiki_qa_dataset(faqs: FaqConfig, max_count: int = -1) -> Dataset:
+def make_wiki_qa_dataset(
+    faqs: FaqConfig,
+    max_count: int = -1,
+    negative_sample_ratio: float = 0.2,
+    random_seed: RandomSeed = None
+) -> Dataset:
+    """
+    Generates a supplemental dataset of negative QA pairs using WikiQA, sampling a limited number
+    of negative pairs to avoid overwhelming the main dataset. The negative_sample_ratio controls
+    what fraction of possible negative pairs are included.
+    """
+
     questions, answers, scores = [], [], []
+    rand = Random(random_seed)
 
     def hit_max():
         return max_count > 0 and len(questions) >= max_count
@@ -225,36 +237,38 @@ def make_wiki_qa_dataset(faqs: FaqConfig, max_count: int = -1) -> Dataset:
     wiki_qa = load_dataset("microsoft/wiki_qa")
     last_q_id = ""
     for row in wiki_qa["train"]:
+        if hit_max():
+            break
+
         # Only process new questions
         q_id = row["question_id"]
         if last_q_id != q_id:
             last_q_id = q_id
 
-            # Negatively pair question with FAQ answers
+            # Negatively pair question with FAQ answers (sampled)
             question = row["question"]
             for answer in faqs.iterate_answers():
+                if rand.random() < negative_sample_ratio:
+                    questions.append(question)
+                    answers.append(answer)
+                    scores.append(0.0)
+
+                    if hit_max():
+                        break
+
+        if hit_max():
+            break
+
+        # Negatively pair answer with FAQ questions (sampled)
+        answer = row["answer"]
+        for question in faqs.iterate_questions():
+            if rand.random() < negative_sample_ratio:
                 questions.append(question)
                 answers.append(answer)
                 scores.append(0.0)
 
                 if hit_max():
                     break
-
-        if hit_max():
-            break
-
-        # Negatively pair answer with FAQ questions
-        answer = row["answer"]
-        for question in faqs.iterate_questions():
-            questions.append(question)
-            answers.append(answer)
-            scores.append(0.0)
-
-            if hit_max():
-                break
-
-        if hit_max():
-            break
 
     return Dataset.from_dict({
         "sentence1": questions,

@@ -2,7 +2,7 @@
   "encoder_type": "llama",
   "use_model_path": "models/onnx/use_l_v5.onnx",
   "api_uri": "http://bingus-encoder:5000",
-  "llama_model_path": "models/Bingus-q2a-v7.gguf",
+  "llama_model_path": "models/Bingus-q2a-v14.gguf",
   "hnsw_seed": 42,
   "use_q2a": true
 }

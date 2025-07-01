@@ -15,8 +15,8 @@ print(
     f"Loaded FAQ config:\n  > {len(faq_config.faqs)} FAQs\n  > {faq_config.question_count()} questions")
 
 # FAQ modifiers
-filter_short_questions = True
-make_faq_typos = True
+filter_short_questions = False
+make_faq_typos = False
 save_modified_faq = True
 
 # Data pairing mode
@@ -37,7 +37,7 @@ model_cache = "./model-cache/"
 base_model = "all-MiniLM-L6-v2"
 
 # Output model settings
-model_ver = 4
+model_ver = 14
 model_name = f"Bingus-{pairing_mode_name}-v{model_ver}{eval_name}_{base_model}"
 model_dir = f"./local-models/{model_name}/"
 os.makedirs(model_dir, exist_ok=True)
@@ -50,7 +50,7 @@ if filter_short_questions:
         f"Filtered FAQ config:\n  > {len(faq_config.faqs)} FAQs\n  > {faq_config.question_count()} questions")
 
 # Load external data
-wiki_qa_data = make_wiki_qa_dataset(faq_config, 50000)
+wiki_qa_data = make_wiki_qa_dataset(faq_config, 2000, 0.2, 42)
 
 if make_faq_typos:
     print("Making typos...")
