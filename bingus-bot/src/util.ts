@@ -189,9 +189,14 @@ export const NYAGUN_EMOJI: EmojiIdentifierResolvable =
   "<:nya_gun:957426272030576671>";
 export const GUNNYA_EMOJI: EmojiIdentifierResolvable =
   "<:gun_nya:962115210670383184>";
+export const LANGUAGE_EMOJI: EmojiIdentifierResolvable =
+  "<:langwidjnom:1055961639842750534>";
+export const QUESTION_EMOJI: EmojiIdentifierResolvable =
+  "<:nighty_question:1314209482133209088>";
+export const WINK_EMOJI: EmojiIdentifierResolvable =
+  "<:slime_wink:1341418353801166953>";
 
 export const REACTION_EMOJIS: EmojiIdentifierResolvable[] = [
-  "<:langwidjnom:1055961639842750534>",
   "<:Heart:1117832451620868136>",
   "<:nya_a:847203539352551544>",
   "<:nya_umu:850498715617198080>",
@@ -207,13 +212,24 @@ export const REACTION_EMOJIS: EmojiIdentifierResolvable[] = [
   "🧡",
   "💙",
   "✨",
-  "😻",
+  "<:nighty_hug:1314209493747241011>",
+  "<:nighty_a:1314209496029204572>",
+  "<:nighty_heart:1314209486390427659>",
+  "<:nighty_nom:1314209503276699708>",
+  "<:nighty_yay:1319261631217143910>",
+  "<:slime_wow:1341418344544211045>",
+  WINK_EMOJI,
   BINGUS_EMOJI,
 ];
 
 export const SAD_EMOJIS: EmojiIdentifierResolvable[] = [
+  QUESTION_EMOJI,
   "<:spicypillownom:839133143793139733>",
   "<:nya_gun:957426272030576671>",
+  "<:nighty_cry:1314209498554175578>",
+  "<:nighty_flop:1314209488429121556>",
+  "<:nighty_gun:1314209484440338474>",
+  "<:slime_angy:1341418349472518175>",
   "😭",
   "😢",
   "😓",

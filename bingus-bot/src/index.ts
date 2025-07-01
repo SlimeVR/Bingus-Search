@@ -17,7 +17,9 @@ import {
   BINGUS_EMOJI,
   EmbedList,
   GUNNYA_EMOJI,
+  LANGUAGE_EMOJI,
   NYAGUN_EMOJI,
+  QUESTION_EMOJI,
   REACTION_EMOJIS,
   SAD_EMOJIS,
   fetchBingus,
@@ -130,6 +132,11 @@ client.on("threadCreate", async (thread, newly) => {
       return;
     }
 
+    // React if not confident with the first answer
+    if (data[0].relevance <= 40) {
+      lastMessage?.react(QUESTION_EMOJI);
+    }
+
     const embedList = new EmbedList();
     embedList.push(
       ...data.slice(0, 5).map(
@@ -229,6 +236,9 @@ client.on("messageCreate", async (msg) => {
         );
       }
     }
+    // React if mentioning translator role
+  } else if (msg.mentions.roles.has("1055961071313223810")) {
+    await msg.react(LANGUAGE_EMOJI);
   }
 });
 
