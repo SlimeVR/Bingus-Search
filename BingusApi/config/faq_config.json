@@ -644,7 +644,10 @@
         "i have a shadowpc, how do i connect my trackers?",
         "shadowpc how to"
       ],
-      "questions": []
+      "questions": [
+        "i use shadowpc, how can i connect my trackers to it so that they show up in slimevr?",
+        "my trackers dont show up in the slimevr server when i turn them on, im on a shadowpc"
+      ]
     },
     {
       "title": "SlimeVR GUI not connecting to the server",
@@ -1176,6 +1179,447 @@
         "Where can I find the instructions for using Haritora trackers? I looked on Google and couldn't really find much about it, so I figured I'd ask here",
         "how do i set up my haritorax trackers with slimetora?"
       ]
+    },
+    {
+      "title": "My aux tracker isn't working",
+      "answer": "In order to make sure your aux tracker is set up, you need to make sure it is set properly in the webflasher. Alternatively, you should ensure that SDO is bridged on your IMU.",
+      "keywords": [
+        "aux tracker",
+        "extension",
+        "extension tracker",
+        "aux not working",
+        "extension not working"
+      ],
+      "questions": [
+        "I'm having an issue with one of the extensions and the long extension cable in the set. Whenever I plug the extension in to any of the main trackers, it gives an error",
+        "my hip extension stopped tracking and wouldnt connect no matter how many times i reset the software",
+        "my aux tracker isnt working properly"
+      ]
+    },
+    {
+      "title": "The trackers are connected to the SlimeVR server but aren't showing up",
+      "answer": "This is usually the result of an issue with the IMU. Plug in your Wemos D1 Mini and check through the serial console under settings in the SlimeVR server. More details can be found at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-showing-up",
+      "keywords": [
+        "trackers not showing up",
+        "not showing in server"
+      ],
+      "questions": [
+        "my trackers arnt working and idk what to do to fix it",
+        "I just got my trackers yesterday and setup was going fine until i got to the 5th one where it says it connected but isn't showing up",
+        "one of the trackers i recived stopped flashing blue and just went solid blue. and now won't even show up in the slimevr server.",
+        "I have an issue where one of my official slime trackers is unable to show up on my slime server."
+      ]
+    },
+    {
+      "title": "Quest Pro controllers cause high latency / lag",
+      "answer": "Quest Pro controllers can use 2.4 GHz Wi-Fi to connect to your headset, this can cause interference with SlimeVR trackers since they also use 2.4 GHz Wi-Fi. The easiest current solution is to change the channel that your 2.4 GHz Wi-Fi is on. You can read the Meta support article for Wi-Fi troubleshooting for the Quest Pro controllers",
+      "keywords": [
+        "quest pro controller",
+        "quest pro controllers latency",
+        "quest pro controllers lag"
+
+      ],
+      "questions": [
+        "i was wondering if anyone else has seen a issue with excessive latency on slime trackers (around 100-250ms) randomly when using the quest pro",
+        "i use the quest pro and ive been experiencing really high latency and lag issues that seem to be exclusive to quest pro users, what do i do?",
+        "my normal ping with out the controller interfiering with the trackers is about 2-10 ms, but the second i turn them on i get the pign to rise above 100 ms can sombody help me",
+        "Basically, whenever I use quest pro controllers, the slimes just lag all over the place, going up to 100+ ping and only being stable when there is not much movement"
+      ]
+    },
+    {
+      "title": "my legs bend when they are straight irl",
+      "answer": "this is an issue with avatar proportions and can be fixed by following the advice in this message https://discord.com/channels/817184208525983775/930205281609187418/1367342375072170074",
+      "keywords": [
+        "bad leg length",
+        "legs bend in game while straight irl",
+        "legs dont go straight out"
+
+      ],
+      "questions": [
+        "so i was using my trackers and i noticed that when i stand up straight or sit down with my legs straight out, they dont fully extend and are bent a little bit"
+      ]
+    },
+    {
+      "title": "last tracker won't connect",
+      "answer": "Most of the time, this can be fixed by restarting your router",
+      "keywords": [
+        "only 1 tracker not connecting",
+        "last tracker not working"
+
+      ],
+      "questions": [
+        "so i connected all my trackers and most of them are fine apart from the last one which didnt connect at all",
+        "one of my trackers isnt connecting no matter what i do, ive tested the rest out and they work fine in game its just this one that is broken"
+      ]
+    },
+    {
+      "title": "what does 0.16.0 update do?",
+      "answer": "This update includes a variety of changes including a bunch of little fixes and most notably, stay alligned, which works in the background to decrease your drift!",
+      "keywords": [
+        "what is 0.16.0",
+        "what is included in the 0.16.0 update?"
+
+      ],
+      "questions": [
+        "i heard there was a new update 0.16.0 i think. But i have no clue what it does or what is in it, can anyone explain?"
+      ]
+    },
+    {
+      "title": "imu not detected in serial console",
+      "answer": "if your IMU is not detected in the serial console it is most likely due to a soldering error, make sure you have double and triple checked all your solder joints making sure they are not bridged, they are stuck to the pcb in a cone shape and they have enough solder",
+      "keywords": [
+        "imu not detected",
+        "serial console not detecting imu",
+        "soldering issues",
+        "imu shows is working: false"
+
+      ],
+      "questions": [
+        "I Have now made two trackers and both have the same problem of the IMU not working. Is this a dead IMU or just a bad connection?",
+        "I seem to have issues with my IMU, in battery mode i get 5 blinks and the server program says there is an error",
+        "Hello there, I am having trouble with my tracker. I checked the continuity of the imu and the board and everything seems to be connected. My soldering is not the best but it does work (usually) . Any kind help would be greatly appreciated. "
+      ]
+    },
+    {
+      "title": "what are smol slimes?",
+      "answer": "Smol slimes are slimeVR trackers that use nRF52840 microcontroller instead of esp8266, they are smaller and have better battery life. They also use a dongle to connect to slimevr instead of wifi",
+      "keywords": [
+        "smol slimes",
+        "nrf slime",
+        "nRF52840",
+        "tracker dongle",
+        "smols",
+        "what are smol slimes?"
+
+      ],
+      "questions": [
+        "ive keep hearing people talking about smol slimes and i have no clue what they are, are they just supposed to be another case design like meowcarrier or something?"
+      ]
+    },
+    {
+      "title": "what slimevr design should i build?",
+      "answer": "currently the recommmended case design for people to build is meowcarrier, you can find a list of designs here https://docs.slimevr.dev/diy/cases.html",
+      "keywords": [
+        "meowcarrier",
+        "case",
+        "tracker design",
+        "tracker case",
+        "what case should i use?",
+        "is meowcarrier still good?",
+        "what case should i 3d print?"
+
+      ],
+      "questions": [
+        "hey, i am building some slime trackers (5+3) SO i wanted to ask what the best case would be for me to use, ive heard of hyperion but i dont know if that is still good.",
+        "Hey all, i got 7+3 diy slimes and i want to replace the cases. What is the current mostly recommended cases i can 3d print?",
+        "Assuming I follow the slimevr docs and build with 2 IMU's does anybody have any good slime case recommendations that I can buy?",
+        "i've been curious about also trying to make some slimes. does anyone have any recommendations about cases/mounting options for them? also, do most people go the PCB route? or is a wired tracker the more compact option"
+      ]
+    },
+    {
+      "title": "aux and main trackers combine into 1",
+      "answer": "if your main and aux trackers show up as 1 tracker in the slimevr server, this is likely beacuse SDO was bridged on both the main and aux tracker, make sure the SDO pads on your IMU dont have any solder on them.",
+      "keywords": [
+        "trackers combining",
+        "my main and aux trackers show up as 1"
+
+      ],
+      "questions": [
+        "i just built my trackers and im having an issue where my main and aux tracker combine and show up as 1 single tracker in the slimevr server, other than this they work completely fine"
+      ]
+    },
+    {
+      "title": "2 smol trackers show up as 1",
+      "answer": "The most likely cause for this is that 2 of your trackers give your reciever the same ID and so it treats them both at 1, the fix for this is to type the 'clear' command on your trackers then try repairing.",
+      "keywords": [
+        "2 smol slimes combining",
+        "why do 2 smol trackers show up as 1?"
+      ],
+      "questions": [
+        "so i am pairing my new stacked smol slimes that i made and when i move 2 of my trackers, they both show up as the same one in the server. how do i fix?",
+        "i just paired 2 smol slimes and when testing them, they both move as 1 tracker"
+      ]
+    },
+    {
+      "title": "how do i flash my smol tracker/reciever?",
+      "answer": "you flash your tracker/reciever by putting the device in DFU mode then flashing using UF2/nRF connect programmer, for more in-depth information go to https://docs.slimevr.dev/smol-slimes/firmware/smol-flashing-firmware.html ",
+      "keywords": [
+        "how do i flash smols",
+        "is flashing smols similar to esp?",
+        "flashing smol firmware",
+        "UF2 bootloader",
+        "nRF connect programmer",
+        "nordic bootloader"
+
+      ],
+      "questions": [
+        "i just built my smols and now i want to know how to upload the firmware, is it like normal slimes where there is an online webflasher or is it entirely different",
+        "im stuck on flashing the firmware for my smols, ive tried to look for a flasher online but i havnt seen anything. can someone link me one?"
+      ]
+    },
+    {
+      "title": "how do i compile my own smol slime firmware",
+      "answer": "in order to compile your own smol slime firmware you will need to clone the repo, vscode and nrf connect extension. for more info and specific instructions you can visit https://docs.slimevr.dev/smol-slimes/firmware/smol-compiling-firmware.html ",
+      "keywords": [
+        "how to compile smol firmware",
+        "how to edit pins in smol firmware",
+        "smol slime firmware",
+        "editing sw0 pin",
+        "how do edit settings in firmware"
+
+      ],
+      "questions": [
+        "so i just built my smol slimes and i used a different pin than the normal one for my SW0 button, how do i set it like this in the firmware",
+        "i decided i wanted to build my own smol firmware in order to set the pins and settings to my preference, how do i do this?",
+        "how do i compile my own firmware for smol slime trackers?"
+      ]
+    },
+    {
+      "title": "what is the battery life for smol slimes?",
+      "answer": "the battery life for smol slimes depends on the size of your battery but generally you can get atleast 24+ hours on 1 charge of a 100mah battery, though with recent testing there is a new bootloader which has allowed us to get up to 40 hours of playtime on a 100mah battery!",
+      "keywords": [
+        "battery life",
+        "what is smol slime battery life?",
+        "what battery to use with smols",
+        "best battery size for smols"
+
+      ],
+      "questions": [
+        "so i heard with smol slimes one of the big selling points is that it has an insanely high battery life, just how high is it and on what battery capacity?"
+      ]
+    },
+    {
+      "title": "why should i use smol slimes over regular ones?",
+      "answer": "there are many reasons to use smol slimes rather than normal slimes, a couple of these reasons are that smol slimes are alot smaller than regular slimes, have a much better battery life and dont use wifi and so dont clutter up your network",
+      "keywords": [
+        "smol slime selling points",
+        "why should i use smol slimes",
+        "what is the point of smol slimes"
+
+      ],
+      "questions": [
+        "so i hear people talking about smol slimes all the time but i never understood why, is it just that they are smaller than normal slimes?"
+      ]
+    },
+    {
+      "title": "what are the differences between smol and regular slimes?",
+      "answer": "smol slimes are SlimeVR trackers that use the nRF52840 microcontroller instead of esp8266 which is the microcontroller that regular slimes use, this allows for smol slimes to be smaller as the charging circuit comes with the board so you dont need a charging module and the biggest contributor to high power, wifi, being replaced in favour of nordics own radio protocol (nRF)",
+      "keywords": [
+        "smol slime",
+        "esp slimes",
+        "difference between smol slimes and esp slimes"
+
+      ],
+      "questions": [
+        "i hear people constantly talking about 'smol slimes' but i dont actually know the difference between them and normal slimes, is it just a case design or are there like big differences"
+      ]
+    },
+    {
+      "title": "what is stay alligned?",
+      "answer": "stay alligned is a new feature introduced in slimeVR version 0.16.0, it takes a series of calibrated and slowly rotates your trackers towards one of those poses in order to try correct drift",
+      "keywords": [
+        "stay alligned",
+        "what does stay alligned do?",
+        "should i use stay alligned"
+
+      ],
+      "questions": [
+        "i saw one of the big new features of slime is stay alligned, what is this? should i use it?"
+      ]
+    },
+    {
+      "title": "what are butterfly trackers?",
+      "answer": "butterfly trackers are slimeVR's official smol trackers, you can find out more about them here: https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers",
+      "keywords": [
+        "butterfly trackers",
+        "what are butterfly smols?",
+        "what is the difference between butterfly and smol trackers?"
+      ],
+      "questions": [
+        "i heard slimevr were released a new tracker called 'butterfly trackers' what is this and where can i find out about it"
+      ]
+    },
+    {
+      "title": "do catgirls land on their feet?",
+      "answer": "yea",
+      "keywords": [
+        "catgirl"
+      ],
+      "questions": []
+    },
+        {
+      "title": "what smol design should i use",
+      "answer": "the most common way of making smol slimes is currently the stacked method (IMU sits on top of supermini), for case designs you can visit https://docs.slimevr.dev/smol-slimes/hardware/smol-slimes-community-builds.html",
+      "keywords": [
+        "stacked smol",
+        "smol case design",
+        "what smol case should i use",
+        "lyall tracker",
+        "ibis tracker",
+        "aed slime",
+        "gremlin tracker"
+      ],
+      "questions": [
+        "i know what parts i need but im struggling on finding a good case, what is generally recommended for smol cases?",
+        "im looking for the meowcarrier equivalent for smols, what would this be?"
+      ]
+    },
+    {
+      "title": "what smol reciever should i use?",
+      "answer": "Currently the best reciever for smol slimes is the Holyiot nRF52840 dongle, this is a bit on the expensive side though so you may be able to just use a supermini with a wire modded antenna",
+      "keywords": [
+        "holyiot",
+        "ebyte",
+        "supermini",
+        "dongle",
+        "smol slime reciever dongle",
+        "what is the best smol slime dongle?",
+        "what reciever should i use for smol slimes"
+      ],
+      "questions": [
+        "i built my trackers and heard a while ago that i should use an ebyte or nordic dongle, is this true or should i get something else now",
+        "what dongle should i get for smol slimes? i need it to have the best range possible"
+      ]
+    },
+    {
+      "title": "should i use SPI or I2C for smol slimes",
+      "answer": "I2C and SPI are both communication protocols used for smol slimes to send data between the IMU and supermini, SPI is generally faster and is more power efficient and is mostly better, though it does not yet support magnetometer so if that is important to you then you should wire up for SPI but use I2C for future proofing.",
+      "keywords": [
+        "communication protocol",
+        "SPI",
+        "I2C",
+        "what communication protocol should i use for smols"
+      ],
+      "questions": [
+        "so i heard you can use the SPI communication protocol now instead of I2C, should i switch over?",
+        "if i add the extra 2 wires on my trackers for SPI can i still use I2C on it?"
+      ]
+    },
+    {
+      "title": "should i wire mod my smol slime?",
+      "answer": "in general it is recommended to do the wire mod to all your trackers in order to increase stability and range, you should also remove the stock ceramic antenna on the trackers in order to prevent interference",
+      "keywords": [
+        "wire mod",
+        "ceramic antenna",
+        "antenna",
+        "should i keep the stock antenna while wire modding?"
+      ],
+      "questions": []
+    },
+    {
+      "title": "what straps should I use?",
+      "answer": "there are many options for straps for SlimeVR trackers, some of these options include official slimevr straps, venti straps or DIY straps from aliexpress strap material, it is also recomended to use a gopro chest harness for the chest strap to reduce slipping",
+      "keywords": [
+        "straps",
+        "venti straps",
+        "slimevr straps",
+        "should i make my own straps for slimevr?",
+        "gopro chest harness",
+        "gopro chesty"
+      ],
+      "questions": [
+        "i just put together my parts list for my slimes and i was wondering if there are any good strap kits available or if it would be best to order strap material off aliexpress and DIY some together"
+      ]
+    },
+    {
+      "title": "what straps should I use for smol slimes?",
+      "answer": "for smol slimes you can use official straps, venti straps or DIY straps using any of the options on this page: https://docs.slimevr.dev/smol-slimes/hardware/smol-slimes-community-straps.html, it is also recomended to use a gopro chest harness for the chest strap to reduce slipping",
+      "keywords": [
+        "smol slime straps",
+        "depact straps",
+        "strap buckle",
+        "3d printed strap design",
+        "gopro chest harness",
+        "gopro chesty"
+      ],
+      "questions": [
+        "i just put together my parts list for my smol slimes and i was wondering if i should use the same straps as you would with regular slimes or if there are specialised straps for smol slimes"
+      ]
+    }, 
+    {
+      "title": "where can I find reliable third party sellers?",
+      "answer": "you can find good, reliable third party sellers in the marketplace forumn in the slimevr discord, it is not recommended to buy trackers off facebook marketplace, ebay, etsy, amazon or aliexpress as more often than not it is either an outright scam or wildly overpriced",
+      "keywords": [
+        "marketplace forumn",
+        "gorbit trackers",
+        "venti trackers",
+        "cheesecake trackers",
+        "ibis trackers",
+        "third party trackers",
+        "where can i get good third party trackers"
+      ],
+      "questions": [
+        "i want to get some slimevr trackers but i dont have enough money for the official slimes, are there any sellers that that can offer the same quality trackers but for cheaper? and if so where can i find them"
+      ]
+    }, 
+    {
+      "title": "what firmware version should I flash on my trackers?",
+      "answer": "currently the best firmware to flash is the slimevr/main branch as this is the most up to date branch",
+      "keywords": [
+        "firmware",
+        "main",
+        "dynamic sfusion",
+        "what firmware should i use?"
+      ],
+      "questions": [
+        "i heard that dynamic sfusion is out of date now, whats the best firmware version to use now? is it just back to main?"
+      ]
+    },
+    {
+      "title": "should I use the firmware flasher in the server",
+      "answer": "currently the firmware flasher in the server is unreliable and not working correctly, instead you should use https://slimevr-firmware.bscotch.ca",
+      "keywords": [
+        "firmware",
+        "webflasher",
+        "firmware tool",
+        "what flasher should i use?",
+        "where can i flash my trackers?"
+      ],
+      "questions": [
+        "i tried uploading my firmware using the firmware tool in the server but it gives me an error, how do i fix this?",
+        "should i use the webflasher or can i use the firmware tool in the slimevr server to flash my trackers",
+        "where should i flash my firmware? ive heard people talking about a firmware flasher in the server but i cant find it"
+      ]
+    },
+    {
+      "title": "how do I debug my smol slime trackers?",
+      "answer": "you can debug your trackers by connecting your trackers to your pc and going into the serial terminal in nrf connect. Just select your tracker and click connect to port, you should be able to see the logs of the tracker there, if not type reboot into the console and click enter",
+      "keywords": [
+        "debugging",
+        "serial terminal",
+        "nrf connect",
+        "smol slime logs",
+        "how do i get smol slime logs?"
+      ],
+      "questions": [
+        "so i built my smol slimes and i they arnt working, is there any logs i can get for debugging?",
+        "how do i do things like send commands to my smol slimes like putting it in dfu mode or calibrating it? it would also be nice if i could get some kind of log console to debug errors"
+      ]
+    },
+    {
+      "title": "what are the buttons for on smol slimes",
+      "answer": "generally you will see 1 button on alot of smol slime designs, this is the SW0 user programmable button which can be used for multiple things (mainly deep sleep for turning the trackers off.) there is also an RST button on some designs which resets the tracker",
+      "keywords": [
+        "smol slime button",
+        "what is SW0 button on smol slime?",
+        "what is RST button on smol slime?",
+        "RST",
+        "SW0"
+      ],
+      "questions": []
+    },
+    {
+      "title": "what does this LED code mean on my smol slime tracker?",
+      "answer": "if you are encountering an unknown LED blinking pattern on your smol slimes it may be an error indicator, you can check it out on this page: https://docs.slimevr.dev/smol-slimes/smol-LED-codes.html",
+      "keywords": [
+        "LED code",
+        "LED error",
+        "what does this bliking light mean on smol slimes?",
+        "why do my smol trackers keep blinking?",
+        "why is my LED fading on and off on supermini?",
+        "what does this LED error code mean?"
+      ],
+      "questions": []
     }
   ]
 }
