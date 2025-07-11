@@ -1537,7 +1537,7 @@
       "questions": [
         "i just put together my parts list for my smol slimes and i was wondering if i should use the same straps as you would with regular slimes or if there are specialised straps for smol slimes"
       ]
-    }, 
+    },
     {
       "title": "Where can I find reliable third party sellers?",
       "answer": "Reliable third-party sellers can be found in the [marketplace-forum](https://discord.com/channels/817184208525983775/1058335815614341240) of the SlimeVR Discord. Avoid buying from Facebook Marketplace, eBay, Etsy, Amazon, or AliExpress, as these are often overpriced or scams.",
@@ -1553,7 +1553,7 @@
       "questions": [
         "i want to get some slimevr trackers but i don't have enough money for the official slimes, are there any sellers that that can offer the same quality trackers but for cheaper? and if so where can i find them"
       ]
-    }, 
+    },
     {
       "title": "What firmware version should I flash on my trackers",
       "answer": "The best firmware version to flash is the latest version of the `SlimeVR/Main` branch, as it is the most up-to-date.",
