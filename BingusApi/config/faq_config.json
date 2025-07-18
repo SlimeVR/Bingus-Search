@@ -4,10 +4,10 @@
       "title": "Firmware upload fails",
       "answer": "If you are having issues trying to update (or \"flash\") your trackers, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#please-specify-upload_port-while-updating-firmware--trying-to-upload-firmware-fails.",
       "keywords": [
-        "Firmware upload fails",
-        "Please specify upload_port while updating firmware",
-        "Trying to upload firmware fails",
-        "Uploading using vscode fails",
+        "firmware upload fails",
+        "please specify upload_port while updating firmware",
+        "trying to upload firmware fails",
+        "uploading using vscode fails",
         "flashing my trackers fails"
       ],
       "questions": []
@@ -18,8 +18,8 @@
       "keywords": [
         "Slimevr doesn't start",
         "Slimevr isnt opening",
-        "The server doesn't open",
-        "The server won't start"
+        "the server doesn't open",
+        "the server won't start"
       ],
       "questions": [
         "The SlimeVR server won't start."
@@ -29,11 +29,11 @@
       "title": "Serial console outputs random characters",
       "answer": "If your tracker's serial output is only random symbols, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-wi-fi-settings-window-outputs-symbols-and-nothing-else.",
       "keywords": [
-        "The WiFi Settings window outputs ERROR",
+        "the WiFi Settings window outputs ERROR",
         "WiFi Settings window outputs symbols and nothing else",
-        "Serial logs show only random stuff",
-        "Serial console outputs random symbols and nothing more",
-        "My tracker is outputting random symbols"
+        "serial logs show only random stuff",
+        "serial console outputs random symbols and nothing more",
+        "my tracker is outputting random symbols"
       ],
       "questions": [
         "Why does my serial console just output random stuff?"
@@ -43,10 +43,10 @@
       "title": "Trackers keep flashing",
       "answer": "If you are concerned about your trackers' flashing lights, you can find more information at https://docs.slimevr.dev/common-issues.html#my-tracker-keeps-flashing.",
       "keywords": [
-        "Tracker keeps flashing",
-        "Flashing doesn't stop",
-        "Trackers keep blinking",
-        "Blinking trackers"
+        "tracker keeps flashing",
+        "flashing doesn't stop",
+        "trackers keep blinking",
+        "blinking trackers"
       ],
       "questions": [
         "Why do my trackers keep on blinking?"
@@ -58,16 +58,16 @@
       "keywords": [
         "WiFi credentials",
         "WiFi error",
-        "Tracker doesn't show up",
-        "Tracker never connects to Wi-Fi",
-        "My tracker never connects to WiFi",
-        "Tracker is not appearing on the server",
-        "Tracker doesn't connect to the network",
-        "Tracker won't connect to the internet",
-        "My trackers aren't connecting to my router",
-        "Tracker isn't connecting to router",
-        "My D1 Mini doesn't connect to WiFi",
-        "My ESP doesn't connect to the WiFi"
+        "tracker doesn't show up",
+        "tracker never connects to Wi-Fi",
+        "my tracker never connects to WiFi",
+        "tracker is not appearing on the server",
+        "tracker doesn't connect to the network",
+        "tracker won't connect to the internet",
+        "my trackers aren't connecting to my router",
+        "tracker isn't connecting to router",
+        "my D1 Mini doesn't connect to WiFi",
+        "my ESP doesn't connect to the WiFi"
       ],
       "questions": [
         "I uploaded firmware to the boards but it says wifi creds arent correct.",
@@ -88,15 +88,15 @@
       "title": "Trackers connect to Wi-Fi but not SlimeVR",
       "answer": "If your trackers are connected to Wi-Fi but are not showing up in SlimeVR, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-my-wi-fi-but-dont-turn-up-on-slimevr. Also make sure that your network is set to Private, you can follow [the guide from Microsoft for help](https://support.microsoft.com/windows/make-a-wi-fi-network-public-or-private-in-windows-0460117d-8d3e-a7ac-f003-7a0da607448d).",
       "keywords": [
-        "Looking for the server",
-        "Could not find the server",
-        "Trackers wont connect to server",
-        "Searching for the server on the local network...",
-        "It connects to wifi but not slimevr",
-        "Can't find the server on my computer",
-        "Trackers are on my wifi but not slimevr server",
-        "My trackers are on wifi but not on the gui",
-        "Trackers are connected to the wifi but not slimevr"
+        "looking for the server",
+        "could not find the server",
+        "trackers wont connect to server",
+        "searching for the server on the local network...",
+        "it connects to wifi but not slimevr",
+        "can't find the server on my computer",
+        "trackers are on my wifi but not slimevr server",
+        "my trackers are on wifi but not on the gui",
+        "trackers are connected to the wifi but not slimevr"
       ],
       "questions": [
         "My trackers are connected to my wifi but don't turn up on the server.",
@@ -110,8 +110,8 @@
         "SteamVR wont connect",
         "SlimeVR not connected to SteamVR",
         "SlimeVR not connected to Feeder App",
-        "The feeder app isn't connecting",
-        "Trackers aren't showing up in SteamVR"
+        "the feeder app isn't connecting",
+        "trackers aren't showing up in SteamVR"
       ],
       "questions": [
         "My trackers are connected to the server but aren't turning up on Steam.",
@@ -123,11 +123,11 @@
       "title": "Trackers are bound to the wrong body part in SteamVR",
       "answer": "If your trackers are bound to the wrong body part in SteamVR, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-trackers-are-bound-to-the-wrong-body-part-in-steamvr.",
       "keywords": [
-        "Trackers are bound to the wrong controllers in SteamVR",
-        "Trackers are bound to the wrong body part in SteamVR",
-        "My controllers aren't working properly",
-        "My controllers don't work with slimevr running",
-        "Controllers don't work"
+        "trackers are bound to the wrong controllers in SteamVR",
+        "trackers are bound to the wrong body part in SteamVR",
+        "my controllers aren't working properly",
+        "my controllers don't work with slimevr running",
+        "controllers don't work"
       ],
       "questions": [
         "My controllers stopped working after setting up slimevr.",
@@ -138,9 +138,9 @@
       "title": "Trackers drift excessively",
       "answer": "If your trackers are drifting excessively, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#your-trackers-are-drifting-more-than-expected.",
       "keywords": [
-        "Trackers are drifting a lot",
-        "My trackers are drifting",
-        "Excessive drift"
+        "trackers are drifting a lot",
+        "my trackers are drifting",
+        "excessive drift"
       ],
       "questions": [
         "I need help, when I use my trackers every minute everything works great but after 3 minutes the drift starts, they start to move from their place, I just bought them.",
@@ -151,10 +151,10 @@
       "title": "Inaccurate Body Proportions",
       "answer": "If your body proportions feel wrong or your feet feel like they're sliding excessively, you can find potential fixes at https://docs.slimevr.dev/common-issues.html#my-feet-sink-into-the-floor--im-sliding-a-lot.",
       "keywords": [
-        "Feet sink into the floor",
-        "Feet slide a lot",
-        "My feet are sliding a lot",
-        "My feet skate a lot"
+        "feet sink into the floor",
+        "feet slide a lot",
+        "my feet are sliding a lot",
+        "my feet skate a lot"
       ],
       "questions": []
     },
@@ -162,12 +162,12 @@
       "title": "Trackers move in the wrong direction",
       "answer": "If your trackers are moving in the wrong direction (ex. leg moves the wrong way when kicking), it's likely your mounting orientation is set incorrectly. You can see ZRock35's video guide at https://youtu.be/SYqfQdVseF4 for help with session calibrations, or find other potential fixes at https://docs.slimevr.dev/common-issues.html#trackers-are-moving-in-the-wrong-direction-when-i-move.",
       "keywords": [
-        "Trackers are moving in the wrong direction when I move",
-        "Knee is backward",
-        "Leg moves the wrong way",
-        "Tracker moves the wrong way",
-        "Trackers move in the wrong direction",
-        "Bad mounting calibration"
+        "trackers are moving in the wrong direction when I move",
+        "knee is backward",
+        "leg moves the wrong way",
+        "tracker moves the wrong way",
+        "trackers move in the wrong direction",
+        "bad mounting calibration"
       ],
       "questions": [
         "My trackers are rotating on SteamVR in the wrong direction when I move.",
