@@ -1,6 +1,9 @@
 import {
+  ActionRowBuilder,
   ApplicationCommandType,
+  ButtonBuilder,
   ContextMenuCommandBuilder,
+  ButtonStyle,
   EmbedBuilder,
   MessageFlags,
 } from "discord.js";
@@ -16,7 +19,7 @@ export const replyListContext: ContextMenu = {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const query = interaction.targetMessage.content;
     console.log(
-      `User ${interaction.user} asked about "${query}" for ${interaction.targetMessage.author}`,
+      `User ${interaction.user} asked "${query}" for ${interaction.targetMessage.author}`,
     );
 
     try {
@@ -34,8 +37,17 @@ export const replyListContext: ContextMenu = {
         return;
       }
 
-      const embedList = new EmbedList();
-      embedList.push(
+      const show = new ButtonBuilder()
+      .setCustomId('show')
+      .setLabel("show embed")
+      .setStyle(ButtonStyle.Primary);
+
+      const showB = new ActionRowBuilder<ButtonBuilder>()
+      .addComponents(show);
+ 
+
+      const embedList1 = new EmbedList();
+      embedList1.push(
         ...data.slice(0, 5).map(
           (res) =>
             new EmbedBuilder()
@@ -50,15 +62,48 @@ export const replyListContext: ContextMenu = {
               .data,
         ),
       );
+      const targetChannel = interaction.targetMessage.channel
+      
 
-      await embedList.sendChannel(
-        interaction.targetMessage.channel,
-        interaction.user.id,
-        undefined,
-        { messageReference: interaction.targetMessage },
-      );
+      await embedList1.sendChatInput(interaction);
 
-      await interaction.editReply("Replied to the message!");
+  
+      const message = await interaction.followUp({
+        flags: MessageFlags.Ephemeral,
+        components: [showB]
+      });
+      
+
+      const collector = message.createMessageComponentCollector();
+      collector.on('collect', async i => {
+        interaction.deleteReply();
+        interaction.deleteReply(message);
+        const  embedList = new EmbedList();
+        embedList.push(
+          ...data.slice(0, 5).map(
+            (res) =>
+              new EmbedBuilder()
+                .setAuthor({
+                  name: `Triggered by ${interaction.user.displayName}`,
+                  iconURL: interaction.user.avatarURL() ?? undefined,
+                })
+                .setTitle(res.title)
+                .setDescription(res.text)
+                .setColor("#65459A")
+                .setFooter({ text: `(${res.relevance.toFixed()}% relevant)` })
+                .data,
+          ),
+        );
+        
+        embedList.sendChannel(
+          targetChannel,
+          interaction.user.id,
+          undefined,
+          { 
+            messageReference: interaction.targetMessage},
+          );
+
+      });
     } catch (error) {
       console.error(error);
       interaction.editReply("An error occurred while fetching results.");

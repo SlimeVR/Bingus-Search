@@ -7,6 +7,7 @@ import {
   ComponentType,
   EmbedBuilder,
   EmojiIdentifierResolvable,
+  MessageContextMenuCommandInteraction,
   ReplyOptions,
   SendableChannels,
 } from "discord.js";
@@ -54,9 +55,11 @@ export class EmbedList {
       .setLabel("< Prev")
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(this.index === 0);
+    
 
     return new ActionRowBuilder<ButtonBuilder>().addComponents(prev, next);
   }
+  
 
   get(): EmbedBuilder {
     const embed = this.embeds[this.index];
@@ -66,7 +69,7 @@ export class EmbedList {
       }`.trim(),
     });
   }
-
+  
   async sendChannel(
     channel: SendableChannels,
     who: string | null,
@@ -115,7 +118,7 @@ export class EmbedList {
   }
 
   async sendChatInput(
-    interaction: ChatInputCommandInteraction,
+    interaction: ChatInputCommandInteraction | MessageContextMenuCommandInteraction,
     publicInteraction: boolean | undefined = true,
   ) {
     const reply = await (interaction.deferred
@@ -163,7 +166,7 @@ export class EmbedList {
       await interaction.editReply({ components: [] });
     });
 
-    return collector;
+    return this.getActionRow(), collector;
   }
 }
 
