@@ -59,7 +59,6 @@ export class EmbedList {
 
     return new ActionRowBuilder<ButtonBuilder>().addComponents(prev, next);
   }
-  
 
   get(): EmbedBuilder {
     const embed = this.embeds[this.index];
