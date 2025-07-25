@@ -69,7 +69,6 @@ export class EmbedList {
       }`.trim(),
     });
   }
-  
   async sendChannel(
     channel: SendableChannels,
     who: string | null,
