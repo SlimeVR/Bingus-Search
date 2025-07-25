@@ -163,7 +163,7 @@ export class EmbedList {
       await interaction.editReply({ components: [] });
     });
 
-    return this.getActionRow(), collector;
+    return collector;
   }
 }
 

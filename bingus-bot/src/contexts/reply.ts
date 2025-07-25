@@ -3,10 +3,8 @@ import {
   ApplicationCommandType,
   ButtonBuilder,
   ButtonStyle,
-  Client,
   ContextMenuCommandBuilder,
   EmbedBuilder,
-  GatewayIntentBits,
   MessageFlags,
 } from "discord.js";
 import { ContextMenu } from "../index.js";
@@ -38,10 +36,7 @@ export const replyContext: ContextMenu = {
       .setLabel("Show message")
       .setStyle(ButtonStyle.Primary);
 
-      const showB = new ActionRowBuilder<ButtonBuilder>()
-      .addComponents(show);
-
-
+    
       const message = await interaction.editReply({
         embeds: [
           new EmbedBuilder()
@@ -56,31 +51,28 @@ export const replyContext: ContextMenu = {
             .data,
 
         ],
-        components: [showB],
+        components: [new ActionRowBuilder<ButtonBuilder>().addComponents(show)],
       });
 
-      const collector = message.createMessageComponentCollector();
+      await message.awaitMessageComponent()
 
-      collector.on('collect', async i => {
-        interaction.deleteReply();
-        interaction.targetMessage.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setAuthor({
-              name: `Triggered by ${interaction.user.displayName}`,
-              iconURL: interaction.user.avatarURL() ?? undefined,
-            })
-            .setTitle(data[0].title)
-            .setDescription(data[0].text)
-            .setColor("#65459A")
-            .setFooter({text: `${data[0].relevance.toFixed()}% relevant` })
-
-            
-            .data,
+      interaction.deleteReply();
+      interaction.targetMessage.reply({
+      embeds: [
+        new EmbedBuilder()
+          .setAuthor({
+            name: `Triggered by ${interaction.user.displayName}`,
+            iconURL: interaction.user.avatarURL() ?? undefined,
+          })
+          .setTitle(data[0].title)
+          .setDescription(data[0].text)
+          .setColor("#65459A")
+          .setFooter({text: `${data[0].relevance.toFixed()}% relevant` })
+          .data,
 
         ],
       });
-      });
+      
 
 
 

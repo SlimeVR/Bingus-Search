@@ -46,8 +46,8 @@ export const replyListContext: ContextMenu = {
       .addComponents(show);
  
 
-      const embedList1 = new EmbedList();
-      embedList1.push(
+      const embedList = new EmbedList();
+      embedList.push(
         ...data.slice(0, 5).map(
           (res) =>
             new EmbedBuilder()
@@ -65,7 +65,7 @@ export const replyListContext: ContextMenu = {
       const targetChannel = interaction.targetMessage.channel
       
 
-      await embedList1.sendChatInput(interaction);
+      await embedList.sendChatInput(interaction);
 
   
       const message = await interaction.followUp({
@@ -74,36 +74,19 @@ export const replyListContext: ContextMenu = {
       });
       
 
-      const collector = message.createMessageComponentCollector();
-      collector.on('collect', async i => {
-        interaction.deleteReply();
-        interaction.deleteReply(message);
-        const  embedList = new EmbedList();
-        embedList.push(
-          ...data.slice(0, 5).map(
-            (res) =>
-              new EmbedBuilder()
-                .setAuthor({
-                  name: `Triggered by ${interaction.user.displayName}`,
-                  iconURL: interaction.user.avatarURL() ?? undefined,
-                })
-                .setTitle(res.title)
-                .setDescription(res.text)
-                .setColor("#65459A")
-                .setFooter({ text: `(${res.relevance.toFixed()}% relevant)` })
-                .data,
-          ),
-        );
-        
-        embedList.sendChannel(
-          targetChannel,
-          interaction.user.id,
-          undefined,
-          { 
-            messageReference: interaction.targetMessage},
-          );
+      await message.awaitMessageComponent()
 
-      });
+      interaction.deleteReply();
+      interaction.deleteReply(message);
+      
+      embedList.sendChannel(
+        targetChannel,
+        interaction.user.id,
+        undefined,
+        { 
+          messageReference: interaction.targetMessage},
+        );
+
     } catch (error) {
       console.error(error);
       interaction.editReply("An error occurred while fetching results.");
