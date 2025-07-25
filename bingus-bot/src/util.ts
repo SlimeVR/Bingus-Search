@@ -55,7 +55,6 @@ export class EmbedList {
       .setLabel("< Prev")
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(this.index === 0);
-    
 
     return new ActionRowBuilder<ButtonBuilder>().addComponents(prev, next);
   }
