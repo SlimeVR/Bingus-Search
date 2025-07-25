@@ -1,6 +1,9 @@
 import {
+  ActionRowBuilder,
   ApplicationCommandType,
+  ButtonBuilder,
   ContextMenuCommandBuilder,
+  ButtonStyle,
   EmbedBuilder,
   MessageFlags,
 } from "discord.js";
@@ -34,6 +37,15 @@ export const replyListContext: ContextMenu = {
         return;
       }
 
+      const show = new ButtonBuilder()
+      .setCustomId('show')
+      .setLabel("Show message")
+      .setStyle(ButtonStyle.Primary);
+
+      const showB = new ActionRowBuilder<ButtonBuilder>()
+      .addComponents(show);
+ 
+
       const embedList = new EmbedList();
       embedList.push(
         ...data.slice(0, 5).map(
@@ -50,15 +62,31 @@ export const replyListContext: ContextMenu = {
               .data,
         ),
       );
+      const targetChannel = interaction.targetMessage.channel
+      
 
-      await embedList.sendChannel(
-        interaction.targetMessage.channel,
+      await embedList.sendChatInput(interaction);
+
+  
+      const message = await interaction.followUp({
+        flags: MessageFlags.Ephemeral,
+        components: [showB]
+      });
+      
+
+      await message.awaitMessageComponent()
+
+      interaction.deleteReply();
+      interaction.deleteReply(message);
+      
+      embedList.sendChannel(
+        targetChannel,
         interaction.user.id,
         undefined,
-        { messageReference: interaction.targetMessage },
-      );
+        { 
+          messageReference: interaction.targetMessage},
+        );
 
-      await interaction.editReply("Replied to the message!");
     } catch (error) {
       console.error(error);
       interaction.editReply("An error occurred while fetching results.");

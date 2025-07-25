@@ -7,6 +7,7 @@ import {
   ComponentType,
   EmbedBuilder,
   EmojiIdentifierResolvable,
+  MessageContextMenuCommandInteraction,
   ReplyOptions,
   SendableChannels,
 } from "discord.js";
@@ -66,7 +67,6 @@ export class EmbedList {
       }`.trim(),
     });
   }
-
   async sendChannel(
     channel: SendableChannels,
     who: string | null,
@@ -115,7 +115,7 @@ export class EmbedList {
   }
 
   async sendChatInput(
-    interaction: ChatInputCommandInteraction,
+    interaction: ChatInputCommandInteraction | MessageContextMenuCommandInteraction,
     publicInteraction: boolean | undefined = true,
   ) {
     const reply = await (interaction.deferred

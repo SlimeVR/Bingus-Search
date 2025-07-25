@@ -1,5 +1,8 @@
 import {
+  ActionRowBuilder,
   ApplicationCommandType,
+  ButtonBuilder,
+  ButtonStyle,
   ContextMenuCommandBuilder,
   EmbedBuilder,
   MessageFlags,
@@ -28,7 +31,13 @@ export const replyContext: ContextMenu = {
         return;
       }
 
-      interaction.targetMessage.reply({
+      const show = new ButtonBuilder()
+      .setCustomId('show')
+      .setLabel("Show message")
+      .setStyle(ButtonStyle.Primary);
+
+    
+      const message = await interaction.editReply({
         embeds: [
           new EmbedBuilder()
             .setAuthor({
@@ -40,10 +49,34 @@ export const replyContext: ContextMenu = {
             .setColor("#65459A")
             .setFooter({ text: `${data[0].relevance.toFixed()}% relevant` })
             .data,
+
         ],
+        components: [new ActionRowBuilder<ButtonBuilder>().addComponents(show)],
       });
 
-      await interaction.editReply("Replied to the message!");
+      await message.awaitMessageComponent()
+
+      interaction.deleteReply();
+      interaction.targetMessage.reply({
+      embeds: [
+        new EmbedBuilder()
+          .setAuthor({
+            name: `Triggered by ${interaction.user.displayName}`,
+            iconURL: interaction.user.avatarURL() ?? undefined,
+          })
+          .setTitle(data[0].title)
+          .setDescription(data[0].text)
+          .setColor("#65459A")
+          .setFooter({text: `${data[0].relevance.toFixed()}% relevant` })
+          .data,
+
+        ],
+      });
+      
+
+
+
+
     } catch (error) {
       console.error(error);
       interaction.editReply("An error occurred while fetching results.");
