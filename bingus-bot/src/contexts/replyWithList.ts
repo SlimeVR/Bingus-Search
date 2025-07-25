@@ -39,7 +39,7 @@ export const replyListContext: ContextMenu = {
 
       const show = new ButtonBuilder()
       .setCustomId('show')
-      .setLabel("show embed")
+      .setLabel("Show message")
       .setStyle(ButtonStyle.Primary);
 
       const showB = new ActionRowBuilder<ButtonBuilder>()
