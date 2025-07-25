@@ -19,7 +19,7 @@ export const replyListContext: ContextMenu = {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const query = interaction.targetMessage.content;
     console.log(
-      `User ${interaction.user} asked "${query}" for ${interaction.targetMessage.author}`,
+      `User ${interaction.user} asked about "${query}" for ${interaction.targetMessage.author}`,
     );
 
     try {
