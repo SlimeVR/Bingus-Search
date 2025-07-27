@@ -1181,8 +1181,8 @@
       ]
     },
     {
-      "title": "My aux tracker isn't working",
-      "answer": "In order to make sure your aux tracker is set up, you need to make sure it is set properly in the webflasher. Alternatively, you should ensure that SDO is bridged on your IMU.",
+      "title": "My DIY aux tracker isn't working",
+      "answer": "In order to make sure your DIY aux tracker is set up, you need to make sure it is set properly in the webflasher. Alternatively, you should ensure that SDO is bridged on your IMU and your soldering is all correct.",
       "keywords": [
         "aux tracker",
         "extension",
@@ -1197,22 +1197,8 @@
       ]
     },
     {
-      "title": "The trackers are connected to the SlimeVR server but aren't showing up",
-      "answer": "This is usually the result of an issue with the IMU. Plug in your Wemos D1 Mini and check through the serial console under settings in the SlimeVR server. More details can be found at https://docs.slimevr.dev/common-issues.html#the-trackers-are-connected-to-the-slimevr-server-but-arent-showing-up.",
-      "keywords": [
-        "trackers not showing up",
-        "not showing in server"
-      ],
-      "questions": [
-        "My trackers arnt working and idk what to do to fix it.",
-        "I just got my trackers yesterday and setup was going fine until i got to the 5th one where it says it connected but isn't showing up.",
-        "Mne of the trackers i received stopped flashing blue and just went solid blue. and now won't even show up in the slimevr server.",
-        "I have an issue where one of my official slime trackers is unable to show up on my slime server."
-      ]
-    },
-    {
       "title": "Quest Pro controllers cause high latency / lag",
-      "answer": "Quest Pro controllers can use 2.4 GHz Wi-Fi to connect to your headset, this can cause interference with SlimeVR trackers since they also use 2.4 GHz Wi-Fi. The easiest current solution is to change the channel that your 2.4 GHz Wi-Fi is on. You can read the Meta support article for Wi-Fi troubleshooting for the Quest Pro controllers.",
+      "answer": "Quest Pro controllers can use 2.4 GHz Wi-Fi to connect to your headset, this can cause interference with SlimeVR trackers since they also use 2.4 GHz Wi-Fi. The easiest current solution is to change the channel that your 2.4 GHz Wi-Fi is on. You can read the Meta support article for Wi-Fi troubleshooting for the Quest Pro controllers here https://www.meta.com/help/quest/articles/getting-started/getting-started-with-quest-pro/wi-fi-troubleshooting-touch-pro-controllers/.",
       "keywords": [
         "quest pro controller",
         "quest pro controllers latency",
@@ -1241,7 +1227,7 @@
     },
     {
       "title": "Last tracker won't connect",
-      "answer": "Most of the time, this can be fixed by restarting your router.",
+      "answer": "usually 1-3 trackers not connecting but rest of them connecting is usually due to router issues (mostly netgear and ISP provided routers). Our general recommendation is restarting the router, If that doesnt work you can try some troubleshooting steps at: https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server.",
       "keywords": [
         "only 1 tracker not connecting",
         "last tracker not working"
@@ -1253,25 +1239,27 @@
       ]
     },
     {
-      "title": "What does the 0.16.0 update do?",
-      "answer": "This update includes a variety of changes, including several small fixes and, most notably, Stay Aligned — a feature that runs in the background to reduce drift.",
+      "title": "What does x update do?",
+      "answer": "You can find information on the newest update in the [#updates](https://discord.com/channels/817184208525983775/818062236492759050) channel on discord or the newest release on github: github.com/SlimeVR/SlimeVR-Server/releases/latest.",
       "keywords": [
-        "what is 0.16.0",
-        "what is included in the 0.16.0 update"
+        "what is the newest update?",
+        "what is included in the newest update",
+        "what is included in this update"
 
       ],
       "questions": [
-        "I heard there was a new update 0.16.0 i think. But i have no clue what it does or what is in it, can anyone explain?"
+        "I heard there was a new update but i have no clue what it does or what is in it, can anyone explain?"
       ]
     },
     {
       "title": "IMU not detected in serial console",
-      "answer": "If your IMU is not detected in the serial console, it is most likely due to a soldering error. Make sure you've thoroughly checked your solder joints to confirm they aren't bridged, are cone-shaped, and have sufficient solder to maintain contact with the PCB.",
+      "answer": "If your serial console shows an error like 'is working: false' or 'Mandatory sensor 1 not found at address I2C' it is most likely due to a soldering error. Make sure you've thoroughly checked your solder joints to confirm they aren't bridged, are cone-shaped, and have sufficient solder to maintain contact with the PCB.",
       "keywords": [
         "IMU not detected",
         "serial console not detecting IMU",
         "soldering issues",
-        "IMU shows is working: false"
+        "IMU shows is working: false",
+        "IMU shows Mandatory sensor 1 not found"
 
       ],
       "questions": [
@@ -1282,7 +1270,7 @@
     },
     {
       "title": "What are Smol Slimes?",
-      "answer": "Smol Slimes are SlimeVR trackers that use the nRF52840 microcontroller instead of the ESP8266. They are smaller, have better battery life, and use a dongle to connect to SlimeVR instead of Wi-Fi.",
+      "answer": "Smol Slimes are SlimeVR trackers that use the nRF52840 microcontroller instead of the ESP8266. They are smaller, have better battery life, and use a dongle to connect to SlimeVR instead of Wi-Fi. You can find out more at https://docs.slimevr.dev/smol-slimes/index.html.",
       "keywords": [
         "smol slimes",
         "nrf slime",
@@ -1298,7 +1286,7 @@
     },
     {
       "title": "What SlimeVR design should I build?",
-      "answer": "Currently, the recommended case design for most people is MeowCarrier. You can find a list of designs here: https://docs.slimevr.dev/diy/cases.html.",
+      "answer": "as of the 27th july 2025, the recommended case design for most people is MeowCarrier. You can find a list of designs here: https://docs.slimevr.dev/diy/cases.html.",
       "keywords": [
         "meowcarrier",
         "case",
@@ -1317,8 +1305,8 @@
       ]
     },
     {
-      "title": "Aux and main trackers combine into one",
-      "answer": "If your main and aux trackers show up as one tracker in the SlimeVR server, it's likely because the SDO pads are bridged on both the main and aux IMUs. Make sure the SDO pads don't have any solder on them.",
+      "title": "DIY Aux and main trackers combine into one",
+      "answer": "If your DIY main and aux trackers show up as one tracker in the SlimeVR server, it's likely because the SDO pads are bridged on both the main and aux IMUs. Make sure the SDO pads don't have any solder on them.",
       "keywords": [
         "trackers combining",
         "my main and aux trackers show up as 1"
@@ -1376,7 +1364,7 @@
     },
     {
       "title": "What is the battery life for Smol Slimes?",
-      "answer": "The battery life of Smol Slimes depends on the battery size. Typically, a 100mAh battery provides at least 24 hours of use. With the latest bootloader, up to 40 hours of playtime has been achieved on a 100mAh battery.",
+      "answer": "The battery life of Smol Slimes depends on the battery size. Typically, a 100mAh battery provides at least 24 hours of use. As of 27th july 2025, 40 hours of playtime has been achieved on a 100mAh battery.",
       "keywords": [
         "battery life",
         "what is smol slime battery life",
@@ -1390,7 +1378,7 @@
     },
     {
       "title": "Why should I use Smol Slimes over regular ones?",
-      "answer": "Smol Slimes are much smaller than regular Slimes, have significantly better battery life, and don't use Wi-Fi, which reduces network clutter. These advantages make them a popular choice for DIY tracking.",
+      "answer": "Smol Slimes use the nRF52840 microcontroller, unlike regular Slimes that use the ESP8266. This allows for a smaller size, integrated charging circuit, and improved battery efficiency due to using Nordic's radio protocol (ESB) instead of Wi-Fi. These advantages make them a popular choice for DIY tracking.",
       "keywords": [
         "smol slime selling points",
         "why should i use smol slimes",
@@ -1399,19 +1387,6 @@
       ],
       "questions": [
         "so i hear people talking about smol slimes all the time but i never understood why, is it just that they are smaller than normal slimes"
-      ]
-    },
-    {
-      "title": "What are the differences between Smol and regular Slimes?",
-      "answer": "Smol Slimes use the nRF52840 microcontroller, unlike regular Slimes that use the ESP8266. This allows for a smaller size, integrated charging circuit, and improved battery efficiency due to using Nordic's radio protocol (ESB) instead of Wi-Fi.",
-      "keywords": [
-        "smol slime",
-        "esp slimes",
-        "difference between smol slimes and esp slimes"
-
-      ],
-      "questions": [
-        "I hear people constantly talking about 'smol slimes' but i don't actually know the difference between them and normal slimes, is it just a case design or are there like big differences?"
       ]
     },
     {
@@ -1451,7 +1426,7 @@
     },
         {
       "title": "What Smol design should I use?",
-      "answer": "The most common way of building Smol Slimes is the stacked method, where the IMU sits on top of the SuperMini. For case designs, visit: https://docs.slimevr.dev/smol-slimes/hardware/smol-slimes-community-builds.html.",
+      "answer": "As of 27th july 2025, the most common way of building Smol Slimes is the stacked method, where the IMU sits on top of the SuperMini. For other case designs, visit: https://docs.slimevr.dev/smol-slimes/hardware/smol-slimes-community-builds.html.",
       "keywords": [
         "stacked smol",
         "smol case design",
@@ -1468,7 +1443,7 @@
     },
     {
       "title": "What Smol receiver should I use?",
-      "answer": "Currently, the best receiver for Smol Slimes is the Holyiot nRF52840 dongle. It is a bit expensive, but you can also use a SuperMini with a wire-modded antenna as a more affordable alternative.",
+      "answer": "As of 27th july 2025, the best receiver for Smol Slimes is the Holyiot nRF52840 dongle. For other options and more information you can visit the docs: https://docs.slimevr.dev/smol-slimes/hardware/smol-receiver.html.",
       "keywords": [
         "holyiot",
         "ebyte",
@@ -1499,7 +1474,7 @@
     },
     {
       "title": "Should I wire mod my Smol Slime?",
-      "answer": "It's generally recommended to wire mod your Smol Slimes to improve stability and range. You should also remove the stock ceramic antenna to reduce interference.",
+      "answer": "It's generally recommended to wire mod your Smol Slimes to improve stability and range. You should also remove the stock ceramic antenna to reduce interference. For more information on the wire mod, visit this section of the docs: https://docs.slimevr.dev/smol-slimes/hardware/smol-tracker.html#-copper-wire-for-wire-antenna-mod.",
       "keywords": [
         "wire mod",
         "ceramic antenna",
@@ -1569,7 +1544,7 @@
     },
     {
       "title": "Should I use the firmware flasher in the server?",
-      "answer": "The firmware flasher in the SlimeVR server is currently unreliable. Instead, use this tool: https://slimevr-firmware.bscotch.ca.",
+      "answer": "For flashing your trackers you should use the Firmware tool at the bottom of the settings in the slimevr server, if this doesnt work and the firmware doesnt build for whatever reason, use this tool: https://slimevr-firmware.bscotch.ca.",
       "keywords": [
         "firmware",
         "webflasher",
@@ -1585,7 +1560,7 @@
     },
     {
       "title": "How do I debug my Smol Slime trackers?",
-      "answer": "To debug your Smol Slimes, connect them to your PC and open the serial terminal in nRF Connect. Select your tracker, connect to the port, and you should see debug logs. If not, type `reboot` in the console and press Enter.",
+      "answer": "To debug your Smol Slimes, connect them to your PC and open the serial terminal in nRF Connect. Select your tracker, connect to the port, and you should see debug logs. If not, type `reboot` in the console and press Enter. You can find more information about accessing the serial console and using commands here: https://docs.slimevr.dev/smol-slimes/firmware/smol-pairing-and-calibration.html.",
       "keywords": [
         "debugging",
         "serial terminal",
@@ -1600,7 +1575,7 @@
     },
     {
       "title": "What are the buttons for on Smol Slimes?",
-      "answer": "Most Smol Slimes have one SW0 button, which is programmable and often used for deep sleep or turning off the tracker. Some designs also have an RST button that resets the tracker.",
+      "answer": "Most Smol Slimes have one SW0 button, which is programmable and often used for deep sleep or turning off the tracker. Some designs also have an RST button that resets the tracker. Some uses for this are listed here: https://docs.slimevr.dev/smol-slimes/firmware/smol-pairing-and-calibration.html.",
       "keywords": [
         "smol slime button",
         "what is SW0 button on smol slime",
