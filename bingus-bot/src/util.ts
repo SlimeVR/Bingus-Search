@@ -230,6 +230,7 @@ export const SAD_EMOJIS: EmojiIdentifierResolvable[] = [
   "<:nighty_gun:1314209484440338474>",
   "<:slime_angy:1341418349472518175>",
   "<:nighty_a:1314209496029204572>",
+  "<:bingus_sad:1398416913222336582>",
   "😭",
   "😢",
   "😓",
