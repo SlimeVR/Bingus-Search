@@ -1203,7 +1203,6 @@
         "quest pro controller",
         "quest pro controllers latency",
         "quest pro controllers lag"
-
       ],
       "questions": [
         "I was wondering if anyone else has seen a issue with excessive latency on slime trackers (around 100-250ms) randomly when using the quest pro.",
@@ -1219,7 +1218,6 @@
         "bad leg length",
         "legs bend in game while straight irl",
         "legs don't go straight out"
-
       ],
       "questions": [
         "So i was using my trackers and i noticed that when i stand up straight or sit down with my legs straight out, they don't fully extend and are bent a little bit."
@@ -1231,7 +1229,6 @@
       "keywords": [
         "only 1 tracker not connecting",
         "last tracker not working"
-
       ],
       "questions": [
         "so i connected all my trackers and most of them are fine apart from the last one which didnt connect at all.",
@@ -1245,7 +1242,6 @@
         "what is the newest update?",
         "what is included in the newest update",
         "what is included in this update"
-
       ],
       "questions": [
         "I heard there was a new update but i have no clue what it does or what is in it, can anyone explain?"
@@ -1260,7 +1256,6 @@
         "soldering issues",
         "IMU shows is working: false",
         "IMU shows Mandatory sensor 1 not found"
-
       ],
       "questions": [
         "I Have now made two trackers and both have the same problem of the IMU not working. Is this a dead IMU or just a bad connection.",
@@ -1278,7 +1273,6 @@
         "tracker dongle",
         "smols",
         "what are smol slimes"
-
       ],
       "questions": [
         "I keep hearing people talking about smol slimes and i have no clue what they are, are they just supposed to be another case design like meowcarrier or something?"
@@ -1295,7 +1289,6 @@
         "what case should i use",
         "is meowcarrier still good",
         "what case should i 3d print"
-
       ],
       "questions": [
         "Hey, i am building some slime trackers (5+3) SO i wanted to ask what the best case would be for me to use, ive heard of hyperion but i don't know if that is still good.",
@@ -1310,7 +1303,6 @@
       "keywords": [
         "trackers combining",
         "my main and aux trackers show up as 1"
-
       ],
       "questions": [
         "I just built my trackers and im having an issue where my main and aux tracker combine and show up as 1 single tracker in the slimevr server, other than this they work completely fine."
@@ -1338,7 +1330,6 @@
         "UF2 bootloader",
         "nRF connect programmer",
         "nordic bootloader"
-
       ],
       "questions": [
         "I just built my smols and now i want to know how to upload the firmware, is it like normal slimes where there is an online webflasher or is it entirely different.",
@@ -1354,7 +1345,6 @@
         "smol slime firmware",
         "editing sw0 pin",
         "how do edit settings in firmware"
-
       ],
       "questions": [
         "So i just built my smol slimes and i used a different pin than the normal one for my SW0 button, how do i set it like this in the firmware?",
@@ -1370,7 +1360,6 @@
         "what is smol slime battery life",
         "what battery to use with smols",
         "best battery size for smols"
-
       ],
       "questions": [
         "So i heard with smol slimes one of the big selling points is that it has an insanely high battery life, just how high is it and on what battery capacity"
@@ -1383,7 +1372,6 @@
         "smol slime selling points",
         "why should i use smol slimes",
         "what is the point of smol slimes"
-
       ],
       "questions": [
         "so i hear people talking about smol slimes all the time but i never understood why, is it just that they are smaller than normal slimes"
@@ -1396,7 +1384,6 @@
         "stay aligned",
         "what does stay aligned do",
         "should i use stay aligned"
-
       ],
       "questions": [
         "I saw one of the big new features of slime is stay aligned, what is this? should i use it?"
@@ -1424,7 +1411,7 @@
       ],
       "questions": []
     },
-        {
+    {
       "title": "What Smol design should I use?",
       "answer": "As of July 27th, 2025, the most common way of building Smol Slimes is the stacked method, where the IMU sits on top of the SuperMini. For other case designs, visit: https://docs.slimevr.dev/smol-slimes/hardware/smol-slimes-community-builds.html.",
       "keywords": [
