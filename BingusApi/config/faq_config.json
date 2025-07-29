@@ -1214,7 +1214,7 @@
     },
     {
       "title": "My legs bend when they are straight IRL",
-      "answer": "This is an issue with avatar proportions and can be fixed by following the advice in this message: https://discord.com/channels/817184208525983775/930205281609187418/1367342375072170074.",
+      "answer": "This is usually an issue with VRChat avatar proportions and you can try different VRChat avatars to see if the issue persists between them. You can find further advice in this message https://discord.com/channels/817184208525983775/930205281609187418/1367342375072170074 on the [SlimeVR Discord](https://discord.gg/SlimeVR).",
       "keywords": [
         "bad leg length",
         "legs bend in game while straight irl",
@@ -1227,7 +1227,7 @@
     },
     {
       "title": "Last tracker won't connect",
-      "answer": "usually 1-3 trackers not connecting but rest of them connecting is usually due to router issues (mostly netgear and ISP provided routers). Our general recommendation is restarting the router, If that doesnt work you can try some troubleshooting steps at: https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server.",
+      "answer": "Usually, having 1-3 trackers not connecting while the rest connect fine is caused by router issues (mostly Netgear and ISP provided routers). Our general recommendation is restarting the router, if that doesnt work you can find further troubleshooting steps at https://docs.slimevr.dev/common-issues.html#my-tracker-never-connects-to-wi-fi--are-not-appearing-on-the-slimevr-server.",
       "keywords": [
         "only 1 tracker not connecting",
         "last tracker not working"
@@ -1239,8 +1239,8 @@
       ]
     },
     {
-      "title": "What does x update do?",
-      "answer": "You can find information on the newest update in the [#updates](https://discord.com/channels/817184208525983775/818062236492759050) channel on discord or the newest release on github: github.com/SlimeVR/SlimeVR-Server/releases/latest.",
+      "title": "What does the latest update do?",
+      "answer": "You can find information on the newest update in the [#updates](https://discord.com/channels/817184208525983775/818062236492759050) channel on the [SlimeVR Discord](https://discord.gg/SlimeVR) or the release on GitHub at https://github.com/SlimeVR/SlimeVR-Server/releases/latest.",
       "keywords": [
         "what is the newest update?",
         "what is included in the newest update",
@@ -1253,7 +1253,7 @@
     },
     {
       "title": "IMU not detected in serial console",
-      "answer": "If your serial console shows an error like 'is working: false' or 'Mandatory sensor 1 not found at address I2C' it is most likely due to a soldering error. Make sure you've thoroughly checked your solder joints to confirm they aren't bridged, are cone-shaped, and have sufficient solder to maintain contact with the PCB.",
+      "answer": "If your serial console shows an error like \"is working: false\" or \"Mandatory sensor 1 not found at address I2C\" it is most likely due to a soldering error. Make sure you've thoroughly checked your solder joints to confirm they aren't bridged, are cone-shaped, and have sufficient solder to maintain contact with the PCB.",
       "keywords": [
         "IMU not detected",
         "serial console not detecting IMU",
@@ -1286,7 +1286,7 @@
     },
     {
       "title": "What SlimeVR design should I build?",
-      "answer": "as of the 27th july 2025, the recommended case design for most people is MeowCarrier. You can find a list of designs here: https://docs.slimevr.dev/diy/cases.html.",
+      "answer": "As of the July 27th, 2025, the recommended case design for most people is MeowCarrier. You can find a list of designs here: https://docs.slimevr.dev/diy/cases.html.",
       "keywords": [
         "meowcarrier",
         "case",
@@ -1364,7 +1364,7 @@
     },
     {
       "title": "What is the battery life for Smol Slimes?",
-      "answer": "The battery life of Smol Slimes depends on the battery size. Typically, a 100mAh battery provides at least 24 hours of use. As of 27th july 2025, 40 hours of playtime has been achieved on a 100mAh battery.",
+      "answer": "The battery life of Smol Slimes depends on the battery size. Typically, a 100mAh battery provides at least 24 hours of use. As of July 27th, 2025, 40 hours of playtime has been achieved on a 100mAh battery.",
       "keywords": [
         "battery life",
         "what is smol slime battery life",
@@ -1426,7 +1426,7 @@
     },
         {
       "title": "What Smol design should I use?",
-      "answer": "As of 27th july 2025, the most common way of building Smol Slimes is the stacked method, where the IMU sits on top of the SuperMini. For other case designs, visit: https://docs.slimevr.dev/smol-slimes/hardware/smol-slimes-community-builds.html.",
+      "answer": "As of July 27th, 2025, the most common way of building Smol Slimes is the stacked method, where the IMU sits on top of the SuperMini. For other case designs, visit: https://docs.slimevr.dev/smol-slimes/hardware/smol-slimes-community-builds.html.",
       "keywords": [
         "stacked smol",
         "smol case design",
@@ -1443,7 +1443,7 @@
     },
     {
       "title": "What Smol receiver should I use?",
-      "answer": "As of 27th july 2025, the best receiver for Smol Slimes is the Holyiot nRF52840 dongle. For other options and more information you can visit the docs: https://docs.slimevr.dev/smol-slimes/hardware/smol-receiver.html.",
+      "answer": "As of July 27th, 2025, the best receiver for Smol Slimes is the Holyiot nRF52840 dongle. For other options and more information you can visit the docs: https://docs.slimevr.dev/smol-slimes/hardware/smol-receiver.html.",
       "keywords": [
         "holyiot",
         "ebyte",
@@ -1544,7 +1544,7 @@
     },
     {
       "title": "Should I use the firmware flasher in the server?",
-      "answer": "For flashing your trackers you should use the Firmware tool at the bottom of the settings in the slimevr server, if this doesnt work and the firmware doesnt build for whatever reason, use this tool: https://slimevr-firmware.bscotch.ca.",
+      "answer": "For flashing your trackers you should use the Firmware tool at the bottom of the settings in the SlimeVR Server. If the built-in tool doesn't work or the firmware doesn't build, you can use the web firmware tool at https://slimevr-firmware.bscotch.ca instead.",
       "keywords": [
         "firmware",
         "webflasher",
