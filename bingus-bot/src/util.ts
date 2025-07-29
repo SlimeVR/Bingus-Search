@@ -224,6 +224,7 @@ export const REACTION_EMOJIS: EmojiIdentifierResolvable[] = [
 export const SAD_EMOJIS: EmojiIdentifierResolvable[] = [
   QUESTION_EMOJI,
   "<:spicypillownom:839133143793139733>",
+  "<:nya_flop:847202537425731604>",
   "<:nya_gun:957426272030576671>",
   "<:nighty_cry:1314209498554175578>",
   "<:nighty_flop:1314209488429121556>",
