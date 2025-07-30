@@ -6,6 +6,8 @@ import {
   ButtonStyle,
   EmbedBuilder,
   MessageFlags,
+  ComponentType,
+  ButtonInteraction,
 } from "discord.js";
 import { ContextMenu } from "../index.js";
 import { EmbedList, fetchBingus } from "../util.js";
@@ -40,12 +42,27 @@ export const replyListContext: ContextMenu = {
       const show = new ButtonBuilder()
       .setCustomId('show')
       .setLabel("Show message")
-      .setStyle(ButtonStyle.Primary);
+      .setStyle(ButtonStyle.Primary)
 
-      const showB = new ActionRowBuilder<ButtonBuilder>()
-      .addComponents(show);
- 
 
+
+      const embedListEph = new EmbedList(show);
+      embedListEph.push(
+        ...data.slice(0, 5).map(
+          (res) =>
+            new EmbedBuilder()
+              .setAuthor({
+                name: `Triggered by ${interaction.user.displayName}`,
+                iconURL: interaction.user.avatarURL() ?? undefined,
+              })
+              .setTitle(res.title)
+              .setDescription(res.text)
+              .setColor("#65459A")
+              .setFooter({ text: `(${res.relevance.toFixed()}% relevant)` })
+              .data,
+        ),
+      );
+      
       const embedList = new EmbedList();
       embedList.push(
         ...data.slice(0, 5).map(
@@ -62,30 +79,23 @@ export const replyListContext: ContextMenu = {
               .data,
         ),
       );
-      const targetChannel = interaction.targetMessage.channel
+
+
+    const targetChannel = interaction.targetMessage.channel
       
-
-      await embedList.sendChatInput(interaction);
-
+    const collector = await embedListEph.sendChatInput(interaction)
   
-      const message = await interaction.followUp({
-        flags: MessageFlags.Ephemeral,
-        components: [showB]
-      });
-      
-
-      await message.awaitMessageComponent()
-
-      interaction.deleteReply();
-      interaction.deleteReply(message);
-      
-      embedList.sendChannel(
-        targetChannel,
-        interaction.user.id,
-        undefined,
-        { 
-          messageReference: interaction.targetMessage},
-        );
+    collector.on("collect", async (i) => {
+      if (i.customId === "show") {
+        embedList.sendChannel(
+          targetChannel,
+          interaction.user.id,
+          undefined,
+          { 
+            messageReference: interaction.targetMessage},
+          );
+      }
+    });
 
     } catch (error) {
       console.error(error);

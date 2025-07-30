@@ -11,6 +11,7 @@ import {
   ReplyOptions,
   SendableChannels,
 } from "discord.js";
+import { NONAME } from "dns";
 
 export const BINGUS_SITE =
   process.env.BINGUS_SITE || "https://bingus.slimevr.io";
@@ -34,10 +35,17 @@ export interface BingusFaqResponse {
   text: string;
 }
 
+
+
 export class EmbedList {
   static MAX_TIME = 300_000;
   embeds: APIEmbed[] = [];
+  _eph?: ButtonBuilder;
   index = 0;
+
+  constructor(eph?: ButtonBuilder){
+    this._eph = eph;
+  }
 
   push(...embed: APIEmbed[]): number {
     return this.embeds.push(...embed);
@@ -56,7 +64,7 @@ export class EmbedList {
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(this.index === 0);
 
-    return new ActionRowBuilder<ButtonBuilder>().addComponents(prev, next);
+    return new ActionRowBuilder<ButtonBuilder>().addComponents(prev, next, ...(this._eph ? [this._eph] : []));
   }
 
   get(): EmbedBuilder {
@@ -73,6 +81,7 @@ export class EmbedList {
     content?: string,
     reply?: ReplyOptions,
   ) {
+
     const edit = await channel.send({
       content,
       embeds: [this.get()],
@@ -101,6 +110,7 @@ export class EmbedList {
             return;
           }
           this.index--;
+
       }
 
       await i.update({
@@ -151,6 +161,13 @@ export class EmbedList {
             return;
           }
           this.index--;
+          break;
+        case "show":
+          interaction.editReply({
+            content: "Replied to message!",
+            embeds: [],
+            components: []
+          });
       }
 
       await i.update({

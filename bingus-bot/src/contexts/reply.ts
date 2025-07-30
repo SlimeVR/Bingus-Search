@@ -56,7 +56,11 @@ export const replyContext: ContextMenu = {
 
       await message.awaitMessageComponent()
 
-      interaction.deleteReply();
+      interaction.editReply({
+            content: "Replied to message!",
+            embeds: [],
+            components: []
+          });
       interaction.targetMessage.reply({
       embeds: [
         new EmbedBuilder()
