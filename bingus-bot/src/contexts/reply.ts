@@ -35,10 +35,10 @@ export const replyContext: ContextMenu = {
       .setLabel("Show message")
       .setStyle(ButtonStyle.Primary);
 
-    
+      const data0 = data[0]
       const message = await interaction.editReply({
         embeds: [
-          replyEmbed(interaction, data[0])
+          replyEmbed(interaction, data0)
         ],
         components: [new ActionRowBuilder<ButtonBuilder>().addComponents(show)],
       });
@@ -52,7 +52,7 @@ export const replyContext: ContextMenu = {
           });
       interaction.targetMessage.reply({
       embeds: [
-        replyEmbed(interaction, data[0])
+        replyEmbed(interaction, data0)
         ],
       });
       

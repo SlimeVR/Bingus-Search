@@ -35,7 +35,7 @@ export interface BingusFaqResponse {
   text: string;
 }
 
-export function replyEmbed(interaction:MessageContextMenuCommandInteraction, res:any) {
+export function replyEmbed(interaction:MessageContextMenuCommandInteraction, res:BingusFaqResponse) {
 
   const embedBuilder = new EmbedBuilder()
     .setAuthor({
@@ -126,6 +126,7 @@ export class EmbedList {
             return;
           }
           this.index--;
+          break;
 
       }
 
