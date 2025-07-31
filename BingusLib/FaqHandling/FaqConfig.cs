@@ -20,6 +20,9 @@ namespace BingusLib.FaqHandling
             [JsonPropertyName("questions")]
             public string[] Questions { get; set; } = [];
 
+            [JsonPropertyName("exact_only")]
+            public bool ExactOnly { get; set; } = false;
+
             public FaqConfigEntry() { }
 
             public FaqConfigEntry(string answer)
@@ -54,10 +57,15 @@ namespace BingusLib.FaqHandling
             return null;
         }
 
-        public IEnumerable<(string title, string question, string answer)> QaEntryEnumerator()
+        public IEnumerable<(string title, string question, string answer)> QaEntryEnumerator(
+            bool noExactOnly = true
+        )
         {
             foreach (var entry in FaqEntries)
             {
+                if (noExactOnly && entry.ExactOnly)
+                    continue;
+
                 foreach (var keyword in entry.Keywords)
                 {
                     yield return (entry.Title, keyword, entry.Answer);
@@ -70,10 +78,15 @@ namespace BingusLib.FaqHandling
             }
         }
 
-        public IEnumerable<(string title, string question, string answer)> AnswerEntryEnumerator()
+        public IEnumerable<(string title, string question, string answer)> AnswerEntryEnumerator(
+            bool noExactOnly = true
+        )
         {
             foreach (var entry in FaqEntries)
             {
+                if (noExactOnly && entry.ExactOnly)
+                    continue;
+
                 // If we want to use an example question:
                 // entry.Questions.FirstOrDefault(entry.Title)
                 yield return (entry.Title, "", entry.Answer);
