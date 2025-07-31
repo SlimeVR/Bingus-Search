@@ -71,6 +71,7 @@ class FaqEntry(BaseModel):
     answer: str
     keywords: list[str]
     questions: list[str]
+    exact_only: bool
 
 
 class FaqConfig(BaseModel):
