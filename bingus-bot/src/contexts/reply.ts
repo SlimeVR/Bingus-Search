@@ -4,11 +4,10 @@ import {
   ButtonBuilder,
   ButtonStyle,
   ContextMenuCommandBuilder,
-  EmbedBuilder,
   MessageFlags,
 } from "discord.js";
 import { ContextMenu } from "../index.js";
-import { fetchBingus } from "../util.js";
+import { fetchBingus, replyEmbed} from "../util.js";
 
 export const replyContext: ContextMenu = {
   builder: new ContextMenuCommandBuilder()
@@ -39,17 +38,7 @@ export const replyContext: ContextMenu = {
     
       const message = await interaction.editReply({
         embeds: [
-          new EmbedBuilder()
-            .setAuthor({
-              name: `Triggered by ${interaction.user.displayName}`,
-              iconURL: interaction.user.avatarURL() ?? undefined,
-            })
-            .setTitle(data[0].title)
-            .setDescription(data[0].text)
-            .setColor("#65459A")
-            .setFooter({ text: `${data[0].relevance.toFixed()}% relevant` })
-            .data,
-
+          replyEmbed(interaction, data)
         ],
         components: [new ActionRowBuilder<ButtonBuilder>().addComponents(show)],
       });
@@ -63,17 +52,7 @@ export const replyContext: ContextMenu = {
           });
       interaction.targetMessage.reply({
       embeds: [
-        new EmbedBuilder()
-          .setAuthor({
-            name: `Triggered by ${interaction.user.displayName}`,
-            iconURL: interaction.user.avatarURL() ?? undefined,
-          })
-          .setTitle(data[0].title)
-          .setDescription(data[0].text)
-          .setColor("#65459A")
-          .setFooter({text: `${data[0].relevance.toFixed()}% relevant` })
-          .data,
-
+        replyEmbed(interaction, data)
         ],
       });
       

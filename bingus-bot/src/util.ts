@@ -35,6 +35,38 @@ export interface BingusFaqResponse {
   text: string;
 }
 
+export function replyEmbed(interaction:MessageContextMenuCommandInteraction, data:BingusFaqResponse[]) {
+
+  const embedBuilder = new EmbedBuilder()
+    .setAuthor({
+      name: `Triggered by ${interaction.user.displayName}`,
+      iconURL: interaction.user.avatarURL() ?? undefined,
+    })
+    .setTitle(data[0].title)
+    .setDescription(data[0].text)
+    .setColor("#65459A")
+    .setFooter({ text: `${data[0].relevance.toFixed()}% relevant` })
+    .data
+
+  return embedBuilder;
+}
+
+export function replyEmbedList(interaction:MessageContextMenuCommandInteraction, res:BingusFaqResponse) {
+
+  const embedBuilder = new EmbedBuilder()
+    .setAuthor({
+      name: `Triggered by ${interaction.user.displayName}`,
+      iconURL: interaction.user.avatarURL() ?? undefined,
+    })
+    .setTitle(res.title)
+    .setDescription(res.text)
+    .setColor("#65459A")
+    .setFooter({ text: `${res.relevance.toFixed()}% relevant` })
+    .data
+
+  return embedBuilder;
+}
+
 
 
 export class EmbedList {

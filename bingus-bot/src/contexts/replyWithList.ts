@@ -1,16 +1,12 @@
 import {
-  ActionRowBuilder,
   ApplicationCommandType,
   ButtonBuilder,
   ContextMenuCommandBuilder,
   ButtonStyle,
-  EmbedBuilder,
   MessageFlags,
-  ComponentType,
-  ButtonInteraction,
 } from "discord.js";
 import { ContextMenu } from "../index.js";
-import { EmbedList, fetchBingus } from "../util.js";
+import { EmbedList, fetchBingus, replyEmbedList } from "../util.js";
 
 export const replyListContext: ContextMenu = {
   builder: new ContextMenuCommandBuilder()
@@ -50,16 +46,7 @@ export const replyListContext: ContextMenu = {
       embedListEph.push(
         ...data.slice(0, 5).map(
           (res) =>
-            new EmbedBuilder()
-              .setAuthor({
-                name: `Triggered by ${interaction.user.displayName}`,
-                iconURL: interaction.user.avatarURL() ?? undefined,
-              })
-              .setTitle(res.title)
-              .setDescription(res.text)
-              .setColor("#65459A")
-              .setFooter({ text: `(${res.relevance.toFixed()}% relevant)` })
-              .data,
+            replyEmbedList(interaction, res)
         ),
       );
       
@@ -67,16 +54,7 @@ export const replyListContext: ContextMenu = {
       embedList.push(
         ...data.slice(0, 5).map(
           (res) =>
-            new EmbedBuilder()
-              .setAuthor({
-                name: `Triggered by ${interaction.user.displayName}`,
-                iconURL: interaction.user.avatarURL() ?? undefined,
-              })
-              .setTitle(res.title)
-              .setDescription(res.text)
-              .setColor("#65459A")
-              .setFooter({ text: `(${res.relevance.toFixed()}% relevant)` })
-              .data,
+            replyEmbedList(interaction, res)
         ),
       );
 
