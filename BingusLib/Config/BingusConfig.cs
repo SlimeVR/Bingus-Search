@@ -57,5 +57,21 @@ namespace BingusLib.Config
                     throw new JsonConfigException("No valid sentence encoder type was selected.");
             }
         }
+
+        public string GetModelUri()
+        {
+            return EncoderType.ToLower() switch
+            {
+                "use" => UseModelPath,
+                "api" => ApiUri,
+                "llama" => LlamaModelPath,
+                _ => throw new JsonConfigException("No valid sentence encoder type was selected."),
+            };
+        }
+
+        public string GetModelUid()
+        {
+            return $"{EncoderType.ToLower()}@{GetModelUri()}";
+        }
     }
 }

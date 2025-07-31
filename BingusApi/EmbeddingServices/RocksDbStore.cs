@@ -5,8 +5,10 @@ using RocksDbSharp;
 
 namespace BingusApi.EmbeddingServices
 {
-    public class RocksDbStore : IEmbeddingStore
+    public class RocksDbStore : IEmbeddingStore, IDisposable
     {
+        public const string ModelUidKey = "<model_uid>";
+
         private readonly RocksDb rocksDb;
 
         public RocksDbStore(RocksDb rocksDb)
@@ -16,14 +18,21 @@ namespace BingusApi.EmbeddingServices
 
         private static byte[] SerializeString(string value) => Encoding.UTF8.GetBytes(value);
 
+        private static string DeserializeString(byte[] value) => Encoding.UTF8.GetString(value);
+
         public void Add(string key, Vector<float> embedding)
         {
-            rocksDb.Put(SerializeString(key), RocksDbSerializer.SerializeVector(embedding));
+            Add(key, RocksDbSerializer.SerializeVector(embedding));
         }
 
         public void Add(string key, float[] embedding)
         {
-            rocksDb.Put(SerializeString(key), RocksDbSerializer.SerializeArray(embedding));
+            Add(key, RocksDbSerializer.SerializeArray(embedding));
+        }
+
+        public void Add(string key, byte[] data)
+        {
+            rocksDb.Put(SerializeString(key), data);
         }
 
         public byte[]? GetBytes(string key)
@@ -46,6 +55,62 @@ namespace BingusApi.EmbeddingServices
         public bool Has(string key)
         {
             return rocksDb.HasKey(SerializeString(key));
+        }
+
+        public void Dispose()
+        {
+            rocksDb?.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
+        public static RocksDbStore Create(
+            string dbPath,
+            string modelUid,
+            ILogger<RocksDbStore>? logger
+        )
+        {
+            var preexisting = Directory.Exists(dbPath) && Directory.GetFiles(dbPath).Length > 0;
+
+            var options = new DbOptions().SetCreateIfMissing(true);
+            var db = RocksDb.Open(options, dbPath);
+            var store = new RocksDbStore(db);
+
+            var lastModelUidB = store.GetBytes(ModelUidKey);
+            if (lastModelUidB != null)
+            {
+                var lastModelUid = DeserializeString(lastModelUidB);
+                if (lastModelUid != modelUid)
+                {
+                    logger?.LogWarning(
+                        "Model UID has changed from \"{LastModelUid}\" to \"{ModelUid}\". Deleting the store.",
+                        lastModelUid,
+                        modelUid
+                    );
+
+                    // Delete the store
+                    store.Dispose();
+                    foreach (var file in Directory.GetFiles(dbPath))
+                    {
+                        File.Delete(file);
+                    }
+
+                    // Recreate the store
+                    return Create(dbPath, modelUid, logger);
+                }
+            }
+            else
+            {
+                if (preexisting)
+                {
+                    logger?.LogWarning(
+                        "No model UID found in existing store. Writing current model UID \"{ModelUid}\".",
+                        modelUid
+                    );
+                }
+                store.Add(ModelUidKey, SerializeString(modelUid));
+            }
+
+            return store;
         }
     }
 }

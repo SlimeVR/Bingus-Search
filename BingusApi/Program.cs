@@ -4,7 +4,6 @@ using BingusLib.Config;
 using BingusLib.FaqHandling;
 using BingusLib.HNSW;
 using HNSW.Net;
-using RocksDbSharp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,9 +44,6 @@ builder.Services.AddInMemoryRateLimiting();
 builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
 
 // Add dependencies
-builder.Services.AddSingleton<IEmbeddingStore>(sp => new RocksDbStore(
-    RocksDb.Open(new DbOptions().SetCreateIfMissing(true), "embedding_cache")
-));
 builder.Services.AddSingleton(sp =>
     new JsonConfigHandler<BingusConfig>(GetConfig(bingusConfig)).InitializeConfig(
         BingusConfig.Default,
@@ -60,6 +56,13 @@ builder.Services.AddSingleton(sp =>
         sp.GetService<ILogger<FaqConfig>>()
     )
 );
+
+// Create persistent embedding store dependent on model hash
+builder.Services.AddSingleton<IEmbeddingStore>(sp =>
+{
+    var modelUid = sp.GetRequiredService<BingusConfig>().GetModelUid();
+    return RocksDbStore.Create("embedding_cache", modelUid, sp.GetService<ILogger<RocksDbStore>>());
+});
 
 // Initialize Bingus library dependencies
 builder.Services.AddHttpClient();
