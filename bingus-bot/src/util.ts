@@ -173,6 +173,7 @@ export interface FaqConfig {
     answer: string;
     keywords: string[];
     questions: string[];
+    exact_only: boolean;
   }[];
 }
 
