@@ -53,7 +53,7 @@ namespace BingusLib.FaqHandling
                 if (embedding == null)
                 {
                     embedding = _sentenceEncoder.ComputeEmbeddingVector(query);
-                    _embeddingStore?.Add(query, embedding);
+                    _embeddingStore?.Put(query, embedding);
                 }
 
                 var faqEntry = new FaqEntry()
@@ -78,7 +78,7 @@ namespace BingusLib.FaqHandling
                 _embeddingCache?.GetRaw(query)
                 ?? _embeddingStore?.GetRaw(query)
                 ?? _sentenceEncoder.ComputeEmbedding(query);
-            _embeddingCache?.Add(query, vector);
+            _embeddingCache?.Put(query, vector);
             return _hnswHandler.SearchItems(vector, numResults);
         }
     }

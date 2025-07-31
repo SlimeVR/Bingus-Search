@@ -4,8 +4,8 @@ namespace BingusLib.FaqHandling
 {
     public interface IEmbeddingHandler
     {
-        void Add(string key, Vector<float> embedding);
-        void Add(string key, float[] embedding);
+        void Put(string key, Vector<float> embedding);
+        void Put(string key, float[] embedding);
         Vector<float>? Get(string key);
         float[]? GetRaw(string key);
         bool Has(string key);

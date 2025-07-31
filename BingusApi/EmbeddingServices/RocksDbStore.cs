@@ -20,17 +20,17 @@ namespace BingusApi.EmbeddingServices
 
         private static string DeserializeString(byte[] value) => Encoding.UTF8.GetString(value);
 
-        public void Add(string key, Vector<float> embedding)
+        public void Put(string key, Vector<float> embedding)
         {
-            Add(key, RocksDbSerializer.SerializeVector(embedding));
+            Put(key, RocksDbSerializer.SerializeVector(embedding));
         }
 
-        public void Add(string key, float[] embedding)
+        public void Put(string key, float[] embedding)
         {
-            Add(key, RocksDbSerializer.SerializeArray(embedding));
+            Put(key, RocksDbSerializer.SerializeArray(embedding));
         }
 
-        public void Add(string key, byte[] data)
+        public void Put(string key, byte[] data)
         {
             rocksDb.Put(SerializeString(key), data);
         }
@@ -107,7 +107,7 @@ namespace BingusApi.EmbeddingServices
                         modelUid
                     );
                 }
-                store.Add(ModelUidKey, SerializeString(modelUid));
+                store.Put(ModelUidKey, SerializeString(modelUid));
             }
 
             return store;
