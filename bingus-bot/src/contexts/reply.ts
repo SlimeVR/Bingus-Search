@@ -38,7 +38,7 @@ export const replyContext: ContextMenu = {
     
       const message = await interaction.editReply({
         embeds: [
-          replyEmbed(interaction, data)
+          replyEmbed(interaction, data[0])
         ],
         components: [new ActionRowBuilder<ButtonBuilder>().addComponents(show)],
       });
@@ -52,7 +52,7 @@ export const replyContext: ContextMenu = {
           });
       interaction.targetMessage.reply({
       embeds: [
-        replyEmbed(interaction, data)
+        replyEmbed(interaction, data[0])
         ],
       });
       

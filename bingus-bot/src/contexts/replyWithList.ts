@@ -6,7 +6,7 @@ import {
   MessageFlags,
 } from "discord.js";
 import { ContextMenu } from "../index.js";
-import { EmbedList, fetchBingus, replyEmbedList } from "../util.js";
+import { EmbedList, fetchBingus, replyEmbed } from "../util.js";
 
 export const replyListContext: ContextMenu = {
   builder: new ContextMenuCommandBuilder()
@@ -46,7 +46,7 @@ export const replyListContext: ContextMenu = {
       embedListEph.push(
         ...data.slice(0, 5).map(
           (res) =>
-            replyEmbedList(interaction, res)
+            replyEmbed(interaction, res)
         ),
       );
       
@@ -54,7 +54,7 @@ export const replyListContext: ContextMenu = {
       embedList.push(
         ...data.slice(0, 5).map(
           (res) =>
-            replyEmbedList(interaction, res)
+            replyEmbed(interaction, res)
         ),
       );
 
