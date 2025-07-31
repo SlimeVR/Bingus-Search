@@ -26,7 +26,7 @@ public class FaqController : ControllerBase
         _faqHandler = faqHandler;
         _bingusConfig = bingusConfig;
         _faqConfig = faqConfig;
-        _faqDict = bingusConfig.UseQ2A ? new FaqDict(faqConfig) : null;
+        _faqDict = new FaqDict(faqConfig);
     }
 
     private static FaqEntry GetEntry(ILazyItem<float[]> item)

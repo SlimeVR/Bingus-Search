@@ -1409,7 +1409,8 @@
         "cat",
         "meow"
       ],
-      "questions": []
+      "questions": [],
+      "exact_only": true
     },
     {
       "title": "What Smol design should I use?",
