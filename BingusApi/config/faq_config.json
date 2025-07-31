@@ -111,7 +111,9 @@
         "SlimeVR not connected to SteamVR",
         "SlimeVR not connected to Feeder App",
         "the feeder app isn't connecting",
-        "trackers aren't showing up in SteamVR"
+        "trackers aren't showing up in SteamVR",
+        "SteamVR not connecting",
+        "No SteamVR"
       ],
       "questions": [
         "My trackers are connected to the server but aren't turning up on Steam.",
@@ -909,12 +911,12 @@
       "title": "Enabling/disabling trackers in SteamVR and VRChat OSC",
       "answer": "You can find how to change which trackers appear in SteamVR and VRChat OSC at https://docs.slimevr.dev/quick-setup.html#spawning-trackers.",
       "keywords": [
-        "how do I change which trackers show up in steamvr",
+        "how do I change which trackers show up in SteamVR",
         "how do I change which trackers show up in vrchat",
         "how do I change which trackers show up in vrchat with osc",
-        "how do I make my chest show up in steamvr",
+        "how do I make my chest show up in SteamVR",
         "how do I make my elbows show up in vrchat",
-        "how to enable/disable trackers in steamvr and vrchat osc",
+        "how to enable/disable trackers in SteamVR and vrchat osc",
         "enabling trackers",
         "disabling trackers",
         "enable and disable SteamVR trackers",
@@ -925,7 +927,7 @@
         "disable SteamVR trackers",
         "enable OSC trackers",
         "disable SteamVR trackers",
-        "steamVR trackers"
+        "SteamVR trackers"
       ],
       "questions": [
         "It automatically detects my Quest (2) Touch controllers as SlimeVR trackers, completely disabiling my ability to use them in any Steam application; I cannot use them in SteamVR or VRChat. Is there a way to disable SlimeVR from detecting them as trackers, and if so, how? Elsewise, is there a way to disable or cope with this?",
