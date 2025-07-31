@@ -7,10 +7,15 @@ import {
 import { Command } from "../index.js";
 import { EmbedList, fetchBingus, fetchBingusData } from "../util.js";
 
+const textCleanRegex = /[^a-z ]/gi
+
 async function getFaqConfig() {
   return (await fetchBingusData()).faqs.flatMap((x) =>
     x.keywords.filter((x) => x.length > 0 && x.length <= 100),
-  );
+  ).map((x) => ({
+    clean: x.toLowerCase().replaceAll(textCleanRegex, ""),
+    orig: x
+  }));
 }
 
 let faqConfig = await getFaqConfig();
@@ -103,9 +108,9 @@ export const askCommand: Command = {
     }
   },
   async autocomplete(interaction) {
-    const focusedValue = interaction.options.getFocused().toLowerCase();
-    const filtered = faqConfig.filter((x) => x.includes(focusedValue));
+    const focusedValue = interaction.options.getFocused().toLowerCase().replaceAll(textCleanRegex, "");
+    const filtered = faqConfig.filter((x) => x.clean.includes(focusedValue));
     filtered.length = Math.min(filtered.length, 25);
-    await interaction.respond(filtered.map((x) => ({ name: x, value: x })));
+    await interaction.respond(filtered.map((x) => ({ name: x.orig, value: x.orig })));
   },
 };

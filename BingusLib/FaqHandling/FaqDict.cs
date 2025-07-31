@@ -51,7 +51,7 @@ namespace BingusLib.FaqHandling
             return _faqDict.TryGetValue(CleanQuery(query), out var entry) ? entry : null;
         }
 
-        [GeneratedRegex("[^A-Za-z]")]
+        [GeneratedRegex("[^a-z]", RegexOptions.IgnoreCase)]
         private static partial Regex QueryFilterRegex();
     }
 }
