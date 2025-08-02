@@ -7,9 +7,11 @@ import {
   ComponentType,
   EmbedBuilder,
   EmojiIdentifierResolvable,
+  MessageContextMenuCommandInteraction,
   ReplyOptions,
   SendableChannels,
 } from "discord.js";
+import { NONAME } from "dns";
 
 export const BINGUS_SITE =
   process.env.BINGUS_SITE || "https://bingus.slimevr.io";
@@ -33,10 +35,35 @@ export interface BingusFaqResponse {
   text: string;
 }
 
+export function replyEmbed(interaction:MessageContextMenuCommandInteraction, res:BingusFaqResponse) {
+
+  const embedBuilder = new EmbedBuilder()
+    .setAuthor({
+      name: `Triggered by ${interaction.user.displayName}`,
+      iconURL: interaction.user.avatarURL() ?? undefined,
+    })
+    .setTitle(res.title)
+    .setDescription(res.text)
+    .setColor("#65459A")
+    .setFooter({ text: `${res.relevance.toFixed()}% relevant` })
+    .data
+
+  return embedBuilder;
+}
+
+type promiseResult = {
+  finalIndex: Promise<number>;
+};
+
 export class EmbedList {
   static MAX_TIME = 300_000;
   embeds: APIEmbed[] = [];
+  _eph?: ButtonBuilder;
   index = 0;
+
+  constructor(eph?: ButtonBuilder){
+    this._eph = eph;
+  }
 
   push(...embed: APIEmbed[]): number {
     return this.embeds.push(...embed);
@@ -55,7 +82,7 @@ export class EmbedList {
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(this.index === 0);
 
-    return new ActionRowBuilder<ButtonBuilder>().addComponents(prev, next);
+    return new ActionRowBuilder<ButtonBuilder>().addComponents(prev, next, ...(this._eph ? [this._eph] : []));
   }
 
   get(): EmbedBuilder {
@@ -66,13 +93,13 @@ export class EmbedList {
       }`.trim(),
     });
   }
-
   async sendChannel(
     channel: SendableChannels,
     who: string | null,
     content?: string,
     reply?: ReplyOptions,
   ) {
+
     const edit = await channel.send({
       content,
       embeds: [this.get()],
@@ -101,6 +128,8 @@ export class EmbedList {
             return;
           }
           this.index--;
+          break;
+
       }
 
       await i.update({
@@ -114,10 +143,19 @@ export class EmbedList {
     });
   }
 
+
+
   async sendChatInput(
-    interaction: ChatInputCommandInteraction,
+    interaction: ChatInputCommandInteraction | MessageContextMenuCommandInteraction,
     publicInteraction: boolean | undefined = true,
-  ) {
+  ): Promise<promiseResult> {
+
+    let resolvePromise: (value: number) => void;
+
+    const finalPromise = new Promise<number>((resolve) => {
+      resolvePromise = resolve;
+    });
+
     const reply = await (interaction.deferred
       ? interaction.editReply({
           embeds: [this.get()],
@@ -135,7 +173,6 @@ export class EmbedList {
         ? (i) => i.user.id === interaction.user.id
         : undefined,
     });
-
     collector.on("collect", async (i) => {
       switch (i.customId) {
         case "next":
@@ -151,21 +188,36 @@ export class EmbedList {
             return;
           }
           this.index--;
+          break;
+        case "show":
+          resolvePromise(this.index);
+          interaction.editReply({
+            content: "Replied to message!",
+            embeds: [],
+            components: []
+          });
       }
 
       await i.update({
         embeds: [this.get()],
         components: [this.getActionRow()],
       });
-    });
 
+    });
     collector.on("end", async () => {
       await interaction.editReply({ components: [] });
     });
 
-    return collector;
+    return {finalIndex:finalPromise};
   }
+
+
+
 }
+
+
+
+
 
 export interface FaqConfig {
   faqs: {
