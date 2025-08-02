@@ -51,7 +51,9 @@ export function replyEmbed(interaction:MessageContextMenuCommandInteraction, res
   return embedBuilder;
 }
 
-
+type promiseResult = {
+  finalIndex: Promise<number>;
+};
 
 export class EmbedList {
   static MAX_TIME = 300_000;
@@ -141,10 +143,19 @@ export class EmbedList {
     });
   }
 
+
+
   async sendChatInput(
     interaction: ChatInputCommandInteraction | MessageContextMenuCommandInteraction,
     publicInteraction: boolean | undefined = true,
-  ) {
+  ): Promise<promiseResult> {
+
+    let resolvePromise: (value: number) => void;
+
+    const finalPromise = new Promise<number>((resolve) => {
+      resolvePromise = resolve;
+    });
+
     const reply = await (interaction.deferred
       ? interaction.editReply({
           embeds: [this.get()],
@@ -162,7 +173,6 @@ export class EmbedList {
         ? (i) => i.user.id === interaction.user.id
         : undefined,
     });
-
     collector.on("collect", async (i) => {
       switch (i.customId) {
         case "next":
@@ -180,6 +190,7 @@ export class EmbedList {
           this.index--;
           break;
         case "show":
+          resolvePromise(this.index);
           interaction.editReply({
             content: "Replied to message!",
             embeds: [],
@@ -191,15 +202,22 @@ export class EmbedList {
         embeds: [this.get()],
         components: [this.getActionRow()],
       });
-    });
 
+    });
     collector.on("end", async () => {
       await interaction.editReply({ components: [] });
     });
 
-    return collector;
+    return {finalIndex:finalPromise};
   }
+
+
+
 }
+
+
+
+
 
 export interface FaqConfig {
   faqs: {

@@ -40,8 +40,6 @@ export const replyListContext: ContextMenu = {
       .setLabel("Show message")
       .setStyle(ButtonStyle.Primary)
 
-
-
       const embedListEph = new EmbedList(show);
       embedListEph.push(
         ...data.slice(0, 5).map(
@@ -49,30 +47,13 @@ export const replyListContext: ContextMenu = {
             replyEmbed(interaction, res)
         ),
       );
-      
-      const embedList = new EmbedList();
-      embedList.push(
-        ...data.slice(0, 5).map(
-          (res) =>
-            replyEmbed(interaction, res)
-        ),
-      );
+    
+    const {finalIndex} = await embedListEph.sendChatInput(interaction)
 
-
-    const targetChannel = interaction.targetMessage.channel
-      
-    const collector = await embedListEph.sendChatInput(interaction)
-  
-    collector.on("collect", async (i) => {
-      if (i.customId === "show") {
-        embedList.sendChannel(
-          targetChannel,
-          interaction.user.id,
-          undefined,
-          { 
-            messageReference: interaction.targetMessage},
-          );
-      }
+    const selectedIndex = await finalIndex;
+    
+    interaction.targetMessage.reply({
+      embeds: [replyEmbed(interaction, data[selectedIndex])],
     });
 
     } catch (error) {
