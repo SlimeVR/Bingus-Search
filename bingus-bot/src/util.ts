@@ -193,8 +193,8 @@ export class EmbedList {
         embeds: [this.get()],
         components: [this.getActionRow()],
       });
-
     });
+
     collector.on("end", async () => {
       await interaction.editReply({ components: [] });
     });
