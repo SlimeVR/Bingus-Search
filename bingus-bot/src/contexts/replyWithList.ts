@@ -1,11 +1,12 @@
 import {
   ApplicationCommandType,
+  ButtonBuilder,
   ContextMenuCommandBuilder,
-  EmbedBuilder,
+  ButtonStyle,
   MessageFlags,
 } from "discord.js";
 import { ContextMenu } from "../index.js";
-import { EmbedList, fetchBingus } from "../util.js";
+import { EmbedList, fetchBingus, replyEmbed } from "../util.js";
 
 export const replyListContext: ContextMenu = {
   builder: new ContextMenuCommandBuilder()
@@ -28,37 +29,30 @@ export const replyListContext: ContextMenu = {
       }
 
       const data = await fetchBingus(query);
-
       if (data.length === 0) {
         await interaction.editReply("No results found.");
         return;
       }
 
-      const embedList = new EmbedList();
-      embedList.push(
+      const show = new ButtonBuilder()
+        .setCustomId('show')
+        .setLabel("Show message")
+        .setStyle(ButtonStyle.Primary)
+
+      const embedListEph = new EmbedList(show);
+      embedListEph.push(
         ...data.slice(0, 5).map(
           (res) =>
-            new EmbedBuilder()
-              .setAuthor({
-                name: `Triggered by ${interaction.user.displayName}`,
-                iconURL: interaction.user.avatarURL() ?? undefined,
-              })
-              .setTitle(res.title)
-              .setDescription(res.text)
-              .setColor("#65459A")
-              .setFooter({ text: `(${res.relevance.toFixed()}% relevant)` })
-              .data,
+            replyEmbed(interaction, res)
         ),
       );
 
-      await embedList.sendChannel(
-        interaction.targetMessage.channel,
-        interaction.user.id,
-        undefined,
-        { messageReference: interaction.targetMessage },
-      );
+      const selectedIndex = await embedListEph.sendChatInput(interaction)
 
-      await interaction.editReply("Replied to the message!");
+      interaction.targetMessage.reply({
+        embeds: [replyEmbed(interaction, data[selectedIndex])],
+      });
+
     } catch (error) {
       console.error(error);
       interaction.editReply("An error occurred while fetching results.");

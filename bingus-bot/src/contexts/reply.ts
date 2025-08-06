@@ -1,11 +1,13 @@
 import {
+  ActionRowBuilder,
   ApplicationCommandType,
+  ButtonBuilder,
+  ButtonStyle,
   ContextMenuCommandBuilder,
-  EmbedBuilder,
   MessageFlags,
 } from "discord.js";
 import { ContextMenu } from "../index.js";
-import { fetchBingus } from "../util.js";
+import { EmbedList, fetchBingus, replyEmbed } from "../util.js";
 
 export const replyContext: ContextMenu = {
   builder: new ContextMenuCommandBuilder()
@@ -21,29 +23,39 @@ export const replyContext: ContextMenu = {
 
     try {
       await interaction.deferReply({ flags: MessageFlags.Ephemeral });
-      const data = await fetchBingus(query);
 
-      if (data.length === 0) {
+      const data = (await fetchBingus(query))[0];
+      if (!data) {
         await interaction.editReply("No results found.");
         return;
       }
 
-      interaction.targetMessage.reply({
+      const show = new ButtonBuilder()
+        .setCustomId('show')
+        .setLabel("Show message")
+        .setStyle(ButtonStyle.Primary);
+
+      const message = await interaction.editReply({
         embeds: [
-          new EmbedBuilder()
-            .setAuthor({
-              name: `Triggered by ${interaction.user.displayName}`,
-              iconURL: interaction.user.avatarURL() ?? undefined,
-            })
-            .setTitle(data[0].title)
-            .setDescription(data[0].text)
-            .setColor("#65459A")
-            .setFooter({ text: `${data[0].relevance.toFixed()}% relevant` })
-            .data,
+          replyEmbed(interaction, data)
         ],
+        components: [new ActionRowBuilder<ButtonBuilder>().addComponents(show)],
       });
 
-      await interaction.editReply("Replied to the message!");
+      await message.awaitMessageComponent({
+        time: EmbedList.MAX_TIME
+      })
+
+      interaction.editReply({
+        content: "Replied to message!",
+        embeds: [],
+        components: []
+      });
+      interaction.targetMessage.reply({
+        embeds: [
+          replyEmbed(interaction, data)
+        ],
+      });
     } catch (error) {
       console.error(error);
       interaction.editReply("An error occurred while fetching results.");

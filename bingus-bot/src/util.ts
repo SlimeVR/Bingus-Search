@@ -7,6 +7,7 @@ import {
   ComponentType,
   EmbedBuilder,
   EmojiIdentifierResolvable,
+  MessageContextMenuCommandInteraction,
   ReplyOptions,
   SendableChannels,
 } from "discord.js";
@@ -33,10 +34,31 @@ export interface BingusFaqResponse {
   text: string;
 }
 
+export function replyEmbed(interaction: MessageContextMenuCommandInteraction, res: BingusFaqResponse) {
+
+  const embedBuilder = new EmbedBuilder()
+    .setAuthor({
+      name: `Triggered by ${interaction.user.displayName}`,
+      iconURL: interaction.user.avatarURL() ?? undefined,
+    })
+    .setTitle(res.title)
+    .setDescription(res.text)
+    .setColor("#65459A")
+    .setFooter({ text: `${res.relevance.toFixed()}% relevant` })
+    .data
+
+  return embedBuilder;
+}
+
 export class EmbedList {
-  static MAX_TIME = 300_000;
+  static readonly MAX_TIME = 300_000;
   embeds: APIEmbed[] = [];
+  _eph?: ButtonBuilder;
   index = 0;
+
+  constructor(eph?: ButtonBuilder) {
+    this._eph = eph;
+  }
 
   push(...embed: APIEmbed[]): number {
     return this.embeds.push(...embed);
@@ -55,24 +77,23 @@ export class EmbedList {
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(this.index === 0);
 
-    return new ActionRowBuilder<ButtonBuilder>().addComponents(prev, next);
+    return new ActionRowBuilder<ButtonBuilder>().addComponents(prev, next, ...(this._eph ? [this._eph] : []));
   }
 
   get(): EmbedBuilder {
     const embed = this.embeds[this.index];
     return new EmbedBuilder(embed).setFooter({
-      text: `${this.index + 1}/${this.embeds.length} ${
-        embed.footer?.text
-      }`.trim(),
+      text: `${this.index + 1}/${this.embeds.length} ${embed.footer?.text
+        }`.trim(),
     });
   }
-
   async sendChannel(
     channel: SendableChannels,
     who: string | null,
     content?: string,
     reply?: ReplyOptions,
   ) {
+
     const edit = await channel.send({
       content,
       embeds: [this.get()],
@@ -101,6 +122,7 @@ export class EmbedList {
             return;
           }
           this.index--;
+          break;
       }
 
       await i.update({
@@ -115,18 +137,24 @@ export class EmbedList {
   }
 
   async sendChatInput(
-    interaction: ChatInputCommandInteraction,
+    interaction: ChatInputCommandInteraction | MessageContextMenuCommandInteraction,
     publicInteraction: boolean | undefined = true,
-  ) {
+  ): Promise<number> {
+
+    let resolvePromise: (value: number) => void;
+    const indexPromise = new Promise<number>((resolve) => {
+      resolvePromise = resolve;
+    });
+
     const reply = await (interaction.deferred
       ? interaction.editReply({
-          embeds: [this.get()],
-          components: [this.getActionRow()],
-        })
+        embeds: [this.get()],
+        components: [this.getActionRow()],
+      })
       : interaction.reply({
-          embeds: [this.get()],
-          components: [this.getActionRow()],
-        }));
+        embeds: [this.get()],
+        components: [this.getActionRow()],
+      }));
 
     const collector = reply.createMessageComponentCollector({
       componentType: ComponentType.Button,
@@ -151,6 +179,14 @@ export class EmbedList {
             return;
           }
           this.index--;
+          break;
+        case "show":
+          resolvePromise(this.index);
+          interaction.editReply({
+            content: "Replied to message!",
+            embeds: [],
+            components: []
+          });
       }
 
       await i.update({
@@ -163,7 +199,7 @@ export class EmbedList {
       await interaction.editReply({ components: [] });
     });
 
-    return collector;
+    return indexPromise;
   }
 }
 
