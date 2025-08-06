@@ -29,16 +29,15 @@ export const replyListContext: ContextMenu = {
       }
 
       const data = await fetchBingus(query);
-
       if (data.length === 0) {
         await interaction.editReply("No results found.");
         return;
       }
 
       const show = new ButtonBuilder()
-      .setCustomId('show')
-      .setLabel("Show message")
-      .setStyle(ButtonStyle.Primary)
+        .setCustomId('show')
+        .setLabel("Show message")
+        .setStyle(ButtonStyle.Primary)
 
       const embedListEph = new EmbedList(show);
       embedListEph.push(
@@ -47,14 +46,12 @@ export const replyListContext: ContextMenu = {
             replyEmbed(interaction, res)
         ),
       );
-    
-    const {finalIndex} = await embedListEph.sendChatInput(interaction)
 
-    const selectedIndex = await finalIndex;
-    
-    interaction.targetMessage.reply({
-      embeds: [replyEmbed(interaction, data[selectedIndex])],
-    });
+      const selectedIndex = await embedListEph.sendChatInput(interaction)
+
+      interaction.targetMessage.reply({
+        embeds: [replyEmbed(interaction, data[selectedIndex])],
+      });
 
     } catch (error) {
       console.error(error);
