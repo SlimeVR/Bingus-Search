@@ -227,7 +227,7 @@ export const GUNNYA_EMOJI: EmojiIdentifierResolvable =
   "<:gun_nya:962115210670383184>";
 export const BINGUSGUN_EMOJI: EmojiIdentifierResolvable =
   "<:bingus_gun:1404234276630958080>";
-  export const NIGHTYGUN_EMOJI: EmojiIdentifierResolvable =
+export const NIGHTYGUN_EMOJI: EmojiIdentifierResolvable =
   "<:nighty_gun:1314209484440338474>";
 export const LANGUAGE_EMOJI: EmojiIdentifierResolvable =
   "<:langwidjnom:1055961639842750534>";
