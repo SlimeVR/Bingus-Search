@@ -227,6 +227,8 @@ export const GUNNYA_EMOJI: EmojiIdentifierResolvable =
   "<:gun_nya:962115210670383184>";
 export const BINGUSGUN_EMOJI: EmojiIdentifierResolvable =
   "<:bingus_gun:1404234276630958080>";
+  export const NIGHTYGUN_EMOJI: EmojiIdentifierResolvable =
+  "<:nighty_gun:1314209484440338474>";
 export const LANGUAGE_EMOJI: EmojiIdentifierResolvable =
   "<:langwidjnom:1055961639842750534>";
 export const QUESTION_EMOJI: EmojiIdentifierResolvable =
@@ -264,11 +266,11 @@ export const SAD_EMOJIS: EmojiIdentifierResolvable[] = [
   NYAGUN_EMOJI,
   GUNNYA_EMOJI,
   BINGUSGUN_EMOJI,
+  NIGHTYGUN_EMOJI,
   "<:spicypillownom:839133143793139733>",
   "<:nya_flop:847202537425731604>",
   "<:nighty_cry:1314209498554175578>",
   "<:nighty_flop:1314209488429121556>",
-  "<:nighty_gun:1314209484440338474>",
   "<:slime_angy:1341418349472518175>",
   "<:nighty_a:1314209496029204572>",
   "<:bingus_sad:1398416913222336582>",
