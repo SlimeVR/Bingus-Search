@@ -19,6 +19,7 @@ import {
   GUNNYA_EMOJI,
   LANGUAGE_EMOJI,
   NYAGUN_EMOJI,
+  BINGUSGUN_EMOJI,
   QUESTION_EMOJI,
   REACTION_EMOJIS,
   SAD_EMOJIS,
@@ -189,6 +190,11 @@ client.on("messageCreate", async (msg) => {
     // React back with nya gun when gun nya
     else if (msg.content.includes(GUNNYA_EMOJI.toString())) {
       await msg.react(NYAGUN_EMOJI);
+      return;
+    }
+    // React back with bingus_gun when bingus_gun
+    else if (msg.content.includes(BINGUSGUN_EMOJI.toString())) {
+      await msg.react(BINGUSGUN_EMOJI);
       return;
     }
 

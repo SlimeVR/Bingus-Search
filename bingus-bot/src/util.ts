@@ -221,11 +221,12 @@ export function fetchBingusData(): Promise<FaqConfig> {
 
 export const BINGUS_EMOJI: EmojiIdentifierResolvable =
   "<:bingus:1157717351861596200>";
-
 export const NYAGUN_EMOJI: EmojiIdentifierResolvable =
   "<:nya_gun:957426272030576671>";
 export const GUNNYA_EMOJI: EmojiIdentifierResolvable =
   "<:gun_nya:962115210670383184>";
+export const BINGUSGUN_EMOJI: EmojiIdentifierResolvable =
+  "<:bingus_gun:1404234276630958080>";
 export const LANGUAGE_EMOJI: EmojiIdentifierResolvable =
   "<:langwidjnom:1055961639842750534>";
 export const QUESTION_EMOJI: EmojiIdentifierResolvable =
@@ -262,6 +263,7 @@ export const SAD_EMOJIS: EmojiIdentifierResolvable[] = [
   QUESTION_EMOJI,
   NYAGUN_EMOJI,
   GUNNYA_EMOJI,
+  BINGUSGUN_EMOJI,
   "<:spicypillownom:839133143793139733>",
   "<:nya_flop:847202537425731604>",
   "<:nighty_cry:1314209498554175578>",
