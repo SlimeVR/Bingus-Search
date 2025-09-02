@@ -170,33 +170,38 @@ const TRY_REACT_CHANNELS: string[] = [
   "855164207615705118",
 ];
 
+const CUSTOM_EMOJI_REGEX = /<a?:\w{2,}:\d{6,}>/g;
 // This can only be for cute stuff!
 client.on("messageCreate", async (msg) => {
   await msg.fetch();
   const lowercase = msg.content.toLowerCase();
+  const emojisIncluded = new Set(msg.content.match(CUSTOM_EMOJI_REGEX) ?? []);
   // Check if Bingus is being mentioned in some way
-  if (msg.content.includes(BINGUS_EMOJI.toString())) {
+  if (emojisIncluded.has(BINGUS_EMOJI.toString())) {
     // React back with the emote
-    await msg.react(BINGUS_EMOJI);
-    return;
-  } else if (
+    return await msg.react(BINGUS_EMOJI);
+  }
+
+  if (
     msg.mentions.users.has(clientId) ||
     /\b(bot|bing\w{0,4})\b/.test(lowercase)
   ) {
     // React back with gun nya when nya gun
-    if (msg.content.includes(NYAGUN_EMOJI.toString())) {
-      await msg.react(GUNNYA_EMOJI);
-      return;
+    if (emojisIncluded.has(NYAGUN_EMOJI.toString())) {
+      return await msg.react(GUNNYA_EMOJI);
     }
+
     // React back with nya gun when gun nya
-    else if (msg.content.includes(GUNNYA_EMOJI.toString())) {
-      await msg.react(NYAGUN_EMOJI);
-      return;
+    if (emojisIncluded.has(GUNNYA_EMOJI.toString())) {
+      return await msg.react(NYAGUN_EMOJI);
     }
+
     // React back with bingus_gun when bingus_gun or nighty_gun
-    else if (msg.content.includes(BINGUSGUN_EMOJI.toString()) || msg.content.includes(NIGHTYGUN_EMOJI.toString())) {
-      await msg.react(BINGUSGUN_EMOJI);
-      return;
+    if (
+      emojisIncluded.has(BINGUSGUN_EMOJI.toString()) ||
+      emojisIncluded.has(NIGHTYGUN_EMOJI.toString())
+    ) {
+      return await msg.react(BINGUSGUN_EMOJI);
     }
 
     // Check if Bingus recently sent a message
@@ -205,6 +210,7 @@ client.on("messageCreate", async (msg) => {
       before: msg.id,
       cache: false,
     });
+
     if (
       !lastMessages.some((m) => m.author.id === clientId) &&
       Math.random() > 0.25
