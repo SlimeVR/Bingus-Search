@@ -211,8 +211,8 @@ export class EmbedList {
 
 const CUSTOM_EMOJI_REGEX = /<a?:\w{2,}:\d{6,}>/g;
 export class EmojiSearch {
-  text: string;
-  set?: Set<string>;
+  readonly text: string;
+  readonly set?: Set<string>;
   constructor(msg: string) {
     this.text = msg;
     if (msg.length > 500) {
