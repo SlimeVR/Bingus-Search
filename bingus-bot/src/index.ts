@@ -85,7 +85,7 @@ const client = new Client({
 
 let clientId: string;
 
-client.on("ready", (client) => {
+client.on("clientReady", (client) => {
   console.log(`Logged in as ${client.user.tag}`);
   clientId = client.user.id;
 });
