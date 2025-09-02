@@ -25,6 +25,7 @@ import {
   REACTION_EMOJIS,
   SAD_EMOJIS,
   fetchBingus,
+  EmojiSearch,
 } from "./util.js";
 import { askCommand } from "./commands/ask.js";
 import winkNLP from "wink-nlp";
@@ -170,12 +171,11 @@ const TRY_REACT_CHANNELS: string[] = [
   "855164207615705118",
 ];
 
-const CUSTOM_EMOJI_REGEX = /<a?:\w{2,}:\d{6,}>/g;
 // This can only be for cute stuff!
 client.on("messageCreate", async (msg) => {
   await msg.fetch();
   const lowercase = msg.content.toLowerCase();
-  const emojisIncluded = new Set(msg.content.match(CUSTOM_EMOJI_REGEX) ?? []);
+  const emojisIncluded = new EmojiSearch(msg.content);
   // Check if Bingus is being mentioned in some way
   if (emojisIncluded.has(BINGUS_EMOJI.toString())) {
     // React back with the emote

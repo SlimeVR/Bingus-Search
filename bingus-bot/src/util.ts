@@ -34,8 +34,10 @@ export interface BingusFaqResponse {
   text: string;
 }
 
-export function replyEmbed(interaction: MessageContextMenuCommandInteraction, res: BingusFaqResponse) {
-
+export function replyEmbed(
+  interaction: MessageContextMenuCommandInteraction,
+  res: BingusFaqResponse,
+) {
   const embedBuilder = new EmbedBuilder()
     .setAuthor({
       name: `Triggered by ${interaction.user.displayName}`,
@@ -44,8 +46,7 @@ export function replyEmbed(interaction: MessageContextMenuCommandInteraction, re
     .setTitle(res.title)
     .setDescription(res.text)
     .setColor("#65459A")
-    .setFooter({ text: `${res.relevance.toFixed()}% relevant` })
-    .data
+    .setFooter({ text: `${res.relevance.toFixed()}% relevant` }).data;
 
   return embedBuilder;
 }
@@ -77,14 +78,19 @@ export class EmbedList {
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(this.index === 0);
 
-    return new ActionRowBuilder<ButtonBuilder>().addComponents(prev, next, ...(this._eph ? [this._eph] : []));
+    return new ActionRowBuilder<ButtonBuilder>().addComponents(
+      prev,
+      next,
+      ...(this._eph ? [this._eph] : []),
+    );
   }
 
   get(): EmbedBuilder {
     const embed = this.embeds[this.index];
     return new EmbedBuilder(embed).setFooter({
-      text: `${this.index + 1}/${this.embeds.length} ${embed.footer?.text
-        }`.trim(),
+      text: `${this.index + 1}/${this.embeds.length} ${
+        embed.footer?.text
+      }`.trim(),
     });
   }
   async sendChannel(
@@ -93,7 +99,6 @@ export class EmbedList {
     content?: string,
     reply?: ReplyOptions,
   ) {
-
     const edit = await channel.send({
       content,
       embeds: [this.get()],
@@ -137,10 +142,11 @@ export class EmbedList {
   }
 
   async sendChatInput(
-    interaction: ChatInputCommandInteraction | MessageContextMenuCommandInteraction,
+    interaction:
+      | ChatInputCommandInteraction
+      | MessageContextMenuCommandInteraction,
     publicInteraction: boolean | undefined = true,
   ): Promise<number> {
-
     let resolvePromise: (value: number) => void;
     const indexPromise = new Promise<number>((resolve) => {
       resolvePromise = resolve;
@@ -148,13 +154,13 @@ export class EmbedList {
 
     const reply = await (interaction.deferred
       ? interaction.editReply({
-        embeds: [this.get()],
-        components: [this.getActionRow()],
-      })
+          embeds: [this.get()],
+          components: [this.getActionRow()],
+        })
       : interaction.reply({
-        embeds: [this.get()],
-        components: [this.getActionRow()],
-      }));
+          embeds: [this.get()],
+          components: [this.getActionRow()],
+        }));
 
     const collector = reply.createMessageComponentCollector({
       componentType: ComponentType.Button,
@@ -185,7 +191,7 @@ export class EmbedList {
           interaction.editReply({
             content: "Replied to message!",
             embeds: [],
-            components: []
+            components: [],
           });
       }
 
@@ -200,6 +206,26 @@ export class EmbedList {
     });
 
     return indexPromise;
+  }
+}
+
+const CUSTOM_EMOJI_REGEX = /<a?:\w{2,}:\d{6,}>/g;
+export class EmojiSearch {
+  text: string;
+  set?: Set<string>;
+  constructor(msg: string) {
+    this.text = msg;
+    if (msg.length > 500) {
+      this.set = new Set(msg.match(CUSTOM_EMOJI_REGEX));
+    }
+  }
+
+  has(emoji: string): boolean {
+    if (this.set) {
+      return this.set.has(emoji);
+    }
+
+    return this.text.includes(emoji);
   }
 }
 
