@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build-env
 WORKDIR /usr/src/app
 
 # Copy everything
@@ -9,7 +9,7 @@ RUN dotnet restore BingusApi
 RUN dotnet publish BingusApi -c Release -o out -p:CSharpier_Bypass=true
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /usr/src/app
 
 # Install LLamaSharp runtime dependencies

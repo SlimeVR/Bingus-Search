@@ -1,24 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Library</OutputType>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="CSharpier.MsBuild" Version="1.0.3">
+        <PackageReference Include="CSharpier.MsBuild" Version="1.2.5">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="HNSW" Version="25.3.56901" />
-        <PackageReference Include="LLamaSharp" Version="0.24.0" />
-        <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.24.0" />
+        <PackageReference Include="HNSW" Version="25.12.63133" />
+        <PackageReference Include="LLamaSharp" Version="0.25.0" />
+        <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.25.0" />
         <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.6" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.6" />
-        <PackageReference Include="Microsoft.ML" Version="4.0.2" />
-        <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.22.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.1" />
+        <PackageReference Include="Microsoft.ML" Version="5.0.0" />
+        <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.23.2" />
     </ItemGroup>
     <ItemGroup>
         <None Update="libs\libortextensions.so">

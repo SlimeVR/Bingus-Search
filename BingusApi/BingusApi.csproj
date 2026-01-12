@@ -1,17 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="AspNetCoreRateLimit" Version="5.0.0" />
-        <PackageReference Include="CSharpier.MsBuild" Version="1.0.3">
+        <PackageReference Include="CSharpier.MsBuild" Version="1.2.5">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="RocksDB" Version="10.2.1.58549" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.1" />
+        <PackageReference Include="RocksDB" Version="10.4.2.63147" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.0" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\BingusLib\BingusLib.csproj" />

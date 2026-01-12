@@ -5,7 +5,7 @@ namespace BingusLib.HNSW
 {
     public class HnswHandler
     {
-        private readonly SmallWorld<ILazyItem<float[]>, float>.Parameters _hnswParameters;
+        private readonly SmallWorldParameters _hnswParameters;
         private readonly IProvideRandomValues _randomProvider;
         private readonly WrappedDistance<ILazyItem<float[]>, float[], float> _distanceFunction;
 
@@ -14,7 +14,7 @@ namespace BingusLib.HNSW
         public HnswHandler(
             Func<float[], float[], float>? distanceFunction = null,
             IProvideRandomValues? randomProvider = null,
-            SmallWorld<ILazyItem<float[]>, float>.Parameters? parameters = null
+            SmallWorldParameters? parameters = null
         )
         {
             _distanceFunction = new(i => i.Value, distanceFunction ?? CosineDistance.SIMD);

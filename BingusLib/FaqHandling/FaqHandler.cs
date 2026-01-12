@@ -23,7 +23,7 @@ namespace BingusLib.FaqHandling
             ILogger<FaqHandler>? logger = null,
             Func<float[], float[], float>? distanceFunction = null,
             IProvideRandomValues? randomProvider = null,
-            SmallWorld<ILazyItem<float[]>, float>.Parameters? parameters = null
+            SmallWorldParameters? parameters = null
         )
         {
             _sentenceEncoder = sentenceEncoder;

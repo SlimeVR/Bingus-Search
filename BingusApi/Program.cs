@@ -73,7 +73,7 @@ builder.Services.AddSingleton<IProvideRandomValues>(sp => new SeededRandom(
 ));
 builder.Services.AddSingleton(sp =>
 {
-    var parameters = new SmallWorld<ILazyItem<float[]>, float>.Parameters
+    var parameters = new SmallWorldParameters
     {
         M = 15,
         LevelLambda = 1 / Math.Log(15),
