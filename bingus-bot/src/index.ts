@@ -205,10 +205,11 @@ client.on("messageCreate", async (msg) => {
     return await msg.react(BINGUS_EMOJI);
   }
 
-  if (lowercase.includes("is this real")) {
+  // Response to asking if this is real
+  if (msg.mentions.users.has(clientId) && lowercase.includes("is this real")) {
     const i = Math.floor(Math.random() * magic8BallAnswers.length)
-    msg.content = magic8BallAnswers[i]
-    return await msg
+
+    return await msg.reply(magic8BallAnswers[i])
   }
 
   if (
