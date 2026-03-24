@@ -62,6 +62,29 @@ const contexts = [replyContext, replyListContext];
 
 const rest = new REST({ version: "10" }).setToken(auth.token);
 
+const magic8BallAnswers: string[] = [
+  "It is certain",
+  "It is decidedly so",
+  "Without a doubt",
+  "Yes definitely",
+  "You may rely on it",
+  "As I see it, yes",
+  "Most likely",
+  "Outlook good",
+  "Yes",
+  "Signs point to yes",
+  "Reply hazy, try again",
+  "Ask again later",
+  "Better not tell you now",
+  "Cannot predict now",
+  "Concentrate and ask again",
+  "Don't count on it",
+  "My reply is no",
+  "My sources say no",
+  "Outlook not so good",
+  "Very doubtful"
+];
+
 try {
   console.log("Started refreshing application (/) commands.");
 
@@ -180,6 +203,13 @@ client.on("messageCreate", async (msg) => {
   if (emojisIncluded.has(BINGUS_EMOJI.toString())) {
     // React back with the emote
     return await msg.react(BINGUS_EMOJI);
+  }
+
+  // Response to asking if this is real
+  if (msg.mentions.users.has(clientId) && lowercase.includes("is this real")) {
+    const i = Math.floor(Math.random() * magic8BallAnswers.length)
+
+    return await msg.reply(magic8BallAnswers[i])
   }
 
   if (
