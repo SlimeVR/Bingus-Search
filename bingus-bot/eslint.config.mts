@@ -12,5 +12,5 @@ export default defineConfig([
       ecmaVersion: "latest",
       sourceType: "module",
     },
-  }
+  },
 ]);

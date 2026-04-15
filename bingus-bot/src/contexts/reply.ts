@@ -15,7 +15,6 @@ export const replyContext: ContextMenu = {
     .setType(ApplicationCommandType.Message),
 
   async run(interaction) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const query = interaction.targetMessage.content;
     console.log(
       `User ${interaction.user} asked about "${query}" for ${interaction.targetMessage.author}`,
@@ -31,30 +30,26 @@ export const replyContext: ContextMenu = {
       }
 
       const show = new ButtonBuilder()
-        .setCustomId('show')
+        .setCustomId("show")
         .setLabel("Show message")
         .setStyle(ButtonStyle.Primary);
 
       const message = await interaction.editReply({
-        embeds: [
-          replyEmbed(interaction, data)
-        ],
+        embeds: [replyEmbed(interaction, data)],
         components: [new ActionRowBuilder<ButtonBuilder>().addComponents(show)],
       });
 
       await message.awaitMessageComponent({
-        time: EmbedList.MAX_TIME
-      })
+        time: EmbedList.MAX_TIME,
+      });
 
       interaction.editReply({
         content: "Replied to message!",
         embeds: [],
-        components: []
+        components: [],
       });
       interaction.targetMessage.reply({
-        embeds: [
-          replyEmbed(interaction, data)
-        ],
+        embeds: [replyEmbed(interaction, data)],
       });
     } catch (error) {
       console.error(error);

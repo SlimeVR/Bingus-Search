@@ -7,22 +7,25 @@ import {
 import { Command } from "../index.js";
 import { EmbedList, fetchBingus, fetchBingusData } from "../util.js";
 
-const textCleanRegex = /[^a-z ]/gi
+const textCleanRegex = /[^a-z ]/gi;
 
 async function getFaqConfig() {
-  return (await fetchBingusData()).faqs.flatMap((x) =>
-    x.keywords.filter((x) => x.length > 0 && x.length <= 100),
-  ).map((x) => ({
-    clean: x.toLowerCase().replaceAll(textCleanRegex, ""),
-    orig: x
-  }));
+  return (await fetchBingusData()).faqs
+    .flatMap((x) => x.keywords.filter((x) => x.length > 0 && x.length <= 100))
+    .map((x) => ({
+      clean: x.toLowerCase().replaceAll(textCleanRegex, ""),
+      orig: x,
+    }));
 }
 
 let faqConfig = await getFaqConfig();
 
-setInterval(async () => {
-  faqConfig = await getFaqConfig();
-}, 60 * 60 * 1000); // Do it every hour
+setInterval(
+  async () => {
+    faqConfig = await getFaqConfig();
+  },
+  60 * 60 * 1000,
+); // Do it every hour
 
 export const askCommand: Command = {
   builder: new SlashCommandBuilder()
@@ -56,7 +59,6 @@ export const askCommand: Command = {
         ),
     ),
   async run(interaction) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const query = interaction.options.getString("query")!;
     const customOption = interaction.options.getString("custom");
     const first = customOption === "FIRST";
@@ -101,16 +103,24 @@ export const askCommand: Command = {
         ),
       );
 
-      await embedList.sendChatInput(interaction, customOption === "KINDA_VISIBLE");
+      await embedList.sendChatInput(
+        interaction,
+        customOption === "KINDA_VISIBLE",
+      );
     } catch (error) {
       console.error(error);
       interaction.editReply("An error occurred while fetching results.");
     }
   },
   async autocomplete(interaction) {
-    const focusedValue = interaction.options.getFocused().toLowerCase().replaceAll(textCleanRegex, "");
+    const focusedValue = interaction.options
+      .getFocused()
+      .toLowerCase()
+      .replaceAll(textCleanRegex, "");
     const filtered = faqConfig.filter((x) => x.clean.includes(focusedValue));
     filtered.length = Math.min(filtered.length, 25);
-    await interaction.respond(filtered.map((x) => ({ name: x.orig, value: x.orig })));
+    await interaction.respond(
+      filtered.map((x) => ({ name: x.orig, value: x.orig })),
+    );
   },
 };

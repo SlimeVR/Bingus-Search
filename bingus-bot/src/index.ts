@@ -6,6 +6,7 @@ import {
   ContextMenuCommandBuilder,
   EmbedBuilder,
   GatewayIntentBits,
+  Message,
   MessageContextMenuCommandInteraction,
   REST,
   Routes,
@@ -82,7 +83,7 @@ const magic8BallAnswers: string[] = [
   "My reply is no",
   "My sources say no",
   "Outlook not so good",
-  "Very doubtful"
+  "Very doubtful",
 ];
 
 try {
@@ -187,31 +188,76 @@ client.on("threadCreate", async (thread, newly) => {
   }
 });
 
-const TRY_REACT_CHANNELS: string[] = [
+const TRY_REACT_CHANNELS = new Set([
+  // #updates
   "818062236492759050",
-  "1129107343058153623",
+  // #small-updates
+  "907246949005148170",
+  // #slimevr-media
   "903962635161174076",
+  // #diy-gallery
   "855164207615705118",
-];
+]);
+
+async function reactWithSentiment(msg: Message) {
+  const sentiment = nlp.readDoc(msg.content).out(its.sentiment);
+  if (typeof sentiment === "string") return;
+
+  // React with an emoji
+  if (sentiment >= 0.35) {
+    await msg.react(
+      REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
+    );
+  } else if (sentiment <= -0.4) {
+    await msg.react(SAD_EMOJIS[Math.floor(Math.random() * SAD_EMOJIS.length)]);
+  } else if (
+    (msg.embeds.length > 0 || msg.attachments.size > 0) &&
+    TRY_REACT_CHANNELS.has(msg.channelId)
+  ) {
+    const random = Math.random();
+    if (random < 0.75) {
+      if (random <= 0.15) {
+        await msg.react(
+          SAD_EMOJIS[Math.floor(Math.random() * SAD_EMOJIS.length)],
+        );
+      } else {
+        await msg.react(
+          REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
+        );
+      }
+    }
+  }
+}
 
 // This can only be for cute stuff!
 client.on("messageCreate", async (msg) => {
   await msg.fetch();
   const lowercase = msg.content.toLowerCase();
   const emojisIncluded = new EmojiSearch(msg.content);
-  // Check if Bingus is being mentioned in some way
-  if (emojisIncluded.has(BINGUS_EMOJI.toString())) {
-    // React back with the emote
-    return await msg.react(BINGUS_EMOJI);
+
+  // Channels where Bingus reacts to every message
+  if (TRY_REACT_CHANNELS.has(msg.channelId)) {
+    return await reactWithSentiment(msg);
   }
 
   // Response to asking if this is real
   if (msg.mentions.users.has(clientId) && lowercase.includes("is this real")) {
-    const i = Math.floor(Math.random() * magic8BallAnswers.length)
+    const i = Math.floor(Math.random() * magic8BallAnswers.length);
 
-    return await msg.reply(magic8BallAnswers[i])
+    return await msg.reply(magic8BallAnswers[i]);
   }
 
+  // React if mentioning translator role
+  if (msg.mentions.roles.has("1055961071313223810")) {
+    return await msg.react(LANGUAGE_EMOJI);
+  }
+
+  // React if the message includes the Bingus emoji
+  if (emojisIncluded.has(BINGUS_EMOJI.toString())) {
+    return await msg.react(BINGUS_EMOJI);
+  }
+
+  // Check if Bingus is being mentioned in some way
   if (
     msg.mentions.users.has(clientId) ||
     /\b(bot|bing\w{0,4})\b/.test(lowercase)
@@ -241,46 +287,12 @@ client.on("messageCreate", async (msg) => {
       cache: false,
     });
 
+    // React with a Bingus emoji with 25% chance, or if Bingus recently sent a message
     if (
-      !lastMessages.some((m) => m.author.id === clientId) &&
-      Math.random() > 0.25
+      lastMessages.some((m) => m.author.id === clientId) ||
+      Math.random() <= 0.25
     ) {
-      return;
-    }
-  } else if (TRY_REACT_CHANNELS.some((x) => x === msg.channelId)) {
-    1;
-    // React if mentioning translator role
-  } else if (msg.mentions.roles.has("1055961071313223810")) {
-    await msg.react(LANGUAGE_EMOJI);
-  } else {
-    return;
-  }
-
-  const sentiment = nlp.readDoc(msg.content).out(its.sentiment);
-  if (typeof sentiment === "string") return;
-
-  // React with an emoji
-  if (sentiment >= 0.35) {
-    await msg.react(
-      REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
-    );
-  } else if (sentiment <= -0.4) {
-    await msg.react(SAD_EMOJIS[Math.floor(Math.random() * SAD_EMOJIS.length)]);
-  } else if (
-    (msg.embeds.length > 0 || msg.attachments.size > 0) &&
-    TRY_REACT_CHANNELS.some((x) => x === msg.channelId)
-  ) {
-    const random = Math.random();
-    if (random < 0.75) {
-      if (random <= 0.15) {
-        await msg.react(
-          SAD_EMOJIS[Math.floor(Math.random() * SAD_EMOJIS.length)],
-        );
-      } else {
-        await msg.react(
-          REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
-        );
-      }
+      return await reactWithSentiment(msg);
     }
   }
 });

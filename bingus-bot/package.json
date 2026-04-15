@@ -11,9 +11,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start": "pnpm run build && node dist/index.js",
-    "lint": "eslint src/**/*.{ts,tsx}",
-    "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\" && pnpm run format",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ../.prettierrc"
+    "lint": "eslint --max-warnings=0 \"src/**/*.{js,jsx,ts,tsx,json}\" && prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,md,json}\"",
+    "lint:fix": "eslint --fix --max-warnings=0 \"src/**/*.{js,jsx,ts,tsx,json}\" && pnpm run format",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,md,json}\""
   },
   "dependencies": {
     "discord.js": "^14.26.3",
