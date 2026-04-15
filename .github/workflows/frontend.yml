@@ -47,8 +47,8 @@ jobs:
         shell: bash
         run: |
           cd bingus-frontend
-          npm i
-          npm run build
+          pnpm i
+          pnpm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
