@@ -67,8 +67,9 @@ function App() {
   );
   if (!localTheme) {
     systemDarkMode.onchange = (ev) => {
-      !localStorage.getItem("user-theme") &&
+      if (!localStorage.getItem("user-theme")) {
         setPrefersDarkMode(() => ev.matches);
+      }
     };
   }
 
@@ -91,7 +92,7 @@ function App() {
     [prefersDarkMode],
   );
 
-  const url = new URL(window.location.href);
+  const url = new URL(globalThis.location.href);
   const urlInput = url.searchParams.get("q") ?? "";
 
   const urlInputSearched = useRef(false);
@@ -104,7 +105,7 @@ function App() {
   );
 
   const updateUrl = function () {
-    window.history.replaceState({}, window.name, url.toString());
+    globalThis.history.replaceState({}, window.name, url.toString());
   };
 
   const queryBingus = async (query: string, responseCount = 30) => {
@@ -165,7 +166,7 @@ function App() {
       <CssBaseline />
 
       <Container>
-        <Stack useFlexGap direction="column" py={2} spacing={2}>
+        <Stack useFlexGap direction="column" spacing={2} sx={{ py: 2 }}>
           <IconButton
             id="themeToggleButton"
             aria-label="Theme Toggle Button"
@@ -187,17 +188,15 @@ function App() {
             noWrap
             align="center"
             variant="h1"
-            fontSize={{ md: 64, sm: 56, xs: 48 }}
-            fontWeight={700}
+            sx={{ fontWeight: 700, fontSize: { md: 64, sm: 56, xs: 48 } }}
           >
             Bingus
           </Typography>
           <Typography
             align="center"
             variant="subtitle1"
-            fontSize={14}
-            fontWeight={500}
             color="textSecondary"
+            sx={{ fontWeight: 500, fontSize: 14 }}
           >
             Information may not be up-to-date. If you need further help, join
             the <Link href="https://discord.gg/SlimeVR">SlimeVR Discord</Link>.
@@ -231,9 +230,9 @@ function App() {
             }}
           />
 
-          <Stack spacing={2} alignItems="center" direction="column">
+          <Stack spacing={2} direction="column" sx={{ alignItems: "center" }}>
             {loadingResults
-              ? [...Array(30)].map((_, i) => (
+              ? Array.from({ length: 30 }, (_, i) => (
                   <Skeleton
                     key={i}
                     variant="rounded"
@@ -251,7 +250,7 @@ function App() {
                       text={result.text}
                     />
                   )) || (
-                  <Typography color="text.secondary" padding={1}>
+                  <Typography color="textSecondary" sx={{ p: 1 }}>
                     No results...
                   </Typography>
                 )}

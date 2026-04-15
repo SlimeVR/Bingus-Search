@@ -14,7 +14,6 @@ export const replyListContext: ContextMenu = {
     .setType(ApplicationCommandType.Message),
 
   async run(interaction) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const query = interaction.targetMessage.content;
     console.log(
       `User ${interaction.user} asked about "${query}" for ${interaction.targetMessage.author}`,
@@ -35,24 +34,20 @@ export const replyListContext: ContextMenu = {
       }
 
       const show = new ButtonBuilder()
-        .setCustomId('show')
+        .setCustomId("show")
         .setLabel("Show message")
-        .setStyle(ButtonStyle.Primary)
+        .setStyle(ButtonStyle.Primary);
 
       const embedListEph = new EmbedList(show);
       embedListEph.push(
-        ...data.slice(0, 5).map(
-          (res) =>
-            replyEmbed(interaction, res)
-        ),
+        ...data.slice(0, 5).map((res) => replyEmbed(interaction, res)),
       );
 
-      const selectedIndex = await embedListEph.sendChatInput(interaction)
+      const selectedIndex = await embedListEph.sendChatInput(interaction);
 
       interaction.targetMessage.reply({
         embeds: [replyEmbed(interaction, data[selectedIndex])],
       });
-
     } catch (error) {
       console.error(error);
       interaction.editReply("An error occurred while fetching results.");

@@ -1,10 +1,10 @@
-FROM node:22-slim AS base
+FROM node:24-slim AS base
 
 COPY ./bingus-bot/ /app/bingus-bot/
 COPY ./package*.json /app/
 WORKDIR /app
 
-RUN npm ci
-RUN npm run -w bingus-bot build
+RUN pnpm ci
+RUN pnpm run -w bingus-bot build
 
-CMD [ "npm", "-w", "bingus-bot", "start" ]
+CMD [ "pnpm", "-w", "bingus-bot", "start" ]

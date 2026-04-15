@@ -1,0 +1,5 @@
+packages:
+  - "bingus-frontend"
+  - "bingus-bot"
+allowBuilds:
+  esbuild: true
