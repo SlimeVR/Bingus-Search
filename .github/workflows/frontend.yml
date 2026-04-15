@@ -38,10 +38,13 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Setup Pages
         uses: actions/configure-pages@v6
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v6
 
       - name: Build frontend
         shell: bash
@@ -51,7 +54,7 @@ jobs:
           pnpm run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: bingus-frontend/dist
 

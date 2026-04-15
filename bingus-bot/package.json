@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "pnpm run build && node dist/index.js",
+    "start": "node dist/index.js",
     "lint": "eslint --max-warnings=0 \"src/**/*.{js,jsx,ts,tsx,json}\" && prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,md,json}\"",
     "lint:fix": "eslint --fix --max-warnings=0 \"src/**/*.{js,jsx,ts,tsx,json}\" && pnpm run format",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,md,json}\""

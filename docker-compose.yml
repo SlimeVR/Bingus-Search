@@ -54,7 +54,6 @@ services:
       - bingus-api
     volumes:
       - ./bingus-bot/auth.json:/app/bingus-bot/auth.json
-      - ./bingus-bot/assets:/app/bingus-bot/assets
 
 volumes:
   model-cache:
