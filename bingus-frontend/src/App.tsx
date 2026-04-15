@@ -232,7 +232,7 @@ function App() {
 
           <Stack spacing={2} direction="column" sx={{ alignItems: "center" }}>
             {loadingResults
-              ? new Array(30).map((_, i) => (
+              ? Array.from({ length: 30 }, (_, i) => (
                   <Skeleton
                     key={i}
                     variant="rounded"
