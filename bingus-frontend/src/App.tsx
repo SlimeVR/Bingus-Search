@@ -250,7 +250,7 @@ function App() {
                       text={result.text}
                     />
                   )) || (
-                  <Typography color="text.secondary" sx={{ p: 1 }}>
+                  <Typography color="textSecondary" sx={{ p: 1 }}>
                     No results...
                   </Typography>
                 )}
