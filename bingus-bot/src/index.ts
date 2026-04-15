@@ -14,25 +14,25 @@ import {
   UserContextMenuCommandInteraction,
 } from "discord.js";
 import auth from "../auth.json" with { type: "json" };
-import {
-  BINGUS_EMOJI,
-  EmbedList,
-  GUNNYA_EMOJI,
-  LANGUAGE_EMOJI,
-  NYAGUN_EMOJI,
-  BINGUSGUN_EMOJI,
-  NIGHTYGUN_EMOJI,
-  QUESTION_EMOJI,
-  REACTION_EMOJIS,
-  SAD_EMOJIS,
-  fetchBingus,
-  EmojiSearch,
-} from "./util.js";
+import { EmbedList, fetchBingus, EmojiSearch } from "./util.js";
 import { askCommand } from "./commands/ask.js";
-import winkNLP from "wink-nlp";
-import model from "wink-eng-lite-web-model";
 import { replyContext } from "./contexts/reply.js";
 import { replyListContext } from "./contexts/replyWithList.js";
+import {
+  QUESTION_EMOJI,
+  MEDIA_REACT_CHANNELS,
+  getRandomPositiveEmoji,
+  getMagic8BallAnswer,
+  LANGUAGE_EMOJI,
+  BINGUS_EMOJI,
+  NYAGUN_EMOJI,
+  GUNNYA_EMOJI,
+  BINGUSGUN_EMOJI,
+  NIGHTYGUN_EMOJI,
+  getSentimentEmoji,
+  ALWAYS_REACT_CHANNELS,
+  getRandomPositiveOrMiscEmoji,
+} from "./toy.js";
 
 interface ContainsBuilder {
   builder: unknown;
@@ -55,36 +55,10 @@ export interface ContextMenu<
   ) => Promise<void>;
 }
 
-const nlp = winkNLP(model, ["negation", "sentiment"]);
-const { its } = nlp;
-
 const commands = [askCommand];
 const contexts = [replyContext, replyListContext];
 
 const rest = new REST({ version: "10" }).setToken(auth.token);
-
-const magic8BallAnswers: string[] = [
-  "It is certain",
-  "It is decidedly so",
-  "Without a doubt",
-  "Yes definitely",
-  "You may rely on it",
-  "As I see it, yes",
-  "Most likely",
-  "Outlook good",
-  "Yes",
-  "Signs point to yes",
-  "Reply hazy, try again",
-  "Ask again later",
-  "Better not tell you now",
-  "Cannot predict now",
-  "Concentrate and ask again",
-  "Don't count on it",
-  "My reply is no",
-  "My sources say no",
-  "Outlook not so good",
-  "Very doubtful",
-];
 
 try {
   console.log("Started refreshing application (/) commands.");
@@ -188,69 +162,50 @@ client.on("threadCreate", async (thread, newly) => {
   }
 });
 
-const TRY_REACT_CHANNELS = new Set([
-  // #updates
-  "818062236492759050",
-  // #small-updates
-  "907246949005148170",
-  // #slimevr-media
-  "903962635161174076",
-  // #diy-gallery
-  "855164207615705118",
-]);
-
-async function reactWithSentiment(msg: Message) {
-  const sentiment = nlp.readDoc(msg.content).out(its.sentiment);
-  if (typeof sentiment === "string") return;
-
-  // React with an emoji
-  if (sentiment >= 0.35) {
-    await msg.react(
-      REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
-    );
-  } else if (sentiment <= -0.4) {
-    await msg.react(SAD_EMOJIS[Math.floor(Math.random() * SAD_EMOJIS.length)]);
-  } else if (
-    (msg.embeds.length > 0 || msg.attachments.size > 0) &&
-    TRY_REACT_CHANNELS.has(msg.channelId)
-  ) {
-    const random = Math.random();
-    if (random < 0.75) {
-      if (random <= 0.15) {
-        await msg.react(
-          SAD_EMOJIS[Math.floor(Math.random() * SAD_EMOJIS.length)],
-        );
-      } else {
-        await msg.react(
-          REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)],
-        );
-      }
-    }
-  }
+async function sentMessageRecently(
+  msg: Message,
+  limit: number = 10,
+): Promise<boolean> {
+  const messages = await msg.channel.messages.fetch({
+    limit: limit,
+    before: msg.id,
+    cache: false,
+  });
+  return messages.some((m) => m.author.id === clientId);
 }
 
 // This can only be for cute stuff!
 client.on("messageCreate", async (msg) => {
   await msg.fetch();
-  const lowercase = msg.content.toLowerCase();
-  const emojisIncluded = new EmojiSearch(msg.content);
 
   // Channels where Bingus reacts to every message
-  if (TRY_REACT_CHANNELS.has(msg.channelId)) {
-    return await reactWithSentiment(msg);
+  if (ALWAYS_REACT_CHANNELS.has(msg.channelId)) {
+    return await msg.react(
+      getSentimentEmoji(msg.content) ?? getRandomPositiveOrMiscEmoji(),
+    );
   }
 
-  // Response to asking if this is real
-  if (msg.mentions.users.has(clientId) && lowercase.includes("is this real")) {
-    const i = Math.floor(Math.random() * magic8BallAnswers.length);
-
-    return await msg.reply(magic8BallAnswers[i]);
+  // React to media posts in the media channels
+  if (
+    (msg.embeds.length > 0 || msg.attachments.size > 0) &&
+    MEDIA_REACT_CHANNELS.has(msg.channelId)
+  ) {
+    return await msg.react(getRandomPositiveEmoji());
   }
 
   // React if mentioning translator role
   if (msg.mentions.roles.has("1055961071313223810")) {
     return await msg.react(LANGUAGE_EMOJI);
   }
+
+  const lowercase = msg.content.toLowerCase();
+
+  // Response to asking if this is real
+  if (msg.mentions.users.has(clientId) && lowercase.includes("is this real")) {
+    return await msg.reply(getMagic8BallAnswer());
+  }
+
+  const emojisIncluded = new EmojiSearch(msg.content);
 
   // React if the message includes the Bingus emoji
   if (emojisIncluded.has(BINGUS_EMOJI.toString())) {
@@ -280,19 +235,12 @@ client.on("messageCreate", async (msg) => {
       return await msg.react(BINGUSGUN_EMOJI);
     }
 
-    // Check if Bingus recently sent a message
-    const lastMessages = await msg.channel.messages.fetch({
-      limit: 10,
-      before: msg.id,
-      cache: false,
-    });
-
     // React with a Bingus emoji with 25% chance, or if Bingus recently sent a message
-    if (
-      lastMessages.some((m) => m.author.id === clientId) ||
-      Math.random() <= 0.25
-    ) {
-      return await reactWithSentiment(msg);
+    if (Math.random() <= 0.25 || (await sentMessageRecently(msg))) {
+      const sentimentEmoji = getSentimentEmoji(msg.content);
+      if (sentimentEmoji) {
+        return await msg.react(sentimentEmoji);
+      }
     }
   }
 });
