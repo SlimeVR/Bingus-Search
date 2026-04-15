@@ -10,7 +10,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "pnpm run build && node dist/index.js"
+    "start": "pnpm run build && node dist/index.js",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\" && pnpm run format",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ../.prettierrc"
   },
   "dependencies": {
     "discord.js": "^14.26.3",
@@ -18,7 +21,7 @@
     "wink-nlp": "^2.4.0"
   },
   "devDependencies": {
-    "@tsconfig/node18": "^18.2.6",
+    "@tsconfig/node24": "^24.0.4",
     "@types/node": "^25.6.0"
   }
 }
