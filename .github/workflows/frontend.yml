@@ -44,7 +44,7 @@ jobs:
         uses: actions/configure-pages@v6
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@v6.0.9
 
       - name: Build frontend
         shell: bash
