@@ -3,3 +3,5 @@ packages:
   - "bingus-bot"
 allowBuilds:
   esbuild: true
+minimumReleaseAgeExclude:
+  - vite@8.3.5
