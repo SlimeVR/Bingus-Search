@@ -15,6 +15,7 @@
         <PackageReference Include="LLamaSharp" Version="0.30.0" />
         <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.30.0" />
         <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+        <PackageReference Include="MessagePack" Version="3.1.12" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.13" />
         <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.13" />
         <PackageReference Include="Microsoft.ML" Version="5.0.1" />
