@@ -142,8 +142,7 @@ export class EmbedList {
 
   async sendChatInput(
     interaction:
-      | ChatInputCommandInteraction
-      | MessageContextMenuCommandInteraction,
+      ChatInputCommandInteraction | MessageContextMenuCommandInteraction,
     publicInteraction: boolean | undefined = true,
   ): Promise<number> {
     let resolvePromise: (value: number) => void;
